@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   const FirstName = useRef("");
@@ -15,7 +16,7 @@ export default function Login() {
       Password: Password.current.value,
       ConfirmPassword: ConfirmPassword.current.value,
     };
-    console.log(UserNew);
+    console.log(UserNew, "sending the data to server");
   };
 
   return (
@@ -125,9 +126,14 @@ export default function Login() {
                   Keep me updated with offers
                 </span>
               </label>
-              <a href="#" className="text-sm text-sky-600 underline">
-                Need help?
-              </a>
+              <div className="flex gap-5">
+                <Link to="/Login" className="text-sm text-sky-600 underline">
+                  Login
+                </Link>
+                <a href="#" className="text-sm text-sky-600 underline">
+                  Need help?
+                </a>
+              </div>
             </div>
 
             <button

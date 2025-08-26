@@ -1,14 +1,14 @@
-import React from 'react'
-import Login from './AUTH/Login'
-import Signup from './AUTH/Signup'
-
+import React from "react";
+import Login from "./AUTH/Login";
+import Signup from "./AUTH/Signup";
+import Navbar from "./Navbar";
+import Home from "../src/User/Home"
 function App() {
   return (
     <>
-     <Login></Login> 
-     <Signup></Signup> 
+      <Home></Home>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
