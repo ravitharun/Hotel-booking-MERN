@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import Navbar from "../Navbar";
 
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
@@ -20,6 +21,9 @@ export default function MyBookings() {
   }, []);
 
   return (
+    <>
+        <Navbar></Navbar>
+
     <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">My Bookings</h2>
 
@@ -78,5 +82,7 @@ export default function MyBookings() {
         </div>
       )}
     </div>
+    </>
+
   );
 }
