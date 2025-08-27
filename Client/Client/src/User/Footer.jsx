@@ -13,12 +13,12 @@ const Footer = () => (
             {/* Logo and Brand */}
             <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
                 <img
-                    src="/logo192.png" // Replace with your logo path
+                    src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180" // Replace with your logo path
                     alt="Hotel Booking Logo"
                     style={{ width: 48, height: 48, borderRadius: "50%", background: "#fff" }}
                 />
                 <span style={{ fontSize: "1.5rem", fontWeight: "bold", letterSpacing: "1px" }}>
-                    StayEase Hotels
+                    BookInn
                 </span>
             </div>
             {/* Links */}
