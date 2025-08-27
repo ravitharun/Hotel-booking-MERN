@@ -202,7 +202,7 @@ const Footer = () => (
           <input
             type="email"
             placeholder="Your email"
-            className="border border-white"
+            className="border border-white  "
             style={{
               flex: 1,
               padding: "0.5rem",
