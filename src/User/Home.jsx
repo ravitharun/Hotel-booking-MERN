@@ -6,18 +6,28 @@ import {
   FaCalendarAlt,
   FaClosedCaptioning,
   FaTimesCircle,
+  FaChevronUp,
+  FaChevronDown,
+  FaInfo,
 } from "react-icons/fa";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 import Navbar from "../Navbar";
 import Footer from "../User/Footer";
+import Typewriter from "typewriter-effect";
+import { useNavigate } from "react-router-dom";
+import MyBookings from "./MyBookings";
+import FAQ from "./FAQ";
 
 export default function HotelBooking() {
-  const [destination, setDestination] = useState("");
-  const [children, setChildren] = useState(0);
-  const [adults, setAdults] = useState(1);
-  const [checkIn, setCheckIn] = useState("");
+  const [destination, setDestination] = useState("Mumbai");
+  const [children, setChildren] = useState(2);
+  const [adults, setAdults] = useState(2);
+  const [checkIn, setCheckIn] = useState(Date.now());
   const [checkOut, setCheckOut] = useState("");
+  const [DropDown, SetDropDown] = useState(true);
+  const [ErrorMsg, SetErrormsg] = useState(false);
+  // popularDestination array of Object stored Dynamically Stored
   const popularDestinations = [
     {
       id: 1,
@@ -76,32 +86,6 @@ export default function HotelBooking() {
     },
   ];
 
-  const featuredHotels = [
-    {
-      id: 1,
-      name: "The Oberoi Amarvilas",
-      location: "Agra, India",
-      price: "₹25,000/night",
-      image:
-        "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: 2,
-      name: "Taj Lake Palace",
-      location: "Udaipur, India",
-      price: "₹30,000/night",
-      image:
-        "https://images.unsplash.com/photo-1501117716987-c8e1ecb2101b?auto=format&fit=crop&w=800&q=80",
-    },
-    {
-      id: 3,
-      name: "ITC Grand Chola",
-      location: "Chennai, India",
-      price: "₹18,000/night",
-      image:
-        "https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&w=800&q=80",
-    },
-  ];
   const currentDate = new Date();
   // Convert to YYYY-MM-DD format
   const trimmedDate = currentDate.toISOString().split("T")[0];
@@ -109,10 +93,29 @@ export default function HotelBooking() {
   tomorrow.setDate(currentDate.getDate() + 1);
   const trimmedTomorrow = tomorrow.toISOString().split("T")[0];
   // console.log("Tomorrow:", trimmedTomorrow);
-
+  const navigate = useNavigate("");
+  const Search = () => {
+    const data = {
+      destination: destination,
+      children: children,
+      adults: adults,
+      checkIn: checkIn,
+      checkOut: checkOut,
+    };
+    if (data.checkOut == "") {
+      SetErrormsg(true);
+    }
+    console.log("hotel data  user input value", data);
+    navigate(`/Search/Location`, {
+      state: {
+        data,
+      },
+    });
+  };
   return (
     <>
       <Navbar />
+
       <div className="mt-10 min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-6">
         {/* Hero Section */}
         <div className="text-center max-w-3xl mx-auto mb-12 px-4">
@@ -142,11 +145,13 @@ export default function HotelBooking() {
                   <FaMapMarkerAlt className="text-gray-500 mr-2" />
                   <input
                     type="text"
-                    placeholder="Enter city or hotel name"
+                    id="typewriter"
+                    placeholder="Search Your Love Place ..."
                     value={destination}
                     onChange={(e) => setDestination(e.target.value)}
                     className="flex-1 outline-none"
                   />
+                  <h4></h4>
                 </div>
               </div>
 
@@ -180,30 +185,52 @@ export default function HotelBooking() {
                       className="flex-1 outline-none"
                     />
                   </div>
+                  {ErrorMsg && (
+                    <div className="mt-1 flex items-center gap-1 text-sm text-red-500 font-mono">
+                      <FaInfo className="text-red-500" />
+                      <span>Required these * </span>
+                    </div>
+                  )}
                 </div>
               </div>
 
               {/* Guests */}
               <div className="flex flex-col">
-                <label className="text-sm font-medium text-gray-600 mb-2">
-                  Guests
+                <label
+                  className="text-sm font-medium  mb-2 flex items-center gap-2 cursor-pointer text-orange-500 hover:text-gray-600"
+                  title="Select number of guests"
+                  onClick={() => SetDropDown(!DropDown)}
+                >
+                  Number of Guests{" "}
+                  {DropDown ? (
+                    <FaChevronUp className="text-gray-500" />
+                  ) : (
+                    <FaChevronDown className="text-gray-500" />
+                  )}
                 </label>
-                <DropdownCounter
-                  label="Adults"
-                  value={adults}
-                  setValue={setAdults}
-                  icon={<FaUser />}
-                />
-                <DropdownCounter
-                  label="Children"
-                  value={children}
-                  setValue={setChildren}
-                  icon={<FaUserFriends />}
-                />
+                {DropDown && (
+                  <>
+                    <DropdownCounter
+                      label="Adults"
+                      value={adults}
+                      setValue={setAdults}
+                      icon={<FaUser />}
+                    />
+                    <DropdownCounter
+                      label="Children"
+                      value={children}
+                      setValue={setChildren}
+                      icon={<FaUserFriends />}
+                    />
+                  </>
+                )}
               </div>
 
-              {/* Search Button */}
-              <button className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition">
+              {/* Search Button} */}
+              <button
+                className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+                onClick={Search}
+              >
                 Search Hotels
               </button>
             </div>
@@ -259,6 +286,7 @@ export default function HotelBooking() {
             <button
               key={index}
               className="flex flex-col items-center text-center group"
+              title={data.name}
             >
               {/* Circle Image */}
               <div className="w-16 h-16 rounded-full overflow-hidden border-2 border-gray-300 shadow-md group-hover:scale-110 group-hover:border-blue-500 transition-all duration-300">
@@ -305,9 +333,12 @@ export default function HotelBooking() {
 
         {/* Search Place by Location we will display in the ui*/}
 
-        <div>Search Place by Location we will display in the ui (like hotel in india)</div>
-
+        <div>
+          Search Place by Location we will display in the ui (like hotel in
+          india)
+        </div>
       </div>
+      <FAQ></FAQ>
       <Footer />
     </>
   );

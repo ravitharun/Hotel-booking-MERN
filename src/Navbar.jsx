@@ -167,7 +167,9 @@ function Navbar() {
           </div>
         </div>
       )}
+      
     </nav>
+    
   );
 }
 
