@@ -33,6 +33,16 @@ function Login() {
           </span>
         </div>
         <form className="space-y-5">
+          <div className="w-full">
+            <label className="text-xs font-medium text-gray-600 block mb-1">
+              Select The Role
+            </label>
+            <select className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300">
+              <option value="">Choose Role</option>
+              <option value="admin">Admin</option>
+              <option value="user">User</option>
+            </select>
+          </div>
           <div>
             <label
               htmlFor="email"
@@ -85,7 +95,10 @@ function Login() {
         </form>
         <div className="mt-8 text-center text-gray-600 text-sm">
           New to Hotel Booking?{" "}
-          <Link to="/Create" className="text-blue-700 font-semibold hover:underline">
+          <Link
+            to="/Create"
+            className="text-blue-700 font-semibold hover:underline"
+          >
             Create an account
           </Link>
         </div>

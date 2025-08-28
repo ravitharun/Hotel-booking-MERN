@@ -104,6 +104,10 @@ export default function HotelBooking() {
     };
     if (data.checkOut == "") {
       SetErrormsg(true);
+      return setTimeout(() => {
+        SetErrormsg("");
+        SetErrormsg(true);
+      }, 1500);
     }
     console.log("hotel data  user input value", data);
     navigate(`/Search/Location`, {
@@ -228,7 +232,11 @@ export default function HotelBooking() {
 
               {/* Search Button} */}
               <button
-                className="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition"
+                className={`w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition  ${
+                  !checkOut ? "cursor-not-allowed bg-red-400" : "cursor-pointer"
+                }`}
+                // style={{}}
+                disabled={!checkOut}
                 onClick={Search}
               >
                 Search Hotels

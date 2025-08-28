@@ -24,6 +24,16 @@ export default function Login() {
       <div className="w-full max-w-5xl min-w-[350px] bg-white rounded-2xl shadow-lg grid grid-cols-1 md:grid-cols-2 overflow-hidden">
         {/* Left: Illustration / Promo */}
         <div className="hidden md:flex flex-col justify-center items-start gap-6 p-10 bg-gradient-to-br from-sky-600 to-indigo-600 text-white">
+          <div className="flex justify-center items-center">
+            <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-300 shadow-lg">
+              <img
+                src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
+                alt="BookInn"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </div>
+
           <h2 className="text-4xl font-extrabold">
             Welcome to <span className="text-yellow-300">BookInn</span>
           </h2>
@@ -32,9 +42,9 @@ export default function Login() {
             suites. Fast booking, secure payments, and awesome deals.
           </p>
           <ul className="mt-4 space-y-2 text-sm">
-            <li>• Instant booking confirmations</li>
-            <li>• Flexible cancellations</li>
-            <li>• 24/7 customer support</li>
+            <li className="hover:text-gray-400 text-2xl font-mono">• Instant booking confirmations</li>
+            <li className="hover:text-gray-400 text-2xl  font-mono">• Flexible cancellations</li>
+            <li className="hover:text-gray-400 text-2xl  font-mono">• 24/7 customer support</li>
           </ul>
           <div className="mt-6 text-xs opacity-90">
             Already have an account?{" "}
@@ -54,6 +64,16 @@ export default function Login() {
           </div>
 
           <form className="space-y-5">
+            <div className="w-full">
+              <label className="text-xs font-medium text-gray-600 block mb-1">
+                Select The Role
+              </label>
+              <select className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300">
+                <option value="">Choose Role</option>
+                <option value="admin">Admin</option>
+                <option value="user">User</option>
+              </select>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="text-xs font-medium text-gray-600">
