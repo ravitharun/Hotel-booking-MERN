@@ -10,7 +10,6 @@ import {
   FaCog,
   FaSignOutAlt,
   FaSignInAlt,
-  FaHome,
 } from "react-icons/fa";
 
 function Navbar() {
@@ -35,14 +34,11 @@ function Navbar() {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/">
-              {" "}
-              <img
-                src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
-                alt="Logo"
-                className="w-10 h-10 rounded-full object-cover mr-2 cursor-pointer"
-              />
-            </Link>
+            <img
+              src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
+              alt="Logo"
+              className="w-10 h-10 rounded-full object-cover mr-2 cursor-pointer"
+            />
             <span className="text-xl font-bold text-gray-800">BookInn</span>
           </div>
 
@@ -52,13 +48,7 @@ function Navbar() {
               to="/"
               className="text-gray-700 hover:text-blue-600 flex items-center gap-1"
             >
-              <FaHome /> Home
-            </Link>
-            <Link
-              to="/Search/Hotel"
-              className="text-gray-700 hover:text-blue-600 flex items-center gap-1"
-            >
-              <FaHotel /> Search Hotel
+              <FaHotel /> Hotels
             </Link>
             <Link
               to="/bookings"
@@ -83,26 +73,26 @@ function Navbar() {
               </button>
 
               {dropdownOpen && (
-                <div className="absolute right-0 mt-2 w-48 bg-blend-color border-gray-200 rounded-lg shadow-lg py-2 z-50 bg-amber-100">
+                <div className="absolute right-0 mt-2 w-48 bg-blend-color border rounded-lg shadow-lg py-2 z-50">
                   <Link
                     to="/profile"
-                    className="flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100"
+                    className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     <FaUser /> My Profile
                   </Link>
                   <Link
                     to="/settings"
-                    className="flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100"
+                    className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     <FaCog /> Settings
                   </Link>
                   <Link
                     to="/login"
-                    className="flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100"
+                    className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100"
                   >
                     <FaSignInAlt /> Login
                   </Link>
-                  <button className="w-full text-left flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100">
+                  <button className="w-full text-left flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100">
                     <FaSignOutAlt /> Logout
                   </button>
                 </div>
@@ -128,7 +118,7 @@ function Navbar() {
           <div className="px-2 pt-2 pb-3 space-y-2 sm:px-3">
             <Link
               to="/"
-              className=" text-gray-700 hover:text-blue-600 flex items-center gap-2"
+              className="block text-gray-700 hover:text-blue-600 flex items-center gap-2"
             >
               <FaHotel /> Hotels
             </Link>
@@ -146,8 +136,8 @@ function Navbar() {
             </Link>
 
             {/* Profile Dropdown in Mobile */}
-            <details className="block bg-gray-300">
-              <summary className="flex items-center gap-2 text-gray-700 cursor-pointer hover:text-blue-600 ">
+            <details className="block">
+              <summary className="flex items-center gap-2 text-gray-700 cursor-pointer hover:text-blue-600">
                 <FaUser /> Profile
               </summary>
               <div className="ml-6 mt-2 space-y-2">
