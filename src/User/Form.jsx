@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   FaCalendarAlt,
   FaChevronDown,
@@ -8,13 +8,26 @@ import {
   FaUser,
   FaUserFriends,
 } from "react-icons/fa";
+import SearchHotel from "./SearchHotel";
 
 export default function Form() {
   const [Dropdown, setDropdown] = useState(false);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
+  const Destination = useRef("");
+  const checkOut = useRef("");
+  const checkIn = useRef("");
+  const [Userdata, setdata] = useState([]);
   const serachHotel = () => {
-    alert("serachHotel");
+    const data = {
+      Destination: Destination.current.value,
+      checkIn: checkIn.current.value,
+      checkOut: checkOut.current.value,
+      adults: adults,
+      children: children,
+    };
+    console.log(data);
+    setdata(data);
   };
   return (
     <>
@@ -29,6 +42,7 @@ export default function Form() {
               <FaMapMarkerAlt className="text-gray-500 mr-2" />
               <input
                 type="text"
+                ref={Destination}
                 placeholder="Search your favorite place..."
                 className="flex-1 outline-none"
               />
@@ -42,7 +56,11 @@ export default function Form() {
             </label>
             <div className="flex items-center border border-gray-300 rounded-xl px-3 py-2">
               <FaCalendarAlt className="text-gray-500 mr-2" />
-              <input type="date" className="flex-1 outline-none" />
+              <input
+                type="date"
+                className="flex-1 outline-none"
+                ref={checkIn}
+              />
             </div>
           </div>
 
@@ -53,7 +71,11 @@ export default function Form() {
             </label>
             <div className="flex items-center border border-gray-300 rounded-xl px-3 py-2">
               <FaCalendarAlt className="text-gray-500 mr-2" />
-              <input type="date" className="flex-1 outline-none" />
+              <input
+                type="date"
+                className="flex-1 outline-none"
+                ref={checkOut}
+              />
             </div>
           </div>
 
@@ -145,6 +167,7 @@ export default function Form() {
           </button>
         </div>
       </div>
+      {/* <SearchHotel Userdata={Userdata}></SearchHotel> */}
     </>
   );
 }
