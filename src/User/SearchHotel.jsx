@@ -81,13 +81,13 @@ export default function SearchHotelPage() {
             </label>
             <input
               type="range"
-              min="100"
-              max="500"
+              min="10000"
+              max="500000"
               className="w-full mt-2 accent-blue-600"
             />
             <div className="flex justify-between text-sm text-gray-500 mt-1">
-              <span>$100</span>
-              <span>$500</span>
+              <span>10000</span>
+              <span>500000</span>
             </div>
           </div>
 
@@ -105,17 +105,26 @@ export default function SearchHotelPage() {
           </div>
 
           {/* Location */}
-          <div>
-            <label className="text-base font-medium text-gray-700 block mb-1">
-              Location
+
+          <div className="w-full">
+            <label
+              htmlFor="location"
+              className="text-base font-medium text-gray-700 block mb-2"
+            >
+              Location by state
             </label>
-            <select className="w-full mt-2 border border-gray-300 rounded-xl p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option>All Locations</option>
-              <option>New York</option>
-              <option>California</option>
-              <option>Colorado</option>
-              <option>Florida</option>
-            </select>
+            <input
+              list="locations"
+              id="location"
+              placeholder="Type or select..."
+              className="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <datalist id="locations">
+              <option value="New York" />
+              <option value="California" />
+              <option value="Colorado" />
+              <option value="Florida" />
+            </datalist>
           </div>
 
           {/* Bed Preference */}
@@ -195,11 +204,9 @@ export default function SearchHotelPage() {
                   name="amenities"
                   className="accent-blue-600"
                 />
-                            Conference Room
+                Conference Room
               </label>
-         
             </div>
-
           </div>
         </div>
 
