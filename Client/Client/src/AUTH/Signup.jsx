@@ -1,5 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
+
 
 export default function Login() {
   const FirstName = useRef("");
@@ -7,7 +9,7 @@ export default function Login() {
   const Email = useRef("");
   const Password = useRef("");
   const ConfirmPassword = useRef("");
-  const NewRegister = (event) => {
+  const NewRegister = async(event) => {
     event.preventDefault();
     const UserNew = {
       FirstName: FirstName.current.value,
@@ -16,7 +18,10 @@ export default function Login() {
       Password: Password.current.value,
       ConfirmPassword: ConfirmPassword.current.value,
     };
-    console.log(UserNew, "sending the data to server");
+   const response=await axios.post('http://localhost:3000/Hotel/CreateAccountUser',{
+    UserInfo:UserNew
+   })
+   console.log(response.data.message,'response from the new account page ')
   };
 
   return (

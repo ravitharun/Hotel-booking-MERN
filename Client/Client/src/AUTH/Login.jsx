@@ -1,19 +1,34 @@
+import axios from "axios";
+import { useState } from "react";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
+import { AiOutlineWarning } from "react-icons/ai"; // Warning icon
 
 function Login() {
   const Email = useRef("");
   const Password = useRef("");
-  const Login = (event) => {
+  const [errorMessage, seterrorMessage] = useState("");
+  const Login = async (event) => {
     event.preventDefault();
     const data = {
       Email: Email.current.value,
       Password: Password.current.value,
     };
     if (data.Email == "" || Password.current.value == "") {
-      console.log("object");
-    } else {
-      console.log("send api");
+      console.log("Fill the data ");
+    }
+    const response = await axios.get("http://localhost:3000/Hotel/LoginUser", {
+      params: {
+        // {
+        UserCheck: data,
+      },
+    });
+    {
+      response.data.message == "Fill The required Details"
+        ? seterrorMessage(response.data.message)
+        : setTimeout(() => {
+            seterrorMessage("");
+          }, 2000);
     }
   };
   return (
@@ -53,8 +68,9 @@ function Login() {
             <input
               id="email"
               ref={Email}
+              required
               type="email"
-              className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+              className='"w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"'
               placeholder="you@email.com"
             />
           </div>
@@ -67,6 +83,7 @@ function Login() {
             </label>
             <input
               id="password"
+              required
               type="password"
               ref={Password}
               className="w-full px-4 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
@@ -85,6 +102,14 @@ function Login() {
               Forgot password?
             </Link>
           </div>
+          ;
+          {errorMessage && (
+            <div className="mt-4 flex items-center justify-center">
+              <p className="flex items-center gap-2 px-4 py-2 rounded-lg bg-red-100 text-red-600 font-medium shadow-sm border border-red-300">
+                <AiOutlineWarning size={20} /> {errorMessage}
+              </p>
+            </div>
+          )}
           <button
             type="submit"
             onClick={Login}
