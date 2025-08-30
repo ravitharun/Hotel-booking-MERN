@@ -49,7 +49,7 @@ router.get("/LoginUser", async (req, res) => {
 
     if (!isMatch) {
       console.log('Wrong password')
-      return res.status(400).json({ message: 'Wrong password' })
+      return res.json({ message: 'Wrong password' })
     };
     // checking the user data
     if (IsValid_user.Email === UserCheck.Email && IsValid_user.Role === UserCheck.Role) {
