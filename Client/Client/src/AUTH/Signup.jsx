@@ -7,11 +7,13 @@ export default function Login() {
   const FirstName = useRef("");
   const LastName = useRef("");
   const Email = useRef("");
+  const Role = useRef("");
   const Password = useRef("");
   const ConfirmPassword = useRef("");
   const NewRegister = async(event) => {
     event.preventDefault();
     const UserNew = {
+      Role:Role.current.value,
       FirstName: FirstName.current.value,
       LastName: LastName.current.value,
       Email: Email.current.value,
@@ -73,7 +75,7 @@ export default function Login() {
               <label className="text-xs font-medium text-gray-600 block mb-1">
                 Select The Role
               </label>
-              <select className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300">
+              <select className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300" ref={Role}>
                 <option value="">Choose Role</option>
                 <option value="admin">Admin</option>
                 <option value="user">User</option>

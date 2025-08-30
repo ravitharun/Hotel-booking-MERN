@@ -8,8 +8,9 @@ mongoose.connect('mongodb://localhost:27017/hotelbooking', {
 
 // Define a simple Hotel schema
 const UserSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    role: { type: String, required: true, default: "user" },
+    FirstName: { type: String, required: true },
+    LastName: { type: String, required: true },
+    Role: { type: String, required: true, default: "user" },
     Email: { type: String, required: true },
     ConfirmPassword: { type: String, required: true },
     Password: { type: String, required: true },

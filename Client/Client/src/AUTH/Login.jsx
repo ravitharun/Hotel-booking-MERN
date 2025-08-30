@@ -1,16 +1,19 @@
 import axios from "axios";
 import { useState } from "react";
 import { useRef } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineWarning } from "react-icons/ai"; // Warning icon
 
 function Login() {
   const Email = useRef("");
   const Password = useRef("");
+  const Role = useRef("");
   const [errorMessage, seterrorMessage] = useState("");
+  const redirect = useNavigate();
   const Login = async (event) => {
     event.preventDefault();
     const data = {
+      Role: Role.current.value,
       Email: Email.current.value,
       Password: Password.current.value,
     };
@@ -30,6 +33,11 @@ function Login() {
             seterrorMessage("");
           }, 2000);
     }
+    if (response.data.message == response.data.message) {
+      alert(response.data.message);
+      redirect("/");
+    }
+    localStorage.setItem("Email", response.data.data.Email);
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 via-white to-blue-200">
@@ -52,7 +60,10 @@ function Login() {
             <label className="text-xs font-medium text-gray-600 block mb-1">
               Select The Role
             </label>
-            <select className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300">
+            <select
+              ref={Role}
+              className="w-full rounded-lg border border-gray-200 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-sky-300"
+            >
               <option value="">Choose Role</option>
               <option value="admin">Admin</option>
               <option value="user">User</option>
