@@ -9,10 +9,12 @@ import MyBookings from "./User/MyBookings";
 import HotelInfo from "./User/HotelInfo";
 import SearchHotel from "./User/SearchHotel";
 import MyProfile from "./User/MyProfile";
+import Logout from "./AUTH/Logout";
 createRoot(document.getElementById("root")).render(
   <Router>
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/Logout" element={<Logout />} />
       <Route path="/profile" element={<MyProfile />} />
       <Route path="/Search/Hotel" element={<SearchHotel/>} />
       <Route path="/bookings" element={<MyBookings />} />

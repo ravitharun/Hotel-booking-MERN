@@ -12,6 +12,7 @@ import {
   FaSignInAlt,
   FaHome,
 } from "react-icons/fa";
+import { ISLogin } from "./AUTH/Email";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false); // mobile menu
@@ -28,7 +29,6 @@ function Navbar() {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
   return (
     <nav className="fixed top-0 left-0 w-full bg-amber-100 shadow-md z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -96,15 +96,23 @@ function Navbar() {
                   >
                     <FaCog /> Settings
                   </Link>
-                  <Link
-                    to="/login"
-                    className="flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100"
-                  >
-                    <FaSignInAlt /> Login
-                  </Link>
-                  <button className="w-full text-left flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100">
-                    <FaSignOutAlt /> Logout
-                  </button>
+
+                  {ISLogin ? (
+                    <Link
+                      to="/Logout"
+                      className="flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100"
+                    >
+                      <button className="w-full text-left flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100">
+                        <FaSignOutAlt /> Logout
+                      </button>
+                    </Link>
+                  ) : (
+                    <Link to="/login">
+                      <button className="w-full text-left flex items-center gap-2 px-4 py-2 text-blue-700 hover:bg-gray-100">
+                        <FaSignInAlt /> Login
+                      </button>
+                    </Link>
+                  )}
                 </div>
               )}
             </div>
@@ -163,15 +171,20 @@ function Navbar() {
                 >
                   <FaCog /> Settings
                 </Link>
-                <Link
-                  to="/login"
-                  className="flex items-center gap-2 text-gray-700 hover:text-blue-600"
-                >
-                  <FaSignInAlt /> Login
-                </Link>
-                <button className="flex items-center gap-2 text-gray-700 hover:text-blue-600">
-                  <FaSignOutAlt /> Logout
-                </button>
+                {ISLogin ? (
+                  <Link
+                    to="/Logout"
+                    className="flex items-center gap-2 text-gray-700 hover:text-blue-600"
+                  >
+                    <FaSignOutAlt /> Logout
+                  </Link>
+                ) : (
+                  <Link to="/login">
+                    <button className="flex items-center gap-2 text-gray-700 hover:text-blue-600">
+                      <FaSignInAlt /> Login
+                    </button>
+                  </Link>
+                )}
               </div>
             </details>
           </div>

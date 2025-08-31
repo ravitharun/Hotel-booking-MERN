@@ -5,6 +5,9 @@ const bcrypt = require('bcrypt');
 const { User } = require("../bin/DataBase");
 const salt = bcrypt.genSaltSync(10);
 
+const JWT_SECRET = "tharun2005";
+
+// const jwt = require("jsonwebtoken");
 
 
 // create a new account route
@@ -51,9 +54,16 @@ router.get("/LoginUser", async (req, res) => {
       console.log('Wrong password')
       return res.json({ message: 'Wrong password' })
     };
+    const token = jwt.sign({ _id: IsValid_user._id, Email: IsValid_user.email }, JWT_SECRET, {
+      expiresIn: "1h", // token expiry
+    });
+
     // checking the user data
+
+
     if (IsValid_user.Email === UserCheck.Email && IsValid_user.Role === UserCheck.Role) {
-      return res.json({ message: "User login successfully", data: UserCheck });
+      console.log(token,'token')
+      return res.json({ message: "User login successfully", data: UserCheck, token });
     } else {
       console.log('Unauthorized person')
       return res.json({ message: "Unauthorized person" });
