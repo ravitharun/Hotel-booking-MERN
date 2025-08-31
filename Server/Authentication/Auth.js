@@ -2,13 +2,13 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { User } = require("../bin/DataBase");
+const { User, Hotel } = require("../bin/DataBase");
 const salt = bcrypt.genSaltSync(10);
-
+const hotelInfo = require('../hotel.json');
 const JWT_SECRET = "tharun2005";
 
 // const jwt = require("jsonwebtoken");
-
+// http://localhost:3000/Hotel/LoginUser
 
 // create a new account route
 router.post("/CreateAccountUser", async (req, res) => {
@@ -60,9 +60,8 @@ router.get("/LoginUser", async (req, res) => {
 
     // checking the user data
 
-
     if (IsValid_user.Email === UserCheck.Email && IsValid_user.Role === UserCheck.Role) {
-      console.log(token,'token')
+      console.log(token, 'token')
       return res.json({ message: "User login successfully", data: UserCheck, token });
     } else {
       console.log('Unauthorized person')
@@ -76,5 +75,28 @@ router.get("/LoginUser", async (req, res) => {
 
 
 
+// adding the hotel info
+router.post("/check", async (req, res) => {
+  try {
+    const count = await Hotel.countDocuments();
+    if (count > 0) {
+      return res.status(400).json({ message: "Hotels already exist in DB" });
+    }
 
+    const savedHotels = await Hotel.insertMany(hotelInfo);
+    res.status(201).json({
+      message: "Hotels saved successfully",
+      data: savedHotels
+    });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+router.get("/all",async(req,res)=>{
+  const data=await Hotel.find({})
+  console.log(data,'data')
+  res.send(data)
+})
 module.exports = router;

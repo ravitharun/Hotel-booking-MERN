@@ -37,7 +37,6 @@ function Login() {
           },
         }
       );
-
       if (response.data.message === "Fill The required Details") {
         seterrorMessage(response.data.message);
         return;
