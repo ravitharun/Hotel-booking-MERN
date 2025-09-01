@@ -9,6 +9,7 @@ export default function HotelInfo() {
     <>
     <Navbar></Navbar>
       <h3>HotelInfo</h3>
+  
     </>
   );
 }

@@ -207,7 +207,8 @@ const MyProfile = () => {
           <div className="flex flex-col sm:flex-row items-center gap-6">
             <img
               src={
-                profile.image || "https://randomuser.me/api/portraits/men/32.jpg"
+                profile.image ||
+                "https://randomuser.me/api/portraits/men/32.jpg"
               }
               alt="Profile"
               className="w-28 h-28 rounded-full border-4 border-blue-400 object-cover shadow"
@@ -249,7 +250,6 @@ const MyProfile = () => {
           <MyBookings />
         </div>
       </div>
-      
     </>
   );
 };

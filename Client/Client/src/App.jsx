@@ -1,14 +1,14 @@
-import React from "react";
-import Login from "./AUTH/Login";
-import Signup from "./AUTH/Signup";
-import Navbar from "./Navbar";
-import Home from "../src/User/Home"
+import React, { useEffect, useState } from "react";
+import Home from "../src/User/Home";
+import AdminHomepage from "./Admin/Pages/AdminHomepage";
 function App() {
-  return (
-    <>
-      <Home></Home>
-    </>
-  );
+  const [role, setRole] = useState("");
+  useEffect(() => {
+    let role = localStorage.getItem("Role");
+    setRole(role);
+  }, []);
+
+  return <>{role === "user" ? <Home /> : <AdminHomepage />}</>;
 }
 
 export default App;

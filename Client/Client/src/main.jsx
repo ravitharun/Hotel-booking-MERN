@@ -16,11 +16,12 @@ createRoot(document.getElementById("root")).render(
       <Route path="/" element={<Home />} />
       <Route path="/Logout" element={<Logout />} />
       <Route path="/profile" element={<MyProfile />} />
-      <Route path="/Search/Hotel" element={<SearchHotel/>} />
+      <Route path="/Search/Hotel" element={<SearchHotel />} />
       <Route path="/bookings" element={<MyBookings />} />
       <Route path="/Search/Location" element={<HotelInfo />} />
       <Route path="/Create" element={<Signup />} />
       <Route path="/Login" element={<Login />} />
+     
     </Routes>
   </Router>
 );

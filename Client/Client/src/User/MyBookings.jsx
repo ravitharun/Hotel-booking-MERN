@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar";
-
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
 
@@ -32,10 +31,13 @@ export default function MyBookings() {
 
   return (
     <>
-     
+      
 
       <div className="p-6">
-        <h2 className="text-2xl font-stretch-75% mb-4">My Total Bookings <span className="text-gray-500 font-thin"> ({bookings.length})</span></h2>
+        <h2 className="text-2xl font-stretch-75% mb-4">
+          My Total Bookings{" "}
+          <span className="text-gray-500 font-thin"> ({bookings.length})</span>
+        </h2>
 
         {bookings.length === 0 ? (
           <div className="text-center text-gray-500 mt-20">

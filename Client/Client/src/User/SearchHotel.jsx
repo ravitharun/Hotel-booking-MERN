@@ -44,7 +44,6 @@ export default function SearchHotelPage() {
     const serachHotel = async () => {
       try {
         const getHotel = await axios.get("http://localhost:3000/Hotel/all");
-        console.log(getHotel);
       } catch (error) {
         console.log(error.message);
       }
@@ -76,7 +75,8 @@ export default function SearchHotelPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Form />
       </div>
-<NetWorkCheck></NetWorkCheck>
+      <NetWorkCheck></NetWorkCheck>
+      
       {/* Main Content: Left Filters / Right Hotels */}
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
         {/* Left Filters */}
