@@ -16,8 +16,11 @@ import Footer from "../User/Footer";
 import FAQ from "./FAQ";
 import { useNavigate } from "react-router-dom";
 import { email } from "../AUTH/Email";
-import HotelForm from "../Admin/HotelForm";
-import NetWorkCheck from "../NetWorkCheck";
+import HotelFormUI from "../Admin/Forms/HotelInof";
+// import Location from "../Admin/Forms/Location";
+// import OwnerDetails from "../Admin/Forms/OwnerDetails";
+// import Rooms from "../Admin/Forms/Rooms";
+// import NetWorkCheck from "../NetWorkCheck";
 
 export default function HotelBooking() {
   const [destination, setDestination] = useState("Mumbai");
@@ -319,8 +322,8 @@ export default function HotelBooking() {
           India)
         </div>
       </div>
-      <HotelForm></HotelForm>
-      
+      <HotelFormUI></HotelFormUI>
+
 
       <FAQ />
       <Footer />

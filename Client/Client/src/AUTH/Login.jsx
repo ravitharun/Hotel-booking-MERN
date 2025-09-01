@@ -49,6 +49,7 @@ function Login() {
 
         setIsLogin(true);
         localStorage.setItem("Email", response.data.data.Email);
+        localStorage.setItem("Role", response.data.data.Role);
         localStorage.setItem("ISLogin", true);
         localStorage.setItem("token", response.data.token);
 

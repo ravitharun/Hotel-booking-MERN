@@ -53,7 +53,6 @@ export default function SearchHotelPage() {
   }, []);
 
   const [filteredHotels, setFilteredHotels] = useState(hotels);
-
   const getAmenityIcon = (amenity) => {
     switch (amenity) {
       case "wifi":

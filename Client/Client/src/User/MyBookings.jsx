@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar";
-import HotelForm from "../Admin/HotelForm";
 
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
