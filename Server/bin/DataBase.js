@@ -15,95 +15,62 @@ const UserSchema = new mongoose.Schema({
   ConfirmPassword: { type: String, required: true },
   Password: { type: String, required: true },
 });
+
+
+// related to the hotelgit initgiifenaipcfshgyiku
+const locationSchema = new mongoose.Schema({
+  address: { type: String, required: true },
+  city: { type: String, required: true },
+  state: { type: String, required: true },
+  country: { type: String, required: true },
+  zipcode: { type: String, required: true },
+  latitude: { type: Number, required: true },
+  longitude: { type: Number, required: true },
+  distanceFromAirport: { type: String },
+  distanceFromRailwayStation: { type: String },
+});
+
+const ownerSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  email: { type: String, required: true },
+});
+
+const roomSchema = new mongoose.Schema({
+  roomId: { type: Number, required: true },
+  type: { type: String, required: true },
+  capacity: { type: Number, required: true },
+  bedType: { type: String },
+  size: { type: String },
+  price: { type: Number, required: true },
+  totalRooms: { type: Number, required: true },
+  available: { type: Number, required: true },
+  facilities: [{ type: String }],
+  images: [{ type: String }],
+});
+
+const bookingSchema = new mongoose.Schema({
+  bookingId: { type: Number },
+  customerName: { type: String },
+  email: { type: String },
+  checkIn: { type: Date },
+  checkOut: { type: Date },
+  roomsBooked: { type: Number },
+  totalAmount: { type: Number },
+});
+
 const hotelSchema = new mongoose.Schema({
-  id: { type: Number, unique: true },
   name: { type: String, required: true },
   chain: { type: String },
   description: { type: String },
   starCategory: { type: Number, min: 1, max: 5 },
-
-  location: {
-    address: String,
-    city: String,
-    state: String,
-    country: String,
-    zipcode: String,
-    latitude: Number,
-    longitude: Number,
-    distanceFromAirport: String,
-    distanceFromRailwayStation: String
-  },
-
-  rating: { type: Number, min: 0, max: 5 },
+  location: { type: locationSchema, required: true },
+  owner: { type: ownerSchema, required: true },
+  rating: { type: Number, default: 0 },
   reviewsCount: { type: Number, default: 0 },
   remainingRooms: { type: Number, default: 0 },
-
-  reviews: [
-    {
-      user: String,
-      comment: String,
-      rating: { type: Number, min: 0, max: 5 },
-      date: { type: Date, default: Date.now }
-    }
-  ],
-
-  pricing: {
-    pricePerNight: Number,
-    currency: { type: String, default: "INR" },
-    discount: Number,
-    finalPrice: Number,
-    taxIncluded: { type: Boolean, default: true },
-    offers: [String]
-  },
-rooms: [
-  {
-    roomId: Number,
-    type: String,
-    capacity: Number,
-    bedType: String,
-    size: String,
-    price: Number,
-    available: Number,
-    facilities: [String],
-    images: [String]
-  }
-],
-
-  food: {
-    breakfast: { type: Boolean, default: false },
-    lunch: { type: Boolean, default: false },
-    dinner: { type: Boolean, default: false },
-    restaurantName: String,
-    cuisine: [String],
-    roomService: { type: Boolean, default: false },
-    bar: { type: Boolean, default: false }
-  },
-
-  amenities: [String],
-  images: [String],
-
-  bookingInfo: {
-    checkInTime: String,
-    checkOutTime: String,
-    cancellationPolicy: String,
-    paymentMethods: [String]
-  },
-
-  guestsInfo: {
-    maxGuestsAllowed: Number,
-    familyFriendly: { type: Boolean, default: true },
-    coupleFriendly: { type: Boolean, default: true }
-  },
-
-  nearbyAttractions: [String],
-
-  system: {
-    createdAt: { type: Date, default: Date.now },
-    updatedAt: { type: Date },
-    isFeatured: { type: Boolean, default: false },
-    status: { type: String, enum: ["active", "inactive"], default: "active" }
-  }
-});
+  rooms: [roomSchema],
+  bookings: [bookingSchema],
+}, { timestamps: true });
 // Create a Hotel model
 const User = mongoose.model('UserLoginData', UserSchema);
 const Hotel = mongoose.model("Hotel", hotelSchema);

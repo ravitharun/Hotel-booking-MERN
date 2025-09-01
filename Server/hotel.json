@@ -1,1196 +1,137 @@
 [
     {
         "id": 1,
-        "name": "The Oberoi Amarvilas",
+        "name": "The Oberoi Udaivilas",
         "chain": "Oberoi Hotels",
-        "description": "Palatial luxury resort in Agra with Taj Mahal views, Mughal-style gardens, pools, and world-class dining.",
+        "description": "Luxury resort on the banks of Lake Pichola with traditional architecture.",
         "starCategory": 5,
         "location": {
-            "address": "Taj East Gate Road, Agra",
-            "city": "Agra",
-            "state": "Uttar Pradesh",
-            "country": "India",
-            "zipcode": "282001",
-            "latitude": 27.1746,
-            "longitude": 78.0421,
-            "distanceFromAirport": "13 km",
-            "distanceFromRailwayStation": "7 km"
-        },
-        "rating": 4.8,
-        "reviewsCount": 6000,
-        "remainingRooms": 7,
-        "reviews": [
-            {
-                "user": "Samir Patel",
-                "comment": "Sensational view of Taj Mahal!",
-                "rating": 5,
-                "date": "2025-05-14"
-            },
-            {
-                "user": "Mamata Singh",
-                "comment": "Service was exceptional.",
-                "rating": 5,
-                "date": "2025-07-10"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 27500,
-            "currency": "INR",
-            "discount": 5,
-            "finalPrice": 26125,
-            "taxIncluded": true,
-            "offers": [
-                "TAJVIEW5",
-                "SUMMER25"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 110,
-                "type": "Premier Room",
-                "capacity": 2,
-                "bedType": "King Size",
-                "size": "550 sq ft",
-                "price": 28000,
-                "available": 7,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Bathtub",
-                    "Balcony",
-                    "Room Service"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?agra,hotel",
-                    "https://source.unsplash.com/400x300/?luxury,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Bellevue",
-            "cuisine": [
-                "Indian",
-                "Mughlai",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Gym",
-            "Parking",
-            "Airport Shuttle",
-            "Conference Room"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?hotel,agra",
-            "https://source.unsplash.com/800x600/?tajmahal,resort"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 48 hours",
-            "paymentMethods": [
-                "UPI",
-                "Credit Card",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Taj Mahal",
-            "Agra Fort",
-            "Mehtab Bagh"
-        ],
-        "system": {
-            "createdAt": "2025-06-01",
-            "updatedAt": "2025-08-20",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 2,
-        "name": "Umaid Bhawan Palace",
-        "chain": "Taj Hotels",
-        "description": "Iconic heritage hotel in Jodhpur set in a golden 26-acre palace, world-class Indian and fusion cuisine, and royal hospitality.",
-        "starCategory": 5,
-        "location": {
-            "address": "Umaid Bhawan Palace, Jodhpur",
-            "city": "Jodhpur",
-            "state": "Rajasthan",
-            "country": "India",
-            "zipcode": "342006",
-            "latitude": 26.2995,
-            "longitude": 73.0337,
-            "distanceFromAirport": "5 km",
-            "distanceFromRailwayStation": "4 km"
-        },
-        "rating": 4.9,
-        "reviewsCount": 3200,
-        "remainingRooms": 4,
-        "reviews": [
-            {
-                "user": "Priya Chawla",
-                "comment": "Unforgettable, truly regal experience!",
-                "rating": 5,
-                "date": "2025-08-12"
-            },
-            {
-                "user": "George Thomas",
-                "comment": "The gardens were exquisite.",
-                "rating": 5,
-                "date": "2025-06-22"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 35000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 31500,
-            "taxIncluded": true,
-            "offers": [
-                "PALACESTAY10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 201,
-                "type": "Royal Suite",
-                "capacity": 2,
-                "bedType": "King Size",
-                "size": "850 sq ft",
-                "price": 40000,
-                "available": 2,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Jacuzzi",
-                    "Minibar",
-                    "Butler Service",
-                    "Garden View"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?palace,hotel",
-                    "https://source.unsplash.com/400x300/?suite,jodhpur"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Risala",
-            "cuisine": [
-                "Rajasthani",
-                "Indian",
-                "International"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Yoga Studio",
-            "Tennis Court",
-            "Airport Shuttle"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?hotel,palace",
-            "https://source.unsplash.com/800x600/?jodhpur,luxury"
-        ],
-        "bookingInfo": {
-            "checkInTime": "3:00 PM",
-            "checkOutTime": "11:00 AM",
-            "cancellationPolicy": "Free cancellation up to 72 hours",
-            "paymentMethods": [
-                "UPI",
-                "Credit Card",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Mehrangarh Fort",
-            "Clock Tower",
-            "Mandore Gardens"
-        ],
-        "system": {
-            "createdAt": "2025-05-15",
-            "updatedAt": "2025-08-15",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 3,
-        "name": "The Oberoi Mumbai",
-        "chain": "Oberoi Hotels",
-        "description": "Elegant hotel overlooking Marine Drive with spacious rooms, sea views, fine dining, and spa.",
-        "starCategory": 5,
-        "location": {
-            "address": "Nariman Point, Mumbai",
-            "city": "Mumbai",
-            "state": "Maharashtra",
-            "country": "India",
-            "zipcode": "400021",
-            "latitude": 18.932,
-            "longitude": 72.8248,
-            "distanceFromAirport": "23 km",
-            "distanceFromRailwayStation": "3 km"
-        },
-        "rating": 4.8,
-        "reviewsCount": 4500,
-        "remainingRooms": 10,
-        "reviews": [
-            {
-                "user": "Fatima Shaikh",
-                "comment": "Magnificent sea-facing rooms!",
-                "rating": 5,
-                "date": "2025-07-19"
-            },
-            {
-                "user": "Karan Desai",
-                "comment": "Best breakfast spread ever.",
-                "rating": 4,
-                "date": "2025-08-02"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 19000,
-            "currency": "INR",
-            "discount": 8,
-            "finalPrice": 17480,
-            "taxIncluded": true,
-            "offers": [
-                "OBEROI8",
-                "MONSOON10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 310,
-                "type": "Deluxe Sea View",
-                "capacity": 2,
-                "bedType": "King Size",
-                "size": "400 sq ft",
-                "price": 21000,
-                "available": 6,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Hot Bathtub"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?mumbai,hotel",
-                    "https://source.unsplash.com/400x300/?sea-view,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Fenix",
-            "cuisine": [
-                "Indian",
-                "Asian",
-                "Global"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Gym",
-            "Parking",
-            "Business Center"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?hotel,mumbai",
-            "https://source.unsplash.com/800x600/?marine,drive"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Fully refundable up to 24 hours",
-            "paymentMethods": [
-                "UPI",
-                "Credit Card",
-                "Debit Card",
-                "NetBanking"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Gateway of India",
-            "Marine Drive",
-            "Chhatrapati Shivaji Museum"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-18",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 4,
-        "name": "The Leela Palace New Delhi",
-        "chain": "Leela Hotels",
-        "description": "Ultra-luxurious city hotel with exclusive club lounge, gourmet restaurants, and a lush garden estate.",
-        "starCategory": 5,
-        "location": {
-            "address": "Chanakyapuri, New Delhi",
-            "city": "New Delhi",
-            "state": "Delhi",
-            "country": "India",
-            "zipcode": "110023",
-            "latitude": 28.5739,
-            "longitude": 77.1831,
-            "distanceFromAirport": "16 km",
-            "distanceFromRailwayStation": "8 km"
-        },
-        "rating": 4.9,
-        "reviewsCount": 6230,
-        "remainingRooms": 12,
-        "reviews": [
-            {
-                "user": "Sunil Grover",
-                "comment": "Grand architecture, the staff are amazing!",
-                "rating": 5,
-                "date": "2025-06-27"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 22000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 19800,
-            "taxIncluded": true,
-            "offers": [
-                "LEELALUX10",
-                "BRUNCH25"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 410,
-                "type": "Grande Room",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "450 sq ft",
-                "price": 23000,
-                "available": 10,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Balcony",
-                    "Room Service"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?delhi,hotel",
-                    "https://source.unsplash.com/400x300/?luxury,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Jamavar",
-            "cuisine": [
-                "Indian",
-                "Asian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Gym",
-            "Parking",
-            "Garden",
-            "Conference Room"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?leela,palace",
-            "https://source.unsplash.com/800x600/?hotel,delhi"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "Debit Card",
-                "UPI"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 4,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Qutub Minar",
-            "India Gate",
-            "National Museum"
-        ],
-        "system": {
-            "createdAt": "2025-05-30",
-            "updatedAt": "2025-08-10",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 5,
-        "name": "Taj Lake Palace Udaipur",
-        "chain": "Taj Hotels",
-        "description": "Stunning 5-star palace hotel set like a jewel on Lake Pichola, renowned for its boat rides, private dining and heritage décor.",
-        "starCategory": 5,
-        "location": {
-            "address": "Pichola Lake, Udaipur",
+            "address": "Haridasji Ki Magri, Udaipur",
             "city": "Udaipur",
             "state": "Rajasthan",
             "country": "India",
             "zipcode": "313001",
             "latitude": 24.576,
-            "longitude": 73.6822,
-            "distanceFromAirport": "25 km",
-            "distanceFromRailwayStation": "3 km"
+            "longitude": 73.679,
+            "distanceFromAirport": "27 km",
+            "distanceFromRailwayStation": "6 km"
         },
-        "rating": 4.8,
-        "reviewsCount": 5981,
-        "remainingRooms": 3,
-        "reviews": [
-            {
-                "user": "Peter Mistry",
-                "comment": "The property is like a dream. Very romantic.",
-                "rating": 5,
-                "date": "2025-03-11"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 41000,
-            "currency": "INR",
-            "discount": 8,
-            "finalPrice": 37720,
-            "taxIncluded": true,
-            "offers": [
-                "LAKEVIEW8"
-            ]
+        "owner": {
+            "name": "Vikram Oberoi",
+            "email": "owner.udaivilas@oberoi.com"
         },
-        "rooms": [
-            {
-                "roomId": 510,
-                "type": "Luxury Room",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "600 sq ft",
-                "price": 42000,
-                "available": 2,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Lake View",
-                    "Private Boat",
-                    "Balcony"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?udaipur,hotel",
-                    "https://source.unsplash.com/400x300/?lake,palace"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Neel Kamal",
-            "cuisine": [
-                "Rajasthani",
-                "Indian",
-                "European"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Private Boat",
-            "Spa",
-            "Pool",
-            "Laundry",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?lake,palace",
-            "https://source.unsplash.com/800x600/?udaipur,hotel"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 72 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "Debit Card",
-                "UPI"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "City Palace",
-            "Jag Mandir",
-            "Bagore Ki Haveli"
-        ],
-        "system": {
-            "createdAt": "2025-07-02",
-            "updatedAt": "2025-08-15",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 6,
-        "name": "St. Regis Mumbai",
-        "chain": "Marriott",
-        "description": "Luxury high-rise hotel in Lower Parel offering exquisite fine dining, rooftop bars, and panoramic city views.",
-        "starCategory": 5,
-        "location": {
-            "address": "462 Senapati Bapat Marg, Lower Parel, Mumbai",
-            "city": "Mumbai",
-            "state": "Maharashtra",
-            "country": "India",
-            "zipcode": "400013",
-            "latitude": 19.0049,
-            "longitude": 72.8253,
-            "distanceFromAirport": "17 km",
-            "distanceFromRailwayStation": "4 km"
-        },
-        "rating": 4.7,
-        "reviewsCount": 16000,
-        "remainingRooms": 9,
-        "reviews": [
-            {
-                "user": "Vivek Ramesh",
-                "comment": "Fantastic food and service.",
-                "rating": 5,
-                "date": "2025-07-09"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 15000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 13500,
-            "taxIncluded": true,
-            "offers": [
-                "REGIS10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 601,
-                "type": "Executive Suite",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "550 sq ft",
-                "price": 16000,
-                "available": 7,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "City View"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?mumbai,hotel",
-                    "https://source.unsplash.com/400x300/?luxury,cityview"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Seven Kitchens",
-            "cuisine": [
-                "Indian",
-                "Italian",
-                "Asian"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Gym",
-            "Rooftop Bar",
-            "Pool",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?hotel,stregis",
-            "https://source.unsplash.com/800x600/?mumbai,city"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation 24 hours prior",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 4,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Phoenix Mall",
-            "Kamala Mills",
-            "Nehru Science Center"
-        ],
-        "system": {
-            "createdAt": "2025-04-25",
-            "updatedAt": "2025-08-12",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 7,
-        "name": "Fairfield by Marriott Goa Benaulim",
-        "chain": "Marriott",
-        "description": "Upscale beach resort with outdoor pools, garden views, and multiple dining options, ideal for families and couples.",
-        "starCategory": 4,
-        "location": {
-            "address": "Benaulim Beach Road, Goa",
-            "city": "Goa",
-            "state": "Goa",
-            "country": "India",
-            "zipcode": "403716",
-            "latitude": 15.2468,
-            "longitude": 73.9374,
-            "distanceFromAirport": "26 km",
-            "distanceFromRailwayStation": "7 km"
-        },
-        "rating": 4.6,
-        "reviewsCount": 2100,
-        "remainingRooms": 11,
-        "reviews": [
-            {
-                "user": "Nidhi Verma",
-                "comment": "Loved the pool and proximity to beach.",
-                "rating": 5,
-                "date": "2025-06-02"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 9000,
-            "currency": "INR",
-            "discount": 15,
-            "finalPrice": 7650,
-            "taxIncluded": true,
-            "offers": [
-                "SUN15"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 710,
-                "type": "Premium Beach View",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "320 sq ft",
-                "price": 9500,
-                "available": 8,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Mini Bar",
-                    "Balcony",
-                    "Room Service",
-                    "Beach View"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?goa,beachresort",
-                    "https://source.unsplash.com/400x300/?premium,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Gourmet",
-            "cuisine": [
-                "Goan",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Garden",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?goa,hotel",
-            "https://source.unsplash.com/800x600/?beach,resort"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 48 hours",
-            "paymentMethods": [
-                "UPI",
-                "Credit Card",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Benaulim Beach",
-            "Colva Beach",
-            "Sernabatim Beach"
-        ],
-        "system": {
-            "createdAt": "2025-06-26",
-            "updatedAt": "2025-08-06",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 8,
-        "name": "The Leela Kovalam",
-        "chain": "Leela Hotels",
-        "description": "Elegant seaside resort with a private beach, infinity pool, sky bar, and panoramic sunset views.",
-        "starCategory": 5,
-        "location": {
-            "address": "Kovalam Beach, Thiruvananthapuram",
-            "city": "Kovalam",
-            "state": "Kerala",
-            "country": "India",
-            "zipcode": "695527",
-            "latitude": 8.398,
-            "longitude": 76.9796,
-            "distanceFromAirport": "14 km",
-            "distanceFromRailwayStation": "13 km"
-        },
-        "rating": 4.7,
-        "reviewsCount": 4580,
-        "remainingRooms": 5,
-        "reviews": [
-            {
-                "user": "Belinda Santos",
-                "comment": "Perfect R & R Holiday! Fabulous food and hospitality.",
-                "rating": 5,
-                "date": "2025-07-16"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 15500,
-            "currency": "INR",
-            "discount": 12,
-            "finalPrice": 13640,
-            "taxIncluded": true,
-            "offers": [
-                "COASTAL12"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 820,
-                "type": "Club Suite Sea View",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "400 sq ft",
-                "price": 16500,
-                "available": 4,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Infinity Pool",
-                    "Private Beach"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?kovalam,hotel",
-                    "https://source.unsplash.com/400x300/?beachview,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "The Terrace",
-            "cuisine": [
-                "South Indian",
-                "Seafood",
-                "Pan Asian"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Infinity Pool",
-            "Private Beach",
-            "Sky Bar",
-            "Spa",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?kovalam,resort",
-            "https://source.unsplash.com/800x600/?beach,hotel"
-        ],
-        "bookingInfo": {
-            "checkInTime": "3:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "NetBanking"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 4,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Kovalam Beach",
-            "Padmanabhaswamy Temple",
-            "Lighthouse Beach"
-        ],
-        "system": {
-            "createdAt": "2025-07-10",
-            "updatedAt": "2025-08-19",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 9,
-        "name": "Trident Hyderabad",
-        "chain": "Trident Hotels",
-        "description": "City hotel with largest rooms in Hyderabad, expansive city views, and excellent Italian & Indian cuisine.",
-        "starCategory": 5,
-        "location": {
-            "address": "Hitex City, Hitech City, Hyderabad",
-            "city": "Hyderabad",
-            "state": "Telangana",
-            "country": "India",
-            "zipcode": "500081",
-            "latitude": 17.442717,
-            "longitude": 78.452052,
-            "distanceFromAirport": "34 km",
-            "distanceFromRailwayStation": "13 km"
-        },
-        "rating": 4.7,
-        "reviewsCount": 3683,
-        "remainingRooms": 8,
-        "reviews": [
-            {
-                "user": "Manoj Ahuja",
-                "comment": "Excellent executive lounge and infinity pool.",
-                "rating": 5,
-                "date": "2025-08-01"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 10500,
-            "currency": "INR",
-            "discount": 11,
-            "finalPrice": 9345,
-            "taxIncluded": true,
-            "offers": [
-                "TRIDENT11"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 921,
-                "type": "Executive Lounge Room",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "410 sq ft",
-                "price": 11500,
-                "available": 7,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Executive Lounge",
-                    "Room Service"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?hyderabad,hotel",
-                    "https://source.unsplash.com/400x300/?exec,lounge"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Amara",
-            "cuisine": [
-                "Indian",
-                "Italian"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Infinity Pool",
-            "Executive Lounge",
-            "Spa",
-            "Gym"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?trident,hyderabad",
-            "https://source.unsplash.com/800x600/?hotel,city"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Refundable up to 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Shilparamam",
-            "Golconda Fort",
-            "Inorbit Mall"
-        ],
-        "system": {
-            "createdAt": "2025-06-18",
-            "updatedAt": "2025-08-04",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 10,
-        "name": "Snow Valley Resorts Shimla",
-        "chain": "Independent",
-        "description": "Family-friendly mountain resort with clean rooms, scenic views, and prime location near Mall Road.",
-        "starCategory": 4,
-        "location": {
-            "address": "Ghora Chowki, Shimla",
-            "city": "Shimla",
-            "state": "Himachal Pradesh",
-            "country": "India",
-            "zipcode": "171004",
-            "latitude": 31.1048,
-            "longitude": 77.1734,
-            "distanceFromAirport": "23 km",
-            "distanceFromRailwayStation": "4 km"
-        },
-        "rating": 4.5,
-        "reviewsCount": 2300,
+        "rating": 4.9,
+        "reviewsCount": 2500,
         "remainingRooms": 15,
-        "reviews": [
-            {
-                "user": "Dream57266381447",
-                "comment": "Best location near Mall Road, food yummy, clean rooms.",
-                "rating": 4,
-                "date": "2024-12-05"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 6500,
-            "currency": "INR",
-            "discount": 8,
-            "finalPrice": 5980,
-            "taxIncluded": true,
-            "offers": [
-                "MOUNTAIN8"
-            ]
-        },
         "rooms": [
             {
                 "roomId": 1010,
-                "type": "Family Deluxe",
-                "capacity": 4,
-                "bedType": "Queen",
-                "size": "420 sq ft",
-                "price": 7000,
-                "available": 8,
+                "type": "Luxury Suite",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "800 sq ft",
+                "price": 45000,
+                "totalRooms": 20,
+                "available": 15,
                 "facilities": [
                     "AC",
                     "TV",
-                    "Room Service",
-                    "Heater",
-                    "Mountain View"
+                    "Butler Service",
+                    "Private Pool"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?shimla,hotel",
-                    "https://source.unsplash.com/400x300/?mountain,resort"
+                    "https://source.unsplash.com/400x300/?udaipur,hotel",
+                    "https://source.unsplash.com/400x300/?luxury,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Sky View Café",
-            "cuisine": [
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": false
-        },
-        "amenities": [
-            "Free WiFi",
-            "Parking",
-            "Laundry Service",
-            "Conference Room"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?shimla,mountain",
-            "https://source.unsplash.com/800x600/?hotel,resort"
-        ],
-        "bookingInfo": {
-            "checkInTime": "1:00 PM",
-            "checkOutTime": "11:00 AM",
-            "cancellationPolicy": "Refundable up to 48 hours",
-            "paymentMethods": [
-                "UPI",
-                "Credit Card",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 4,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Mall Road",
-            "Jakhu Temple",
-            "The Ridge"
-        ],
-        "system": {
-            "createdAt": "2025-02-28",
-            "updatedAt": "2025-08-07",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 11,
-        "name": "ITC Grand Chola Chennai",
-        "chain": "ITC Hotels",
-        "description": "Majestic luxury hotel inspired by Chola dynasty, featuring grand architecture, multiple restaurants, and a lavish spa.",
+        "id": 2,
+        "name": "Taj Falaknuma Palace",
+        "chain": "Taj Hotels",
+        "description": "Historic palace hotel offering royal experiences in Hyderabad.",
         "starCategory": 5,
         "location": {
-            "address": "63, Mount Road, Guindy, Chennai",
+            "address": "Engine Bowli, Falaknuma, Hyderabad",
+            "city": "Hyderabad",
+            "state": "Telangana",
+            "country": "India",
+            "zipcode": "500053",
+            "latitude": 17.331,
+            "longitude": 78.467,
+            "distanceFromAirport": "22 km",
+            "distanceFromRailwayStation": "9 km"
+        },
+        "owner": {
+            "name": "Ratan Tata",
+            "email": "owner.falaknuma@tajhotels.com"
+        },
+        "rating": 4.8,
+        "reviewsCount": 1800,
+        "remainingRooms": 12,
+        "rooms": [
+            {
+                "roomId": 2010,
+                "type": "Palace Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "600 sq ft",
+                "price": 38000,
+                "totalRooms": 18,
+                "available": 12,
+                "facilities": [
+                    "AC",
+                    "Mini Bar",
+                    "Royal Decor"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?palace,room",
+                    "https://source.unsplash.com/400x300/?taj,hotel"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 3,
+        "name": "ITC Grand Chola",
+        "chain": "ITC Hotels",
+        "description": "Luxury business hotel inspired by Chola dynasty architecture in Chennai.",
+        "starCategory": 5,
+        "location": {
+            "address": "Guindy, Chennai",
             "city": "Chennai",
             "state": "Tamil Nadu",
             "country": "India",
             "zipcode": "600032",
-            "latitude": 13.0108,
-            "longitude": 80.2206,
+            "latitude": 13.010,
+            "longitude": 80.220,
             "distanceFromAirport": "8 km",
             "distanceFromRailwayStation": "12 km"
         },
-        "rating": 4.8,
-        "reviewsCount": 5100,
-        "remainingRooms": 6,
-        "reviews": [
-            {
-                "user": "Ananya Iyer",
-                "comment": "Stunning interiors and amazing food!",
-                "rating": 5,
-                "date": "2025-08-11"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 18000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 16200,
-            "taxIncluded": true,
-            "offers": [
-                "CHOLA10"
-            ]
+        "owner": {
+            "name": "Sanjiv Puri",
+            "email": "owner.chola@itchotels.com"
         },
+        "rating": 4.7,
+        "reviewsCount": 2200,
+        "remainingRooms": 25,
         "rooms": [
             {
-                "roomId": 1110,
-                "type": "Executive Club",
+                "roomId": 3010,
+                "type": "Executive Suite",
                 "capacity": 2,
                 "bedType": "King",
-                "size": "450 sq ft",
-                "price": 18500,
-                "available": 5,
+                "size": "700 sq ft",
+                "price": 20000,
+                "totalRooms": 30,
+                "available": 25,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Butler Service",
-                    "Room Service"
+                    "Spa",
+                    "Conference Hall"
                 ],
                 "images": [
                     "https://source.unsplash.com/400x300/?chennai,hotel",
@@ -1198,2265 +139,1419 @@
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Madras Pavilion",
-            "cuisine": [
-                "South Indian",
-                "Continental",
-                "Asian"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Gym",
-            "Parking",
-            "Conference Room"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?itc,chennai",
-            "https://source.unsplash.com/800x600/?hotel,luxury"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 48 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Guindy National Park",
-            "Marina Beach",
-            "Kapaleeshwarar Temple"
-        ],
-        "system": {
-            "createdAt": "2025-06-15",
-            "updatedAt": "2025-08-21",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 12,
-        "name": "Radisson Blu Plaza Delhi Airport",
-        "chain": "Radisson Hotels",
-        "description": "Modern airport hotel with stylish rooms, spa, outdoor pool, and multiple dining options, ideal for business and leisure travelers.",
+        "id": 4,
+        "name": "Leela Palace",
+        "chain": "The Leela",
+        "description": "Luxury palace hotel in New Delhi with modern amenities and royal service.",
         "starCategory": 5,
         "location": {
-            "address": "National Highway 8, Mahipalpur, New Delhi",
+            "address": "Diplomatic Enclave, Chanakyapuri, New Delhi",
             "city": "New Delhi",
             "state": "Delhi",
             "country": "India",
-            "zipcode": "110037",
-            "latitude": 28.5494,
-            "longitude": 77.1208,
-            "distanceFromAirport": "3 km",
-            "distanceFromRailwayStation": "16 km"
+            "zipcode": "110023",
+            "latitude": 28.590,
+            "longitude": 77.180,
+            "distanceFromAirport": "15 km",
+            "distanceFromRailwayStation": "10 km"
         },
-        "rating": 4.6,
-        "reviewsCount": 4100,
-        "remainingRooms": 13,
-        "reviews": [
-            {
-                "user": "Rohit Sharma",
-                "comment": "Very convenient for airport layovers. Great breakfast!",
-                "rating": 5,
-                "date": "2025-08-09"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 12000,
-            "currency": "INR",
-            "discount": 12,
-            "finalPrice": 10560,
-            "taxIncluded": true,
-            "offers": [
-                "AIRPORT12"
-            ]
+        "owner": {
+            "name": "Vivek Nair",
+            "email": "owner.delhi@theleela.com"
         },
+        "rating": 4.9,
+        "reviewsCount": 3000,
+        "remainingRooms": 18,
         "rooms": [
             {
-                "roomId": 1210,
-                "type": "Business Class Room",
-                "capacity": 2,
+                "roomId": 4010,
+                "type": "Royal Suite",
+                "capacity": 3,
                 "bedType": "King",
-                "size": "350 sq ft",
-                "price": 12500,
-                "available": 10,
+                "size": "900 sq ft",
+                "price": 60000,
+                "totalRooms": 20,
+                "available": 18,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Work Desk",
-                    "Room Service"
+                    "Private Jacuzzi",
+                    "Royal Decor"
                 ],
                 "images": [
                     "https://source.unsplash.com/400x300/?delhi,hotel",
-                    "https://source.unsplash.com/400x300/?business,room"
+                    "https://source.unsplash.com/400x300/?palace,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "NYC",
-            "cuisine": [
-                "Indian",
-                "Asian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Gym",
-            "Parking",
-            "Airport Shuttle"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?radisson,delhi",
-            "https://source.unsplash.com/800x600/?airport,hotel"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Qutub Minar",
-            "Aerocity",
-            "DLF Promenade"
-        ],
-        "system": {
-            "createdAt": "2025-07-20",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 13,
-        "name": "Novotel Hyderabad Convention Centre",
-        "chain": "Accor Hotels",
-        "description": "Business-friendly hotel with convention facilities, outdoor pool, and international cuisine, located in Hyderabad’s tech hub.",
+        "id": 5,
+        "name": "Radisson Blu Resort",
+        "chain": "Radisson Hotels",
+        "description": "Beachside resort in Goa with water sports and nightlife.",
         "starCategory": 5,
         "location": {
-            "address": "Near Hitec City, Hyderabad",
-            "city": "Hyderabad",
-            "state": "Telangana",
+            "address": "Cavelossim Beach, Goa",
+            "city": "Goa",
+            "state": "Goa",
             "country": "India",
-            "zipcode": "500081",
-            "latitude": 17.4697,
-            "longitude": 78.3771,
-            "distanceFromAirport": "35 km",
+            "zipcode": "403731",
+            "latitude": 15.175,
+            "longitude": 73.942,
+            "distanceFromAirport": "30 km",
             "distanceFromRailwayStation": "15 km"
         },
-        "rating": 4.5,
-        "reviewsCount": 2900,
-        "remainingRooms": 14,
-        "reviews": [
-            {
-                "user": "Sandeep Kumar",
-                "comment": "Perfect for conferences. Spacious rooms.",
-                "rating": 4,
-                "date": "2025-08-13"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 9500,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 8550,
-            "taxIncluded": true,
-            "offers": [
-                "NOVO10"
-            ]
+        "owner": {
+            "name": "Rajesh Patel",
+            "email": "owner.goaresort@radisson.com"
         },
+        "rating": 4.6,
+        "reviewsCount": 1500,
+        "remainingRooms": 20,
         "rooms": [
             {
-                "roomId": 1310,
-                "type": "Superior Room",
+                "roomId": 5010,
+                "type": "Beach Villa",
                 "capacity": 2,
                 "bedType": "Queen",
-                "size": "340 sq ft",
-                "price": 10000,
-                "available": 12,
+                "size": "500 sq ft",
+                "price": 18000,
+                "totalRooms": 25,
+                "available": 20,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Work Desk",
-                    "Room Service"
+                    "Ocean View",
+                    "Mini Bar"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?hyderabad,hotel",
-                    "https://source.unsplash.com/400x300/?conference,room"
+                    "https://source.unsplash.com/400x300/?goa,resort",
+                    "https://source.unsplash.com/400x300/?beach,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Food Exchange",
-            "cuisine": [
-                "Indian",
-                "Asian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Gym",
-            "Parking",
-            "Conference Room"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?novotel,hyderabad",
-            "https://source.unsplash.com/800x600/?hotel,convention"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 48 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Shilparamam",
-            "Inorbit Mall",
-            "Hitech City"
-        ],
-        "system": {
-            "createdAt": "2025-07-25",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 14,
-        "name": "JW Marriott Pune",
+        "id": 6,
+        "name": "JW Marriott Sahar",
         "chain": "Marriott",
-        "description": "Luxury hotel with rooftop dining, spa, and city views, located in Pune’s business district.",
+        "description": "Premium business hotel near Mumbai Airport with luxury dining.",
         "starCategory": 5,
         "location": {
-            "address": "Senapati Bapat Road, Pune",
-            "city": "Pune",
+            "address": "Andheri East, Mumbai",
+            "city": "Mumbai",
             "state": "Maharashtra",
             "country": "India",
-            "zipcode": "411053",
-            "latitude": 18.5286,
-            "longitude": 73.8297,
-            "distanceFromAirport": "13 km",
-            "distanceFromRailwayStation": "5 km"
+            "zipcode": "400099",
+            "latitude": 19.101,
+            "longitude": 72.873,
+            "distanceFromAirport": "1 km",
+            "distanceFromRailwayStation": "6 km"
+        },
+        "owner": {
+            "name": "Anil Mehta",
+            "email": "owner.mumbai@marriott.com"
         },
         "rating": 4.7,
-        "reviewsCount": 3700,
-        "remainingRooms": 8,
-        "reviews": [
-            {
-                "user": "Ritika Joshi",
-                "comment": "Amazing rooftop bar and breakfast.",
-                "rating": 5,
-                "date": "2025-08-10"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 15500,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 13950,
-            "taxIncluded": true,
-            "offers": [
-                "JW10"
-            ]
-        },
+        "reviewsCount": 2100,
+        "remainingRooms": 22,
         "rooms": [
             {
-                "roomId": 1410,
+                "roomId": 6010,
                 "type": "Deluxe Room",
                 "capacity": 2,
-                "bedType": "King",
-                "size": "420 sq ft",
-                "price": 16000,
-                "available": 6,
+                "bedType": "Twin",
+                "size": "400 sq ft",
+                "price": 15000,
+                "totalRooms": 30,
+                "available": 22,
                 "facilities": [
                     "AC",
                     "TV",
-                    "Minibar",
-                    "Room Service",
                     "City View"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?pune,hotel",
+                    "https://source.unsplash.com/400x300/?mumbai,hotel",
+                    "https://source.unsplash.com/400x300/?deluxe,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 7,
+        "name": "The Lalit Jaipur",
+        "chain": "The Lalit",
+        "description": "Cultural luxury hotel close to Jaipur Airport with spa and wellness center.",
+        "starCategory": 5,
+        "location": {
+            "address": "Jagatpura Road, Jaipur",
+            "city": "Jaipur",
+            "state": "Rajasthan",
+            "country": "India",
+            "zipcode": "302017",
+            "latitude": 26.822,
+            "longitude": 75.812,
+            "distanceFromAirport": "3 km",
+            "distanceFromRailwayStation": "15 km"
+        },
+        "owner": {
+            "name": "Samir Nair",
+            "email": "owner.jaipur@thelalit.com"
+        },
+        "rating": 4.5,
+        "reviewsCount": 1400,
+        "remainingRooms": 16,
+        "rooms": [
+            {
+                "roomId": 7010,
+                "type": "Deluxe Suite",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "550 sq ft",
+                "price": 12000,
+                "totalRooms": 20,
+                "available": 16,
+                "facilities": [
+                    "AC",
+                    "TV",
+                    "Spa Access"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?jaipur,hotel",
+                    "https://source.unsplash.com/400x300/?suite,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 8,
+        "name": "Holiday Inn Resort",
+        "chain": "IHG",
+        "description": "Family-friendly resort in Manali with mountain views and activities.",
+        "starCategory": 4,
+        "location": {
+            "address": "Prini, Manali",
+            "city": "Manali",
+            "state": "Himachal Pradesh",
+            "country": "India",
+            "zipcode": "175131",
+            "latitude": 32.239,
+            "longitude": 77.188,
+            "distanceFromAirport": "50 km",
+            "distanceFromRailwayStation": "165 km"
+        },
+        "owner": {
+            "name": "Pawan Gupta",
+            "email": "owner.manali@holidayinn.com"
+        },
+        "rating": 4.4,
+        "reviewsCount": 1100,
+        "remainingRooms": 14,
+        "rooms": [
+            {
+                "roomId": 8010,
+                "type": "Mountain View Room",
+                "capacity": 2,
+                "bedType": "Queen",
+                "size": "450 sq ft",
+                "price": 8000,
+                "totalRooms": 18,
+                "available": 14,
+                "facilities": [
+                    "AC",
+                    "Balcony",
+                    "Heater"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?manali,hotel",
+                    "https://source.unsplash.com/400x300/?mountain,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 9,
+        "name": "Novotel Guwahati",
+        "chain": "Accor Hotels",
+        "description": "Modern business hotel in Guwahati with rooftop bar and conference halls.",
+        "starCategory": 4,
+        "location": {
+            "address": "Downtown, Guwahati",
+            "city": "Guwahati",
+            "state": "Assam",
+            "country": "India",
+            "zipcode": "781006",
+            "latitude": 26.144,
+            "longitude": 91.736,
+            "distanceFromAirport": "25 km",
+            "distanceFromRailwayStation": "12 km"
+        },
+        "owner": {
+            "name": "Rohit Sharma",
+            "email": "owner.guwahati@novotel.com"
+        },
+        "rating": 4.3,
+        "reviewsCount": 900,
+        "remainingRooms": 19,
+        "rooms": [
+            {
+                "roomId": 9010,
+                "type": "Executive Room",
+                "capacity": 2,
+                "bedType": "Twin",
+                "size": "400 sq ft",
+                "price": 7000,
+                "totalRooms": 22,
+                "available": 19,
+                "facilities": [
+                    "AC",
+                    "Work Desk",
+                    "Mini Bar"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?guwahati,hotel",
+                    "https://source.unsplash.com/400x300/?executive,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 10,
+        "name": "Sterling Darjeeling",
+        "chain": "Sterling Holidays",
+        "description": "Hilltop resort with panoramic views of Kanchenjunga in Darjeeling.",
+        "starCategory": 4,
+        "location": {
+            "address": "Ghoom Monastery Road, Darjeeling",
+            "city": "Darjeeling",
+            "state": "West Bengal",
+            "country": "India",
+            "zipcode": "734102",
+            "latitude": 27.036,
+            "longitude": 88.262,
+            "distanceFromAirport": "70 km",
+            "distanceFromRailwayStation": "6 km"
+        },
+        "owner": {
+            "name": "Kunal Sen",
+            "email": "owner.darjeeling@sterlingholidays.com"
+        },
+        "rating": 4.2,
+        "reviewsCount": 800,
+        "remainingRooms": 10,
+        "rooms": [
+            {
+                "roomId": 10010,
+                "type": "Valley View Room",
+                "capacity": 2,
+                "bedType": "Queen",
+                "size": "350 sq ft",
+                "price": 6000,
+                "totalRooms": 12,
+                "available": 10,
+                "facilities": [
+                    "Heater",
+                    "Balcony",
+                    "Tea Maker"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?darjeeling,hotel",
+                    "https://source.unsplash.com/400x300/?valley,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 21,
+        "name": "Sunrise Grand Udaipur",
+        "chain": "Sunrise Hotels",
+        "description": "Modern hotel in Udaipur with lake views and rooftop dining.",
+        "starCategory": 4,
+        "location": {
+            "address": "Lake Palace Road, Udaipur",
+            "city": "Udaipur",
+            "state": "Rajasthan",
+            "country": "India",
+            "zipcode": "313001",
+            "latitude": 24.585,
+            "longitude": 73.682,
+            "distanceFromAirport": "25 km",
+            "distanceFromRailwayStation": "5 km"
+        },
+        "owner": {
+            "name": "Ravi Tharun",
+            "email": "tr565003@gmail.com"
+        },
+        "rating": 4.3,
+        "reviewsCount": 650,
+        "remainingRooms": 8,
+        "rooms": [
+            {
+                "roomId": 21010,
+                "type": "Lake View Room",
+                "capacity": 2,
+                "bedType": "Queen",
+                "size": "400 sq ft",
+                "price": 9000,
+                "totalRooms": 10,
+                "available": 8,
+                "facilities": [
+                    "AC",
+                    "Lake View",
+                    "Rooftop Dining"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?udaipur,hotel",
+                    "https://source.unsplash.com/400x300/?lake,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 22,
+        "name": "Royal Heritage Udaipur",
+        "chain": "Heritage Group",
+        "description": "Boutique heritage hotel in Udaipur with traditional decor and gardens.",
+        "starCategory": 3,
+        "location": {
+            "address": "City Palace Road, Udaipur",
+            "city": "Udaipur",
+            "state": "Rajasthan",
+            "country": "India",
+            "zipcode": "313001",
+            "latitude": 24.578,
+            "longitude": 73.683,
+            "distanceFromAirport": "26 km",
+            "distanceFromRailwayStation": "7 km"
+        },
+        "owner": {
+            "name": "Ravi Tharun",
+            "email": "tr565003@gmail.com"
+        },
+        "rating": 4.1,
+        "reviewsCount": 420,
+        "remainingRooms": 6,
+        "rooms": [
+            {
+                "roomId": 22010,
+                "type": "Heritage Suite",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "350 sq ft",
+                "price": 7000,
+                "totalRooms": 8,
+                "available": 6,
+                "facilities": [
+                    "AC",
+                    "Garden View",
+                    "Traditional Decor"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?udaipur,heritage,hotel",
+                    "https://source.unsplash.com/400x300/?heritage,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+
+{
+        "id": 31,
+        "name": "The Ritz-Carlton Bengaluru",
+        "chain": "Marriott",
+        "description": "Luxury hotel in the heart of Bengaluru with fine dining and spa.",
+        "starCategory": 5,
+        "location": {
+            "address": "99 Residency Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "zipcode": "560025",
+            "latitude": 12.9716,
+            "longitude": 77.5946,
+            "distanceFromAirport": "36 km",
+            "distanceFromRailwayStation": "4 km"
+        },
+        "owner": {
+            "name": "Amit Sharma",
+            "email": "owner.ritz@marriott.com"
+        },
+        "rating": 4.8,
+        "reviewsCount": 2100,
+        "remainingRooms": 20,
+        "rooms": [
+            {
+                "roomId": 31010,
+                "type": "Club Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "500 sq ft",
+                "price": 18000,
+                "totalRooms": 25,
+                "available": 20,
+                "facilities": [
+                    "AC",
+                    "Spa Access",
+                    "City View"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?bengaluru,ritz,hotel",
                     "https://source.unsplash.com/400x300/?luxury,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Spice Kitchen",
-            "cuisine": [
-                "Indian",
-                "Asian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Gym",
-            "Parking",
-            "Rooftop Bar"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?marriott,pune",
-            "https://source.unsplash.com/800x600/?hotel,city"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Shaniwar Wada",
-            "Aga Khan Palace",
-            "Phoenix Mall"
-        ],
-        "system": {
-            "createdAt": "2025-07-30",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 15,
-        "name": "Vivanta Guwahati",
+        "id": 32,
+        "name": "Taj West End",
         "chain": "Taj Hotels",
-        "description": "Modern hotel with lush gardens, spa, and Assamese cuisine, ideal for business and leisure in Guwahati.",
+        "description": "Historic luxury hotel with lush gardens in central Bengaluru.",
         "starCategory": 5,
         "location": {
-            "address": "GS Road, Khanapara, Guwahati",
-            "city": "Guwahati",
-            "state": "Assam",
+            "address": "Race Course Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
             "country": "India",
-            "zipcode": "781022",
-            "latitude": 26.1433,
-            "longitude": 91.7898,
-            "distanceFromAirport": "29 km",
-            "distanceFromRailwayStation": "11 km"
+            "zipcode": "560001",
+            "latitude": 12.9822,
+            "longitude": 77.5848,
+            "distanceFromAirport": "34 km",
+            "distanceFromRailwayStation": "2 km"
         },
-        "rating": 4.6,
-        "reviewsCount": 2100,
-        "remainingRooms": 10,
-        "reviews": [
-            {
-                "user": "Anupam Das",
-                "comment": "Great food and beautiful gardens.",
-                "rating": 5,
-                "date": "2025-08-08"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 9000,
-            "currency": "INR",
-            "discount": 12,
-            "finalPrice": 7920,
-            "taxIncluded": true,
-            "offers": [
-                "VIVANTA12"
-            ]
+        "owner": {
+            "name": "Priya Menon",
+            "email": "owner.westend@tajhotels.com"
         },
+        "rating": 4.7,
+        "reviewsCount": 1800,
+        "remainingRooms": 15,
         "rooms": [
             {
-                "roomId": 1510,
-                "type": "Superior Room",
+                "roomId": 32010,
+                "type": "Luxury Suite",
                 "capacity": 2,
                 "bedType": "King",
-                "size": "350 sq ft",
-                "price": 9500,
-                "available": 8,
+                "size": "600 sq ft",
+                "price": 22000,
+                "totalRooms": 18,
+                "available": 15,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
                     "Garden View",
-                    "Room Service"
+                    "Butler Service"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?guwahati,hotel",
-                    "https://source.unsplash.com/400x300/?garden,room"
+                    "https://source.unsplash.com/400x300/?bengaluru,taj,hotel",
+                    "https://source.unsplash.com/400x300/?suite,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Seven",
-            "cuisine": [
-                "Assamese",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Gym",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?vivanta,guwahati",
-            "https://source.unsplash.com/800x600/?hotel,garden"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Kamakhya Temple",
-            "Assam State Zoo",
-            "Umananda Temple"
-        ],
-        "system": {
-            "createdAt": "2025-07-28",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 16,
-        "name": "The Fern Residency Jaipur",
-        "chain": "The Fern Hotels",
-        "description": "Eco-friendly hotel with modern amenities, rooftop pool, and Rajasthani cuisine in Jaipur.",
-        "starCategory": 4,
+        "id": 33,
+        "name": "ITC Gardenia",
+        "chain": "ITC Hotels",
+        "description": "Eco-friendly luxury hotel with multiple restaurants in Bengaluru.",
+        "starCategory": 5,
         "location": {
-            "address": "Durgapura, Jaipur",
-            "city": "Jaipur",
-            "state": "Rajasthan",
+            "address": "1 Residency Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
             "country": "India",
-            "zipcode": "302018",
-            "latitude": 26.8500,
-            "longitude": 75.8000,
-            "distanceFromAirport": "7 km",
-            "distanceFromRailwayStation": "9 km"
+            "zipcode": "560025",
+            "latitude": 12.9719,
+            "longitude": 77.5996,
+            "distanceFromAirport": "35 km",
+            "distanceFromRailwayStation": "3 km"
         },
-        "rating": 4.4,
-        "reviewsCount": 1800,
-        "remainingRooms": 12,
-        "reviews": [
-            {
-                "user": "Megha Jain",
-                "comment": "Clean, green, and comfortable stay.",
-                "rating": 4,
-                "date": "2025-08-05"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 6500,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 5850,
-            "taxIncluded": true,
-            "offers": [
-                "FERN10"
-            ]
+        "owner": {
+            "name": "Rohit Kumar",
+            "email": "owner.gardenia@itchotels.com"
         },
+        "rating": 4.6,
+        "reviewsCount": 1600,
+        "remainingRooms": 18,
         "rooms": [
             {
-                "roomId": 1610,
-                "type": "Winter Green Room",
+                "roomId": 33010,
+                "type": "Green Suite",
                 "capacity": 2,
-                "bedType": "Queen",
-                "size": "300 sq ft",
-                "price": 7000,
-                "available": 10,
+                "bedType": "King",
+                "size": "550 sq ft",
+                "price": 17000,
+                "totalRooms": 20,
+                "available": 18,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Eco Amenities"
+                    "Eco Amenities",
+                    "Balcony"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?jaipur,hotel",
-                    "https://source.unsplash.com/400x300/?eco,room"
+                    "https://source.unsplash.com/400x300/?bengaluru,itc,hotel",
+                    "https://source.unsplash.com/400x300/?green,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Aura",
-            "cuisine": [
-                "Rajasthani",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Rooftop Pool",
-            "Eco Amenities",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?fern,jaipur",
-            "https://source.unsplash.com/800x600/?hotel,eco"
-        ],
-        "bookingInfo": {
-            "checkInTime": "1:00 PM",
-            "checkOutTime": "11:00 AM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Hawa Mahal",
-            "City Palace",
-            "Jantar Mantar"
-        ],
-        "system": {
-            "createdAt": "2025-07-20",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 17,
-        "name": "Holiday Inn Express Bengaluru",
-        "chain": "IHG Hotels",
-        "description": "Smart hotel for business travelers with free breakfast, WiFi, and quick access to IT parks.",
+        "id": 34,
+        "name": "The Leela Palace Bengaluru",
+        "chain": "The Leela",
+        "description": "Palatial hotel with landscaped gardens and luxury shopping.",
+        "starCategory": 5,
+        "location": {
+            "address": "23 Old Airport Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "zipcode": "560008",
+            "latitude": 12.9606,
+            "longitude": 77.6486,
+            "distanceFromAirport": "41 km",
+            "distanceFromRailwayStation": "10 km"
+        },
+        "owner": {
+            "name": "Suresh Nair",
+            "email": "owner.leela@theleela.com"
+        },
+        "rating": 4.8,
+        "reviewsCount": 2000,
+        "remainingRooms": 22,
+        "rooms": [
+            {
+                "roomId": 34010,
+                "type": "Royal Club Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "600 sq ft",
+                "price": 25000,
+                "totalRooms": 25,
+                "available": 22,
+                "facilities": [
+                    "AC",
+                    "Private Lounge",
+                    "Garden View"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?bengaluru,leela,hotel",
+                    "https://source.unsplash.com/400x300/?palace,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 35,
+        "name": "Shangri-La Hotel Bengaluru",
+        "chain": "Shangri-La",
+        "description": "Modern luxury hotel with panoramic city views and rooftop bar.",
+        "starCategory": 5,
+        "location": {
+            "address": "No 56-6B, Palace Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "zipcode": "560052",
+            "latitude": 12.9916,
+            "longitude": 77.5866,
+            "distanceFromAirport": "33 km",
+            "distanceFromRailwayStation": "4 km"
+        },
+        "owner": {
+            "name": "Deepa Rao",
+            "email": "owner.shangrila@shangri-la.com"
+        },
+        "rating": 4.7,
+        "reviewsCount": 1700,
+        "remainingRooms": 19,
+        "rooms": [
+            {
+                "roomId": 35010,
+                "type": "Premier Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "520 sq ft",
+                "price": 16000,
+                "totalRooms": 22,
+                "available": 19,
+                "facilities": [
+                    "AC",
+                    "Rooftop Bar",
+                    "City View"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?bengaluru,shangrila,hotel",
+                    "https://source.unsplash.com/400x300/?premier,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 36,
+        "name": "JW Marriott Hotel Bengaluru",
+        "chain": "Marriott",
+        "description": "Upscale hotel overlooking Cubbon Park with multiple dining options.",
+        "starCategory": 5,
+        "location": {
+            "address": "24/1 Vittal Mallya Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "zipcode": "560001",
+            "latitude": 12.9718,
+            "longitude": 77.5950,
+            "distanceFromAirport": "35 km",
+            "distanceFromRailwayStation": "3 km"
+        },
+        "owner": {
+            "name": "Rakesh Singh",
+            "email": "owner.jwmarriott@marriott.com"
+        },
+        "rating": 4.6,
+        "reviewsCount": 1500,
+        "remainingRooms": 17,
+        "rooms": [
+            {
+                "roomId": 36010,
+                "type": "Executive Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "480 sq ft",
+                "price": 15000,
+                "totalRooms": 20,
+                "available": 17,
+                "facilities": [
+                    "AC",
+                    "Park View",
+                    "Lounge Access"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?bengaluru,jwmarriott,hotel",
+                    "https://source.unsplash.com/400x300/?executive,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 37,
+        "name": "The Oberoi Bengaluru",
+        "chain": "Oberoi Hotels",
+        "description": "Elegant hotel with tropical gardens and award-winning restaurants.",
+        "starCategory": 5,
+        "location": {
+            "address": "37-39 MG Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "zipcode": "560001",
+            "latitude": 12.9732,
+            "longitude": 77.6190,
+            "distanceFromAirport": "36 km",
+            "distanceFromRailwayStation": "5 km"
+        },
+        "owner": {
+            "name": "Meera Oberoi",
+            "email": "owner.bengaluru@oberoi.com"
+        },
+        "rating": 4.9,
+        "reviewsCount": 2200,
+        "remainingRooms": 21,
+        "rooms": [
+            {
+                "roomId": 37010,
+                "type": "Luxury Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "500 sq ft",
+                "price": 20000,
+                "totalRooms": 24,
+                "available": 21,
+                "facilities": [
+                    "AC",
+                    "Garden View",
+                    "Private Balcony"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?bengaluru,oberoi,hotel",
+                    "https://source.unsplash.com/400x300/?luxury,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 38,
+        "name": "Radisson Blu Atria Bengaluru",
+        "chain": "Radisson Hotels",
+        "description": "Contemporary hotel with business facilities and outdoor pool.",
         "starCategory": 4,
         "location": {
-            "address": "Whitefield, Bengaluru",
+            "address": "1 Palace Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "zipcode": "560001",
+            "latitude": 12.9847,
+            "longitude": 77.5895,
+            "distanceFromAirport": "34 km",
+            "distanceFromRailwayStation": "2 km"
+        },
+        "owner": {
+            "name": "Anita Patel",
+            "email": "owner.atria@radisson.com"
+        },
+        "rating": 4.4,
+        "reviewsCount": 1200,
+        "remainingRooms": 14,
+        "rooms": [
+            {
+                "roomId": 38010,
+                "type": "Business Room",
+                "capacity": 2,
+                "bedType": "Queen",
+                "size": "400 sq ft",
+                "price": 9000,
+                "totalRooms": 16,
+                "available": 14,
+                "facilities": [
+                    "AC",
+                    "Work Desk",
+                    "Pool Access"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?bengaluru,radisson,hotel",
+                    "https://source.unsplash.com/400x300/?business,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 39,
+        "name": "Holiday Inn Express Bengaluru",
+        "chain": "IHG",
+        "description": "Smart hotel for business and leisure travelers in Whitefield.",
+        "starCategory": 4,
+        "location": {
+            "address": "Plot No 5, EPIP Area, Whitefield, Bengaluru",
             "city": "Bengaluru",
             "state": "Karnataka",
             "country": "India",
             "zipcode": "560066",
             "latitude": 12.9698,
             "longitude": 77.7499,
-            "distanceFromAirport": "40 km",
+            "distanceFromAirport": "42 km",
             "distanceFromRailwayStation": "18 km"
         },
-        "rating": 4.3,
-        "reviewsCount": 1200,
-        "remainingRooms": 18,
-        "reviews": [
-            {
-                "user": "Rahul Menon",
-                "comment": "Perfect for business trips, fast check-in.",
-                "rating": 4,
-                "date": "2025-08-03"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 4800,
-            "currency": "INR",
-            "discount": 8,
-            "finalPrice": 4416,
-            "taxIncluded": true,
-            "offers": [
-                "HI8"
-            ]
+        "owner": {
+            "name": "Vikram Rao",
+            "email": "owner.whitefield@holidayinn.com"
         },
+        "rating": 4.2,
+        "reviewsCount": 900,
+        "remainingRooms": 12,
         "rooms": [
             {
-                "roomId": 1710,
+                "roomId": 39010,
                 "type": "Standard Room",
                 "capacity": 2,
                 "bedType": "Queen",
-                "size": "220 sq ft",
-                "price": 5000,
-                "available": 15,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Work Desk",
-                    "Room Service"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?bengaluru,hotel",
-                    "https://source.unsplash.com/400x300/?business,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": false,
-            "dinner": false,
-            "restaurantName": "Express Café",
-            "cuisine": [
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": false
-        },
-        "amenities": [
-            "Free WiFi",
-            "Parking",
-            "Laundry Service"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?holidayinn,bengaluru",
-            "https://source.unsplash.com/800x600/?hotel,business"
-        ],
-        "bookingInfo": {
-            "checkInTime": "12:00 PM",
-            "checkOutTime": "11:00 AM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Phoenix Marketcity",
-            "ITPL",
-            "Forum Shantiniketan"
-        ],
-        "system": {
-            "createdAt": "2025-07-15",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 18,
-        "name": "The Gateway Hotel Varanasi",
-        "chain": "Taj Hotels",
-        "description": "Riverside hotel with lush gardens, pool, and authentic Banarasi cuisine, close to the Ganges.",
-        "starCategory": 4,
-        "location": {
-            "address": "Nadesar Palace Grounds, Varanasi",
-            "city": "Varanasi",
-            "state": "Uttar Pradesh",
-            "country": "India",
-            "zipcode": "221002",
-            "latitude": 25.3356,
-            "longitude": 83.0076,
-            "distanceFromAirport": "22 km",
-            "distanceFromRailwayStation": "2 km"
-        },
-        "rating": 4.5,
-        "reviewsCount": 1600,
-        "remainingRooms": 9,
-        "reviews": [
-            {
-                "user": "Priyanka Mishra",
-                "comment": "Peaceful and close to the ghats.",
-                "rating": 5,
-                "date": "2025-08-01"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 7000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 6300,
-            "taxIncluded": true,
-            "offers": [
-                "GATEWAY10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 1810,
-                "type": "Superior Garden View",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "350 sq ft",
-                "price": 7500,
-                "available": 7,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Garden View",
-                    "Room Service"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?varanasi,hotel",
-                    "https://source.unsplash.com/400x300/?garden,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Varuna",
-            "cuisine": [
-                "Banarasi",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Garden",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?gateway,varanasi",
-            "https://source.unsplash.com/800x600/?hotel,garden"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Kashi Vishwanath Temple",
-            "Dashashwamedh Ghat",
-            "Sarnath"
-        ],
-        "system": {
-            "createdAt": "2025-07-10",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 19,
-        "name": "Lemon Tree Premier Bhubaneswar",
-        "chain": "Lemon Tree Hotels",
-        "description": "Contemporary hotel with vibrant interiors, rooftop pool, and multi-cuisine dining in Bhubaneswar.",
-        "starCategory": 4,
-        "location": {
-            "address": "Jaydev Vihar, Bhubaneswar",
-            "city": "Bhubaneswar",
-            "state": "Odisha",
-            "country": "India",
-            "zipcode": "751013",
-            "latitude": 20.2961,
-            "longitude": 85.8245,
-            "distanceFromAirport": "7 km",
-            "distanceFromRailwayStation": "6 km"
-        },
-        "rating": 4.4,
-        "reviewsCount": 1100,
-        "remainingRooms": 14,
-        "reviews": [
-            {
-                "user": "Sourav Patnaik",
-                "comment": "Colorful rooms and great breakfast.",
-                "rating": 4,
-                "date": "2025-07-29"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 6000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 5400,
-            "taxIncluded": true,
-            "offers": [
-                "LEMON10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 1910,
-                "type": "Executive Room",
-                "capacity": 2,
-                "bedType": "Queen",
-                "size": "320 sq ft",
-                "price": 6500,
+                "size": "300 sq ft",
+                "price": 6000,
+                "totalRooms": 14,
                 "available": 12,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Rooftop Pool"
+                    "WiFi",
+                    "Breakfast Included"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?bhubaneswar,hotel",
-                    "https://source.unsplash.com/400x300/?premier,room"
+                    "https://source.unsplash.com/400x300/?bengaluru,holidayinn,hotel",
+                    "https://source.unsplash.com/400x300/?standard,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Citrus Café",
-            "cuisine": [
-                "Odia",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Rooftop Pool",
-            "Parking",
-            "Laundry Service"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?lemontree,bhubaneswar",
-            "https://source.unsplash.com/800x600/?hotel,rooftop"
-        ],
-        "bookingInfo": {
-            "checkInTime": "1:00 PM",
-            "checkOutTime": "11:00 AM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Lingaraj Temple",
-            "Nandankanan Zoo",
-            "Udayagiri Caves"
-        ],
-        "system": {
-            "createdAt": "2025-07-05",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 20,
-        "name": "The Park Kolkata",
-        "chain": "The Park Hotels",
-        "description": "Trendy hotel with vibrant nightlife, spa, and contemporary rooms in the heart of Kolkata.",
-        "starCategory": 5,
+        "id": 40,
+        "name": "Fortune Select JP Cosmos",
+        "chain": "ITC Hotels",
+        "description": "Business hotel in central Bengaluru with rooftop pool and gym.",
+        "starCategory": 4,
+        "location": {
+            "address": "49 Cunningham Crescent Road, Bengaluru",
+            "city": "Bengaluru",
+            "state": "Karnataka",
+            "country": "India",
+            "zipcode": "560052",
+            "latitude": 12.9892,
+            "longitude": 77.5947,
+            "distanceFromAirport": "33 km",
+            "distanceFromRailwayStation": "3 km"
+        },
+        "owner": {
+            "name": "Sanjay Rao",
+            "email": "owner.cosmos@fortunehotels.in"
+        },
+        "rating": 4.3,
+        "reviewsCount": 1000,
+        "remainingRooms": 13,
+        "rooms": [
+            {
+                "roomId": 40010,
+                "type": "Fortune Club Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "350 sq ft",
+                "price": 8000,
+                "totalRooms": 15,
+                "available": 13,
+                "facilities": [
+                    "AC",
+                    "Rooftop Pool",
+                    "Gym Access"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?bengaluru,fortune,hotel",
+                    "https://source.unsplash.com/400x300/?club,room"
+                ]
+            }
+        ],
+        "bookings": []
+    }
+    ,
+    {
+        "id": 41,
+        "name": "Tranquil Retreat Mumbai",
+        "chain": "Tranquil Hotels",
+        "description": "Modern hotel in Mumbai with sea views and rooftop lounge.",
+        "starCategory": 4,
+        "location": {
+            "address": "Marine Drive, Mumbai",
+            "city": "Mumbai",
+            "state": "Maharashtra",
+            "country": "India",
+            "zipcode": "400002",
+            "latitude": 18.943,
+            "longitude": 72.823,
+            "distanceFromAirport": "22 km",
+            "distanceFromRailwayStation": "3 km"
+        },
+        "owner": {
+            "name": "Ravi Tharun",
+            "email": "tr565003@gmail.com"
+        },
+        "rating": 4.2,
+        "reviewsCount": 780,
+        "remainingRooms": 10,
+        "rooms": [
+            {
+                "roomId": 41010,
+                "type": "Sea View Room",
+                "capacity": 2,
+                "bedType": "Queen",
+                "size": "420 sq ft",
+                "price": 9500,
+                "totalRooms": 12,
+                "available": 10,
+                "facilities": [
+                    "AC",
+                    "Sea View",
+                    "Rooftop Lounge"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?mumbai,hotel",
+                    "https://source.unsplash.com/400x300/?sea,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 42,
+        "name": "Tranquil Retreat Chennai",
+        "chain": "Tranquil Hotels",
+        "description": "Business hotel in Chennai with conference facilities and city views.",
+        "starCategory": 4,
+        "location": {
+            "address": "Mount Road, Chennai",
+            "city": "Chennai",
+            "state": "Tamil Nadu",
+            "country": "India",
+            "zipcode": "600002",
+            "latitude": 13.060,
+            "longitude": 80.249,
+            "distanceFromAirport": "17 km",
+            "distanceFromRailwayStation": "5 km"
+        },
+        "owner": {
+            "name": "Ravi Tharun",
+            "email": "tr565003@gmail.com"
+        },
+        "rating": 4.1,
+        "reviewsCount": 650,
+        "remainingRooms": 8,
+        "rooms": [
+            {
+                "roomId": 42010,
+                "type": "Executive Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "400 sq ft",
+                "price": 8000,
+                "totalRooms": 10,
+                "available": 8,
+                "facilities": [
+                    "AC",
+                    "Conference Facilities",
+                    "City View"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?chennai,hotel",
+                    "https://source.unsplash.com/400x300/?executive,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 43,
+        "name": "Tranquil Retreat Kolkata",
+        "chain": "Tranquil Hotels",
+        "description": "Elegant hotel in Kolkata with heritage interiors and fine dining.",
+        "starCategory": 4,
         "location": {
             "address": "Park Street, Kolkata",
             "city": "Kolkata",
             "state": "West Bengal",
             "country": "India",
             "zipcode": "700016",
-            "latitude": 22.5522,
-            "longitude": 88.3529,
-            "distanceFromAirport": "17 km",
-            "distanceFromRailwayStation": "5 km"
+            "latitude": 22.553,
+            "longitude": 88.352,
+            "distanceFromAirport": "18 km",
+            "distanceFromRailwayStation": "6 km"
         },
-        "rating": 4.5,
-        "reviewsCount": 2500,
-        "remainingRooms": 11,
-        "reviews": [
-            {
-                "user": "Arjun Sen",
-                "comment": "Best nightlife and central location.",
-                "rating": 5,
-                "date": "2025-08-06"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 11000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 9900,
-            "taxIncluded": true,
-            "offers": [
-                "PARK10"
-            ]
+        "owner": {
+            "name": "Ravi Tharun",
+            "email": "tr565003@gmail.com"
         },
+        "rating": 4.3,
+        "reviewsCount": 720,
+        "remainingRooms": 9,
         "rooms": [
             {
-                "roomId": 2010,
-                "type": "Luxury Room",
+                "roomId": 43010,
+                "type": "Heritage Suite",
                 "capacity": 2,
                 "bedType": "King",
-                "size": "400 sq ft",
-                "price": 11500,
+                "size": "450 sq ft",
+                "price": 8500,
+                "totalRooms": 11,
                 "available": 9,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "City View"
+                    "Fine Dining",
+                    "Heritage Decor"
                 ],
                 "images": [
                     "https://source.unsplash.com/400x300/?kolkata,hotel",
-                    "https://source.unsplash.com/400x300/?luxury,room"
+                    "https://source.unsplash.com/400x300/?heritage,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Zen",
-            "cuisine": [
-                "Bengali",
-                "Indian",
-                "Asian"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Nightclub",
-            "Swimming Pool",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?thepark,kolkata",
-            "https://source.unsplash.com/800x600/?hotel,nightlife"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Victoria Memorial",
-            "Indian Museum",
-            "Park Street"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 21,
-        "name": "Hyatt Regency Chandigarh",
-        "chain": "Hyatt",
-        "description": "Modern luxury hotel with pool, spa, and direct access to Elante Mall in Chandigarh.",
-        "starCategory": 5,
+        "id": 44,
+        "name": "Tranquil Retreat Hyderabad",
+        "chain": "Tranquil Hotels",
+        "description": "Contemporary hotel in Hyderabad with pool and banquet hall.",
+        "starCategory": 4,
         "location": {
-            "address": "Industrial Area Phase I, Chandigarh",
-            "city": "Chandigarh",
-            "state": "Chandigarh",
+            "address": "Banjara Hills, Hyderabad",
+            "city": "Hyderabad",
+            "state": "Telangana",
             "country": "India",
-            "zipcode": "160002",
-            "latitude": 30.7046,
-            "longitude": 76.8027,
-            "distanceFromAirport": "8 km",
-            "distanceFromRailwayStation": "4 km"
+            "zipcode": "500034",
+            "latitude": 17.412,
+            "longitude": 78.448,
+            "distanceFromAirport": "30 km",
+            "distanceFromRailwayStation": "8 km"
         },
-        "rating": 4.6,
-        "reviewsCount": 1900,
-        "remainingRooms": 13,
-        "reviews": [
-            {
-                "user": "Simran Kaur",
-                "comment": "Loved the mall access and pool.",
-                "rating": 5,
-                "date": "2025-08-04"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 12000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 10800,
-            "taxIncluded": true,
-            "offers": [
-                "HYATT10"
-            ]
+        "owner": {
+            "name": "Ravi Tharun",
+            "email": "tr565003@gmail.com"
         },
+        "rating": 4.2,
+        "reviewsCount": 690,
+        "remainingRooms": 7,
         "rooms": [
             {
-                "roomId": 2110,
-                "type": "Regency Room",
+                "roomId": 44010,
+                "type": "Deluxe Room",
+                "capacity": 2,
+                "bedType": "Queen",
+                "size": "380 sq ft",
+                "price": 7800,
+                "totalRooms": 9,
+                "available": 7,
+                "facilities": [
+                    "AC",
+                    "Pool",
+                    "Banquet Hall"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?hyderabad,hotel",
+                    "https://source.unsplash.com/400x300/?deluxe,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 45,
+        "name": "Tranquil Retreat Pune",
+        "chain": "Tranquil Hotels",
+        "description": "Urban hotel in Pune with rooftop restaurant and gym.",
+        "starCategory": 4,
+        "location": {
+            "address": "Koregaon Park, Pune",
+            "city": "Pune",
+            "state": "Maharashtra",
+            "country": "India",
+            "zipcode": "411001",
+            "latitude": 18.536,
+            "longitude": 73.893,
+            "distanceFromAirport": "7 km",
+            "distanceFromRailwayStation": "4 km"
+        },
+        "owner": {
+            "name": "Ravi Tharun",
+            "email": "tr565003@gmail.com"
+        },
+        "rating": 4.1,
+        "reviewsCount": 610,
+        "remainingRooms": 8,
+        "rooms": [
+            {
+                "roomId": 45010,
+                "type": "Premium Room",
                 "capacity": 2,
                 "bedType": "King",
                 "size": "410 sq ft",
-                "price": 12500,
-                "available": 10,
+                "price": 8200,
+                "totalRooms": 10,
+                "available": 8,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Mall Access"
+                    "Rooftop Restaurant",
+                    "Gym"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?chandigarh,hotel",
-                    "https://source.unsplash.com/400x300/?mall,room"
+                    "https://source.unsplash.com/400x300/?pune,hotel",
+                    "https://source.unsplash.com/400x300/?premium,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Urban Café",
-            "cuisine": [
-                "Punjabi",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Mall Access",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?hyatt,chandigarh",
-            "https://source.unsplash.com/800x600/?hotel,shopping"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Elante Mall",
-            "Rock Garden",
-            "Sukhna Lake"
-        ],
-        "system": {
-            "createdAt": "2025-07-10",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 22,
-        "name": "Welcomhotel Amritsar",
-        "chain": "ITC Hotels",
-        "description": "Heritage-inspired hotel with lush lawns, pool, and Punjabi cuisine, close to Golden Temple.",
-        "starCategory": 5,
-        "location": {
-            "address": "Raja Sansi, Amritsar",
-            "city": "Amritsar",
-            "state": "Punjab",
-            "country": "India",
-            "zipcode": "143101",
-            "latitude": 31.6339,
-            "longitude": 74.8723,
-            "distanceFromAirport": "2 km",
-            "distanceFromRailwayStation": "12 km"
-        },
-        "rating": 4.7,
-        "reviewsCount": 1700,
-        "remainingRooms": 8,
-        "reviews": [
-            {
-                "user": "Harpreet Singh",
-                "comment": "Beautiful lawns and delicious food.",
-                "rating": 5,
-                "date": "2025-08-02"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 9500,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 8550,
-            "taxIncluded": true,
-            "offers": [
-                "WELCOME10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 2210,
-                "type": "Executive Club Room",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "400 sq ft",
-                "price": 10000,
-                "available": 6,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Garden View"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?amritsar,hotel",
-                    "https://source.unsplash.com/400x300/?heritage,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Kebabs & Kurries",
-            "cuisine": [
-                "Punjabi",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Spa",
-            "Garden",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?welcomhotel,amritsar",
-            "https://source.unsplash.com/800x600/?hotel,heritage"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Golden Temple",
-            "Jallianwala Bagh",
-            "Wagah Border"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 23,
-        "name": "Radisson Blu Resort Temple Bay Mamallapuram",
-        "chain": "Radisson Hotels",
-        "description": "Beachfront resort with infinity pool, golf, and spa, overlooking the Bay of Bengal.",
-        "starCategory": 5,
-        "location": {
-            "address": "Kovalam Road, Mamallapuram",
-            "city": "Mamallapuram",
-            "state": "Tamil Nadu",
-            "country": "India",
-            "zipcode": "603104",
-            "latitude": 12.6269,
-            "longitude": 80.1942,
-            "distanceFromAirport": "55 km",
-            "distanceFromRailwayStation": "30 km"
-        },
-        "rating": 4.6,
-        "reviewsCount": 2200,
-        "remainingRooms": 7,
-        "reviews": [
-            {
-                "user": "Sathya Narayanan",
-                "comment": "Amazing pool and beach access.",
-                "rating": 5,
-                "date": "2025-07-28"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 14000,
-            "currency": "INR",
-            "discount": 12,
-            "finalPrice": 12320,
-            "taxIncluded": true,
-            "offers": [
-                "TEMPLE12"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 2310,
-                "type": "Chalet Sea View",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "500 sq ft",
-                "price": 14500,
-                "available": 5,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Sea View",
-                    "Room Service"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?mamallapuram,hotel",
-                    "https://source.unsplash.com/400x300/?beach,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Waters Edge Café",
-            "cuisine": [
-                "South Indian",
-                "Seafood",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Infinity Pool",
-            "Golf",
-            "Spa",
-            "Beach Access",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?radisson,mamallapuram",
-            "https://source.unsplash.com/800x600/?hotel,beach"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Shore Temple",
-            "Five Rathas",
-            "Mahabalipuram Beach"
-        ],
-        "system": {
-            "createdAt": "2025-07-18",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 24,
-        "name": "Courtyard by Marriott Siliguri",
-        "chain": "Marriott",
-        "description": "Modern hotel with mountain views, pool, and all-day dining, gateway to North East India.",
+        "id": 46,
+        "name": "Serene Meadows Resort",
+        "chain": "Serene Group",
+        "description": "Eco-friendly resort in Munnar surrounded by tea gardens and hills.",
         "starCategory": 4,
         "location": {
-            "address": "Hill Cart Road, Siliguri",
-            "city": "Siliguri",
-            "state": "West Bengal",
-            "country": "India",
-            "zipcode": "734003",
-            "latitude": 26.7271,
-            "longitude": 88.3953,
-            "distanceFromAirport": "15 km",
-            "distanceFromRailwayStation": "4 km"
-        },
-        "rating": 4.5,
-        "reviewsCount": 900,
-        "remainingRooms": 16,
-        "reviews": [
-            {
-                "user": "Rinchen Lama",
-                "comment": "Great for Darjeeling trips, nice pool.",
-                "rating": 4,
-                "date": "2025-07-25"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 7000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 6300,
-            "taxIncluded": true,
-            "offers": [
-                "COURTYARD10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 2410,
-                "type": "Deluxe Mountain View",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "350 sq ft",
-                "price": 7500,
-                "available": 12,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Mountain View",
-                    "Room Service"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?siliguri,hotel",
-                    "https://source.unsplash.com/400x300/?mountain,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "The Siliguri Kitchen",
-            "cuisine": [
-                "Indian",
-                "Asian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Parking",
-            "Laundry Service"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?courtyard,siliguri",
-            "https://source.unsplash.com/800x600/?hotel,mountain"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Mahananda Wildlife Sanctuary",
-            "ISKCON Temple",
-            "Darjeeling"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 25,
-        "name": "The Lalit Great Eastern Kolkata",
-        "chain": "The Lalit Hotels",
-        "description": "Historic hotel with colonial charm, spa, and bakery, located in central Kolkata.",
-        "starCategory": 5,
-        "location": {
-            "address": "Dalhousie Square, Kolkata",
-            "city": "Kolkata",
-            "state": "West Bengal",
-            "country": "India",
-            "zipcode": "700069",
-            "latitude": 22.5726,
-            "longitude": 88.3639,
-            "distanceFromAirport": "16 km",
-            "distanceFromRailwayStation": "3 km"
-        },
-        "rating": 4.6,
-        "reviewsCount": 1400,
-        "remainingRooms": 10,
-        "reviews": [
-            {
-                "user": "Debashree Roy",
-                "comment": "Loved the bakery and old-world feel.",
-                "rating": 5,
-                "date": "2025-07-20"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 12000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 10800,
-            "taxIncluded": true,
-            "offers": [
-                "LALIT10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 2510,
-                "type": "Heritage Room",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "420 sq ft",
-                "price": 12500,
-                "available": 8,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Colonial Decor"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?lalit,kolkata",
-                    "https://source.unsplash.com/400x300/?heritage,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Alfresco",
-            "cuisine": [
-                "Bengali",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Bakery",
-            "Swimming Pool",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?lalit,kolkata",
-            "https://source.unsplash.com/800x600/?hotel,heritage"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Howrah Bridge",
-            "Eden Gardens",
-            "Indian Museum"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 26,
-        "name": "Taj Bengal Kolkata",
-        "chain": "Taj Hotels",
-        "description": "Iconic luxury hotel with grand lobby, fine dining, and lush gardens in Kolkata.",
-        "starCategory": 5,
-        "location": {
-            "address": "Alipore, Kolkata",
-            "city": "Kolkata",
-            "state": "West Bengal",
-            "country": "India",
-            "zipcode": "700027",
-            "latitude": 22.5362,
-            "longitude": 88.3336,
-            "distanceFromAirport": "25 km",
-            "distanceFromRailwayStation": "8 km"
-        },
-        "rating": 4.8,
-        "reviewsCount": 2100,
-        "remainingRooms": 7,
-        "reviews": [
-            {
-                "user": "Sohini Chatterjee",
-                "comment": "Stunning lobby and excellent service.",
-                "rating": 5,
-                "date": "2025-07-15"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 14000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 12600,
-            "taxIncluded": true,
-            "offers": [
-                "BENGAL10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 2610,
-                "type": "Luxury Room",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "400 sq ft",
-                "price": 14500,
-                "available": 5,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Garden View"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?tajbengal,kolkata",
-                    "https://source.unsplash.com/400x300/?luxury,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Sonargaon",
-            "cuisine": [
-                "Bengali",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Swimming Pool",
-            "Garden",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?tajbengal,kolkata",
-            "https://source.unsplash.com/800x600/?hotel,luxury"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 3,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Victoria Memorial",
-            "Alipore Zoo",
-            "National Library"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 27,
-        "name": "The Residency Towers Coimbatore",
-        "chain": "Residency Hotels",
-        "description": "Upscale hotel with rooftop pool, spa, and South Indian cuisine in Coimbatore.",
-        "starCategory": 5,
-        "location": {
-            "address": "Avinashi Road, Coimbatore",
-            "city": "Coimbatore",
-            "state": "Tamil Nadu",
-            "country": "India",
-            "zipcode": "641018",
-            "latitude": 11.0168,
-            "longitude": 76.9558,
-            "distanceFromAirport": "10 km",
-            "distanceFromRailwayStation": "3 km"
-        },
-        "rating": 4.6,
-        "reviewsCount": 1200,
-        "remainingRooms": 12,
-        "reviews": [
-            {
-                "user": "Karthik Raj",
-                "comment": "Great food and rooftop pool.",
-                "rating": 5,
-                "date": "2025-07-10"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 9000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 8100,
-            "taxIncluded": true,
-            "offers": [
-                "RESIDENCY10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 2710,
-                "type": "Executive Room",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "350 sq ft",
-                "price": 9500,
-                "available": 10,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Rooftop Pool"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?coimbatore,hotel",
-                    "https://source.unsplash.com/400x300/?rooftop,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "The Pavilion",
-            "cuisine": [
-                "South Indian",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Rooftop Pool",
-            "Spa",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?residency,coimbatore",
-            "https://source.unsplash.com/800x600/?hotel,rooftop"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Brookefields Mall",
-            "VOC Park",
-            "Marudamalai Temple"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 28,
-        "name": "The Tamara Coorg",
-        "chain": "Independent",
-        "description": "Luxury eco-resort in the hills of Coorg with plantation walks, spa, and panoramic views.",
-        "starCategory": 5,
-        "location": {
-            "address": "Kabbinakad Estate, Coorg",
-            "city": "Coorg",
-            "state": "Karnataka",
-            "country": "India",
-            "zipcode": "571212",
-            "latitude": 12.3375,
-            "longitude": 75.8069,
-            "distanceFromAirport": "120 km",
-            "distanceFromRailwayStation": "110 km"
-        },
-        "rating": 4.8,
-        "reviewsCount": 900,
-        "remainingRooms": 6,
-        "reviews": [
-            {
-                "user": "Shreya Rao",
-                "comment": "Breathtaking views and peaceful stay.",
-                "rating": 5,
-                "date": "2025-07-05"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 18000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 16200,
-            "taxIncluded": true,
-            "offers": [
-                "TAMARA10"
-            ]
-        },
-        "rooms": [
-            {
-                "roomId": 2810,
-                "type": "Luxury Cottage",
-                "capacity": 2,
-                "bedType": "King",
-                "size": "600 sq ft",
-                "price": 18500,
-                "available": 4,
-                "facilities": [
-                    "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Hill View"
-                ],
-                "images": [
-                    "https://source.unsplash.com/400x300/?coorg,hotel",
-                    "https://source.unsplash.com/400x300/?hill,room"
-                ]
-            }
-        ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "The Falls",
-            "cuisine": [
-                "Coorgi",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Plantation Walks",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?tamara,coorg",
-            "https://source.unsplash.com/800x600/?hotel,hills"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 48 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Abbey Falls",
-            "Raja's Seat",
-            "Dubare Elephant Camp"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
-    },
-    {
-        "id": 29,
-        "name": "The Zuri Kumarakom Kerala Resort & Spa",
-        "chain": "Zuri Hotels",
-        "description": "Lakeside luxury resort with houseboats, spa, and Kerala cuisine in Kumarakom.",
-        "starCategory": 5,
-        "location": {
-            "address": "V 235 A1 to A54, Karottukayal, Kumarakom",
-            "city": "Kumarakom",
+            "address": "Chithirapuram, Munnar",
+            "city": "Munnar",
             "state": "Kerala",
             "country": "India",
-            "zipcode": "686563",
-            "latitude": 9.6176,
-            "longitude": 76.4296,
-            "distanceFromAirport": "75 km",
-            "distanceFromRailwayStation": "15 km"
+            "zipcode": "685565",
+            "latitude": 10.0889,
+            "longitude": 77.0622,
+            "distanceFromAirport": "110 km",
+            "distanceFromRailwayStation": "120 km"
         },
-        "rating": 4.7,
-        "reviewsCount": 1100,
-        "remainingRooms": 8,
-        "reviews": [
-            {
-                "user": "Anil Menon",
-                "comment": "Loved the houseboat and spa.",
-                "rating": 5,
-                "date": "2025-07-01"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 16000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 14400,
-            "taxIncluded": true,
-            "offers": [
-                "ZURI10"
-            ]
+        "owner": {
+            "name": "Anjali Menon",
+            "email": "owner.munnar@serene.com"
         },
+        "rating": 4.4,
+        "reviewsCount": 540,
+        "remainingRooms": 11,
         "rooms": [
             {
-                "roomId": 2910,
-                "type": "Lagoon View Villa",
+                "roomId": 46010,
+                "type": "Garden Cottage",
                 "capacity": 2,
-                "bedType": "King",
-                "size": "550 sq ft",
-                "price": 16500,
-                "available": 6,
+                "bedType": "Queen",
+                "size": "420 sq ft",
+                "price": 7500,
+                "totalRooms": 12,
+                "available": 11,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Lagoon View"
+                    "Tea Garden View",
+                    "Private Balcony"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?kumarakom,hotel",
-                    "https://source.unsplash.com/400x300/?lagoon,room"
+                    "https://source.unsplash.com/400x300/?munnar,resort",
+                    "https://source.unsplash.com/400x300/?cottage,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Lime Tree",
-            "cuisine": [
-                "Kerala",
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Houseboat",
-            "Swimming Pool",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?zuri,kumarakom",
-            "https://source.unsplash.com/800x600/?hotel,lagoon"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 48 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Vembanad Lake",
-            "Kumarakom Bird Sanctuary",
-            "Aruvikkuzhi Waterfall"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 30,
-        "name": "The Westin Sohna Resort & Spa",
-        "chain": "Marriott",
-        "description": "Wellness resort with villas, spa, and adventure activities near Gurgaon.",
-        "starCategory": 5,
+        "id": 47,
+        "name": "Blue Lagoon Resort",
+        "chain": "Blue Lagoon",
+        "description": "Beachfront resort in Pondicherry with water sports and spa.",
+        "starCategory": 4,
         "location": {
-            "address": "Vatika Complex, Sohna-Gurgaon Road, Sohna",
-            "city": "Sohna",
-            "state": "Haryana",
+            "address": "ECR Road, Pondicherry",
+            "city": "Pondicherry",
+            "state": "Puducherry",
             "country": "India",
-            "zipcode": "122103",
-            "latitude": 28.2474,
-            "longitude": 77.0642,
-            "distanceFromAirport": "45 km",
-            "distanceFromRailwayStation": "30 km"
+            "zipcode": "605001",
+            "latitude": 11.9139,
+            "longitude": 79.8145,
+            "distanceFromAirport": "8 km",
+            "distanceFromRailwayStation": "6 km"
         },
-        "rating": 4.6,
-        "reviewsCount": 1300,
-        "remainingRooms": 10,
-        "reviews": [
-            {
-                "user": "Neha Kapoor",
-                "comment": "Perfect for a weekend getaway.",
-                "rating": 5,
-                "date": "2025-07-01"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 15000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 13500,
-            "taxIncluded": true,
-            "offers": [
-                "WESTIN10"
-            ]
+        "owner": {
+            "name": "Ramesh Kumar",
+            "email": "owner.pondy@bluelagoon.com"
         },
+        "rating": 4.3,
+        "reviewsCount": 470,
+        "remainingRooms": 9,
         "rooms": [
             {
-                "roomId": 3010,
-                "type": "Premier Villa",
+                "roomId": 47010,
+                "type": "Lagoon Villa",
                 "capacity": 2,
                 "bedType": "King",
-                "size": "600 sq ft",
-                "price": 15500,
-                "available": 8,
+                "size": "480 sq ft",
+                "price": 9800,
+                "totalRooms": 10,
+                "available": 9,
                 "facilities": [
                     "AC",
-                    "TV",
-                    "Minibar",
-                    "Room Service",
-                    "Private Villa"
+                    "Beach Access",
+                    "Spa"
                 ],
                 "images": [
-                    "https://source.unsplash.com/400x300/?westin,sohna",
+                    "https://source.unsplash.com/400x300/?pondicherry,resort",
                     "https://source.unsplash.com/400x300/?villa,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "The Living Room",
-            "cuisine": [
-                "Indian",
-                "Asian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
-        },
-        "amenities": [
-            "Free WiFi",
-            "Spa",
-            "Adventure Activities",
-            "Swimming Pool",
-            "Parking"
-        ],
-        "images": [
-            "https://source.unsplash.com/800x600/?westin,sohna",
-            "https://source.unsplash.com/800x600/?hotel,villa"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 48 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
-        },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Damdama Lake",
-            "Sohna Hot Springs",
-            "Kingdom of Dreams"
-        ],
-        "system": {
-            "createdAt": "2025-07-01",
-            "updatedAt": "2025-08-22",
-            "isFeatured": true,
-            "status": "active"
-        }
+        "bookings": []
     },
     {
-        "id": 31,
-        "name": "Sample Hotel with Working Images",
-        "chain": "Sample Chain",
-        "description": "This is a sample hotel entry with working images for demonstration.",
-        "starCategory": 4,
+        "id": 48,
+        "name": "Mountain Crest Hotel",
+        "chain": "Crest Hotels",
+        "description": "Boutique hotel in Shimla with panoramic mountain views.",
+        "starCategory": 3,
         "location": {
-            "address": "123 Sample Street",
-            "city": "Sample City",
-            "state": "Sample State",
-            "country": "Sample Country",
-            "zipcode": "123456",
-            "latitude": 12.3456,
-            "longitude": 65.4321,
-            "distanceFromAirport": "10 km",
-            "distanceFromRailwayStation": "5 km"
+            "address": "Mall Road, Shimla",
+            "city": "Shimla",
+            "state": "Himachal Pradesh",
+            "country": "India",
+            "zipcode": "171001",
+            "latitude": 31.1048,
+            "longitude": 77.1734,
+            "distanceFromAirport": "22 km",
+            "distanceFromRailwayStation": "2 km"
         },
-        "rating": 4.5,
-        "reviewsCount": 100,
-        "remainingRooms": 5,
-        "reviews": [
-            {
-                "user": "John Doe",
-                "comment": "Great stay with nice images!",
-                "rating": 5,
-                "date": "2025-08-23"
-            }
-        ],
-        "pricing": {
-            "pricePerNight": 5000,
-            "currency": "INR",
-            "discount": 10,
-            "finalPrice": 4500,
-            "taxIncluded": true,
-            "offers": [
-                "SAMPLE10"
-            ]
+        "owner": {
+            "name": "Neha Sharma",
+            "email": "owner.shimla@cresthotels.com"
         },
+        "rating": 4.0,
+        "reviewsCount": 390,
+        "remainingRooms": 7,
         "rooms": [
             {
-                "roomId": 3110,
-                "type": "Standard Room",
+                "roomId": 48010,
+                "type": "Mountain View Room",
                 "capacity": 2,
                 "bedType": "Queen",
-                "size": "300 sq ft",
+                "size": "320 sq ft",
                 "price": 5200,
-                "available": 3,
+                "totalRooms": 8,
+                "available": 7,
                 "facilities": [
-                    "AC",
-                    "TV",
-                    "Room Service"
+                    "Heater",
+                    "Mountain View",
+                    "WiFi"
                 ],
                 "images": [
-                    "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-                    "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd"
+                    "https://source.unsplash.com/400x300/?shimla,hotel",
+                    "https://source.unsplash.com/400x300/?mountain,room"
                 ]
             }
         ],
-        "food": {
-            "breakfast": true,
-            "lunch": true,
-            "dinner": true,
-            "restaurantName": "Sample Restaurant",
-            "cuisine": [
-                "Indian",
-                "Continental"
-            ],
-            "roomService": true,
-            "bar": true
+        "bookings": []
+    },
+    {
+        "id": 49,
+        "name": "Coral Bay Resort",
+        "chain": "Coral Group",
+        "description": "Seaside resort in Vizag with private beach and seafood restaurant.",
+        "starCategory": 4,
+        "location": {
+            "address": "RK Beach Road, Visakhapatnam",
+            "city": "Visakhapatnam",
+            "state": "Andhra Pradesh",
+            "country": "India",
+            "zipcode": "530017",
+            "latitude": 17.7191,
+            "longitude": 83.3012,
+            "distanceFromAirport": "12 km",
+            "distanceFromRailwayStation": "7 km"
         },
-        "amenities": [
-            "Free WiFi",
-            "Swimming Pool",
-            "Parking"
-        ],
-        "images": [
-            "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
-            "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd"
-        ],
-        "bookingInfo": {
-            "checkInTime": "2:00 PM",
-            "checkOutTime": "12:00 PM",
-            "cancellationPolicy": "Free cancellation before 24 hours",
-            "paymentMethods": [
-                "Credit Card",
-                "UPI",
-                "Debit Card"
-            ]
+        "owner": {
+            "name": "Srinivas Rao",
+            "email": "owner.vizag@coralgroup.com"
         },
-        "guestsInfo": {
-            "maxGuestsAllowed": 2,
-            "familyFriendly": true,
-            "coupleFriendly": true
-        },
-        "nearbyAttractions": [
-            "Sample Attraction 1",
-            "Sample Attraction 2"
+        "rating": 4.3,
+        "reviewsCount": 510,
+        "remainingRooms": 11,
+        "rooms": [
+            {
+                "roomId": 49010,
+                "type": "Beachfront Room",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "430 sq ft",
+                "price": 8700,
+                "totalRooms": 12,
+                "available": 11,
+                "facilities": [
+                    "AC",
+                    "Private Beach",
+                    "Seafood Restaurant"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?vizag,beach,hotel",
+                    "https://source.unsplash.com/400x300/?beachfront,room"
+                ]
+            }
         ],
-        "system": {
-            "createdAt": "2025-08-23",
-            "updatedAt": "2025-08-23",
-            "isFeatured": false,
-            "status": "active"
-        }
+        "bookings": []
+    },
+    {
+        "id": 50,
+        "name": "Desert Pearl Jaisalmer",
+        "chain": "Pearl Hotels",
+        "description": "Desert resort in Jaisalmer with camel safaris and rooftop dining.",
+        "starCategory": 4,
+        "location": {
+            "address": "Sam Road, Jaisalmer",
+            "city": "Jaisalmer",
+            "state": "Rajasthan",
+            "country": "India",
+            "zipcode": "345001",
+            "latitude": 26.9157,
+            "longitude": 70.9083,
+            "distanceFromAirport": "15 km",
+            "distanceFromRailwayStation": "8 km"
+        },
+        "owner": {
+            "name": "Aarti Singh",
+            "email": "owner.jaisalmer@pearlhotels.com"
+        },
+        "rating": 4.4,
+        "reviewsCount": 430,
+        "remainingRooms": 9,
+        "rooms": [
+            {
+                "roomId": 50010,
+                "type": "Desert Suite",
+                "capacity": 2,
+                "bedType": "Queen",
+                "size": "410 sq ft",
+                "price": 7900,
+                "totalRooms": 10,
+                "available": 9,
+                "facilities": [
+                    "AC",
+                    "Camel Safari",
+                    "Rooftop Dining"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?jaisalmer,desert,hotel",
+                    "https://source.unsplash.com/400x300/?suite,room"
+                ]
+            }
+        ],
+        "bookings": []
+    },
+    {
+        "id": 51,
+        "name": "Lakeview Serenity Resort",
+        "chain": "Serenity Group",
+        "description": "Tranquil lakeside resort in Nainital with boating and mountain views.",
+        "starCategory": 4,
+        "location": {
+            "address": "Mallital, Nainital",
+            "city": "Nainital",
+            "state": "Uttarakhand",
+            "country": "India",
+            "zipcode": "263001",
+            "latitude": 29.3922,
+            "longitude": 79.4542,
+            "distanceFromAirport": "60 km",
+            "distanceFromRailwayStation": "35 km"
+        },
+        "owner": {
+            "name": "Priya Joshi",
+            "email": "owner.nainital@serenity.com"
+        },
+        "rating": 4.5,
+        "reviewsCount": 520,
+        "remainingRooms": 8,
+        "rooms": [
+            {
+                "roomId": 51010,
+                "type": "Lake View Suite",
+                "capacity": 2,
+                "bedType": "King",
+                "size": "420 sq ft",
+                "price": 9200,
+                "totalRooms": 10,
+                "available": 8,
+                "facilities": [
+                    "AC",
+                    "Lake View",
+                    "Boating Access"
+                ],
+                "images": [
+                    "https://source.unsplash.com/400x300/?nainital,hotel",
+                    "https://source.unsplash.com/400x300/?lake,room"
+                ]
+            }
+        ],
+        "bookings": []
     }
+
 ]

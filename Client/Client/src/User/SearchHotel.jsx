@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import Navbar from "../Navbar";
 import Form from "./Form";
 import { FaWifi, FaSwimmer, FaParking, FaCoffee } from "react-icons/fa";
-
+import { useEffect } from "react";
+import axios from "axios";
 export default function SearchHotelPage() {
   const hotels = [
     {
@@ -37,6 +38,18 @@ export default function SearchHotelPage() {
     },
     // ...rest hotels
   ];
+
+  useEffect(() => {
+    const serachHotel = async () => {
+      try {
+        const getHotel = await axios.get("http://localhost:3000/Hotel/all");
+        console.log(getHotel);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    serachHotel();
+  }, []);
 
   const [filteredHotels, setFilteredHotels] = useState(hotels);
 

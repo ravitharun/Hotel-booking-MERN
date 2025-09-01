@@ -78,20 +78,31 @@ router.get("/LoginUser", async (req, res) => {
 // adding the hotel info
 router.post("/check", async (req, res) => {
   try {
-    const count = await Hotel.countDocuments();
-    if (count > 0) {
-      return res.status(400).json({ message: "Hotels already exist in DB" });
+
+    let MapHotelName = hotelInfo.map((data) => data.name);
+    // Check duplicates
+    const checkDuplicate = await Hotel.find({ name: { $in: MapHotelName } });
+
+    if (checkDuplicate.length > 0) {
+      return res.status(400).json({
+        message: "Hotel(s) already present in DB",
+        duplicates: checkDuplicate.map((h) => h.name),
+      });
     }
 
-    const savedHotels = await Hotel.insertMany(hotelInfo);
-    res.status(201).json({
-      message: "Hotels saved successfully",
-      data: savedHotels
+    // If no duplicates → Save new hotels
+    const savedHotel = await Hotel.insertMany(hotelInfo);
+
+    return res.status(201).json({
+      message: "Hotel(s) saved successfully",
+      hotel: savedHotel,
     });
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    return res.status(500).json({ message: error.message });
   }
 });
+
+
 
 
 router.get("/all",async(req,res)=>{
