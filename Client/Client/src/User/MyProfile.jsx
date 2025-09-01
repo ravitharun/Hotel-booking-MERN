@@ -249,6 +249,7 @@ const MyProfile = () => {
           <MyBookings />
         </div>
       </div>
+      
     </>
   );
 };

@@ -4,6 +4,7 @@ import Form from "./Form";
 import { FaWifi, FaSwimmer, FaParking, FaCoffee } from "react-icons/fa";
 import { useEffect } from "react";
 import axios from "axios";
+import NetWorkCheck from "../NetWorkCheck";
 export default function SearchHotelPage() {
   const hotels = [
     {
@@ -76,7 +77,7 @@ export default function SearchHotelPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Form />
       </div>
-
+<NetWorkCheck></NetWorkCheck>
       {/* Main Content: Left Filters / Right Hotels */}
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
         {/* Left Filters */}
