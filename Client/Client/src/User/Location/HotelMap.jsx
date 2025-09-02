@@ -13,7 +13,17 @@ const defaultIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-const HotelMap = ({ lat, lon, name, hotelLat, hotelLong, HotelLocation }) => {
+const HotelMap = ({
+  lat,
+  lon,
+  name,
+  hotelLat,
+  hotelLong,
+  HotelLocation,
+  NewLong,
+  NewLat,
+  NewHotelLocation,
+}) => {
   let latitude = Number(lat);
   let longitude = Number(lon);
   let hotelLatiude = Number(hotelLat);
@@ -26,8 +36,8 @@ const HotelMap = ({ lat, lon, name, hotelLat, hotelLong, HotelLocation }) => {
     name = "Default: Bangalore";
   }
   // diff
-  let dLat = ((hotelLat - lat) * Math.PI) / 180;
-  let dLon = ((hotelLong - lon) * Math.PI) / 180;
+  let dLat = ((NewLat - lat) * Math.PI) / 180;
+  let dLon = ((NewLong - lon) * Math.PI) / 180;
 
   console.log({ dLat: dLat, dLon: dLon });
   // dLat=-4.353152799999998
@@ -43,9 +53,9 @@ const HotelMap = ({ lat, lon, name, hotelLat, hotelLong, HotelLocation }) => {
   return (
     <div
       style={{
-        width: "200px",
-        height: "200px",
-        borderRadius: "8px",
+        width: "1000px",
+        height: "500px",
+        borderRadius: "50px",
         overflow: "hidden",
       }}
     >
@@ -61,11 +71,20 @@ const HotelMap = ({ lat, lon, name, hotelLat, hotelLong, HotelLocation }) => {
         <Marker position={[latitude, longitude]} icon={defaultIcon}>
           <Popup>{name}</Popup>
         </Marker>
-        <Marker position={[hotelLatiude, hotelLongitude]} icon={defaultIcon}>
-          <Popup>
-            {HotelLocation} - {distance.toFixed(2)} Km
-          </Popup>
-        </Marker>
+        {hotelLatiude & hotelLatiude && (
+          <Marker position={[hotelLatiude, hotelLatiude]} icon={defaultIcon}>
+            <Popup>
+              {HotelLocation} - {distance.toFixed(2)} Km
+            </Popup>
+          </Marker>
+        )}
+        {NewLong & NewLat && (
+          <Marker position={[NewLat, NewLong]} icon={defaultIcon}>
+            <Popup>
+              {NewHotelLocation} - {distance.toFixed(2)} Km
+            </Popup>
+          </Marker>
+        )}
       </MapContainer>
     </div>
   );
