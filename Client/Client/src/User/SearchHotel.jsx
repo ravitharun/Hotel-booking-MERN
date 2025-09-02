@@ -1,49 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar";
 import Form from "./Form";
 import { FaWifi, FaSwimmer, FaParking, FaCoffee } from "react-icons/fa";
-import { useEffect } from "react";
 import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
+
 export default function SearchHotelPage() {
-  const hotels = [
-    {
-      name: "Grand Palace Hotel",
-      location: "New York",
-      image: "https://source.unsplash.com/400x300/?hotel,room",
-      price: "$250/night",
-      rating: 4.5,
-      badge: "Best Seller",
-      amenities: ["wifi", "pool", "parking", "breakfast"],
-      distance: "0.5 km from center",
-    },
-    {
-      name: "Sea View Resort",
-      location: "California",
-      image: "https://source.unsplash.com/400x300/?resort,beach",
-      price: "$180/night",
-      rating: 4.0,
-      badge: "Popular",
-      amenities: ["wifi", "pool", "breakfast"],
-      distance: "1 km from beach",
-    },
-    {
-      name: "Mountain Retreat",
-      location: "Colorado",
-      image: "https://source.unsplash.com/400x300/?mountain,hotel",
-      price: "$200/night",
-      rating: 4.2,
-      badge: "Luxury",
-      amenities: ["wifi", "parking", "breakfast"],
-      distance: "2 km from city",
-    },
-    // ...rest hotels
-  ];
+  const [filteredHotels, setFilteredHotels] = useState([]);
+  const [active, setActive] = useState("grid"); // list or grid
 
   useEffect(() => {
     const serachHotel = async () => {
       try {
         const getHotel = await axios.get("http://localhost:3000/Hotel/all");
+        setFilteredHotels(getHotel.data);
+        console.log(getHotel.data);
       } catch (error) {
         console.log(error.message);
       }
@@ -51,7 +22,6 @@ export default function SearchHotelPage() {
     serachHotel();
   }, []);
 
-  const [filteredHotels, setFilteredHotels] = useState(hotels);
   const getAmenityIcon = (amenity) => {
     switch (amenity) {
       case "wifi":
@@ -75,15 +45,38 @@ export default function SearchHotelPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <Form />
       </div>
-      <NetWorkCheck></NetWorkCheck>
-      
-      {/* Main Content: Left Filters / Right Hotels */}
+      <NetWorkCheck />
+
+      {/* List/Grid Toggle */}
+      <div className="flex justify-end mb-6 gap-2 px-4">
+        <button
+          className={`px-4 py-2 rounded-full font-medium transition ${
+            active === "list"
+              ? "bg-blue-600 text-white shadow"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
+          onClick={() => setActive("list")}
+        >
+          List
+        </button>
+        <button
+          className={`px-4 py-2 rounded-full font-medium transition ${
+            active === "grid"
+              ? "bg-blue-600 text-white shadow"
+              : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+          }`}
+          onClick={() => setActive("grid")}
+        >
+          Grid
+        </button>
+      </div>
+
+      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
         {/* Left Filters */}
         <div className="lg:w-1/4 bg-white rounded-3xl shadow-lg p-6 space-y-6">
-          {/* Header */}
           <h2 className="text-2xl font-bold mb-2">Filters</h2>
-          <p className="text-gray-500 text-base">
+          <p className="text-gray-500 text-base mb-4">
             Refine your search to find the best hotels for you
           </p>
 
@@ -118,7 +111,6 @@ export default function SearchHotelPage() {
           </div>
 
           {/* Location */}
-
           <div className="w-full">
             <label
               htmlFor="location"
@@ -165,110 +157,117 @@ export default function SearchHotelPage() {
             </div>
           </div>
 
-          {/* Amenities Example */}
+          {/* Amenities */}
           <div className="bg-white p-4 rounded-xl shadow-sm space-y-2">
             <label className="text-base font-medium text-gray-700 block mb-2">
               Amenities
             </label>
             <div className="flex flex-col gap-3">
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="amenities"
-                  className="accent-blue-600"
-                />
-                Free Wi-Fi
-              </label>
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="amenities"
-                  className="accent-blue-600"
-                />
-                Swimming Pool
-              </label>
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="amenities"
-                  className="accent-blue-600"
-                />
-                Parking
-              </label>
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="amenities"
-                  className="accent-blue-600"
-                />
-                Gym
-              </label>
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="amenities"
-                  className="accent-blue-600"
-                />
-                Garden
-              </label>
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="amenities"
-                  className="accent-blue-600"
-                />
-                Conference Room
-              </label>
+              {[
+                "Free Wi-Fi",
+                "Swimming Pool",
+                "Parking",
+                "Gym",
+                "Garden",
+                "Conference Room",
+              ].map((amenity, idx) => (
+                <label
+                  key={idx}
+                  className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition"
+                >
+                  <input
+                    type="checkbox"
+                    name="amenities"
+                    className="accent-blue-600"
+                  />
+                  {amenity}
+                </label>
+              ))}
             </div>
           </div>
         </div>
 
         {/* Right Hotels */}
-        <div className="lg:w-3/4 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredHotels.map((hotel, index) => (
-            <div
-              key={index}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden hover:scale-105 transform transition relative"
-            >
-              {/* Badge */}
-              {hotel.badge && (
-                <span className="absolute top-3 left-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-semibold">
-                  {hotel.badge}
-                </span>
-              )}
-
-              <img
-                src={hotel.image}
-                alt={hotel.name}
-                className="w-full h-48 object-cover"
-              />
-
-              <div className="p-4 space-y-2">
-                <h3 className="text-xl font-semibold">{hotel.name}</h3>
-                <p className="text-gray-500">{hotel.location}</p>
-                <p className="text-yellow-500 mt-1">⭐ {hotel.rating}</p>
-                <p className="text-blue-600 font-bold mt-2">{hotel.price}</p>
-
-                {/* Amenities */}
-                <div className="flex flex-wrap mt-2">
-                  {hotel.amenities.map((amenity, i) => (
-                    <div key={i} className="flex items-center text-sm mr-4">
-                      {getAmenityIcon(amenity)}
-                      <span className="text-gray-600">
-                        {amenity.charAt(0).toUpperCase() + amenity.slice(1)}
-                      </span>
+        <div className="lg:flex-1">
+          {active === "list" ? (
+            <div className="space-y-6">
+              {filteredHotels.map((hotel, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-xl shadow-md flex overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                >
+                  <img
+                    src="https://up.yimg.com/ib/th/id/OIP.SwkabKtuIqwGJNrf64wYPQHaD6?pid=Api&rs=1&c=1&qlt=95&w=231&h=122"
+                    alt={hotel.name}
+                    className="w-48 h-48 object-cover"
+                  />
+                  <div className="p-4 flex-1">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      {hotel.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-2">
+                      {hotel.description}
+                    </p>
+                    <p className="text-gray-700 font-medium">
+                      ⭐ {hotel.rating} | Rooms Left: {hotel.remainingRooms}
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      {hotel.amenities?.map((amenity, i) => (
+                        <span key={i}>{getAmenityIcon(amenity)}</span>
+                      ))}
                     </div>
-                  ))}
+                    <div className="flex gap-2 mt-3">
+                      <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
+                        View Details
+                      </button>
+                      <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
                 </div>
-
-                <p className="text-gray-400 text-sm mt-1">{hotel.distance}</p>
-
-                <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-xl hover:bg-blue-700 transition">
-                  Book Now
-                </button>
-              </div>
+              ))}
             </div>
-          ))}
+          ) : (
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredHotels.map((hotel, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                >
+                  <img
+                    src="https://up.yimg.com/ib/th/id/OIP.cKXHMEuuqb0d-dCQV6FoDgHaE8?pid=Api&rs=1&c=1&qlt=95&w=166&h=110"
+                    alt={hotel.name}
+                    className="w-full h-48 object-cover"
+                  />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                      {hotel.name}
+                    </h3>
+                    <p className="text-gray-600 text-sm mb-2">
+                      {hotel.description}
+                    </p>
+                    <p className="text-gray-700 font-medium">
+                      ⭐ {hotel.rating} | Rooms Left: {hotel.remainingRooms}
+                    </p>
+                    <div className="flex gap-2 mt-2">
+                      {hotel.amenities?.map((amenity, i) => (
+                        <span key={i}>{getAmenityIcon(amenity)}</span>
+                      ))}
+                    </div>
+                    <div className="flex gap-2 mt-3">
+                      <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
+                        View Details
+                      </button>
+                      <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
+                        Book Now
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>
