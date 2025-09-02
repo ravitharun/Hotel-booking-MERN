@@ -36,8 +36,12 @@ export default function SearchHotelPage() {
         },
       }
     );
-    console.log(HotelIDData.data.message, "HotelIDData");
-    redirect("/HotelInfo", { state: HotelIDData.data.message });
+    const Data = HotelIDData.data.message;
+    redirect("/Search/Location", {
+      state: {
+        Data
+      },
+    });
   };
 
   const getAmenityIcon = (amenity) => {
