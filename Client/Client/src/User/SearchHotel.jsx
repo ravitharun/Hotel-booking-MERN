@@ -5,23 +5,40 @@ import { FaWifi, FaSwimmer, FaParking, FaCoffee } from "react-icons/fa";
 import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
 import UserLivelocation from "./Location/UserLivelocation";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [active, setActive] = useState("grid"); // list or grid
+  // const HotelSearchData = useLocation();
+  // console.log(HotelSearchData.state.data);
 
   useEffect(() => {
     const serachHotel = async () => {
       try {
         const getHotel = await axios.get("http://localhost:3000/Hotel/all");
         setFilteredHotels(getHotel.data);
-        console.log(getHotel.data);
       } catch (error) {
         console.log(error.message);
       }
     };
     serachHotel();
   }, []);
+
+  const redirect = useNavigate("");
+  // GetHotelInfo
+  const gethotelInfo = async (HotelId) => {
+    const HotelIDData = await axios.get(
+      "http://localhost:3000/Hotel/GetHotelId",
+      {
+        params: {
+          HotelId: HotelId,
+        },
+      }
+    );
+    console.log(HotelIDData.data.message, "HotelIDData");
+    redirect("/HotelInfo", { state: HotelIDData.data.message });
+  };
 
   const getAmenityIcon = (amenity) => {
     switch (amenity) {
@@ -207,12 +224,13 @@ export default function SearchHotelPage() {
                 {filteredHotels.map((hotel, idx) => (
                   <div
                     key={idx}
+                    onClick={() => gethotelInfo(hotel._id)}
                     className="bg-white rounded-xl shadow-md flex overflow-hidden hover:shadow-xl transition-shadow duration-300"
                   >
                     <img
                       src="https://up.yimg.com/ib/th/id/OIP.SwkabKtuIqwGJNrf64wYPQHaD6?pid=Api&rs=1&c=1&qlt=95&w=231&h=122"
                       alt={hotel.name}
-                      className="w-48 h-48 object-cover"
+                      className="w-48 h-48 object-cover cursor-pointer"
                     />
                     <div className="p-4 flex-1">
                       <h3 className="text-xl font-semibold text-gray-800 mb-2">
@@ -230,7 +248,10 @@ export default function SearchHotelPage() {
                         ))}
                       </div>
                       <div className="flex gap-2 mt-3">
-                        <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
+                        <button
+                          className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer"
+                          onClick={() => gethotelInfo(hotel._id)}
+                        >
                           View Details
                         </button>
                         <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
@@ -246,6 +267,7 @@ export default function SearchHotelPage() {
                 {filteredHotels.map((hotel, idx) => (
                   <div
                     key={idx}
+                    onClick={() => gethotelInfo(hotel._id)}
                     className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
                   >
                     <img
@@ -269,7 +291,10 @@ export default function SearchHotelPage() {
                         ))}
                       </div>
                       <div className="flex gap-2 mt-3">
-                        <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
+                        <button
+                          className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer"
+                          onClick={() => gethotelInfo(hotel._id)}
+                        >
                           View Details
                         </button>
                         <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">

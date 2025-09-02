@@ -51,7 +51,7 @@ const HotelMap = ({ lat, lon, name, hotelLat, hotelLong, HotelLocation }) => {
     >
       <MapContainer
         center={[latitude, longitude]}
-        zoom={13}
+        zoom={20}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer

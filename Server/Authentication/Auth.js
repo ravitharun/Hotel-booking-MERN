@@ -105,9 +105,23 @@ router.post("/check", async (req, res) => {
 
 
 
-router.get("/all",async(req,res)=>{
-  const data=await Hotel.find({})
-  console.log(data,'data')
+router.get("/all", async (req, res) => {
+  const data = await Hotel.find({})
   res.send(data)
 })
+router.get("/GetHotelId", async (req, res) => {
+  try {
+    const { HotelId } = req.query
+    const data = await Hotel.find({ _id: HotelId })
+    res.json({
+      message: data
+    })
+  } catch (error) {
+res.json({message:error.message})
+  }
+
+})
+
+
+
 module.exports = router;
