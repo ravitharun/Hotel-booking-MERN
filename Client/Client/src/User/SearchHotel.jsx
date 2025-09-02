@@ -4,6 +4,7 @@ import Form from "./Form";
 import { FaWifi, FaSwimmer, FaParking, FaCoffee } from "react-icons/fa";
 import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
+import UserLivelocation from "./Location/UserLivelocation";
 
 export default function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
@@ -72,202 +73,215 @@ export default function SearchHotelPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8 flex flex-col lg:flex-row gap-6">
-        {/* Left Filters */}
-        <div className="lg:w-1/4 bg-white rounded-3xl shadow-lg p-6 space-y-6">
-          <h2 className="text-2xl font-bold mb-2">Filters</h2>
-          <p className="text-gray-500 text-base mb-4">
-            Refine your search to find the best hotels for you
-          </p>
-
-          {/* Price Range */}
-          <div>
-            <label className="text-base font-medium text-gray-700 block mb-1">
-              Price Range
-            </label>
-            <input
-              type="range"
-              min="10000"
-              max="500000"
-              className="w-full mt-2 accent-blue-600"
-            />
-            <div className="flex justify-between text-sm text-gray-500 mt-1">
-              <span>10000</span>
-              <span>500000</span>
-            </div>
-          </div>
-
-          {/* Minimum Rating */}
-          <div>
-            <label className="text-base font-medium text-gray-700 block mb-1">
-              Minimum Rating
-            </label>
-            <select className="w-full mt-2 border border-gray-300 rounded-xl p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-              <option value="0">All Ratings</option>
-              <option value="3">3 Stars & Up</option>
-              <option value="4">4 Stars & Up</option>
-              <option value="4.5">4.5 Stars & Up</option>
-            </select>
-          </div>
-
-          {/* Location */}
-          <div className="w-full">
-            <label
-              htmlFor="location"
-              className="text-base font-medium text-gray-700 block mb-2"
-            >
-              Location by state
-            </label>
-            <input
-              list="locations"
-              id="location"
-              placeholder="Type or select..."
-              className="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <datalist id="locations">
-              <option value="New York" />
-              <option value="California" />
-              <option value="Colorado" />
-              <option value="Florida" />
-            </datalist>
-          </div>
-
-          {/* Bed Preference */}
-          <div className="bg-white p-4 rounded-xl shadow-sm space-y-2">
-            <label className="text-base font-medium text-gray-700 block mb-2">
-              Bed Preference
-            </label>
-            <div className="flex flex-col gap-3">
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="BedType"
-                  className="accent-blue-600"
-                />
-                King
-              </label>
-              <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
-                <input
-                  type="checkbox"
-                  name="BedType"
-                  className="accent-blue-600"
-                />
-                Queen
-              </label>
-            </div>
-          </div>
-
-          {/* Amenities */}
-          <div className="bg-white p-4 rounded-xl shadow-sm space-y-2">
-            <label className="text-base font-medium text-gray-700 block mb-2">
-              Amenities
-            </label>
-            <div className="flex flex-col gap-3">
-              {[
-                "Free Wi-Fi",
-                "Swimming Pool",
-                "Parking",
-                "Gym",
-                "Garden",
-                "Conference Room",
-              ].map((amenity, idx) => (
-                <label
-                  key={idx}
-                  className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition"
-                >
-                  <input
-                    type="checkbox"
-                    name="amenities"
-                    className="accent-blue-600"
-                  />
-                  {amenity}
-                </label>
-              ))}
-            </div>
+      <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+        {/* User Live Location Card */}
+        <div className="bg-white rounded-2xl shadow-lg p-6">
+          <h2 className="text-xl font-bold text-gray-800 mb-4">
+            📍 Your Current Location
+          </h2>
+          <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+            <UserLivelocation />
           </div>
         </div>
 
-        {/* Right Hotels */}
-        <div className="lg:flex-1">
-          {active === "list" ? (
-            <div className="space-y-6">
-              {filteredHotels.map((hotel, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white rounded-xl shadow-md flex overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                >
-                  <img
-                    src="https://up.yimg.com/ib/th/id/OIP.SwkabKtuIqwGJNrf64wYPQHaD6?pid=Api&rs=1&c=1&qlt=95&w=231&h=122"
-                    alt={hotel.name}
-                    className="w-48 h-48 object-cover"
+        {/* Filters + Hotels */}
+        <div className="flex flex-col lg:flex-row gap-6">
+          {/* Left Filters */}
+          <div className="lg:w-1/4 bg-white rounded-3xl shadow-lg p-6 space-y-6">
+            <h2 className="text-2xl font-bold mb-2">Filters</h2>
+            <p className="text-gray-500 text-base mb-4">
+              Refine your search to find the best hotels for you
+            </p>
+
+            {/* Price Range */}
+            <div>
+              <label className="text-base font-medium text-gray-700 block mb-1">
+                Price Range
+              </label>
+              <input
+                type="range"
+                min="10000"
+                max="500000"
+                className="w-full mt-2 accent-blue-600"
+              />
+              <div className="flex justify-between text-sm text-gray-500 mt-1">
+                <span>10000</span>
+                <span>500000</span>
+              </div>
+            </div>
+
+            {/* Minimum Rating */}
+            <div>
+              <label className="text-base font-medium text-gray-700 block mb-1">
+                Minimum Rating
+              </label>
+              <select className="w-full mt-2 border border-gray-300 rounded-xl p-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="0">All Ratings</option>
+                <option value="3">3 Stars & Up</option>
+                <option value="4">4 Stars & Up</option>
+                <option value="4.5">4.5 Stars & Up</option>
+              </select>
+            </div>
+
+            {/* Location */}
+            <div className="w-full">
+              <label
+                htmlFor="location"
+                className="text-base font-medium text-gray-700 block mb-2"
+              >
+                Location by state
+              </label>
+              <input
+                list="locations"
+                id="location"
+                placeholder="Type or select..."
+                className="w-full border border-gray-300 rounded-xl p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+              />
+              <datalist id="locations">
+                <option value="New York" />
+                <option value="California" />
+                <option value="Colorado" />
+                <option value="Florida" />
+              </datalist>
+            </div>
+
+            {/* Bed Preference */}
+            <div className="bg-white p-4 rounded-xl shadow-sm space-y-2">
+              <label className="text-base font-medium text-gray-700 block mb-2">
+                Bed Preference
+              </label>
+              <div className="flex flex-col gap-3">
+                <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
+                  <input
+                    type="checkbox"
+                    name="BedType"
+                    className="accent-blue-600"
                   />
-                  <div className="p-4 flex-1">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                      {hotel.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      {hotel.description}
-                    </p>
-                    <p className="text-gray-700 font-medium">
-                      ⭐ {hotel.rating} | Rooms Left: {hotel.remainingRooms}
-                    </p>
-                    <div className="flex gap-2 mt-2">
-                      {hotel.amenities?.map((amenity, i) => (
-                        <span key={i}>{getAmenityIcon(amenity)}</span>
-                      ))}
-                    </div>
-                    <div className="flex gap-2 mt-3">
-                      <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
-                        View Details
-                      </button>
-                      <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
-                        Book Now
-                      </button>
+                  King
+                </label>
+                <label className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition">
+                  <input
+                    type="checkbox"
+                    name="BedType"
+                    className="accent-blue-600"
+                  />
+                  Queen
+                </label>
+              </div>
+            </div>
+
+            {/* Amenities */}
+            <div className="bg-white p-4 rounded-xl shadow-sm space-y-2">
+              <label className="text-base font-medium text-gray-700 block mb-2">
+                Amenities
+              </label>
+              <div className="flex flex-col gap-3">
+                {[
+                  "Free Wi-Fi",
+                  "Swimming Pool",
+                  "Parking",
+                  "Gym",
+                  "Garden",
+                  "Conference Room",
+                ].map((amenity, idx) => (
+                  <label
+                    key={idx}
+                    className="flex items-center gap-2 text-gray-600 p-2 rounded-md hover:bg-gray-50 transition"
+                  >
+                    <input
+                      type="checkbox"
+                      name="amenities"
+                      className="accent-blue-600"
+                    />
+                    {amenity}
+                  </label>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Right Hotels */}
+          <div className="lg:flex-1">
+            {active === "list" ? (
+              <div className="space-y-6">
+                {filteredHotels.map((hotel, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white rounded-xl shadow-md flex overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <img
+                      src="https://up.yimg.com/ib/th/id/OIP.SwkabKtuIqwGJNrf64wYPQHaD6?pid=Api&rs=1&c=1&qlt=95&w=231&h=122"
+                      alt={hotel.name}
+                      className="w-48 h-48 object-cover"
+                    />
+                    <div className="p-4 flex-1">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                        {hotel.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-2">
+                        {hotel.description}
+                      </p>
+                      <p className="text-gray-700 font-medium">
+                        ⭐ {hotel.rating} | Rooms Left: {hotel.remainingRooms}
+                      </p>
+                      <div className="flex gap-2 mt-2">
+                        {hotel.amenities?.map((amenity, i) => (
+                          <span key={i}>{getAmenityIcon(amenity)}</span>
+                        ))}
+                      </div>
+                      <div className="flex gap-2 mt-3">
+                        <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
+                          View Details
+                        </button>
+                        <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
+                          Book Now
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredHotels.map((hotel, idx) => (
-                <div
-                  key={idx}
-                  className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
-                >
-                  <img
-                    src="https://up.yimg.com/ib/th/id/OIP.cKXHMEuuqb0d-dCQV6FoDgHaE8?pid=Api&rs=1&c=1&qlt=95&w=166&h=110"
-                    alt={hotel.name}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                      {hotel.name}
-                    </h3>
-                    <p className="text-gray-600 text-sm mb-2">
-                      {hotel.description}
-                    </p>
-                    <p className="text-gray-700 font-medium">
-                      ⭐ {hotel.rating} | Rooms Left: {hotel.remainingRooms}
-                    </p>
-                    <div className="flex gap-2 mt-2">
-                      {hotel.amenities?.map((amenity, i) => (
-                        <span key={i}>{getAmenityIcon(amenity)}</span>
-                      ))}
-                    </div>
-                    <div className="flex gap-2 mt-3">
-                      <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
-                        View Details
-                      </button>
-                      <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
-                        Book Now
-                      </button>
+                ))}
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredHotels.map((hotel, idx) => (
+                  <div
+                    key={idx}
+                    className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300"
+                  >
+                    <img
+                      src="https://up.yimg.com/ib/th/id/OIP.cKXHMEuuqb0d-dCQV6FoDgHaE8?pid=Api&rs=1&c=1&qlt=95&w=166&h=110"
+                      alt={hotel.name}
+                      className="w-full h-48 object-cover"
+                    />
+                    <div className="p-4">
+                      <h3 className="text-xl font-semibold text-gray-800 mb-2">
+                        {hotel.name}
+                      </h3>
+                      <p className="text-gray-600 text-sm mb-2">
+                        {hotel.description}
+                      </p>
+                      <p className="text-gray-700 font-medium">
+                        ⭐ {hotel.rating} | Rooms Left: {hotel.remainingRooms}
+                      </p>
+                      <div className="flex gap-2 mt-2">
+                        {hotel.amenities?.map((amenity, i) => (
+                          <span key={i}>{getAmenityIcon(amenity)}</span>
+                        ))}
+                      </div>
+                      <div className="flex gap-2 mt-3">
+                        <button className="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-blue-500 transition hover:cursor-pointer">
+                          View Details
+                        </button>
+                        <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
+                          Book Now
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

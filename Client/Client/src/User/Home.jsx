@@ -17,8 +17,6 @@ import FAQ from "./FAQ";
 import { useNavigate } from "react-router-dom";
 import { email } from "../AUTH/Email";
 import HotelInof from "../Admin/AddForms/HotelInof";
-import HotelMap from "./HotelMap";
-import UserLivelocation from "./UserLivelocation";
 
 export default function HotelBooking() {
   const [destination, setDestination] = useState("Mumbai");
@@ -109,8 +107,8 @@ export default function HotelBooking() {
   return (
     <>
       <Navbar />
-    {/* <HotelMap lat={12.9716} lon={77.5946} name="Grand Palace Hotel" /> */}
-    <UserLivelocation></UserLivelocation>
+      {/* <HotelMap lat={12.9716} lon={77.5946} name="Grand Palace Hotel" /> */}
+
 
       <div className="mt-10 min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 p-4 sm:p-6">
         {/* Hero Section */}
