@@ -117,11 +117,26 @@ router.get("/GetHotelId", async (req, res) => {
       message: data
     })
   } catch (error) {
-res.json({message:error.message})
+    res.json({ message: error.message })
   }
 
 })
+router.get("/hotels/location/search", async (req, res) => {
+  try {
+    const { HotelLocation } = req.query
+    console.log(HotelLocation, 'HoteLLocation by new')
+    const data = await Hotel.find({ "location.city": HotelLocation })
+    if (data.length == 0) {
+      return res.json({ message: `No hotel found Based on Your location${HotelLocation}` })
+    }
+    res.json({
+      message: data
+    })
+  } catch (error) {
+    res.json({ message: error.message })
+  }
 
+})
 
 
 module.exports = router;

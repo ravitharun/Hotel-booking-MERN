@@ -7,7 +7,7 @@ function UserLivelocation({ NewLong, NewLat ,NewHotelLocation}) {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [locationName, setLocationName] = useState("");
-  console.log({ NewLong, NewLat }, "from user live location");
+
 
   useEffect(() => {
     const GetUserLiveLocation = () => {

@@ -35,8 +35,6 @@ const HotelMap = ({
   // diff
   let dLat = ((NewLat - lat) * Math.PI) / 180;
   let dLon = ((NewLong - lon) * Math.PI) / 180;
-
-  console.log({ dLat: dLat, dLon: dLon });
   // dLat=-4.353152799999998
   // dLon= 1.8306615999999991
   const R = 6371;
@@ -50,15 +48,15 @@ const HotelMap = ({
   return (
     <div
       style={{
-        width: "1000px",
-        height: "500px",
+        width: "400px",
+        height: "400px",
         borderRadius: "50px",
         overflow: "hidden",
       }}
     >
       <MapContainer
         center={[latitude, longitude]}
-        zoom={20}
+        zoom={15}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer

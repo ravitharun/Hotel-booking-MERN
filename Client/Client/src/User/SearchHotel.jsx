@@ -1,7 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../Navbar";
-import Form from "./Form";
-import { FaWifi, FaSwimmer, FaParking, FaCoffee } from "react-icons/fa";
+import {
+  FaWifi,
+  FaSwimmer,
+  FaParking,
+  FaCoffee,
+  FaCalendarAlt,
+  FaMapMarkerAlt,
+  FaUser,
+  FaChevronUp,
+  FaChevronDown,
+} from "react-icons/fa";
 import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
 import UserLivelocation from "./Location/UserLivelocation";
@@ -10,9 +19,13 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [active, setActive] = useState("grid"); // list or grid
-  // const HotelSearchData = useLocation();
-  // console.log(HotelSearchData.state.data);
-
+  const HotelSearchData = useLocation();
+  const [Dropdown, setDropdown] = useState(false);
+  const [adults, setAdults] = useState(1);
+  const [children, setChildren] = useState(0);
+  const Destination = useRef("");
+  const checkOut = useRef("");
+  const checkIn = useRef("");
   useEffect(() => {
     const serachHotel = async () => {
       try {
@@ -39,7 +52,7 @@ export default function SearchHotelPage() {
     const Data = HotelIDData.data.message;
     redirect("/Search/Location", {
       state: {
-        Data
+        Data,
       },
     });
   };
@@ -59,13 +72,167 @@ export default function SearchHotelPage() {
     }
   };
 
+  // search feature
+
+  const serachHotel = async () => {
+    const Data = {
+      Destination: Destination.current.value,
+    };
+
+    const GetHotelLocationdata = await axios.get(
+      "http://localhost:3000/Hotel/hotels/location/search",
+      {
+        params: {
+          HotelLocation: Data.Destination,
+        },
+      }
+    );
+    console.log(GetHotelLocationdata.data.message, "GetHotelLocationdata");
+    setFilteredHotels(GetHotelLocationdata.data.message);
+  };
+
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
 
       {/* Top Search Form */}
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <Form />
+        <div className="mt-16 p-6 max-w-6xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end gap-4">
+            {/* Destination */}
+            <div className="flex-1 flex flex-col">
+              <label className="text-sm font-medium text-gray-600 mb-1">
+                Destination
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-xl px-3 py-2">
+                <FaMapMarkerAlt className="text-gray-500 mr-2" />
+                <input
+                  type="text"
+                  ref={Destination}
+                  placeholder="Search your favorite place..."
+                  className="flex-1 outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Check-In */}
+            <div className="flex-1 flex flex-col">
+              <label className="text-sm font-medium text-gray-600 mb-1">
+                Check-In
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-xl px-3 py-2">
+                <FaCalendarAlt className="text-gray-500 mr-2" />
+                <input
+                  type="date"
+                  className="flex-1 outline-none"
+                  ref={checkIn}
+                />
+              </div>
+            </div>
+
+            {/* Check-Out */}
+            <div className="flex-1 flex flex-col">
+              <label className="text-sm font-medium text-gray-600 mb-1">
+                Check-Out
+              </label>
+              <div className="flex items-center border border-gray-300 rounded-xl px-3 py-2">
+                <FaCalendarAlt className="text-gray-500 mr-2" />
+                <input
+                  type="date"
+                  className="flex-1 outline-none"
+                  ref={checkOut}
+                />
+              </div>
+            </div>
+
+            {/* Guests */}
+            <div className="flex-1 flex flex-col relative">
+              <label
+                className="text-sm font-medium text-gray-600 mb-1 flex items-center justify-between cursor-pointer"
+                onClick={() => setDropdown(!Dropdown)}
+              >
+                Guests
+              </label>
+
+              <div
+                className="flex items-center justify-between border border-gray-300 rounded-xl px-3 py-2 cursor-pointer"
+                onClick={() => setDropdown(!Dropdown)}
+              >
+                <div className="flex items-center gap-2">
+                  <FaUser className="text-gray-500" />
+                  <span>
+                    {adults} Adults, {children} Children
+                  </span>
+                </div>
+                {Dropdown ? (
+                  <FaChevronUp className="text-gray-500" />
+                ) : (
+                  <FaChevronDown className="text-gray-500" />
+                )}
+              </div>
+
+              {Dropdown && (
+                <div className="absolute top-full left-0 w-full mt-1 bg-white border border-gray-300 rounded-xl shadow-lg p-4 space-y-3 z-10">
+                  {/* Adults */}
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <FaUser className="text-gray-500" />
+                      <span>Adults</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                        onClick={() => setAdults(adults > 1 ? adults - 1 : 1)}
+                      >
+                        -
+                      </button>
+                      <span>{adults}</span>
+                      <button
+                        className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                        onClick={() => setAdults(adults + 1)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Children */}
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-2">
+                      <FaUserFriends className="text-gray-500" />
+                      <span>Children</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <button
+                        className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                        onClick={() =>
+                          setChildren(children > 0 ? children - 1 : 0)
+                        }
+                      >
+                        -
+                      </button>
+                      <span>{children}</span>
+                      <button
+                        className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                        onClick={() => setChildren(children + 1)}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Search Button */}
+            <button
+              className="bg-blue-600 text-white py-2 px-6 rounded-xl font-semibold hover:bg-blue-400 hover:cursor-pointer transition whitespace-nowrap"
+              onClick={serachHotel}
+            >
+              Search Hotels
+            </button>
+          </div>
+        </div>
       </div>
       <NetWorkCheck />
 
