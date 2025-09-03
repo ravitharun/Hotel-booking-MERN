@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar";
+import HotelForm from "../Admin/AddForms/HotelInof";
+import { FiMapPin, FiCalendar, FiUsers } from "react-icons/fi";
+
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
 
-  // later: fetch bookings from backend using logged-in userId
   useEffect(() => {
     setBookings([
       {
@@ -14,7 +16,7 @@ export default function MyBookings() {
         checkOut: "2025-09-05",
         guests: 2,
         status: "Confirmed",
-        image: "https://source.unsplash.com/400x250/?luxury,hotel",
+        image: "https://source.unsplash.com/900x600/?luxury,hotel",
       },
       {
         id: "B12346",
@@ -24,19 +26,21 @@ export default function MyBookings() {
         checkOut: "2025-10-12",
         guests: 3,
         status: "Pending",
-        image: "https://source.unsplash.com/400x250/?hotel,room",
+        image: "https://source.unsplash.com/900x600/?hotel,room",
       },
     ]);
   }, []);
 
   return (
     <>
-      
+      <Navbar />
 
-      <div className="p-6">
-        <h2 className="text-2xl font-stretch-75% mb-4">
-          My Total Bookings{" "}
-          <span className="text-gray-500 font-thin"> ({bookings.length})</span>
+      <div className="p-6 max-w-5xl mx-auto">
+        <h2 className="text-3xl font-extrabold text-gray-800 mb-8">
+          🛎 My Hotel Bookings{" "}
+          <span className="text-gray-500 text-lg font-normal">
+            ({bookings.length})
+          </span>
         </h2>
 
         {bookings.length === 0 ? (
@@ -44,57 +48,76 @@ export default function MyBookings() {
             <p className="mb-4">You don’t have any bookings yet.</p>
             <a
               href="/hotels"
-              className="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700"
+              className="px-6 py-3 bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-xl hover:opacity-90 shadow-md"
             >
               Explore Hotels
             </a>
           </div>
         ) : (
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="space-y-6">
             {bookings.map((b) => (
               <div
                 key={b.id}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition"
+                className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
               >
-                <img
-                  src={b.image}
-                  alt={b.hotel}
-                  className="w-full h-32 object-cover"
-                />
-                <div className="p-3">
-                  <h3 className="font-semibold text-gray-800 text-base truncate">
-                    {b.hotel}
-                  </h3>
-                  <p className="text-gray-500 text-xs">{b.location}</p>
-
-                  <div className="mt-2 text-xs text-gray-600">
-                    <p>
-                      <span className="font-medium">Check-in:</span> {b.checkIn}
-                    </p>
-                    <p>
-                      <span className="font-medium">Check-out:</span>{" "}
-                      {b.checkOut}
-                    </p>
-                    <p>Guests: {b.guests}</p>
-                  </div>
-
-                  <p
-                    className={`mt-2 text-sm font-semibold ${
+                {/* Left: Hotel Image */}
+                <div className="sm:w-1/3 relative">
+                  <img
+                    src={b.image}
+                    alt={b.hotel}
+                    className="h-48 sm:h-full w-full object-cover"
+                  />
+                  <span
+                    className={`absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-semibold ${
                       b.status === "Confirmed"
-                        ? "text-green-600"
+                        ? "bg-green-500 text-white"
                         : b.status === "Pending"
-                        ? "text-yellow-600"
-                        : "text-red-600"
+                        ? "bg-yellow-400 text-black"
+                        : "bg-red-500 text-white"
                     }`}
                   >
                     {b.status}
-                  </p>
+                  </span>
+                </div>
 
-                  <div className="mt-3 flex gap-2">
-                    <button className="flex-1 px-2 py-1 text-xs bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-                      View
+                {/* Right: Booking Details */}
+                <div className="flex-1 p-5 flex flex-col justify-between">
+                  <div>
+                    <h3 className="font-bold text-xl text-gray-900">
+                      {b.hotel}
+                    </h3>
+                    <p className="text-gray-500 text-sm flex items-center mt-1">
+                      <FiMapPin className="mr-1 text-indigo-500" /> {b.location}
+                    </p>
+
+                    <div className="mt-4 grid grid-cols-2 gap-4 text-sm text-gray-600">
+                      <p className="flex items-center">
+                        <FiCalendar className="mr-1 text-indigo-500" />
+                        <span>
+                          <span className="font-medium">Check-in:</span>{" "}
+                          {b.checkIn}
+                        </span>
+                      </p>
+                      <p className="flex items-center">
+                        <FiCalendar className="mr-1 text-indigo-500" />
+                        <span>
+                          <span className="font-medium">Check-out:</span>{" "}
+                          {b.checkOut}
+                        </span>
+                      </p>
+                      <p className="flex items-center col-span-2">
+                        <FiUsers className="mr-1 text-indigo-500" /> Guests:{" "}
+                        {b.guests}
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Actions */}
+                  <div className="mt-4 flex gap-3">
+                    <button className="flex-1 px-4 py-2 text-sm bg-gradient-to-r from-indigo-600 to-purple-600 text-white rounded-lg hover:opacity-90">
+                      View Details
                     </button>
-                    <button className="flex-1 px-2 py-1 text-xs bg-red-500 text-white rounded-md hover:bg-red-600">
+                    <button className="flex-1 px-4 py-2 text-sm bg-red-500 text-white rounded-lg hover:bg-red-600">
                       Cancel
                     </button>
                   </div>
@@ -104,7 +127,8 @@ export default function MyBookings() {
           </div>
         )}
       </div>
-      <HotelForm></HotelForm>
+
+      <HotelForm />
     </>
   );
 }

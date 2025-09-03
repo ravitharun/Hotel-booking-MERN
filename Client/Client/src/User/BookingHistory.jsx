@@ -32,6 +32,7 @@ const statusColors = {
 
 export default function BookingHistory() {
   return (
+    <>
     <div className="max-w-2xl mx-auto my-10">
       <h3 className="text-xl font-semibold text-gray-800 mb-6">Booking History</h3>
       <div className="space-y-6">
@@ -65,5 +66,7 @@ export default function BookingHistory() {
         ))}
       </div>
     </div>
+    </>
+
   );
 }

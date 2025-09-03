@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../Navbar";
 import { useLocation } from "react-router-dom";
 import {
@@ -8,14 +8,18 @@ import {
   FaUsers,
   FaRupeeSign,
   FaBuilding,
+  FaHotel,
+  FaBroom,
 } from "react-icons/fa";
 import UserLivelocation from "./Location/UserLivelocation";
+import { FiHelpCircle, FiChevronDown } from "react-icons/fi";
+import Cooment from "./Cooment";
 
 export default function HotelInfo() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || {};
-  console.log(hotel, "hotelhotelhotel");
+  console.table(hotel);
 
   const fallbackImages = [
     "https://source.unsplash.com/600x400/?hotel,1",
@@ -24,10 +28,38 @@ export default function HotelInfo() {
     "https://source.unsplash.com/600x400/?hotel,4",
     "https://source.unsplash.com/600x400/?hotel,5",
   ];
-  console.log(hotel.location?.latitude, "hotel.location?.latitude");
-  console.log(hotel.location?.longitude, "hotel.location?.longitude");
   const hotelImages =
     hotel.images && hotel.images.length > 0 ? hotel.images : fallbackImages;
+
+  // FAQ dropdown state
+  const [openIndex, setOpenIndex] = useState(null);
+
+  const faqs = [
+    {
+      question: "How can I cancel my booking?",
+      answer:
+        "You can cancel your booking from the 'My Bookings' page. Just click on the Cancel button next to your reservation.",
+    },
+    {
+      question: "Is breakfast included in all bookings?",
+      answer:
+        "It depends on the hotel. You can check the booking details to see if meals are included.",
+    },
+    {
+      question: "Can I book hotels without advance payment?",
+      answer:
+        "Yes, some hotels offer a 'Pay at Hotel' option. You’ll see this during checkout.",
+    },
+    {
+      question: "Do hotels allow early check-in?",
+      answer:
+        "Early check-in is subject to availability. It’s best to contact the hotel directly after booking.",
+    },
+  ];
+
+  const toggleFAQ = (index) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
 
   return (
     <>
@@ -147,14 +179,61 @@ export default function HotelInfo() {
                   ))}
                 </div>
 
-                <p className="text-sm text-gray-500 mt-2">
-                  {room.available} out of {room.totalRooms} rooms left
+                <p className="flex items-center gap-2 mt-3 text-sm text-gray-600">
+                  <FaBed className="text-indigo-500 w-5 h-5" />
+                  <span>
+                    <span
+                      className={`${
+                        room.available <= 15
+                          ? "text-red-600 font-bold text-lg"
+                          : "text-green-600 font-semibold"
+                      }`}
+                    >
+                      {room.available}
+                    </span>{" "}
+                    <span className="text-gray-500">
+                      out of {room.totalRooms} rooms left
+                    </span>
+                  </span>
                 </p>
               </div>
             ))
           ) : (
             <p className="text-gray-500">No rooms available</p>
           )}
+
+          <div className="max-w-3xl mx-auto p-6">
+            <h2 className="text-3xl font-bold text-gray-800 mb-6">❓ FAQ</h2>
+
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow border border-gray-200"
+                >
+                  {/* Question */}
+                  <button
+                    onClick={() => toggleFAQ(index)}
+                    className="w-full flex justify-between items-center px-5 py-4 text-left font-medium text-gray-800 hover:text-indigo-600"
+                  >
+                    {faq.question}
+                    <FiChevronDown
+                      className={`w-5 h-5 transition-transform duration-200 ${
+                        openIndex === index ? "rotate-180 text-indigo-600" : ""
+                      }`}
+                    />
+                  </button>
+
+                  {/* Answer */}
+                  {openIndex === index && (
+                    <div className="px-5 pb-4 text-gray-600 border-t border-gray-100">
+                      {faq.answer}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         {/* Right Sticky Booking Panel */}
@@ -174,20 +253,20 @@ export default function HotelInfo() {
           </div>
         </div>
       </div>
-      <div className="bg-white rounded-2xl shadow-lg p-6 max-w-7xl mx-auto">
-      <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
-  📍 Route to{" "}
-  <span className="text-indigo-600">
-    {hotel.name}
-  </span>
-</h2>
-<p className="text-gray-600 text-sm md:text-base lg:text-lg">
-  From your current location to{" "}
-  <span className="font-semibold text-gray-800">
-    {hotel.location.address}, {hotel.location.city}, {hotel.location.state}, {hotel.location.country}
-  </span>
-</p>
+      <Cooment></Cooment>
 
+      {/* Route Section */}
+      <div className="bg-white rounded-2xl shadow-lg p-6 max-w-7xl mx-auto mt-8">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
+          📍 Route to <span className="text-indigo-600">{hotel.name}</span>
+        </h2>
+        <p className="text-gray-600 text-sm md:text-base lg:text-lg">
+          From your current location to{" "}
+          <span className="font-semibold text-gray-800">
+            {hotel.location?.address}, {hotel.location?.city},{" "}
+            {hotel.location?.state}, {hotel.location?.country}
+          </span>
+        </p>
 
         <div className="w-full h-96 md:h-[500px] lg:h-[600px] rounded-xl overflow-hidden border border-gray-200 shadow-sm">
           <UserLivelocation
