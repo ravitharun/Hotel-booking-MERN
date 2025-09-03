@@ -61,6 +61,11 @@ export default function HotelInfo() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  // booking the room function
+
+  function BookHotel(Hotelid) {
+    console.log(`these booking is in under working stage ${Hotelid}`);
+  }
   return (
     <>
       <Navbar />
@@ -247,7 +252,10 @@ export default function HotelInfo() {
               </span>{" "}
               / night
             </p>
-            <button className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition">
+            <button
+              className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition"
+              onClick={() => BookHotel(hotel._id)}
+            >
               Book Now
             </button>
           </div>

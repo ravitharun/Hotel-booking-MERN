@@ -19,6 +19,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 export default function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [active, setActive] = useState("grid"); // list or grid
+  const [searchError, setSearcherror] = useState(""); // list or grid
   const HotelSearchData = useLocation();
   const [Dropdown, setDropdown] = useState(false);
   const [adults, setAdults] = useState(1);
@@ -88,9 +89,17 @@ export default function SearchHotelPage() {
       }
     );
     console.log(GetHotelLocationdata.data.message, "GetHotelLocationdata");
-    setFilteredHotels(GetHotelLocationdata.data.message);
+    if (
+      GetHotelLocationdata.data.message == GetHotelLocationdata.data.message
+    ) {
+      return setSearcherror(GetHotelLocationdata.data.message, "error msg");
+    }
+     setSearcherror(GetHotelLocationdata.data.message);
+    location.reload();
   };
 
+
+  
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
@@ -389,6 +398,9 @@ export default function SearchHotelPage() {
           </div>
 
           {/* Right Hotels */}
+          {searchError && (
+            <span className="text-red-500 font-mono">{searchError}</span>
+          )}
           <div className="lg:flex-1">
             {active === "list" ? (
               <div className="space-y-6">

@@ -7,8 +7,6 @@ function UserLivelocation({ NewLong, NewLat ,NewHotelLocation}) {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [locationName, setLocationName] = useState("");
-
-
   useEffect(() => {
     const GetUserLiveLocation = () => {
       if (!navigator.geolocation) {

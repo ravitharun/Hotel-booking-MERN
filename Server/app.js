@@ -17,7 +17,14 @@ app.set("view engine", "jade");
 
 // middlewares
 app.use(logger("dev"));
-app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173", // or your Netlify/Vercel domain
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if using cookies/auth
+  })
+);
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
