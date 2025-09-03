@@ -6,10 +6,6 @@ const { User, Hotel } = require("../bin/DataBase");
 const salt = bcrypt.genSaltSync(10);
 const hotelInfo = require('../hotel.json');
 const JWT_SECRET = "tharun2005";
-
-// const jwt = require("jsonwebtoken");
-// http://localhost:3000/Hotel/LoginUser
-
 // create a new account route
 router.post("/CreateAccountUser", async (req, res) => {
   try {
@@ -135,7 +131,6 @@ router.get("/hotels/location/search", async (req, res) => {
   } catch (error) {
     res.json({ message: error.message })
   }
-
 })
 
 

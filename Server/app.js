@@ -8,6 +8,7 @@ const cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 const auth = require("./Authentication/Auth");
+const Hotelbooking = require("./Authentication/AddHotel");
 // const hotelRoutes = require("./Authentication/AddHotel");
 var app = express();
 
@@ -17,14 +18,7 @@ app.set("view engine", "jade");
 
 // middlewares
 app.use(logger("dev"));
-app.use(
-  cors({
-    origin: "http://localhost:5173", // or your Netlify/Vercel domain
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true, // if using cookies/auth
-  })
-);
-
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -34,6 +28,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/Hotel", auth); // 👈 this will expose /Hotel/CreateAccountUser
+app.use("/Hotel/booking", Hotelbooking); // 👈 this will expose /Hotel/CreateAccountUser
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -11,9 +11,13 @@ import {
   FaHotel,
   FaBroom,
 } from "react-icons/fa";
+import axios from "axios";
+
 import UserLivelocation from "./Location/UserLivelocation";
 import { FiHelpCircle, FiChevronDown } from "react-icons/fi";
 import Cooment from "./Cooment";
+import { email } from "../AUTH/Email";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function HotelInfo() {
   const { state } = useLocation();
@@ -63,12 +67,62 @@ export default function HotelInfo() {
 
   // booking the room function
 
-  function BookHotel(Hotelid) {
+  async function BookHotel(Hotelid) {
+    let requiredrooms = 1;
+    const getbookingStatus = await axios.get(
+      "http://localhost:3000/Hotel/booking/HotelBooking",
+      {
+        params: {
+          HotelBookingId: Hotelid,
+          Requiredrooms: requiredrooms,
+          UserEmail: email,
+        },
+      }
+    );
+    // console.log(getbookingStatus.data.message=='Insufficient rooms available for your booking request.')
+    if (
+      getbookingStatus.data.message ==
+      "Insufficient rooms available for your booking request."
+    ) {
+      return toast.error(getbookingStatus.data.message);
+    }
+    toast.custom((t) => (
+      <div
+        className={`${
+          t.visible ? "animate-enter" : "animate-leave"
+        } max-w-md w-full bg-white shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+      >
+        <div className="flex-1 w-0 p-4">
+          <div className="flex items-start">
+            <div className="flex-shrink-0 pt-0.5">
+              <span className="text-2xl">🏨</span>
+            </div>
+            <div className="ml-3 flex-1">
+              <p className="text-sm font-medium text-gray-900">
+                Booking Status
+              </p>
+              <p className="mt-1 text-sm text-gray-500">
+                {getbookingStatus.data.message}
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="flex border-l border-gray-200">
+          <button
+            onClick={() => toast.dismiss(t.id)}
+            className="w-full border border-transparent rounded-none rounded-r-lg p-4 flex items-center justify-center text-sm font-medium text-indigo-600 hover:text-indigo-500"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+    ));
     console.log(`these booking is in under working stage ${Hotelid}`);
   }
   return (
     <>
       <Navbar />
+      <Toaster position="top-center" reverseOrder="false"></Toaster>
 
       {/* Hero Section */}
       <div className="relative h-96 w-full bg-gray-200">

@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/hotelbooking', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost:27017/hotelbooking")
+  .then(() => console.log("✅ MongoDB connected to hotelbooking"))
+  .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // Define a simple Hotel schema
 const UserSchema = new mongoose.Schema({
