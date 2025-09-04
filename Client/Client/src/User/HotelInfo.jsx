@@ -8,11 +8,13 @@ import {
   FaUsers,
   FaRupeeSign,
   FaBuilding,
+  FaHotel,
+  FaBroom,
 } from "react-icons/fa";
 import axios from "axios";
 
 import UserLivelocation from "./Location/UserLivelocation";
-import { FiChevronDown } from "react-icons/fi";
+import { FiHelpCircle, FiChevronDown } from "react-icons/fi";
 import Cooment from "./Cooment";
 import { email } from "../AUTH/Email";
 import toast, { Toaster } from "react-hot-toast";
@@ -22,18 +24,18 @@ export default function HotelInfo() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || {};
-
   const fallbackImages = [
-  
+    "https://tse4.mm.bing.net/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?pid=Api&P=0&h=180",
+    "https://tse3.mm.bing.net/th/id/OIP.gZyEooH2Mxo8bl2tfxUjSAHaE8?pid=Api&P=0&h=180",
+    "https://tse2.mm.bing.net/th/id/OIP.lF5VK1jCX1Jq0Im8ST1FFgHaE8?pid=Api&P=0&h=180",
+    "https://tse4.mm.bing.net/th/id/OIP.lCI6O_uWZXMtnHydLbhVawHaFB?pid=Api&P=0&h=180",
   ];
   const hotelImages =
     hotel.images && hotel.images.length > 0 ? hotel.images : fallbackImages;
 
+  // FAQ dropdown state
   const [openIndex, setOpenIndex] = useState(null);
   const [Booking, setBooking] = useState(true);
-  const [RequiredRooms, setRequiredRooms] = useState("");
-  const [BookingCheckIn, setBookingCheckIn] = useState("");
-  const [BookingCheckOut, setBookingCheckOut] = useState("");
 
   const faqs = [
     {
@@ -62,26 +64,40 @@ export default function HotelInfo() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
-  const BookHotel = async (Hotelid) => {
-    if (!RequiredRooms || !BookingCheckIn || !BookingCheckOut) {
-      return toast.error("Please fill all required fields.");
-    }
+  const [RequiredRooms, setRequiredRooms] = useState("");
+  const [BookingCheckIn, setBookingCheckIn] = useState("");
+  const [BookingCheckOut, setBookingCheckOut] = useState("");
+  // booking the room function
+
+  async function BookHotel(Hotelid, e) {
+    e.preventDefault();
+
+    const BookingData = {
+      HotelBookingId: Hotelid,
+      RequiredRooms,
+      BookingCheckIn,
+      UserEmail: email,
+      BookingCheckOut,
+    };
+
+    console.log("BookingData:", BookingData);
 
     try {
-      const BookingData = {
-        HotelBookingId: Hotelid,
-        RequiredRooms,
-        BookingCheckIn,
-        BookingCheckOut,
-        UserEmail: email,
-      };
-
-      const response = await axios.post(
-        "http://localhost:5000/Hotel/booking/HotelBooking",
-        BookingData
+      const getbookingStatus = await axios.get(
+        "http://localhost:3000/Hotel/booking/HotelBooking",
+        {
+          params: {
+            BookingData: BookingData,
+          },
+        }
       );
 
-      const message = response.data.message || "Booking Successful!";
+      if (
+        getbookingStatus.data.message ===
+        "Insufficient rooms available for your booking request."
+      ) {
+        return toast.error(getbookingStatus.data.message);
+      }
 
       toast.custom((t) => (
         <div
@@ -95,8 +111,12 @@ export default function HotelInfo() {
                 <span className="text-2xl">🏨</span>
               </div>
               <div className="ml-3 flex-1">
-                <p className="text-sm font-medium text-gray-900">Booking Status</p>
-                <p className="mt-1 text-sm text-gray-500">{message}</p>
+                <p className="text-sm font-medium text-gray-900">
+                  Booking Status
+                </p>
+                <p className="mt-1 text-sm text-gray-500">
+                  {getbookingStatus.data.message}
+                </p>
               </div>
             </div>
           </div>
@@ -110,16 +130,18 @@ export default function HotelInfo() {
           </div>
         </div>
       ));
-    } catch (err) {
+
+      console.log(`Booking in progress for hotel ${Hotelid}`);
+    } catch (error) {
+      console.error(error);
       toast.error("Booking failed. Please try again.");
-      console.error(err);
     }
-  };
+  }
 
   return (
     <>
       <Navbar />
-      <Toaster position="top-center" reverseOrder={false} />
+      <Toaster position="top-center" reverseOrder="false"></Toaster>
 
       {/* Hero Section */}
       <div className="relative h-96 w-full bg-gray-200">
@@ -153,18 +175,22 @@ export default function HotelInfo() {
           {/* Description & Location */}
           <div className="bg-white p-6 rounded-2xl shadow">
             <h2 className="text-2xl font-semibold mb-2">About this hotel</h2>
-            <p className="text-gray-700">{hotel.description || "No description available"}</p>
+            <p className="text-gray-700">
+              {hotel.description || "No description available"}
+            </p>
             {hotel.location && (
               <div className="mt-4 flex items-start gap-2 text-gray-600">
                 <FaMapMarkerAlt className="mt-1 text-red-500" />
                 <div>
                   <p>{hotel.location.address}</p>
                   <p>
-                    {hotel.location.city}, {hotel.location.state}, {hotel.location.country} - {hotel.location.zipcode}
+                    {hotel.location.city}, {hotel.location.state},{" "}
+                    {hotel.location.country} - {hotel.location.zipcode}
                   </p>
                   <p className="text-sm text-gray-400 mt-1">
                     {hotel.location.distanceFromAirport} from airport,{" "}
-                    {hotel.location.distanceFromRailwayStation} from railway station
+                    {hotel.location.distanceFromRailwayStation} from railway
+                    station
                   </p>
                 </div>
               </div>
@@ -174,7 +200,10 @@ export default function HotelInfo() {
           {/* Rooms */}
           {hotel.rooms?.length > 0 ? (
             hotel.rooms.map((room) => (
-              <div key={room.roomId} className="bg-white p-6 rounded-2xl shadow space-y-4">
+              <div
+                key={room.roomId}
+                className="bg-white p-6 rounded-2xl shadow space-y-4"
+              >
                 <div className="flex justify-between items-center">
                   <h3 className="text-xl font-semibold">{room.type}</h3>
                   <div className="flex items-center gap-1 text-yellow-500">
@@ -185,7 +214,7 @@ export default function HotelInfo() {
 
                 <p className="text-gray-600">{room.size}</p>
 
-                {/* Room Images */}
+                {/* Room Images Horizontal Scroll */}
                 <div className="flex gap-2 overflow-x-auto">
                   {hotelImages.slice(0, 5).map((img, index) => (
                     <img
@@ -209,7 +238,9 @@ export default function HotelInfo() {
                   </div>
                   <div className="flex items-center gap-1">
                     <FaRupeeSign className="text-yellow-600" />
-                    <span className="font-bold text-green-600">{room.price.toLocaleString()}</span>
+                    <span className="font-bold text-green-600">
+                      {room.price.toLocaleString()}
+                    </span>
                     <span className="text-sm text-gray-500">/ night</span>
                   </div>
                 </div>
@@ -238,7 +269,9 @@ export default function HotelInfo() {
                     >
                       {room.available}
                     </span>{" "}
-                    <span className="text-gray-500">out of {room.totalRooms} rooms left</span>
+                    <span className="text-gray-500">
+                      out of {room.totalRooms} rooms left
+                    </span>
                   </span>
                 </p>
               </div>
@@ -247,23 +280,33 @@ export default function HotelInfo() {
             <p className="text-gray-500">No rooms available</p>
           )}
 
-          {/* FAQ */}
           <div className="max-w-3xl mx-auto p-6">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">❓ FAQ</h2>
+
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white rounded-xl shadow border border-gray-200">
+                <div
+                  key={index}
+                  className="bg-white rounded-xl shadow border border-gray-200"
+                >
+                  {/* Question */}
                   <button
                     onClick={() => toggleFAQ(index)}
                     className="w-full flex justify-between items-center px-5 py-4 text-left font-medium text-gray-800 hover:text-indigo-600"
                   >
                     {faq.question}
                     <FiChevronDown
-                      className={`w-5 h-5 transition-transform duration-200 ${openIndex === index ? "rotate-180 text-indigo-600" : ""}`}
+                      className={`w-5 h-5 transition-transform duration-200 ${
+                        openIndex === index ? "rotate-180 text-indigo-600" : ""
+                      }`}
                     />
                   </button>
+
+                  {/* Answer */}
                   {openIndex === index && (
-                    <div className="px-5 pb-4 text-gray-600 border-t border-gray-100">{faq.answer}</div>
+                    <div className="px-5 pb-4 text-gray-600 border-t border-gray-100">
+                      {faq.answer}
+                    </div>
                   )}
                 </div>
               ))}
@@ -271,7 +314,7 @@ export default function HotelInfo() {
           </div>
         </div>
 
-        {/* Right Booking Panel */}
+        {/* Right Sticky Booking Panel */}
         <div className="lg:col-span-1 sticky top-20 space-y-4">
           <div className="bg-white p-6 rounded-2xl shadow space-y-4">
             <h2 className="text-xl font-semibold">Book Your Stay</h2>
@@ -282,22 +325,24 @@ export default function HotelInfo() {
               </span>{" "}
               / night
             </p>
-
             {Booking && (
-              <div className="p-6 border rounded-2xl shadow-lg bg-gray-50 space-y-5">
-                <h3 className="text-2xl font-bold text-center text-gray-800">Booking Form</h3>
-                <div className="space-y-4">
+              <div className="p-6 border rounded-2xl shadow-lg max-w-lg mx-auto bg-gradient-to-br from-white to-gray-50">
+                <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+                  Booking Form
+                </h3>
+
+                <form className="space-y-5">
+                  {/* Required Rooms */}
                   <div>
-                    <label htmlFor="requiredRooms" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Required Rooms <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="requiredRooms"
                       type="number"
+                      name="requiredRooms"
+                      required
                       min="1"
                       max="5"
-                      placeholder="Enter number of rooms"
-                      className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-400 focus:border-blue-500"
                       onChange={(e) =>
                         setRequiredRooms(
                           e.target.value > 5
@@ -305,91 +350,117 @@ export default function HotelInfo() {
                             : e.target.value
                         )
                       }
+                      placeholder="Enter number of rooms"
+                      className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-400 focus:border-blue-500"
                     />
                   </div>
 
+                  {/* Check In */}
                   <div>
-                    <label htmlFor="checkIn" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Check-In <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="checkIn"
                       type="date"
-                      className="w-full border rounded-lg px-3 py-2 bg-gray-50 focus:ring focus:ring-blue-400"
+                      name="checkIn"
                       onChange={(e) => setBookingCheckIn(e.target.value)}
+                      className="w-full border rounded-lg px-3 py-2 bg-gray-50 focus:ring focus:ring-blue-400"
                     />
                   </div>
 
+                  {/* Check Out */}
                   <div>
-                    <label htmlFor="checkOut" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
                       Check-Out <span className="text-red-500">*</span>
                     </label>
                     <input
-                      id="checkOut"
                       type="date"
-                      className="w-full border rounded-lg px-3 py-2 bg-gray-50 focus:ring focus:ring-blue-400"
+                      name="checkout"
                       onChange={(e) => setBookingCheckOut(e.target.value)}
+                      className="w-full border rounded-lg px-3 py-2 bg-gray-50 focus:ring focus:ring-blue-400"
                     />
                   </div>
 
+                  {/* Price */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Price per Room</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Price per Room
+                    </label>
                     <input
                       type="text"
-                      value={"₹" + (hotel.rooms?.[0]?.price?.toLocaleString() || 0)}
+                      name="price"
+                      value={
+                        "₹" + hotel.rooms?.[0]?.price?.toLocaleString() || 0
+                      }
                       readOnly
-                      className="w-full border rounded-lg px-3 py-2 bg-gray-100 font-semibold text-gray-600"
+                      className="w-full border rounded-lg px-3 py-2 bg-gray-100 text-gray-600 font-semibold"
                     />
                   </div>
 
+                  {/* Payment Status */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1">Payment Status</label>
-                    <select className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-400">
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Payment Status
+                    </label>
+                    <select
+                      name="paymentStatus"
+                      className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-400"
+                    >
                       <option value="Pending">Pending</option>
                       <option value="Paid">Paid</option>
                       <option value="Failed">Failed</option>
                     </select>
                   </div>
 
+                  {/* Total Pay Amount */}
                   <div className="p-3 bg-gray-100 rounded-lg text-center">
-                    <span className="text-sm text-gray-600">Total Payable:</span>
+                    <span className="text-sm text-gray-600">
+                      Total Payable:
+                    </span>
                     <p className="text-lg font-bold text-gray-800">
-                      {"₹" + ((Number(RequiredRooms) * hotel.rooms?.[0]?.price) || 0).toLocaleString()}
+                      {"₹" +
+                        (
+                          Number(RequiredRooms) * hotel.rooms?.[0]?.price || 0
+                        ).toLocaleString()}
                     </p>
                   </div>
 
-                  <PaymentIcons />
-                  <button
-                    type="button"
-                    onClick={() => BookHotel(hotel._id)}
-                    disabled={!RequiredRooms || !BookingCheckIn || !BookingCheckOut}
-                    className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-gray-400"
-                  >
-                    Confirm Booking
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setBooking(false)}
-                    className="w-full bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition"
-                  >
-                    Cancel
-                  </button>
-                </div>
+                  <div className="space-y-3">
+                    <PaymentIcons></PaymentIcons>
+                  </div>
+                  {/* Buttons */}
+                  <div className="space-y-3">
+                    <button
+                      type="submit"
+                      onClick={() => BookHotel(hotel._id, event)}
+                      disabled={!RequiredRooms}
+                      // disabled={!RequiredRooms && !checkOut && !checkIn }
+                      className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-gray-400"
+                    >
+                      Confirm Booking
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setBooking((prev) => !prev)}
+                      className="w-full bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
               </div>
             )}
 
             <button
-              type="button"
               className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition"
               onClick={() => setBooking((prev) => !prev)}
             >
-              {Booking ? "Cancel Now" : "Book Now"}
+              {Booking ? "cancel Now" : "Book Now"}
             </button>
           </div>
         </div>
       </div>
-
-      <Cooment />
+      <Cooment></Cooment>
 
       {/* Route Section */}
       <div className="bg-white rounded-2xl shadow-lg p-6 max-w-7xl mx-auto mt-8">
@@ -399,7 +470,8 @@ export default function HotelInfo() {
         <p className="text-gray-600 text-sm md:text-base lg:text-lg">
           From your current location to{" "}
           <span className="font-semibold text-gray-800">
-            {hotel.location?.address}, {hotel.location?.city}, {hotel.location?.state}, {hotel.location?.country}
+            {hotel.location?.address}, {hotel.location?.city},{" "}
+            {hotel.location?.state}, {hotel.location?.country}
           </span>
         </p>
 

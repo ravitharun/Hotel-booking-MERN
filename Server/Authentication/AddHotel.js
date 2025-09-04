@@ -18,7 +18,6 @@ router.get('/HotelBooking', async (req, res) => {
         if (!BookingData.HotelBookingId) {
             return res.json({ message: "The id is missing while getting the hotel admin data" })
         }
-
         const HotelAdminData = await Hotel.findOne({ _id: BookingData.HotelBookingId })
         const userInfoBooking = await User.findOne({ Email: BookingData.UserEmail }).select(["Email", "FirstName", "LastName"])
         // now i am getting the data of user and hotelBooking(owner data)

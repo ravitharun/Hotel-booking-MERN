@@ -47,15 +47,7 @@ const roomSchema = new mongoose.Schema({
   images: [{ type: String }],
 });
 
-const bookingSchema = new mongoose.Schema({
-  bookingId: { type: Number },
-  customerName: { type: String },
-  email: { type: String },
-  checkIn: { type: Date },
-  checkOut: { type: Date },
-  roomsBooked: { type: Number },
-  totalAmount: { type: Number },
-});
+
 
 const hotelSchema = new mongoose.Schema({
   name: { type: String, required: true },
@@ -70,8 +62,26 @@ const hotelSchema = new mongoose.Schema({
   rooms: [roomSchema],
   bookings: [bookingSchema],
 }, { timestamps: true });
+
+
+const bookingSchema = new mongoose.Schema(
+  {
+    HotelBookingId: { type: mongoose.Schema.Types.ObjectId, ref: "Hotel", required: true },
+    RequiredRooms: { type: Number, required: true },
+    BookingCheckIn: { type: Date, required: true },
+    BookingCheckOut: { type: Date, required: true },
+    User: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    HotelOwner: { type: mongoose.Schema.Types.ObjectId, ref: "HotelOwner", required: true },
+    totalAmount: { type: Number },
+    Status: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
+  },
+  { timestamps: true }
+);
+
+
+
 // Create a Hotel model
 const User = mongoose.model('UserLoginData', UserSchema);
+const Booking = mongoose.model('BookingSchema', bookingSchema);
 const Hotel = mongoose.model("Hotel", hotelSchema);
-
-module.exports = { User, Hotel };
+module.exports = { User, Hotel, Booking };
