@@ -10,12 +10,12 @@ import {
   FaUser,
   FaChevronUp,
   FaChevronDown,
+  FaUserFriends,
 } from "react-icons/fa";
 import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
 import UserLivelocation from "./Location/UserLivelocation";
 import { useLocation, useNavigate } from "react-router-dom";
-
 export default function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [active, setActive] = useState("grid"); // list or grid
@@ -24,6 +24,7 @@ export default function SearchHotelPage() {
   const [Dropdown, setDropdown] = useState(false);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
+
   const Destination = useRef("");
   const checkOut = useRef("");
   const checkIn = useRef("");
@@ -50,10 +51,11 @@ export default function SearchHotelPage() {
         },
       }
     );
-    const Data = HotelIDData.data.message;
+    console.log(HotelIDData.data.message);
+    const Data = HotelIDData.data.message
     redirect("/Search/Location", {
       state: {
-        Data,
+     Data
       },
     });
   };
@@ -94,12 +96,10 @@ export default function SearchHotelPage() {
     ) {
       return setSearcherror(GetHotelLocationdata.data.message, "error msg");
     }
-     setSearcherror(GetHotelLocationdata.data.message);
+    setSearcherror(GetHotelLocationdata.data.message);
     location.reload();
   };
 
-
-  
   return (
     <div className="min-h-screen bg-gray-100">
       <Navbar />
@@ -437,7 +437,7 @@ export default function SearchHotelPage() {
                         >
                           View Details
                         </button>
-                        <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer">
+                        <button className="bg-green-600 text-white px-3 py-1 rounded-lg text-sm hover:bg-green-500 transition hover:cursor-pointer"  >
                           Book Now
                         </button>
                       </div>

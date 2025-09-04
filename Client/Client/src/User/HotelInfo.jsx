@@ -18,12 +18,18 @@ import { FiHelpCircle, FiChevronDown } from "react-icons/fi";
 import Cooment from "./Cooment";
 import { email } from "../AUTH/Email";
 import toast, { Toaster } from "react-hot-toast";
+// import { useRef } from "react";
+import { FaCreditCard, FaUniversity } from "react-icons/fa";
+import { MdAtm } from "react-icons/md";
+import { SiPhonepe, SiGooglepay, SiVisa, SiMastercard } from "react-icons/si";
+import PaymentIcons from "./PaymentIcons";
 
 export default function HotelInfo() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || {};
-  console.table(hotel);
+  console.log("hotel", hotel);
+  console.log("data", state);
 
   const fallbackImages = [
     "https://source.unsplash.com/600x400/?hotel,1",
@@ -37,6 +43,7 @@ export default function HotelInfo() {
 
   // FAQ dropdown state
   const [openIndex, setOpenIndex] = useState(null);
+  const [Booking, setBooking] = useState(true);
 
   const faqs = [
     {
@@ -65,10 +72,12 @@ export default function HotelInfo() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const [RequiredRooms, setRequiredRooms] = useState("");
   // booking the room function
 
   async function BookHotel(Hotelid) {
     let requiredrooms = 1;
+
     const getbookingStatus = await axios.get(
       "http://localhost:3000/Hotel/booking/HotelBooking",
       {
@@ -306,11 +315,135 @@ export default function HotelInfo() {
               </span>{" "}
               / night
             </p>
+            {Booking && (
+              <div className="p-6 border rounded-2xl shadow-lg max-w-lg mx-auto bg-gradient-to-br from-white to-gray-50">
+                <h3 className="text-2xl font-bold mb-6 text-center text-gray-800">
+                  Booking Form
+                </h3>
+
+                <form className="space-y-5">
+                  {/* Required Rooms */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Required Rooms <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="number"
+                      name="requiredRooms"
+                      required
+                      min="1"
+                      max="5"
+                      onChange={(e) =>
+                        setRequiredRooms(
+                          e.target.value > 5
+                            ? toast.error("You can only book up to 5 rooms")
+                            : e.target.value
+                        )
+                      }
+                      placeholder="Enter number of rooms"
+                      className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-400 focus:border-blue-500"
+                    />
+                  </div>
+
+                  {/* Check In */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Check-In <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="date"
+                      name="checkin"
+                      className="w-full border rounded-lg px-3 py-2 bg-gray-50 focus:ring focus:ring-blue-400"
+                    />
+                  </div>
+
+                  {/* Check Out */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Check-Out <span className="text-red-500">*</span>
+                    </label>
+                    <input
+                      type="date"
+                      name="checkout"
+                      className="w-full border rounded-lg px-3 py-2 bg-gray-50 focus:ring focus:ring-blue-400"
+                    />
+                  </div>
+
+                  {/* Price */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Price per Room
+                    </label>
+                    <input
+                      type="text"
+                      name="price"
+                      value={
+                        "₹" + hotel.rooms?.[0]?.price?.toLocaleString() || 0
+                      }
+                      readOnly
+                      className="w-full border rounded-lg px-3 py-2 bg-gray-100 text-gray-600 font-semibold"
+                    />
+                  </div>
+
+                  {/* Payment Status */}
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">
+                      Payment Status
+                    </label>
+                    <select
+                      name="paymentStatus"
+                      className="w-full border rounded-lg px-3 py-2 focus:ring focus:ring-blue-400"
+                    >
+                      <option value="Pending">Pending</option>
+                      <option value="Paid">Paid</option>
+                      <option value="Failed">Failed</option>
+                    </select>
+                  </div>
+
+                  {/* Total Pay Amount */}
+                  <div className="p-3 bg-gray-100 rounded-lg text-center">
+                    <span className="text-sm text-gray-600">
+                      Total Payable:
+                    </span>
+                    <p className="text-lg font-bold text-gray-800">
+                      {"₹" +
+                        (
+                          Number(RequiredRooms) * hotel.rooms?.[0]?.price || 0
+                        ).toLocaleString()}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3">
+                    <PaymentIcons></PaymentIcons>
+                  </div>
+                  {/* Buttons */}
+                  <div className="space-y-3">
+                    <button
+                      type="submit"
+                      onClick={() => BookHotel(hotel._id)}
+                      disabled={!RequiredRooms}
+                      // disabled={!RequiredRooms && !checkOut && !checkIn }
+                      className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-gray-400"
+                    >
+                      Confirm Booking
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setBooking((prev) => !prev)}
+                      className="w-full bg-gray-200 text-gray-800 py-2 rounded-lg font-semibold hover:bg-gray-300 transition"
+                    >
+                      Cancel
+                    </button>
+                  </div>
+                </form>
+              </div>
+            )}
+
             <button
               className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition"
-              onClick={() => BookHotel(hotel._id)}
+              onClick={() => setBooking((prev) => !prev)}
             >
-              Book Now
+              {Booking ? "cancel Now" : "Book Now"}
             </button>
           </div>
         </div>
