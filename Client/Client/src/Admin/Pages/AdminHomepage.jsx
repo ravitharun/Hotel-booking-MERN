@@ -1,10 +1,12 @@
 import React from 'react'
+import Navbar from '../../Navbar'
 
 function AdminHomepage() {
   return (
-    <div>
-      useruseruserAdminHomepage
-    </div>
+    <>
+    <Navbar></Navbar>
+      
+    </>
   )
 }
 

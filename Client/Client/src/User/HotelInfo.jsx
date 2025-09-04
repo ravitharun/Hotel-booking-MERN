@@ -10,6 +10,7 @@ import {
   FaBuilding,
   FaHotel,
   FaBroom,
+  FaInfoCircle,
 } from "react-icons/fa";
 import axios from "axios";
 
@@ -130,6 +131,7 @@ export default function HotelInfo() {
           </div>
         </div>
       ));
+      setBooking(false);
 
       console.log(`Booking in progress for hotel ${Hotelid}`);
     } catch (error) {
@@ -187,10 +189,16 @@ export default function HotelInfo() {
                     {hotel.location.city}, {hotel.location.state},{" "}
                     {hotel.location.country} - {hotel.location.zipcode}
                   </p>
-                  <p className="text-sm text-gray-400 mt-1">
-                    {hotel.location.distanceFromAirport} from airport,{" "}
-                    {hotel.location.distanceFromRailwayStation} from railway
-                    station
+                  <p className="text-sm text-gray-400 mt-1 flex items-center gap-1.5">
+                    <FaInfoCircle
+                      className="flex-shrink-0 text-blue-500"
+                      size={15}
+                    />
+                    <span>
+                      {hotel.location.distanceFromAirport} from airport,{" "}
+                      {hotel.location.distanceFromRailwayStation} from railway
+                      station
+                    </span>
                   </p>
                 </div>
               </div>
