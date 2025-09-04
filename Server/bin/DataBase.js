@@ -47,6 +47,20 @@ const roomSchema = new mongoose.Schema({
   images: [{ type: String }],
 });
 
+const bookingSchema = new mongoose.Schema(
+  {
+    HotelBookingId: { type: mongoose.Schema.Types.ObjectId, ref: "Hotel", required: true },
+    RequiredRooms: { type: Number, required: true },
+    BookingCheckIn: { type: Date, required: true },
+    BookingCheckOut: { type: Date, required: true },
+    User: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+    HotelOwner: { type: mongoose.Schema.Types.ObjectId, ref: "HotelOwner", required: true },
+    totalAmount: { type: Number, required: true },
+    Status: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
+    PaymentStatus: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
+  },
+  { timestamps: true }
+);
 
 
 const hotelSchema = new mongoose.Schema({
@@ -60,23 +74,9 @@ const hotelSchema = new mongoose.Schema({
   reviewsCount: { type: Number, default: 0 },
   remainingRooms: { type: Number, default: 0 },
   rooms: [roomSchema],
-  bookings: [bookingSchema],
 }, { timestamps: true });
 
 
-const bookingSchema = new mongoose.Schema(
-  {
-    HotelBookingId: { type: mongoose.Schema.Types.ObjectId, ref: "Hotel", required: true },
-    RequiredRooms: { type: Number, required: true },
-    BookingCheckIn: { type: Date, required: true },
-    BookingCheckOut: { type: Date, required: true },
-    User: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
-    HotelOwner: { type: mongoose.Schema.Types.ObjectId, ref: "HotelOwner", required: true },
-    totalAmount: { type: Number },
-    Status: { type: String, enum: ["pending", "approved", "rejected"], default: "pending" },
-  },
-  { timestamps: true }
-);
 
 
 

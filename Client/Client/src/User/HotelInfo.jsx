@@ -74,8 +74,8 @@ export default function HotelInfo() {
 
     const BookingData = {
       HotelBookingId: Hotelid,
-      RequiredRooms,
-      BookingCheckIn,
+      RequiredRooms: Number(RequiredRooms), // make sure this variable exists
+      BookingCheckIn: BookingCheckIn,
       UserEmail: email,
       BookingCheckOut,
     };
