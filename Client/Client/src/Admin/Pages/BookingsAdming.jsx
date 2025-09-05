@@ -8,8 +8,11 @@ const BookingsAdminUI = () => {
   const [SingleSelect, SetSingleSelect] = useState(false);
   const [TotalSelect, SetTotalselect] = useState(0);
   // Sample booking counts
-
+  console.log(searchTerm, "searchTerm from the input format");
   const usershotel = [1, 2, 3];
+  // checking the input Filed
+  let searchArray = usershotel.filter((usershotel) => usershotel == searchTerm);
+  console.log(searchArray.length <= 0 ? "No User's Found" : "show in the ui ");
   const totalBookings = 10;
   const statusCounts = { Pending: 3, Approved: 5, Rejected: 2 };
   const ISSelect = (index) => {
@@ -48,6 +51,7 @@ const BookingsAdminUI = () => {
             className="w-full px-3 py-2 outline-none"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
+            autoFocus
           />
           {searchTerm && (
             <button
@@ -121,9 +125,10 @@ const BookingsAdminUI = () => {
                 </button>
                 <button
                   className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
-                  onClick={() =>
-                    alert("calling the api for the delete /delete")
-                  }
+                  onClick={() => {
+                    alert("calling the api for the delete /delete");
+                    SetselectAll((prev) => !prev);
+                  }}
                 >
                   Delete
                 </button>
