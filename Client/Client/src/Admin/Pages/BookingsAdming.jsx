@@ -13,7 +13,7 @@ const BookingsAdminUI = () => {
   const usershotel = [
     {
       id: 1,
-      user: "John Doe",
+      user: "John Doe".toLowerCase(),
       hotel: "Ocean View Hotel",
       location: "Goa",
       checkIn: "2025-09-10",
@@ -24,7 +24,18 @@ const BookingsAdminUI = () => {
     },
     {
       id: 2,
-      user: "Ravi Tharun",
+      user: "Ravi Tharun".toLowerCase(),
+      hotel: "Palm Tree Resort",
+      location: "Kerala",
+      checkIn: "2025-10-01",
+      checkOut: "2025-10-05",
+      rooms: 1,
+      price: 5000,
+      status: "Pending",
+    },
+    {
+      id: 22,
+      user: "Ravi Tharun".toLowerCase(),
       hotel: "Palm Tree Resort",
       location: "Kerala",
       checkIn: "2025-10-01",
@@ -35,7 +46,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 3,
-      user: "Pranav Kumar",
+      user: "Pranav Kumar".toLowerCase(),
       hotel: "Hilltop Retreat",
       location: "Manali",
       checkIn: "2025-11-12",
@@ -46,7 +57,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 4,
-      user: "Anita Sharma",
+      user: "Anita Sharma".toLowerCase(),
       hotel: "Royal Palace",
       location: "Jaipur",
       checkIn: "2025-09-20",
@@ -57,7 +68,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 5,
-      user: "Michael Smith",
+      user: "Michael Smith".toLowerCase(),
       hotel: "City Lights Hotel",
       location: "Mumbai",
       checkIn: "2025-09-28",
@@ -68,7 +79,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 6,
-      user: "Sophia Patel",
+      user: "Sophia Patel".toLowerCase(),
       hotel: "Desert Sands Resort",
       location: "Jaisalmer",
       checkIn: "2025-12-05",
@@ -79,7 +90,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 7,
-      user: "Aarav Mehta",
+      user: "Aarav Mehta".toLowerCase(),
       hotel: "Snow Valley Inn",
       location: "Shimla",
       checkIn: "2025-11-02",
@@ -90,7 +101,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 8,
-      user: "Emily Johnson",
+      user: "Emily Johnson".toLowerCase(),
       hotel: "Lakeview Resort",
       location: "Udaipur",
       checkIn: "2025-09-14",
@@ -101,7 +112,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 9,
-      user: "Rajesh Kumar",
+      user: "Rajesh Kumar".toLowerCase(),
       hotel: "Sunrise Hotel",
       location: "Delhi",
       checkIn: "2025-10-15",
@@ -112,7 +123,7 @@ const BookingsAdminUI = () => {
     },
     {
       id: 10,
-      user: "Olivia Brown",
+      user: "Olivia Brown".toLowerCase(),
       hotel: "Green Garden Hotel",
       location: "Pune",
       checkIn: "2025-11-25",
@@ -124,10 +135,17 @@ const BookingsAdminUI = () => {
   ];
 
   // checking the input Filed
-  let searchArray = usershotel.filter(
-    (usershotel) => usershotel.user === searchTerm.charAt(0)
-  );
+  let searchArray = [];
+  for (let i = 0; i < usershotel.length; i++) {
+    if (usershotel[i].user.includes(searchTerm.toLowerCase())) {
+      searchArray.push(usershotel[i]);
+    }
+    else{
+      console.log('no users found')
+    }
+  }
   console.log(searchArray.length <= 0 ? "No User's Found" : searchArray);
+
   const totalBookings = 10;
   const statusCounts = { Pending: 3, Approved: 5, Rejected: 2 };
   const ISSelect = (index) => {
