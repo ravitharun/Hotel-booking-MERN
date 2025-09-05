@@ -4,10 +4,19 @@ import { FaSearch } from "react-icons/fa";
 const BookingsAdminUI = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
-
+  const [SelectAll, SetselectAll] = useState(false);
+  const [SingleSelect, SetSingleSelect] = useState(false);
+  const [TotalSelect, SetTotalselect] = useState(0);
   // Sample booking counts
+
+  const usershotel = [1, 2, 3];
   const totalBookings = 10;
   const statusCounts = { Pending: 3, Approved: 5, Rejected: 2 };
+  const ISSelect = (index) => {
+    let UsersId = usershotel.map((index) => index);
+    SetTotalselect(UsersId.length);
+    SetselectAll((prev) => !prev);
+  };
 
   return (
     <div className="p-6">
@@ -53,7 +62,7 @@ const BookingsAdminUI = () => {
         <div className="flex gap-2 flex-wrap">
           {["All", "Pending", "Approved", "Rejected"].map((status) => (
             <button
-              key={status}
+              key={status.id}
               onClick={() => setFilterStatus(status)}
               className={`px-4 py-2 rounded ${
                 filterStatus === status
@@ -67,19 +76,62 @@ const BookingsAdminUI = () => {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 mb-4 p-3 border border-gray-300 rounded-lg bg-white shadow-sm w-max">
+      <div
+        className="flex items-center gap-2 mb-4 p-3 border border-gray-300 rounded-lg bg-white shadow-sm w-max"
+        onClick={() => ISSelect(status.id)}
+      >
         <input
           type="checkbox"
           id="selectAll"
           className="h-4 w-4 text-blue-600 border-gray-400 rounded focus:ring-blue-500"
+          checked={SelectAll}
         />
         <label
           htmlFor="selectAll"
           className="text-gray-700 font-medium cursor-pointer"
+          onClick={() => ISSelect(status.id)}
         >
           Select All
         </label>
       </div>
+      {SelectAll && (
+        <>
+          <div className="inline-block px-4 py-2 bg-blue-100 border border-blue-300 rounded-full text-blue-800 font-medium text-center">
+            <h3>
+              Total Selected: {TotalSelect} User{TotalSelect > 1 ? "s" : ""}
+            </h3>
+          </div>
+          <br />
+
+          <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
+            <div className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-80">
+              <h2 className="text-lg font-bold text-gray-800">
+                Confirm Delete
+              </h2>
+              <p className="text-gray-600">
+                Are you sure you want to delete all selected users
+                {TotalSelect.length > 1 ? "s" : ""} ?
+              </p>
+              <div className="flex justify-end space-x-3">
+                <button
+                  className="px-4 py-2 bg-gray-300 rounded-lg hover:bg-gray-400"
+                  onClick={() => ISSelect(status.id)}
+                >
+                  Cancel
+                </button>
+                <button
+                  className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600"
+                  onClick={() =>
+                    alert("calling the api for the delete /delete")
+                  }
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* Booking Table */}
       <div className="overflow-x-auto">
@@ -109,15 +161,19 @@ const BookingsAdminUI = () => {
             </tr>
           </thead>
           <tbody>
-            {[1, 2, 3].map((id) => (
+            {usershotel.map((id) => (
               <tr
                 key={id}
                 className={`transition-all duration-200 bg-white hover:bg-gray-100`}
               >
                 <td className="px-6 py-4 flex justify-center items-center">
-                  <input type="checkbox" className="h-4 w-4" />
+                  <input
+                    type="checkbox"
+                    className="h-4 w-4"
+                    checked={SelectAll}
+                    onClick={() => ISSelect(id)}
+                  />
                 </td>
-
                 <td className="px-6 py-4 font-medium text-gray-700">{id}</td>
                 <td className="px-6 py-4 text-gray-700">User {id}</td>
                 <td className="px-6 py-4 text-gray-700">Hotel {id}</td>
@@ -145,6 +201,7 @@ const BookingsAdminUI = () => {
         </table>
       </div>
     </div>
+    // {sele}
   );
 };
 
