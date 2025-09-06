@@ -139,9 +139,8 @@ const BookingsAdminUI = () => {
   for (let i = 0; i < usershotel.length; i++) {
     if (usershotel[i].user.includes(searchTerm.toLowerCase())) {
       searchArray.push(usershotel[i]);
-    }
-    else{
-      console.log('no users found')
+    } else {
+      console.log("no users found");
     }
   }
   console.log(searchArray.length <= 0 ? "No User's Found" : searchArray);
@@ -152,6 +151,20 @@ const BookingsAdminUI = () => {
     let UsersId = usershotel.map((index) => index);
     SetTotalselect(UsersId.length);
     SetselectAll((prev) => !prev);
+  };
+
+  // status checking
+  const Status = (CheckStatus) => {
+    // console.log(ChckStatus)
+    if (CheckStatus == "All") {
+      return console.log(usershotel);
+    }
+    const GetStatus = usershotel.filter((st) => st.status == CheckStatus);
+    if(GetStatus.length==0){
+      return console.log('no data found in the stauts is ',CheckStatus)
+    }
+    
+    console.log(` data of the ${CheckStatus} Status  is `,GetStatus );
   };
 
   return (
@@ -201,10 +214,10 @@ const BookingsAdminUI = () => {
           </div>
 
           <div className="flex gap-2 flex-wrap">
-            {["All", "Pending", "Approved", "Rejected"].map((status) => (
+            {["All", "Pending", "Confirmed", "Cancelled",].map((status) => (
               <button
                 key={status.id}
-                onClick={() => setFilterStatus(status)}
+                onClick={() => Status(status)}
                 className={`px-4 py-2 rounded ${
                   filterStatus === status
                     ? "bg-blue-600 text-white"
@@ -237,13 +250,6 @@ const BookingsAdminUI = () => {
         </div>
         {SelectAll && (
           <>
-            <div className="inline-block px-4 py-2 bg-blue-100 border border-blue-300 rounded-full text-blue-800 font-medium text-center">
-              <h3>
-                Total Selected: {TotalSelect} User{TotalSelect > 1 ? "s" : ""}
-              </h3>
-            </div>
-            <br />
-
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
               <div className="bg-white p-6 rounded-xl shadow-lg space-y-4 w-80">
                 <h2 className="text-lg font-bold text-gray-800">
@@ -251,7 +257,14 @@ const BookingsAdminUI = () => {
                 </h2>
                 <p className="text-gray-600">
                   Are you sure you want to delete all selected users
-                  {TotalSelect.length > 1 ? "s" : ""} ?
+                  <br />
+                  <div className=" px-4 py-2 bg-blue-100 border border-blue-300  text-blue-800 font-medium text-center">
+                    <h3>
+                      Total Selected: {TotalSelect} User
+                      {TotalSelect > 1 ? "s" : ""}
+                    </h3>
+                  </div>
+                  {/* <br /> */}
                 </p>
                 <div className="flex justify-end space-x-3">
                   <button
@@ -327,8 +340,14 @@ const BookingsAdminUI = () => {
                     ₹{data.price * 1000}
                   </td>
                   <td className="px-6 py-4">
-                    <span className="px-3 py-1 rounded-full text-sm font-semibold bg-yellow-100 text-yellow-800">
-                      Pending
+                    <span
+                      className={`px-3 py-1 rounded-full  font-semibold cursor-pointer ${
+                        data.status == "Confirmed"
+                          ? `bg-green-300 text-sm`
+                          : "bg-yellow-300"
+                      } text-yellow-800`}
+                    >
+                      {data.status}{" "}
                     </span>
                   </td>
                   <td className="px-6 py-4 flex gap-2 flex-wrap">
