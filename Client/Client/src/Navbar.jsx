@@ -118,14 +118,14 @@ function Navbar() {
             <div className="flex justify-between items-center h-16">
               {/* Logo */}
               <div className="flex-shrink-0 flex items-center">
-                <Link to="/admin/dashboard">
+                <Link to="/Admin">
                   <span className="text-xl font-bold text-white">Admin Panel</span>
                 </Link>
               </div>
 
               {/* Desktop Menu */}
               <div className="hidden md:flex space-x-6 items-center text-gray-200">
-                <Link to="/admin/dashboard" className="hover:text-blue-400 flex items-center gap-1">
+                <Link to="/Admin" className="hover:text-blue-400 flex items-center gap-1">
                   <FaChartLine /> Dashboard
                 </Link>
                 <Link to="/admin/hotels" className="hover:text-blue-400 flex items-center gap-1">
