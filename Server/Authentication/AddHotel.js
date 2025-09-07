@@ -45,30 +45,22 @@ router.get('/HotelBooking', async (req, res) => {
 });
 router.get("/BookingUser/Admin", async (req, res) => {
     try {
-        const email = 'tr565003@gmail.com'
-        // const email= 'owner.delhi@theleela.com'
+        const email = 'owner.delhi@theleela.com'
         const GetHotelBookingInfo = await Booking.find({})
         for (let i = 0; i < GetHotelBookingInfo.length; i++) {
 
             const HotelOwner = await Hotel.findOne({
                 "owner._id": new mongoose.Types.ObjectId(GetHotelBookingInfo[i].HotelOwner)
             });
-        //    res.json('HotelOwner,', HotelOwner)
-        console.log(HotelOwner.owner,'HotelOwner')
-        
 
-
-
+            // console.log(HotelOwner.owner._id,'HotelOwner.owner._id'); 
+            // if(){}else{}
         }
-        // res.json(GetHotelBookingInfo)
-    } catch (error) {
-        console.log(error.message)
+    } 
+    catch (error) 
+    {
+        console.log(error.message,'error message')
     }
-
-
-
-
-
 })
 
 module.exports = router;
