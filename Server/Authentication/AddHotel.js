@@ -45,21 +45,30 @@ router.get('/HotelBooking', async (req, res) => {
 });
 router.get("/BookingUser/Admin", async (req, res) => {
     try {
-        const email = 'owner.delhi@theleela.com'
-        const GetHotelBookingInfo = await Booking.find({})
-        for (let i = 0; i < GetHotelBookingInfo.length; i++) {
+        const {Email} =req.query
+        const GetId = await Hotel.findOne({ "owner.email": Email });
 
-            const HotelOwner = await Hotel.findOne({
-                "owner._id": new mongoose.Types.ObjectId(GetHotelBookingInfo[i].HotelOwner)
-            });
-
-            // console.log(HotelOwner.owner._id,'HotelOwner.owner._id'); 
-            // if(){}else{}
+        if (!GetId) {
+            return res.status(404).json({ message: "No hotel found for this email" });
         }
-    } 
-    catch (error) 
-    {
-        console.log(error.message,'error message')
+
+        const GetHotelBookingInfo = await Booking.find({ HotelOwner: GetId.owner._id });
+
+        let bookingDetails = [];
+
+        for (let i = 0; i < GetHotelBookingInfo.length; i++) {
+            const user = await User.findById(GetHotelBookingInfo[i].User);
+            bookingDetails.push({
+                booking: GetHotelBookingInfo[i],
+                user: user
+            });
+        }
+
+        res.json({ bookings: bookingDetails });
+
+    }
+    catch (error) {
+        console.log(error.message, 'error message')
     }
 })
 

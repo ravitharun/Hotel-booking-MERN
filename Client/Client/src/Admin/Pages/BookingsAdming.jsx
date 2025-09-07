@@ -1,15 +1,19 @@
 import React, { useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import Navbar from "../../Navbar";
+import { useEffect } from "react";
+import axios from "axios";
+import { email } from "../../AUTH/Email";
 
 const BookingsAdminUI = () => {
   const [searchTerm, setSearchTerm] = useState("");
+  const [UserBookingErrorMsg, setUserBookingErrorMsg] = useState("");
   const [filterStatus, setFilterStatus] = useState("All");
   const [SelectAll, SetselectAll] = useState(false);
   const [SingleSelect, SetSingleSelect] = useState(false);
   const [TotalSelect, SetTotalselect] = useState(0);
   // Sample booking counts
-  console.log(searchTerm, "searchTerm from the input format");
+
   const usershotel = [
     {
       id: 1,
@@ -143,7 +147,7 @@ const BookingsAdminUI = () => {
       console.log("no users found");
     }
   }
-  console.log(searchArray.length <= 0 ? "No User's Found" : searchArray);
+  // console.log(searchArray.length <= 0 ? "No User's Found" : searchArray);
 
   const totalBookings = 10;
   const statusCounts = { Pending: 3, Approved: 5, Rejected: 2 };
@@ -160,13 +164,33 @@ const BookingsAdminUI = () => {
       return console.log(usershotel);
     }
     const GetStatus = usershotel.filter((st) => st.status == CheckStatus);
-    if(GetStatus.length==0){
-      return console.log('no data found in the stauts is ',CheckStatus)
+    if (GetStatus.length == 0) {
+      return console.log("no data found in the stauts is ", CheckStatus);
     }
-    
-    console.log(` data of the ${CheckStatus} Status  is `,GetStatus );
-  };
 
+    console.log(` data of the ${CheckStatus} Status  is `, GetStatus);
+  };
+  useEffect(() => {
+    const Booking = async () => {
+      const response_booking = await axios.get(
+        "http://localhost:3000/Hotel/booking/BookingUser/Admin",
+        {
+          params: {
+            Email: email,
+            // Email: 'owner.delhi@theleela.com',
+          },
+        }
+      );
+      {
+        response_booking.data.bookings.length == 0
+          ? setUserBookingErrorMsg("No data Found yet")
+          : "";
+      }
+    };
+    Booking();
+  }, []);
+
+  console.log(UserBookingErrorMsg, "UserBookingErrorMsg");
   return (
     <>
       <Navbar></Navbar>
@@ -214,7 +238,7 @@ const BookingsAdminUI = () => {
           </div>
 
           <div className="flex gap-2 flex-wrap">
-            {["All", "Pending", "Confirmed", "Cancelled",].map((status) => (
+            {["All", "Pending", "Confirmed", "Cancelled"].map((status) => (
               <button
                 key={status.id}
                 onClick={() => Status(status)}
@@ -289,80 +313,90 @@ const BookingsAdminUI = () => {
         )}
 
         {/* Booking Table */}
-        <div className="overflow-x-auto">
-          <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
-            <thead className="bg-gray-50">
-              <tr>
-                {[
-                  "Bulk Action",
-                  "ID",
-                  "User",
-                  "Hotel",
-                  "Location",
-                  "Check-In",
-                  "Check-Out",
-                  "Rooms",
-                  "Price",
-                  "Status",
-                  "Actions",
-                ].map((header) => (
-                  <th
-                    key={header}
-                    className="px-6 py-3 text-left text-gray-600 font-medium uppercase tracking-wider text-sm"
-                  >
-                    {header}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {usershotel.map((data, id) => (
-                <tr
-                  key={id}
-                  className={`transition-all duration-200 bg-white hover:bg-gray-100`}
-                >
-                  <td className="px-6 py-4 flex justify-center items-center">
-                    <input
-                      type="checkbox"
-                      className="h-4 w-4"
-                      checked={SelectAll}
-                      onClick={() => ISSelect(id)}
-                    />
-                  </td>
-                  <td className="px-6 py-4 font-medium text-gray-700">{id}</td>
-                  <td className="px-6 py-4 text-gray-700">{data.user}</td>
-                  <td className="px-6 py-4 text-gray-700"> {data.hotel}</td>
-                  <td className="px-6 py-4 text-gray-700">{data.location}</td>
-                  <td className="px-6 py-4 text-gray-700">{data.checkIn}</td>
-                  <td className="px-6 py-4 text-gray-700">{data.checkOut}</td>
-                  <td className="px-6 py-4 text-gray-700">{data.status}</td>
-                  <td className="px-6 py-4 text-gray-700">
-                    ₹{data.price * 1000}
-                  </td>
-                  <td className="px-6 py-4">
-                    <span
-                      className={`px-3 py-1 rounded-full  font-semibold cursor-pointer ${
-                        data.status == "Confirmed"
-                          ? `bg-green-300 text-sm`
-                          : "bg-yellow-300"
-                      } text-yellow-800`}
+        {UserBookingErrorMsg ? (
+          <div className="flex justify-center items-center mt-4">
+            <span className="text-red-500 font-medium">
+              {UserBookingErrorMsg}
+            </span>
+          </div>
+        ) : (
+          <div className="overflow-x-auto">
+            <table className="min-w-full bg-white shadow-lg rounded-lg overflow-hidden">
+              <thead className="bg-gray-50">
+                <tr>
+                  {[
+                    "Bulk Action",
+                    "ID",
+                    "User",
+                    "Hotel",
+                    "Location",
+                    "Check-In",
+                    "Check-Out",
+                    "Rooms",
+                    "Price",
+                    "Status",
+                    "Actions",
+                  ].map((header) => (
+                    <th
+                      key={header}
+                      className="px-6 py-3 text-left text-gray-600 font-medium uppercase tracking-wider text-sm"
                     >
-                      {data.status}{" "}
-                    </span>
-                  </td>
-                  <td className="px-6 py-4 flex gap-2 flex-wrap">
-                    <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded shadow">
-                      Approve
-                    </button>
-                    <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded shadow">
-                      Reject
-                    </button>
-                  </td>
+                      {header}
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {usershotel.map((data, id) => (
+                  <tr
+                    key={id}
+                    className={`transition-all duration-200 bg-white hover:bg-gray-100`}
+                  >
+                    <td className="px-6 py-4 flex justify-center items-center">
+                      <input
+                        type="checkbox"
+                        className="h-4 w-4"
+                        checked={SelectAll}
+                        onClick={() => ISSelect(id)}
+                      />
+                    </td>
+                    <td className="px-6 py-4 font-medium text-gray-700">
+                      {id}
+                    </td>
+                    <td className="px-6 py-4 text-gray-700">{data.user}</td>
+                    <td className="px-6 py-4 text-gray-700"> {data.hotel}</td>
+                    <td className="px-6 py-4 text-gray-700">{data.location}</td>
+                    <td className="px-6 py-4 text-gray-700">{data.checkIn}</td>
+                    <td className="px-6 py-4 text-gray-700">{data.checkOut}</td>
+                    <td className="px-6 py-4 text-gray-700">{data.status}</td>
+                    <td className="px-6 py-4 text-gray-700">
+                      ₹{data.price * 1000}
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`px-3 py-1 rounded-full  font-semibold cursor-pointer ${
+                          data.status == "Confirmed"
+                            ? `bg-green-300 text-sm`
+                            : "bg-yellow-300"
+                        } text-yellow-800`}
+                      >
+                        {data.status}{" "}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 flex gap-2 flex-wrap">
+                      <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded shadow">
+                        Approve
+                      </button>
+                      <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded shadow">
+                        Reject
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
       </div>
       {/* // {sele}
     //  */}
