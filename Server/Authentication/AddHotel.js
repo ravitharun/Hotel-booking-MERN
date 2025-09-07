@@ -1,5 +1,6 @@
 const express = require("express");
 const { Hotel, User, Booking } = require("../bin/DataBase");
+const { default: mongoose } = require("mongoose");
 const router = express.Router();
 
 let RemaningRoomsLeft = 10
@@ -41,8 +42,33 @@ router.get('/HotelBooking', async (req, res) => {
         console.error(error)
         return res.json({ message: error.message })
     }
-
-
 });
+router.get("/BookingUser/Admin", async (req, res) => {
+    try {
+        const email = 'tr565003@gmail.com'
+        // const email= 'owner.delhi@theleela.com'
+        const GetHotelBookingInfo = await Booking.find({})
+        for (let i = 0; i < GetHotelBookingInfo.length; i++) {
+
+            const HotelOwner = await Hotel.findOne({
+                "owner._id": new mongoose.Types.ObjectId(GetHotelBookingInfo[i].HotelOwner)
+            });
+        //    res.json('HotelOwner,', HotelOwner)
+        console.log(HotelOwner.owner,'HotelOwner')
+        
+
+
+
+        }
+        // res.json(GetHotelBookingInfo)
+    } catch (error) {
+        console.log(error.message)
+    }
+
+
+
+
+
+})
 
 module.exports = router;
