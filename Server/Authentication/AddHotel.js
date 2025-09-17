@@ -72,4 +72,15 @@ router.get("/BookingUser/Admin", async (req, res) => {
     }
 })
 
+router.put('/BookingStatus/Admin',(req,res)=>{
+    try{
+const {CheckStatus,id}=req.body;
+
+console.log({CheckStatus,id})
+    }
+    catch(err){
+        return res.json({meessage:err.message})
+    }
+})
+
 module.exports = router;

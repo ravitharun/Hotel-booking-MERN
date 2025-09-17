@@ -193,12 +193,22 @@ const BookingsAdminUI = () => {
 
   console.log(UserBookingErrorMsg, "UserBookingErrorMsg");
 
+  const booking = async (CheckStatus, id) => {
+    try{
 
-  const BookingStatus=async(CheckStatus)=>
-  {
-    console.log(CheckStatus)
-  
-  }
+    // console.log(CheckStatus, id)
+  const HotelBookingResponse = await axios.put(
+        "http://localhost:3000/Hotel/booking/BookingStatus/Admin",
+        {
+          CheckStatus: CheckStatus,
+          id: id,
+        }
+      );
+      console.log(HotelBookingResponse.data.message)
+    }
+   catch(err){
+    alert(err.message)
+   }
   return (
     <>
       <Navbar></Navbar>
@@ -392,10 +402,16 @@ const BookingsAdminUI = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 flex gap-2 flex-wrap">
-                      <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded shadow" onClick={ BookingStatus('Approve',data._id)}>
+                      <button
+                        className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded shadow"
+                        onClick={() => booking("Approve", id)}
+                      >
                         Approve
                       </button>
-                      <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded shadow" onClick={BookingStatus('Reject',data._id)}>
+                      <button
+                        className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded shadow"
+                        onClick={() => booking("Reject", id)}
+                      >
                         Reject
                       </button>
                     </td>
@@ -406,10 +422,9 @@ const BookingsAdminUI = () => {
           </div>
         )}
       </div>
-      {/* // {sele}
-    //  */}
+
     </>
   );
+  export default BookingsAdminUI;
 };
-
-export default BookingsAdminUI;
+// }
