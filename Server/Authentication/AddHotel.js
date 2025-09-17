@@ -77,6 +77,7 @@ router.put('/BookingStatus/Admin',(req,res)=>{
 const {CheckStatus,id}=req.body;
 
 console.log({CheckStatus,id})
+return res.json({message:'data go it from ui '})
     }
     catch(err){
         return res.json({meessage:err.message})

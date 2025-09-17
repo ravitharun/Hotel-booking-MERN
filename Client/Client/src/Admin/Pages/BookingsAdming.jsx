@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import Navbar from "../../Navbar";
-import { useEffect } from "react";
 import axios from "axios";
 import { email } from "../../AUTH/Email";
 
@@ -194,21 +193,19 @@ const BookingsAdminUI = () => {
   console.log(UserBookingErrorMsg, "UserBookingErrorMsg");
 
   const booking = async (CheckStatus, id) => {
-    try{
-
-    // console.log(CheckStatus, id)
-  const HotelBookingResponse = await axios.put(
+    try {
+      // console.log(CheckStatus, id)
+      const HotelBookingResponse = await axios.put(
         "http://localhost:3000/Hotel/booking/BookingStatus/Admin",
-        {
-          CheckStatus: CheckStatus,
-          id: id,
-        }
+       {
+        CheckStatus,id
+       }
       );
-      console.log(HotelBookingResponse.data.message)
+      console.log(HotelBookingResponse.data.message);
+    } catch (err) {
+      alert(err.message);
     }
-   catch(err){
-    alert(err.message)
-   }
+  };
   return (
     <>
       <Navbar></Navbar>
@@ -422,9 +419,7 @@ const BookingsAdminUI = () => {
           </div>
         )}
       </div>
-
     </>
   );
-  export default BookingsAdminUI;
 };
-// }
+export default BookingsAdminUI;
