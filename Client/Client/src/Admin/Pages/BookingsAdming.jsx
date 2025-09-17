@@ -164,6 +164,7 @@ const BookingsAdminUI = () => {
       return console.log(usershotel);
     }
     const GetStatus = usershotel.filter((st) => st.status == CheckStatus);
+
     if (GetStatus.length == 0) {
       return console.log("no data found in the stauts is ", CheckStatus);
     }
@@ -191,6 +192,13 @@ const BookingsAdminUI = () => {
   }, []);
 
   console.log(UserBookingErrorMsg, "UserBookingErrorMsg");
+
+
+  const BookingStatus=async(CheckStatus)=>
+  {
+    console.log(CheckStatus)
+  
+  }
   return (
     <>
       <Navbar></Navbar>
@@ -384,10 +392,10 @@ const BookingsAdminUI = () => {
                       </span>
                     </td>
                     <td className="px-6 py-4 flex gap-2 flex-wrap">
-                      <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded shadow">
+                      <button className="bg-green-600 hover:bg-green-700 text-white px-3 py-1 rounded shadow" onClick={ BookingStatus('Approve',data._id)}>
                         Approve
                       </button>
-                      <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded shadow">
+                      <button className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded shadow" onClick={BookingStatus('Reject',data._id)}>
                         Reject
                       </button>
                     </td>
