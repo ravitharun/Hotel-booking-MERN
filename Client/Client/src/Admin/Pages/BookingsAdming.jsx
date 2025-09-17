@@ -136,6 +136,28 @@ const BookingsAdminUI = () => {
       status: "Confirmed",
     },
   ];
+// getting the bookings data of useer whohad booked api  -->http://localhost:3000/Hotel/booking/BookingUser/Admin
+useEffect(() => {
+  const GetBookingData=async()=>{
+
+    try{
+      const getBookinInfo=await axios.get('http://localhost:3000/Hotel/booking/BookingUser/Admin',{
+        paramas:{
+          email:email
+        }
+      })
+      console.log('getBookinInfo.data.message',getBookinInfo.data.message)
+      setUserBookingErrorMsg(getBookinInfo)
+}
+catch(err){
+  console.log(err.message)
+}
+}
+})
+
+
+
+
 
   // checking the input Filed
   let searchArray = [];
@@ -190,7 +212,7 @@ const BookingsAdminUI = () => {
     Booking();
   }, []);
 
-  console.log(UserBookingErrorMsg, "UserBookingErrorMsg");
+ 
 
   const booking = async (CheckStatus, id) => {
     try {

@@ -43,9 +43,11 @@ router.get('/HotelBooking', async (req, res) => {
         return res.json({ message: error.message })
     }
 });
+// these will get the booking based on email to show in ui
 router.get("/BookingUser/Admin", async (req, res) => {
     try {
-        const {Email} =req.query
+        const { Email } = req.query
+        console.log(Email, 'Email')
         const GetId = await Hotel.findOne({ "owner.email": Email });
 
         if (!GetId) {
@@ -63,24 +65,32 @@ router.get("/BookingUser/Admin", async (req, res) => {
                 user: user
             });
         }
+        console.log(bookingDetails, 'bookingDetails bfr if -else conditon')
+        if (bookingDetails.length <= 0) {
+            console.log(bookingDetails, 'bookingDetails')
+            res.json({ bookings: bookingDetails });
 
-        res.json({ bookings: bookingDetails });
+        }
+        else {
+            console.log('No booking are found')
+            res.json({ bookings: "No booking are found!" });
+        }
 
     }
     catch (error) {
         console.log(error.message, 'error message')
     }
 })
+// booking status (approve/reject) and send email to that approve or reject 
+router.put('/BookingStatus/Admin', (req, res) => {
+    try {
+        const { CheckStatus, id } = req.body;
 
-router.put('/BookingStatus/Admin',(req,res)=>{
-    try{
-const {CheckStatus,id}=req.body;
-
-console.log({CheckStatus,id})
-return res.json({message:'data go it from ui '})
+        console.log({ CheckStatus, id })
+        return res.json({ message: 'data go it from ui ' })
     }
-    catch(err){
-        return res.json({meessage:err.message})
+    catch (err) {
+        return res.json({ meessage: err.message })
     }
 })
 
