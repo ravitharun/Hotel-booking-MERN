@@ -136,28 +136,27 @@ const BookingsAdminUI = () => {
       status: "Confirmed",
     },
   ];
-// getting the bookings data of useer whohad booked api  -->http://localhost:3000/Hotel/booking/BookingUser/Admin
-useEffect(() => {
-  const GetBookingData=async()=>{
-
-    try{
-      const getBookinInfo=await axios.get('http://localhost:3000/Hotel/booking/BookingUser/Admin',{
-        paramas:{
-          email:email
-        }
-      })
-      console.log('getBookinInfo.data.message',getBookinInfo.data.message)
-      setUserBookingErrorMsg(getBookinInfo.data.message)
-}
-catch(err){
-  console.log(err.message)
-}
-}
-})
-
-
-
-
+  // getting the bookings data of useer whohad booked api  -->http://localhost:3000/Hotel/booking/BookingUser/Admin
+  useEffect(() => {
+    const GetBookingData = async () => {
+      try {
+        alert("hi");
+        const getBookinInfo = await axios.get(
+          "http://localhost:3000/Hotel/booking/BookingUser/Admin",
+          {
+            paramas: {
+              Email: email,
+            },
+          }
+        );
+        console.log("getBookinInfo.data.message", getBookinInfo.data.message);
+        setUserBookingErrorMsg(getBookinInfo.data.message);
+      } catch (err) {
+        console.log(err.message,'err.message ');
+      }
+    };
+    GetBookingData();
+  }, []);
 
   // checking the input Filed
   let searchArray = [];
@@ -194,6 +193,7 @@ catch(err){
   };
   useEffect(() => {
     const Booking = async () => {
+try{
       const response_booking = await axios.get(
         "http://localhost:3000/Hotel/booking/BookingUser/Admin",
         {
@@ -203,25 +203,26 @@ catch(err){
           },
         }
       );
-      {
-        response_booking.data.bookings.length == 0
-          ? setUserBookingErrorMsg("No data Found yet")
-          : "";
-      }
+      console.log(response_booking,'response_booking')
+     
     };
+}
+catch(err){
+  console.log(err)
+
+}
     Booking();
   }, []);
-
- 
 
   const booking = async (CheckStatus, id) => {
     try {
       // console.log(CheckStatus, id)
       const HotelBookingResponse = await axios.put(
         "http://localhost:3000/Hotel/booking/BookingStatus/Admin",
-       {
-        CheckStatus,id
-       }
+        {
+          CheckStatus,
+          id,
+        }
       );
       console.log(HotelBookingResponse.data.message);
     } catch (err) {
