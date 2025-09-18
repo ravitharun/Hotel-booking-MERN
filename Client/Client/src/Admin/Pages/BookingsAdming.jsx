@@ -147,7 +147,7 @@ useEffect(() => {
         }
       })
       console.log('getBookinInfo.data.message',getBookinInfo.data.message)
-      setUserBookingErrorMsg(getBookinInfo)
+      setUserBookingErrorMsg(getBookinInfo.data.message)
 }
 catch(err){
   console.log(err.message)

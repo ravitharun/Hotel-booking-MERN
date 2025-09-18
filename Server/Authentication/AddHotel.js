@@ -49,13 +49,13 @@ router.get("/BookingUser/Admin", async (req, res) => {
         const { Email } = req.query
         console.log(Email, 'Email')
         const GetId = await Hotel.findOne({ "owner.email": Email });
-
+        console.log(GetId, 'GetId')
         if (!GetId) {
             return res.status(404).json({ message: "No hotel found for this email" });
         }
 
         const GetHotelBookingInfo = await Booking.find({ HotelOwner: GetId.owner._id });
-
+        console.log(GetHotelBookingInfo, 'GetHotelBookingInfo')
         let bookingDetails = [];
 
         for (let i = 0; i < GetHotelBookingInfo.length; i++) {
@@ -67,13 +67,15 @@ router.get("/BookingUser/Admin", async (req, res) => {
         }
         console.log(bookingDetails, 'bookingDetails bfr if -else conditon')
         if (bookingDetails.length <= 0) {
-            console.log(bookingDetails, 'bookingDetails')
-            res.json({ bookings: bookingDetails });
+
+            console.log('No booking are found')
+            res.json({ bookings: "No booking are found!" });
 
         }
         else {
-            console.log('No booking are found')
-            res.json({ bookings: "No booking are found!" });
+            console.log(bookingDetails, 'bookingDetails')
+            res.json({ bookings: bookingDetails });
+
         }
 
     }
@@ -93,5 +95,14 @@ router.put('/BookingStatus/Admin', (req, res) => {
         return res.json({ meessage: err.message })
     }
 })
-
+router.get("/GETALLBOOKInga", async (req, res) => {
+    try {
+        const GetBookingList = await Booking.find()
+        const HotelBooking=await 
+        return res.json({ data: GetBookingList })
+    }
+    catch (err) {
+        return res.json({ message: err.message })
+    }
+})
 module.exports = router;

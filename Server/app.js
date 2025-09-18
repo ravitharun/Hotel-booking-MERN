@@ -5,11 +5,12 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const cors = require("cors");
 
+// ROUTES
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-const auth = require("./Authentication/Auth");
-const Hotelbooking = require("./Authentication/AddHotel");
-// const hotelRoutes = require("./Authentication/AddHotel");
+const authRouter = require("./Authentication/Auth");
+const hotelBookingRouter = require("./Authentication/AddHotel");
+
 var app = express();
 
 // view engine setup
@@ -27,10 +28,12 @@ app.use(express.static(path.join(__dirname, "public")));
 // ROUTES
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-app.use("/Hotel", auth); // 👈 this will expose /Hotel/CreateAccountUser
-app.use("/Hotel/booking", Hotelbooking); // 👈 this will expose /Hotel/CreateAccountUser
+app.use("/Hotel", authRouter);          // /Hotel/CreateAccountUser
+app.use("/Hotel/booking", hotelBookingRouter); // /Hotel/booking/addBooking
 
-// catch 404 and forward to error handler
+console.log("=== SERVER RELOADED ==="); // confirm nodemon reload
+
+// catch 404
 app.use(function (req, res, next) {
   res.status(404).send("Not Found");
 });
