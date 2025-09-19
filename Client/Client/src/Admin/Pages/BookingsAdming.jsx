@@ -193,26 +193,23 @@ const BookingsAdminUI = () => {
   };
   useEffect(() => {
     const Booking = async () => {
-try{
-      const response_booking = await axios.get(
+      try{
+        const response_booking = await axios.get(
         "http://localhost:3000/Hotel/booking/BookingUser/Admin",
         {
           params: {
             Email: email,
-            // Email: 'owner.delhi@theleela.com',
           },
         }
       );
-      console.log(response_booking,'response_booking')
-     
-    };
+      setUserBookingErrorMsg(response_booking.data.message)
+      }
+      catch(err){
+        return  err.message;
+      }
 }
-catch(err){
-  console.log(err)
-
-}
-    Booking();
-  }, []);
+Booking();
+}, []);
 
   const booking = async (CheckStatus, id) => {
     try {

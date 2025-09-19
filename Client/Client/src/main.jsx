@@ -12,11 +12,13 @@ import MyProfile from "./User/MyProfile";
 import Logout from "./AUTH/Logout";
 import AdminHomepage from "./Admin/Pages/AdminHomepage";
 import BookingsAdming from "./Admin/Pages/BookingsAdming";
+import AdminManageHotel from "./Admin/Pages/AdminManageHotel";
 createRoot(document.getElementById("root")).render(
   <Router>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Admin" element={<AdminHomepage />} />
+      <Route path="/admin/hotels" element={<AdminManageHotel />} />
       <Route path="/Admin/Bookings" element={<BookingsAdming />} />
       <Route path="/Logout" element={<Logout />} />
       <Route path="/profile" element={<MyProfile />} />

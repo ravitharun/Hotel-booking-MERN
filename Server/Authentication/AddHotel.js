@@ -93,4 +93,19 @@ router.put('/BookingStatus/Admin', (req, res) => {
     }
 })
 
+router.get('/ManageHotel/Admin',async(req,res)=>{
+    try{
+const {Email}=req.query;
+console.log(Email)
+if(!Email){
+    return res.json({message:'Some thing went wrong '})
+}
+const GetHotelAdmin=await Hotel.find({Email:Email})
+console.log(GetHotelAdmin,'GetHotelAdmin')
+    }
+    catch(err){
+        res.json({message:err.message})
+    }
+})
+
 module.exports = router;
