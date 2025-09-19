@@ -62,7 +62,7 @@ router.get("/BookingUser/Admin", async (req, res) => {
                 user: user
             });
         }
-        
+
         if (bookingDetails.length <= 0) {
 
             console.log('No booking are found')
@@ -93,18 +93,23 @@ router.put('/BookingStatus/Admin', (req, res) => {
     }
 })
 
-router.get('/ManageHotel/Admin',async(req,res)=>{
-    try{
-const {Email}=req.query;
-console.log(Email)
-if(!Email){
-    return res.json({message:'Some thing went wrong '})
-}
-const GetHotelAdmin=await Hotel.find({Email:Email})
-console.log(GetHotelAdmin,'GetHotelAdmin')
+router.get('/ManageHotel/Admin', async (req, res) => {
+    try {
+        const { Email } = req.query;
+        console.log(Email)
+        if (!Email) {
+            return res.json({ message: 'Some thing went wrong ' })
+        }
+        const GetHotelAdmin = await Hotel.find({ 'owner.email': Email })
+        console.log(GetHotelAdmin.length, 'GetHotelAdmin')
+        if (GetHotelAdmin.length == 0) {
+            return res.json({ message: 'No Hotels Added' })
+        }
+        
+        return res.json({ message: GetHotelAdmin })
     }
-    catch(err){
-        res.json({message:err.message})
+    catch (err) {
+        res.json({ message: err.message })
     }
 })
 
