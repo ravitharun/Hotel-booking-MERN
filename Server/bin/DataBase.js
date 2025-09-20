@@ -77,9 +77,6 @@ const hotelSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
-
-
-
 // Create a Hotel model
 const User = mongoose.model('UserLoginData', UserSchema);
 const Booking = mongoose.model('BookingSchema', bookingSchema);

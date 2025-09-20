@@ -3,13 +3,15 @@ import Navbar from "../../Navbar";
 import axios from "axios";
 import { email } from "../../AUTH/Email";
 import { FaLocationArrow } from "react-icons/fa";
+import Loader from "../Loaders/Loader";
 
 function AdminManageHotel() {
   const [GetHotelaAdmin, setGetHotelaAdmin] = useState([]);
-
+  const [isLoader, SetLoader] = useState(false);
   useEffect(() => {
     const HotelManage = async () => {
       try {
+        SetLoader(true);
         const GetHotelResponse = await axios.get(
           "http://localhost:3000/Hotel/booking/ManageHotel/Admin",
           { params: { Email: email } }
@@ -18,6 +20,9 @@ function AdminManageHotel() {
         console.log(GetHotelResponse.data.message);
       } catch (error) {
         console.error("Error fetching hotels:", error);
+      }
+      finally{
+        SetLoader(false);
       }
     };
     HotelManage();
@@ -30,7 +35,11 @@ function AdminManageHotel() {
       <br />
       <br />
       <br />
+{isLoader?<Loader isLoader={isLoader}></Loader>:
       <div className="min-h-screen px-6 mt-5">
+
+
+
         {GetHotelaAdmin.length === 0 ? (
           <h1 className="text-3xl font-bold text-center mt-20 text-gray-800">
             No Hotels Added
@@ -116,7 +125,7 @@ function AdminManageHotel() {
             </div>
           </div>
         )}
-      </div>
+      </div>}  
     </>
   );
 }

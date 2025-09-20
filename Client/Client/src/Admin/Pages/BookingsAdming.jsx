@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import Navbar from "../../Navbar";
 import axios from "axios";
 import { email } from "../../AUTH/Email";
-
+import Loader from "../Loaders/Loader";
 const BookingsAdminUI = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [UserBookingErrorMsg, setUserBookingErrorMsg] = useState("");
@@ -11,6 +11,7 @@ const BookingsAdminUI = () => {
   const [SelectAll, SetselectAll] = useState(false);
   const [SingleSelect, SetSingleSelect] = useState(false);
   const [TotalSelect, SetTotalselect] = useState(0);
+   const [isLoader, SetLoader] = useState(false);
   // Sample booking counts
 
   const usershotel = [
@@ -140,7 +141,7 @@ const BookingsAdminUI = () => {
   useEffect(() => {
     const GetBookingData = async () => {
       try {
-        alert("hi");
+        SetLoader(true)
         const getBookinInfo = await axios.get(
           "http://localhost:3000/Hotel/booking/BookingUser/Admin",
           {
@@ -150,9 +151,13 @@ const BookingsAdminUI = () => {
           }
         );
         console.log("getBookinInfo.data.message", getBookinInfo.data.message);
+        console.log("getBookinInfo.data.message", getBookinInfo.data.userInfo);
         setUserBookingErrorMsg(getBookinInfo.data.message);
       } catch (err) {
         console.log(err.message,'err.message ');
+      }
+      finally{
+        SetLoader(false)
       }
     };
     GetBookingData();
@@ -229,6 +234,9 @@ Booking();
   return (
     <>
       <Navbar></Navbar>
+
+
+      {isLoader?<Loader isLoader={isLoader}></Loader>:
       <div className="p-6">
         <h2 className="text-3xl font-bold mb-4 text-gray-800">
           Hotel Bookings
@@ -438,7 +446,7 @@ Booking();
             </table>
           </div>
         )}
-      </div>
+      </div>}
     </>
   );
 };

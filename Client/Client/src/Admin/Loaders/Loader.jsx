@@ -1,60 +1,87 @@
 import React from "react";
 
-function Loader() {
+function Loader({isLoader}) {
+  console.log(isLoader);
+  if(!isLoader){
+    return null;
+  }
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-yellow-100 via-yellow-200 to-yellow-300">
-      <div className="relative bg-white/40 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20 flex flex-col items-center">
-        {/* Hotel Bell Icon */}
-        <div className="w-20 h-20 rounded-full bg-yellow-500 flex items-center justify-center shadow-lg animate-bounce">
-          <svg
-            className="w-12 h-12 text-white"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth={2}
-            viewBox="0 0 24 24"
-          >
-            <path
-              d="M12 3v2m0 0a7 7 0 017 7v2H5v-2a7 7 0 017-7zm-7 9h14a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 012-2z"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-yellow-50 via-yellow-100 to-yellow-200">
+      {/* Loader Card */}
+      <div className="relative bg-white/60 backdrop-blur-xl p-10 rounded-3xl shadow-2xl border border-white/30 flex flex-col items-center text-center">
+        
+        {/* Rotating Circle with Hotel Icon */}
+        <div className="relative w-24 h-24 flex items-center justify-center">
+          <div className="absolute inset-0 rounded-full border-4 border-dashed border-yellow-500 animate-spin-slow"></div>
+          <div className="w-16 h-16 rounded-full bg-yellow-500 flex items-center justify-center shadow-lg">
+            <svg
+              className="w-10 h-10 text-white"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={2}
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M12 3v2m0 0a7 7 0 017 7v2H5v-2a7 7 0 017-7zm-7 9h14a2 2 0 012 2v2a2 2 0 01-2 2H5a2 2 0 01-2-2v-2a2 2 0 012-2z"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
         </div>
 
-        {/* Animated Dots */}
-        <div className="flex justify-center mt-6 space-x-3">
-          <span
-            className="w-3 h-3 bg-yellow-400 rounded-full animate-bounce"
-            style={{ animationDelay: "0s" }}
-          ></span>
-          <span
-            className="w-3 h-3 bg-yellow-500 rounded-full animate-bounce"
-            style={{ animationDelay: "0.2s" }}
-          ></span>
-          <span
-            className="w-3 h-3 bg-yellow-600 rounded-full animate-bounce"
-            style={{ animationDelay: "0.4s" }}
-          ></span>
-        </div>
+        {/* Main Loading Text */}
+        <p className="mt-8 text-xl font-bold text-yellow-800 bg-gradient-to-r from-yellow-600 via-yellow-400 to-yellow-600 bg-clip-text text-transparent animate-shimmer">
+        Hang tight, we’re almost there...
 
-        {/* Loading Text */}
-        <p className="mt-6 text-lg sm:text-xl font-semibold text-yellow-800 animate-pulse text-center">
-          Loading Admin Dashboard...
+        </p>
+
+        {/* Subtext */}
+        <p className="mt-2 text-sm sm:text-base text-gray-700 animate-fade">
+          Loading the page...
         </p>
 
         {/* Progress Bar */}
-        <div className="w-48 h-2 mt-6 bg-yellow-200 rounded-full overflow-hidden">
-          <div className="h-full bg-yellow-600 animate-[progress_2s_ease-in-out_infinite]" />
+        <div className="w-56 h-3 mt-6 bg-yellow-200 rounded-full overflow-hidden relative">
+          <div className="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-600 to-yellow-400 animate-progress"></div>
         </div>
       </div>
 
-      {/* Keyframes for progress bar */}
+      {/* Animations */}
       <style>
         {`
-          @keyframes progress {
-            0% { width: 0%; }
-            50% { width: 80%; }
-            100% { width: 0%; }
+          .animate-spin-slow {
+            animation: spin 3s linear infinite;
+          }
+          @keyframes spin {
+            to { transform: rotate(360deg); }
+          }
+
+          .animate-shimmer {
+            background-size: 200% auto;
+            animation: shimmer 2s linear infinite;
+          }
+          @keyframes shimmer {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+          }
+
+          .animate-progress {
+            width: 50%;
+            animation: progress-move 2s ease-in-out infinite;
+          }
+          @keyframes progress-move {
+            0% { left: -50%; }
+            50% { left: 100%; }
+            100% { left: -50%; }
+          }
+
+          .animate-fade {
+            animation: fadeInOut 2s ease-in-out infinite;
+          }
+          @keyframes fadeInOut {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
           }
         `}
       </style>

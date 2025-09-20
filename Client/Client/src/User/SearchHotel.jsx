@@ -96,7 +96,7 @@ export default function SearchHotelPage() {
     ) {
       return setSearcherror(GetHotelLocationdata.data.message, "error msg");
     }
-    setSearcherror(GetHotelLocationdata.data.message);
+    setFilteredHotels(GetHotelLocationdata.data.message);
     location.reload();
   };
 

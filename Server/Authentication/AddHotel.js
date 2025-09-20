@@ -46,40 +46,44 @@ router.get('/HotelBooking', async (req, res) => {
 // these will get the booking based on email to show in ui
 router.get("/BookingUser/Admin", async (req, res) => {
     try {
-        const { Email } = req.query
-        console.log(Email, 'Email')
-        const GetId = await Hotel.findOne({ "owner.email": Email });
-        if (!GetId) {
-            return res.status(404).json({ message: "No hotel found for this email" });
-        }
-        const GetHotelBookingInfo = await Booking.find({ HotelOwner: GetId.owner._id });
-        let bookingDetails = [];
+        const { Email } = req.query;
 
-        for (let i = 0; i < GetHotelBookingInfo.length; i++) {
-            const user = await User.findById(GetHotelBookingInfo[i].User);
-            bookingDetails.push({
-                booking: GetHotelBookingInfo[i],
-                user: user
-            });
+        // Find all hotels owned by this email
+        const hotels = await Hotel.find({ 'owner.email': Email });
+
+        if (hotels.length === 0) {
+            return res.status(404).json({ message: "No hotels found for this email" });
         }
 
-        if (bookingDetails.length <= 0) {
+        let allBookings = [];
 
-            console.log('No booking are found')
-            res.json({ message: "No booking are found!" });
-
-        }
-        else {
-            console.log(bookingDetails, 'bookingDetails')
-            res.json({ bookings: bookingDetails });
-
+        for (let i = 0; i < hotels.length; i++) {
+            const hotelBookings = await Booking.find({ HotelOwner: hotels[i].owner._id });
+            allBookings = allBookings.concat(hotelBookings);
         }
 
+        if (allBookings.length === 0) {
+            return res.json({ message: "No bookings found for this owner's hotels" });
+        }
+        let userInfoArray = [];
+
+        for (let i = 0; i < allBookings.length; i++) {
+            const GetUserInfo = await User.find({ _id: allBookings[i].User });
+            userInfoArray.push(GetUserInfo[0]); // push single user document
+        }
+
+        console.log(allBookings, "All bookings");
+        console.log(userInfoArray, "User Info");
+
+        res.json({ bookings: allBookings, userInfo: userInfoArray });
+
+
+    } catch (error) {
+        console.error(error.message, "error message");
+        res.status(500).json({ message: "Server error" });
     }
-    catch (error) {
-        console.log(error.message, 'error message')
-    }
-})
+});
+
 // booking status (approve/reject) and send email to that approve or reject 
 router.put('/BookingStatus/Admin', (req, res) => {
     try {
@@ -101,11 +105,11 @@ router.get('/ManageHotel/Admin', async (req, res) => {
             return res.json({ message: 'Some thing went wrong ' })
         }
         const GetHotelAdmin = await Hotel.find({ 'owner.email': Email })
-        console.log(GetHotelAdmin.length, 'GetHotelAdmin')
+        console.log(GetHotelAdmin, 'GetHotelAdmin')
         if (GetHotelAdmin.length == 0) {
             return res.json({ message: 'No Hotels Added' })
         }
-        
+
         return res.json({ message: GetHotelAdmin })
     }
     catch (err) {
