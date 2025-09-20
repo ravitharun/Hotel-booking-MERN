@@ -80,7 +80,7 @@ function AdminManageHotel() {
                       <p className="text-sm text-gray-700">
                         ⭐ Rating:{" "}
                         <span className="font-semibold text-yellow-500">
-                          {item.Rating}
+                          {item.rating}/5
                         </span>
                       </p>
                     </div>
