@@ -138,30 +138,31 @@ const BookingsAdminUI = () => {
     },
   ];
   // getting the bookings data of useer whohad booked api  -->http://localhost:3000/Hotel/booking/BookingUser/Admin
-  useEffect(() => {
-    const GetBookingData = async () => {
-      try {
-        SetLoader(true)
-        const getBookinInfo = await axios.get(
-          "http://localhost:3000/Hotel/booking/BookingUser/Admin",
-          {
-            paramas: {
-              Email: email,
-            },
-          }
-        );
-        console.log("getBookinInfo.data.message", getBookinInfo.data.message);
-        console.log("getBookinInfo.data.message", getBookinInfo.data.userInfo);
-        setUserBookingErrorMsg(getBookinInfo.data.message);
-      } catch (err) {
-        console.log(err.message,'err.message ');
-      }
-      finally{
-        SetLoader(false)
-      }
-    };
+useEffect(() => {
+  const GetBookingData = async () => {
+    try {
+      SetLoader(true);
+      const getBookinInfo = await axios.get(
+        "http://localhost:3000/Hotel/booking/BookingUser/Admin",
+        {
+          params: { Email: email }, // ✅ correct key
+        }
+      );
+      console.log(getBookinInfo.data, "getBookinInfo");
+      setUserBookingErrorMsg(getBookinInfo.data.message);
+    } catch (err) {
+      console.error("Axios Error:", err.message);
+    } finally {
+      SetLoader(false);
+    }
+  };
+
+  if (email) {
     GetBookingData();
-  }, []);
+  }
+}, [email]);
+
+
 
   // checking the input Filed
   let searchArray = [];
