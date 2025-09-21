@@ -68,13 +68,12 @@ router.get("/BookingUser/Admin", async (req, res) => {
         let userInfoArray = [];
 
         for (let i = 0; i < allBookings.length; i++) {
-            const GetUserInfo = await User.find({ _id: allBookings[i].User });
+            const GetUserInfo = await User.find({ _id: allBookings[i].User }).select("FirstName");
             userInfoArray.push(GetUserInfo[0]); // push single user document
         }
 
-        console.log(allBookings, "All bookings");
-        console.log(userInfoArray, "User Info");
-
+        
+      
         res.json({ bookings: allBookings, userInfo: userInfoArray });
 
 

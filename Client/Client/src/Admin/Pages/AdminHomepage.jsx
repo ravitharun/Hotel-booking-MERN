@@ -9,6 +9,7 @@ import {
   FaTimes,
 } from "react-icons/fa";
 import Loader from "../Loaders/Loader";
+import { Link } from "react-router-dom";
 
 const bookings = [
   { id: 1, user: "John Doe", hotel: "Ocean View", status: "Approved", date: "2025-09-05" },
@@ -32,18 +33,22 @@ function AdminHomepage() {
 
           {/* Navigation */}
           <nav className="flex-1 space-y-2 px-4">
+            <>
+            <Link to='/Admin'>
             <a
-              href="#"
               className="flex items-center gap-3 px-4 py-2 rounded-lg font-semibold text-blue-600 bg-blue-100 hover:shadow-md hover:scale-[1.02] transition-all"
-            >
+              >
               <FaClipboardList /> <span>Bookings</span>
             </a>
+              </Link>
+
+              <Link to='/admin/hotels'>
             <a
-              href="#"
-              className="flex items-center gap-3 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:scale-[1.02] transition-all"
-            >
+             className="flex items-center gap-3 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:scale-[1.02] transition-all"
+             >
               <FaHotel /> <span>Hotels</span>
             </a>
+              </Link>
             <a
               href="#"
               className="flex items-center gap-3 px-4 py-2 rounded-lg text-gray-700 hover:bg-gray-100 hover:scale-[1.02] transition-all"
@@ -56,8 +61,8 @@ function AdminHomepage() {
             >
               <FaMoneyBill /> <span>Reports</span>
             </a>
+            </>
           </nav>
-
           {/* Sidebar Footer */}
           <div className="px-6 mt-8 text-sm text-gray-500">
             © 2025 Hotel Admin

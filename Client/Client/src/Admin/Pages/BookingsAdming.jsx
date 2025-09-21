@@ -13,6 +13,7 @@ const BookingsAdminUI = () => {
   const [TotalSelect, SetTotalselect] = useState(0);
   const [isLoader, SetLoader] = useState(false);
   const [Approveusershotel, SetusershotelApprove] = useState([]);
+  const [usersName, SetusersName] = useState([]);
   // getting the bookings data of useer whohad booked api  -->http://localhost:3000/Hotel/booking/BookingUser/Admin
   useEffect(() => {
     const GetBookingData = async () => {
@@ -25,8 +26,8 @@ const BookingsAdminUI = () => {
           }
         );
         console.log(getBookinInfo.data, "getBookinInfo");
-        console.log(getBookinInfo.data.bookings, "bookings");
         SetusershotelApprove(getBookinInfo.data.bookings);
+        SetusersName(getBookinInfo.data.userInfo);
         setUserBookingErrorMsg(getBookinInfo.data.message);
       } catch (err) {
         console.error("Axios Error:", err.message);
@@ -245,7 +246,7 @@ const BookingsAdminUI = () => {
                       "Check-Out",
                       "Rooms",
                       "Price",
-                      "Status",
+                      "PaymentStatus",
                       "Actions",
                     ].map((header) => (
                       <th
@@ -258,12 +259,13 @@ const BookingsAdminUI = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {Approveusershotel.map((data, id) => (
+                  {Approveusershotel .map((data, id) => (
                     <tr
                       key={id}
                       className={`transition-all duration-200 bg-white hover:bg-gray-100`}
                     >
                       <td className="px-6 py-4 flex justify-center items-center">
+                        
                         <input
                           type="checkbox"
                           className="h-4 w-4"
@@ -274,16 +276,18 @@ const BookingsAdminUI = () => {
                       <td className="px-6 py-4 font-medium text-gray-700">
                         {id}
                       </td>
-                      <td className="px-6 py-4 text-gray-700">{data.user}</td>
+                       <td className="px-6 py-4 text-gray-700">{data.FirstName}</td>
+                      
                       <td className="px-6 py-4 text-gray-700"> {data.hotel}</td>
                       <td className="px-6 py-4 text-gray-700">
                         {data.location}
                       </td>
                       <td className="px-6 py-4 text-gray-700">
-                        {data.BookingCheckIn}
+                        {new Date(data.BookingCheckIn).toLocaleDateString()}
                       </td>
                       <td className="px-6 py-4 text-gray-700">
-                        {new Date({data.BookingCheckIn})}
+                       {new Date(data.BookingCheckOut).toLocaleDateString()}
+
                       </td>
                       <td className="px-6 py-4 text-gray-700">{data.PaymentStatus}</td>
                       <td className="px-6 py-4 text-gray-700">
@@ -297,7 +301,7 @@ const BookingsAdminUI = () => {
                               : "bg-yellow-300"
                           } text-yellow-800`}
                         >
-                          {data.status}{" "}
+                          {data.PaymentStatus}{" "}
                         </span>
                       </td>
                       <td className="px-6 py-4 flex gap-2 flex-wrap">
