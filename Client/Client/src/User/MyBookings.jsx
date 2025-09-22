@@ -4,27 +4,48 @@ import HotelForm from "../Admin/AddForms/HotelInof";
 import { FiMapPin, FiCalendar, FiUsers } from "react-icons/fi";
 import axios from "axios";
 import { email } from "../AUTH/Email";
-
+import { useNavigate } from "react-router-dom";
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
     const Bookingresponse = async () => {
       try {
-        const GetBooking = await axios.get("http://localhost:3000/Hotel/UserBookingShow", {
-          params: {
-            Email: email,
-          },
-        });
-        console.log(GetBooking.data.message,'GetBooking')
-        setBookings(GetBooking.data.message,'GetBooking')
+        const GetBooking = await axios.get(
+          "http://localhost:3000/Hotel/UserBookingShow",
+          {
+            params: { Email: email },
+          }
+        );
+
+        setBookings(GetBooking.data.message); // ✅ fixed
       } catch (err) {
         console.log(err.message);
       }
     };
     Bookingresponse();
   }, []);
+// get more about the hotel
 
+
+const redirect=useNavigate('')
+const gethotelInfo = async (HotelId) => {
+    const HotelIDData = await axios.get(
+      "http://localhost:3000/Hotel/GetHotelId",
+      {
+        params: {
+          HotelId: HotelId,
+        },
+      }
+    );
+    console.log(HotelIDData.data.message);
+    const Data = HotelIDData.data.message
+    redirect("/Search/Location", {
+      state: {
+     Data
+      },
+    });
+  };
   return (
     <>
       <Navbar />
@@ -51,14 +72,15 @@ export default function MyBookings() {
           <div className="space-y-6">
             {bookings.map((b) => (
               <div
-                key={b.id}
-                className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition"
+                key={b._id} // ✅ use backend _id
+                onClick={()=>gethotelInfo(b._id)}  
+                className="flex flex-col sm:flex-row bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition cursor-pointer"
               >
                 {/* Left: Hotel Image */}
                 <div className="sm:w-1/3 relative">
                   <img
-                    src={b.image}
-                    alt={b.hotel}
+                    src='https://tse3.mm.bing.net/th/id/OIP.Lmb3UGTfq_lC45wDdiCwxAHaEK?pid=Api&P=0&h=180'
+                    alt={b.hotel || "Hotel"}
                     className="h-48 sm:h-full w-full object-cover"
                   />
                   <span
@@ -78,10 +100,16 @@ export default function MyBookings() {
                 <div className="flex-1 p-5 flex flex-col justify-between">
                   <div>
                     <h3 className="font-bold text-xl text-gray-900">
-                     name  {b.name}
+                      {b.name}
                     </h3>
+                    <p className="font-mono text-xl text-gray-900">
+                      {b.description}
+                    </p>
                     <p className="text-gray-500 text-sm flex items-center mt-1">
-                      <FiMapPin className="mr-1 text-indigo-500" /> {b.location}
+                      <FiMapPin className="mr-1 text-indigo-500" />
+                      {b.location
+                        ? `${b.location.city}, ${b.location.state}, ${b.location.country}`
+                        : "Location not available"}
                     </p>
 
                     <div className="mt-4 grid grid-cols-2 gap-4 text-sm text-gray-600">
