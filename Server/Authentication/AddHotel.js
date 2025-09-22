@@ -1,15 +1,25 @@
 const express = require("express");
 const { Hotel, User, Booking } = require("../bin/DataBase");
 const { default: mongoose } = require("mongoose");
+const http = require("http");
 const router = express.Router();
-
+const nodemailer = require("nodemailer");
+require("dotenv").config(); 
 let RemaningRoomsLeft = 10
+        const transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.From_Email,
+                pass: process.env.GOOGLE_APP_PASSWORD,
+            },
+        })
 router.get('/HotelBooking', async (req, res) => {
     // now i am getting the data of user and hotelBooking(owner data)
     // now we need to find the rooms based on the available like required rooms for user are 2 now we need to check the empty 2room's if its empty we will allow the user (booking:status:success) or booking:status failed 
     try {
         const { BookingData } = req.query
-        console.log(BookingData, 'BookingData')
+        
+        // console.log(BookingData, 'BookingData')
         if (RemaningRoomsLeft < BookingData.RequiredRooms) {
             return res.json({ message: "Insufficient rooms available for your booking request." })
         }
@@ -33,8 +43,85 @@ router.get('/HotelBooking', async (req, res) => {
             Status: "pending",
             totalAmount: Number(BookingData.RequiredRooms) * Number(HotelAdminData.rooms[0].price)
         });
-        await UserBooking.save()
+        await UserBooking.save();
         console.log(UserBooking, 'UserBooking')
+          const mailOptions = {
+  from: process.env.From_Email,
+  to: userInfoBooking.Email,
+  subject: "Your Hotel Booking Request is Received – Awaiting Confirmation",
+  html: `
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Booking Pending</title>
+  </head>
+  <body style="margin:0; padding:0; font-family:Arial, sans-serif; background:#f9f9f9;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background:#f9f9f9; padding:20px;">
+      <tr>
+        <td align="center">
+          <table width="600" style="background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 4px 8px rgba(0,0,0,0.05);">
+            
+            <!-- Header -->
+            <tr>
+              <td style="background:#2a9d8f; padding:20px; text-align:center; color:#fff; font-size:22px; font-weight:bold;">
+                Hotel Booking Request Received
+              </td>
+            </tr>
+
+            <!-- Body -->
+            <tr>
+              <td style="padding:30px; color:#333; font-size:16px; line-height:1.6;">
+                <p>Dear <strong>${userInfoBooking.FirstName}</strong>,</p>
+                <p>Thank you for choosing our hotel. We have received your booking request, but it is currently <strong>pending confirmation</strong>.</p>
+                <p>Once our team verifies the availability, we’ll send you an update with your booking status.</p>
+
+                <!-- Booking Info Box -->
+                <table width="100%" style="margin:20px 0; border:1px solid #eee; border-radius:8px;">
+                  <tr>
+                    <td style="padding:12px; background:#f4f4f4; font-weight:bold;">Booking Details</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px;">
+                      <p><strong>Hotel:</strong> ${userInfoBooking.HotelName}</p>
+                      <p><strong>Check-in:</strong> ${userInfoBooking.CheckInDate}</p>
+                      <p><strong>Check-out:</strong> ${userInfoBooking.CheckOutDate}</p>
+                      <p><strong>Guests:</strong> ${userInfoBooking.Guests}</p>
+                    </td>
+                  </tr>
+                </table>
+
+                <p style="margin-top:20px;">We appreciate your patience while we confirm your reservation. You’ll receive another email soon.</p>
+
+                <!-- CTA Button -->
+                <p style="text-align:center; margin:30px 0;">
+                  <a href="https://yourhotelwebsite.com/my-bookings" 
+                    style="background:#2a9d8f; color:#fff; padding:12px 24px; text-decoration:none; border-radius:6px; font-weight:bold;">
+                    View My Booking
+                  </a>
+                </p>
+
+                <p style="color:#777; font-size:14px;">If you have any questions, please contact our support team.</p>
+              </td>
+            </tr>
+
+            <!-- Footer -->
+            <tr>
+              <td style="background:#f4f4f4; padding:15px; text-align:center; font-size:12px; color:#666;">
+                © 2025 Your Hotel. All rights reserved.
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+  </html>
+  `
+};
+await transporter.sendMail(mailOptions);
+            await transporter.sendMail(mailOptions);
         res.json({ message: "rooms are booked please check your email" })
 
 
@@ -47,10 +134,9 @@ router.get('/HotelBooking', async (req, res) => {
 router.get("/BookingUser/Admin", async (req, res) => {
     try {
         const { Email } = req.query;
-
-        // Find all hotels owned by this email
+       
+        // Find all hotels owned console.log(process.env ,'env data')by this email
         const hotels = await Hotel.find({ 'owner.email': Email });
-
         if (hotels.length === 0) {
             return res.status(404).json({ message: "No hotels found for this email" });
         }
@@ -71,12 +157,7 @@ router.get("/BookingUser/Admin", async (req, res) => {
             const GetUserInfo = await User.find({ _id: allBookings[i].User }).select("FirstName");
             userInfoArray.push(GetUserInfo[0]); // push single user document
         }
-
-        
-      
         res.json({ bookings: allBookings, userInfo: userInfoArray });
-
-
     } catch (error) {
         console.error(error.message, "error message");
         res.status(500).json({ message: "Server error" });
@@ -95,20 +176,19 @@ router.put('/BookingStatus/Admin', (req, res) => {
         return res.json({ meessage: err.message })
     }
 })
-
+// get  all hotel of the admin
 router.get('/ManageHotel/Admin', async (req, res) => {
     try {
         const { Email } = req.query;
-        console.log(Email)
+        
         if (!Email) {
             return res.json({ message: 'Some thing went wrong ' })
         }
         const GetHotelAdmin = await Hotel.find({ 'owner.email': Email })
-        console.log(GetHotelAdmin, 'GetHotelAdmin')
+        console.log(process.env.From_Email ,'env data')
         if (GetHotelAdmin.length == 0) {
             return res.json({ message: 'No Hotels Added' })
         }
-
         return res.json({ message: GetHotelAdmin })
     }
     catch (err) {
