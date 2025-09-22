@@ -2,33 +2,27 @@ import { useEffect, useState } from "react";
 import Navbar from "../Navbar";
 import HotelForm from "../Admin/AddForms/HotelInof";
 import { FiMapPin, FiCalendar, FiUsers } from "react-icons/fi";
+import axios from "axios";
+import { email } from "../AUTH/Email";
 
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    setBookings([
-      {
-        id: "B12345",
-        hotel: "The Leela Palace",
-        location: "Bangalore, India",
-        checkIn: "2025-09-01",
-        checkOut: "2025-09-05",
-        guests: 2,
-        status: "Confirmed",
-        image: "https://source.unsplash.com/900x600/?luxury,hotel",
-      },
-      {
-        id: "B12346",
-        hotel: "Taj Hotel",
-        location: "Mumbai, India",
-        checkIn: "2025-10-10",
-        checkOut: "2025-10-12",
-        guests: 3,
-        status: "Pending",
-        image: "https://source.unsplash.com/900x600/?hotel,room",
-      },
-    ]);
+    const Bookingresponse = async () => {
+      try {
+        const GetBooking = await axios.get("http://localhost:3000/Hotel/UserBookingShow", {
+          params: {
+            Email: email,
+          },
+        });
+        console.log(GetBooking.data.message,'GetBooking')
+        setBookings(GetBooking.data.message,'GetBooking')
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    Bookingresponse();
   }, []);
 
   return (
@@ -84,7 +78,7 @@ export default function MyBookings() {
                 <div className="flex-1 p-5 flex flex-col justify-between">
                   <div>
                     <h3 className="font-bold text-xl text-gray-900">
-                      {b.hotel}
+                     name  {b.name}
                     </h3>
                     <p className="text-gray-500 text-sm flex items-center mt-1">
                       <FiMapPin className="mr-1 text-indigo-500" /> {b.location}

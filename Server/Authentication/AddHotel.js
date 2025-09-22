@@ -19,7 +19,7 @@ router.get('/HotelBooking', async (req, res) => {
     try {
         const { BookingData } = req.query
         
-        // console.log(BookingData, 'BookingData')
+        console.log(BookingData, 'BookingData')
         if (RemaningRoomsLeft < BookingData.RequiredRooms) {
             return res.json({ message: "Insufficient rooms available for your booking request." })
         }
@@ -41,6 +41,7 @@ router.get('/HotelBooking', async (req, res) => {
             User: userInfoBooking._id,          // only the ObjectId
             HotelOwner: HotelAdminData.owner._id, // only the ObjectId
             Status: "pending",
+            UserEmail:BookingData.UserEmail,
             totalAmount: Number(BookingData.RequiredRooms) * Number(HotelAdminData.rooms[0].price)
         });
         await UserBooking.save();
@@ -84,10 +85,10 @@ router.get('/HotelBooking', async (req, res) => {
                   </tr>
                   <tr>
                     <td style="padding:12px;">
-                      <p><strong>Hotel:</strong> ${userInfoBooking.HotelName}</p>
-                      <p><strong>Check-in:</strong> ${userInfoBooking.CheckInDate}</p>
-                      <p><strong>Check-out:</strong> ${userInfoBooking.CheckOutDate}</p>
-                      <p><strong>Guests:</strong> ${userInfoBooking.Guests}</p>
+                      <p><strong>Hotel:</strong> ${BookingData.HotelName}</p>
+                      <p><strong>Check-in:</strong> ${BookingData.BookingCheckIn}</p>
+                      <p><strong>Check-out:</strong> ${BookingData.BookingCheckOut}</p>
+                      <p><strong>Guests:</strong> ${BookingData.RequiredRooms}</p>
                     </td>
                   </tr>
                 </table>

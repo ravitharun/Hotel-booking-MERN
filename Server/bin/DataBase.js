@@ -50,6 +50,7 @@ const roomSchema = new mongoose.Schema({
 const bookingSchema = new mongoose.Schema(
   {
     HotelBookingId: { type: mongoose.Schema.Types.ObjectId, ref: "Hotel", required: true },
+    UserEmail:{type:String,required:true},
     RequiredRooms: { type: Number, required: true },
     BookingCheckIn: { type: Date, required: true },
     BookingCheckOut: { type: Date, required: true },

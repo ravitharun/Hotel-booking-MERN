@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const { User, Hotel } = require("../bin/DataBase");
+const { User, Hotel,Booking } = require("../bin/DataBase");
 const salt = bcrypt.genSaltSync(10);
 const hotelInfo = require('../hotel.json');
 const JWT_SECRET = "tharun2005";
@@ -133,5 +133,25 @@ router.get("/hotels/location/search", async (req, res) => {
   }
 })
 
+// UserBookingShow
 
+router.get('/UserBookingShow', async (req, res) => {
+
+  try {
+    const { Email } = req.query;
+    console.log(Email, 'Email');
+    const GetHotelBookingId=await Booking.find({UserEmail:Email})
+    console.log(GetHotelBookingId.length, 'GetHotelBookingId');
+    const HotelInfo=[];
+    for(let i=0;i<GetHotelBookingId.length;i++){
+      const FindHotel=await Hotel.find({_id:GetHotelBookingId[i].HotelBookingId})
+      HotelInfo.push(FindHotel)
+    }
+    console.log(HotelInfo.flat(),'HotelInfo')
+    res.json({message:HotelInfo.flat()})
+  }
+  catch (err) {
+    console.log(err.message)
+  }
+})
 module.exports = router;
