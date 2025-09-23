@@ -1,16 +1,18 @@
 import { useEffect, useState } from "react";
 import Navbar from "../Navbar";
-import HotelForm from "../Admin/AddForms/HotelInof";
 import { FiMapPin, FiCalendar, FiUsers } from "react-icons/fi";
 import axios from "axios";
-import { email } from "../AUTH/Email";
+import { email, Role } from "../AUTH/Email";
 import { useNavigate } from "react-router-dom";
+import USerLoader from "./Loader/USerLoader";
 export default function MyBookings() {
   const [bookings, setBookings] = useState([]);
+  const [isloading, setisloading] = useState(false);
 
   useEffect(() => {
     const Bookingresponse = async () => {
       try {
+        setisloading(true)
         const GetBooking = await axios.get(
           "http://localhost:3000/Hotel/UserBookingShow",
           {
@@ -21,6 +23,9 @@ export default function MyBookings() {
         setBookings(GetBooking.data.message); // ✅ fixed
       } catch (err) {
         console.log(err.message);
+      }
+      finally{
+        setisloading(false);
       }
     };
     Bookingresponse();
@@ -46,10 +51,13 @@ const gethotelInfo = async (HotelId) => {
       },
     });
   };
+  
   return (
     <>
       <Navbar />
 
+{isloading ? <USerLoader isloading={isloading} role={Role}/> :
+<>
       <div className="p-6 max-w-5xl mx-auto">
         <h2 className="text-3xl font-extrabold text-gray-800 mb-8">
           🛎 My Hotel Bookings{" "}
@@ -149,8 +157,10 @@ const gethotelInfo = async (HotelId) => {
           </div>
         )}
       </div>
+</>
+      
+      }
 
-      <HotelForm />
     </>
   );
 }
