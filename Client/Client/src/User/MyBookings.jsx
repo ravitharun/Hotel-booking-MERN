@@ -20,7 +20,7 @@ export default function MyBookings() {
           }
         );
 
-        setBookings(GetBooking.data.message); // ✅ fixed
+        setBookings(GetBooking.data.message); // ✅ fixed 
       } catch (err) {
         console.log(err.message);
       }

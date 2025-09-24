@@ -12,6 +12,7 @@ import {
   FaChevronDown,
   FaUserFriends,
 } from "react-icons/fa";
+import USerLoader from "./Loader/USerLoader";
 import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
 import UserLivelocation from "./Location/UserLivelocation";
@@ -22,6 +23,7 @@ export default function SearchHotelPage() {
   const [searchError, setSearcherror] = useState(""); // list or grid
   const HotelSearchData = useLocation();
   const [Dropdown, setDropdown] = useState(false);
+  const [isloading, setisloading] = useState(false);
   const [adults, setAdults] = useState(1);
   const [children, setChildren] = useState(0);
 
@@ -31,11 +33,17 @@ export default function SearchHotelPage() {
   useEffect(() => {
     const serachHotel = async () => {
       try {
+        setisloading(true);
         const getHotel = await axios.get("http://localhost:3000/Hotel/all");
         setFilteredHotels(getHotel.data);
+       
       } catch (error) {
         console.log(error.message);
       }
+      finally{
+         setisloading(false);
+      }
+
     };
     serachHotel();
   }, []);
@@ -101,9 +109,12 @@ export default function SearchHotelPage() {
   };
 
   return (
+    <>
     <div className="min-h-screen bg-gray-100">
       <Navbar />
-
+    
+      <>
+     
       {/* Top Search Form */}
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mt-16 p-6 max-w-6xl mx-auto">
@@ -270,7 +281,7 @@ export default function SearchHotelPage() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+  { isloading?<USerLoader isloading={isloading} />:    <div className="max-w-7xl mx-auto px-4 py-8 space-y-8">
         {/* User Live Location Card */}
         <div className="bg-white rounded-2xl shadow-lg p-6">
           <h2 className="text-xl font-bold text-gray-800 mb-4">
@@ -491,7 +502,10 @@ export default function SearchHotelPage() {
             )}
           </div>
         </div>
-      </div>
+      </div>}
+       </>
     </div>
+    </>
+
   );
 }
