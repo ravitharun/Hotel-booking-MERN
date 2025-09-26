@@ -4,53 +4,53 @@ const { default: mongoose } = require("mongoose");
 const http = require("http");
 const router = express.Router();
 const nodemailer = require("nodemailer");
-require("dotenv").config(); 
+require("dotenv").config();
 let RemaningRoomsLeft = 10
-        const transporter = nodemailer.createTransport({
-            service: "gmail",
-            auth: {
-                user: process.env.From_Email,
-                pass: process.env.GOOGLE_APP_PASSWORD,
-            },
-        })
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.From_Email,
+    pass: process.env.GOOGLE_APP_PASSWORD,
+  },
+})
 router.get('/HotelBooking', async (req, res) => {
-    // now i am getting the data of user and hotelBooking(owner data)
-    // now we need to find the rooms based on the available like required rooms for user are 2 now we need to check the empty 2room's if its empty we will allow the user (booking:status:success) or booking:status failed 
-    try {
-        const { BookingData } = req.query
-        
-        console.log(BookingData, 'BookingData')
-        if (RemaningRoomsLeft < BookingData.RequiredRooms) {
-            return res.json({ message: "Insufficient rooms available for your booking request." })
-        }
-        if (!BookingData.UserEmail) {
-            return res.json({ message: "UserEmail not found " })
-        }
-        if (!BookingData.HotelBookingId) {
-            return res.json({ message: "The id is missing while getting the hotel admin data" })
-        }
-        const HotelAdminData = await Hotel.findOne({ _id: BookingData.HotelBookingId });
-        const userInfoBooking = await User.findOne({ Email: BookingData.UserEmail });
-        // console.log(HotelAdminData.rooms[0].price,'HotelAdminData.rooms.price')
+  // now i am getting the data of user and hotelBooking(owner data)
+  // now we need to find the rooms based on the available like required rooms for user are 2 now we need to check the empty 2room's if its empty we will allow the user (booking:status:success) or booking:status failed 
+  try {
+    const { BookingData } = req.query
 
-        const UserBooking = new Booking({
-            HotelBookingId: BookingData.HotelBookingId,
-            RequiredRooms: Number(BookingData.RequiredRooms),
-            BookingCheckIn: BookingData.BookingCheckIn,
-            BookingCheckOut: BookingData.BookingCheckOut,
-            User: userInfoBooking._id,          // only the ObjectId
-            HotelOwner: HotelAdminData.owner._id, // only the ObjectId
-            Status: "pending",
-            UserEmail:BookingData.UserEmail,
-            totalAmount: Number(BookingData.RequiredRooms) * Number(HotelAdminData.rooms[0].price)
-        });
-        await UserBooking.save();
-        console.log(UserBooking, 'UserBooking')
-          const mailOptions = {
-  from: process.env.From_Email,
-  to: userInfoBooking.Email,
-  subject: "Your Hotel Booking Request is Received – Awaiting Confirmation",
-  html: `
+    console.log(BookingData, 'BookingData')
+    if (RemaningRoomsLeft < BookingData.RequiredRooms) {
+      return res.json({ message: "Insufficient rooms available for your booking request." })
+    }
+    if (!BookingData.UserEmail) {
+      return res.json({ message: "UserEmail not found " })
+    }
+    if (!BookingData.HotelBookingId) {
+      return res.json({ message: "The id is missing while getting the hotel admin data" })
+    }
+    const HotelAdminData = await Hotel.findOne({ _id: BookingData.HotelBookingId });
+    const userInfoBooking = await User.findOne({ Email: BookingData.UserEmail });
+    // console.log(HotelAdminData.rooms[0].price,'HotelAdminData.rooms.price')
+
+    const UserBooking = new Booking({
+      HotelBookingId: BookingData.HotelBookingId,
+      RequiredRooms: Number(BookingData.RequiredRooms),
+      BookingCheckIn: BookingData.BookingCheckIn,
+      BookingCheckOut: BookingData.BookingCheckOut,
+      User: userInfoBooking._id,          // only the ObjectId
+      HotelOwner: HotelAdminData.owner._id, // only the ObjectId
+      Status: "pending",
+      UserEmail: BookingData.UserEmail,
+      totalAmount: Number(BookingData.RequiredRooms) * Number(HotelAdminData.rooms[0].price)
+    });
+    await UserBooking.save();
+    console.log(UserBooking, 'UserBooking')
+    const mailOptions = {
+      from: process.env.From_Email,
+      to: userInfoBooking.Email,
+      subject: "Your Hotel Booking Request is Received – Awaiting Confirmation",
+      html: `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -120,81 +120,95 @@ router.get('/HotelBooking', async (req, res) => {
   </body>
   </html>
   `
-};
-await transporter.sendMail(mailOptions);
-            await transporter.sendMail(mailOptions);
-        res.json({ message: "rooms are booked please check your email" })
+    };
+    await transporter.sendMail(mailOptions);
+    await transporter.sendMail(mailOptions);
+    res.json({ message: "rooms are booked please check your email" })
 
 
-    } catch (error) {
-        console.error(error)
-        return res.json({ message: error.message })
-    }
+  } catch (error) {
+    console.error(error)
+    return res.json({ message: error.message })
+  }
 });
 // these will get the booking based on email to show in ui
 router.get("/BookingUser/Admin", async (req, res) => {
-    try {
-        const { Email } = req.query;
-       
-        // Find all hotels owned console.log(process.env ,'env data')by this email
-        const hotels = await Hotel.find({ 'owner.email': Email });
-        if (hotels.length === 0) {
-            return res.status(404).json({ message: "No hotels found for this email" });
-        }
+  try {
+    const { Email } = req.query;
 
-        let allBookings = [];
-
-        for (let i = 0; i < hotels.length; i++) {
-            const hotelBookings = await Booking.find({ HotelOwner: hotels[i].owner._id });
-            allBookings = allBookings.concat(hotelBookings);
-        }
-
-        if (allBookings.length === 0) {
-            return res.json({ message: "No bookings found for this owner's hotels" });
-        }
-        let userInfoArray = [];
-
-        for (let i = 0; i < allBookings.length; i++) {
-            const GetUserInfo = await User.find({ _id: allBookings[i].User }).select("FirstName");
-            userInfoArray.push(GetUserInfo[0]); // push single user document
-        }
-        res.json({ bookings: allBookings, userInfo: userInfoArray });
-    } catch (error) {
-        console.error(error.message, "error message");
-        res.status(500).json({ message: "Server error" });
+    // Find all hotels owned console.log(process.env ,'env data')by this email
+    const hotels = await Hotel.find({ 'owner.email': Email });
+    if (hotels.length === 0) {
+      return res.status(404).json({ message: "No hotels found for this email" });
     }
+
+    let allBookings = [];
+
+    for (let i = 0; i < hotels.length; i++) {
+      const hotelBookings = await Booking.find({ HotelOwner: hotels[i].owner._id });
+      allBookings = allBookings.concat(hotelBookings);
+    }
+
+    if (allBookings.length === 0) {
+      return res.json({ message: "No bookings found for this owner's hotels" });
+    }
+    let userInfoArray = [];
+
+    for (let i = 0; i < allBookings.length; i++) {
+      const GetUserInfo = await User.find({ _id: allBookings[i].User }).select("FirstName");
+      userInfoArray.push(GetUserInfo[0]); // push single user document
+    }
+    res.json({ bookings: allBookings, userInfo: userInfoArray });
+  } catch (error) {
+    console.error(error.message, "error message");
+    res.status(500).json({ message: "Server error" });
+  }
 });
 
 // booking status (approve/reject) and send email to that approve or reject 
 router.put('/BookingStatus/Admin', (req, res) => {
-    try {
-        const { CheckStatus, id } = req.body;
+  try {
+    const { CheckStatus, id } = req.body;
 
-        console.log({ CheckStatus, id })
-        return res.json({ message: 'data go it from ui ' })
-    }
-    catch (err) {
-        return res.json({ meessage: err.message })
-    }
+    console.log({ CheckStatus, id })
+    return res.json({ message: 'data go it from ui ' })
+  }
+  catch (err) {
+    return res.json({ meessage: err.message })
+  }
 })
 // get  all hotel of the admin
 router.get('/ManageHotel/Admin', async (req, res) => {
-    try {
-        const { Email } = req.query;
-        
-        if (!Email) {
-            return res.json({ message: 'Some thing went wrong ' })
-        }
-        const GetHotelAdmin = await Hotel.find({ 'owner.email': Email })
-        console.log(process.env.From_Email ,'env data')
-        if (GetHotelAdmin.length == 0) {
-            return res.json({ message: 'No Hotels Added' })
-        }
-        return res.json({ message: GetHotelAdmin })
+  try {
+    const { Email } = req.query;
+
+    if (!Email) {
+      return res.json({ message: 'Some thing went wrong ' })
     }
-    catch (err) {
-        res.json({ message: err.message })
+    const GetHotelAdmin = await Hotel.find({ 'owner.email': Email })
+    console.log(process.env.From_Email, 'env data')
+    if (GetHotelAdmin.length == 0) {
+      return res.json({ message: 'No Hotels Added' })
     }
+    return res.json({ message: GetHotelAdmin })
+  }
+  catch (err) {
+    res.json({ message: err.message })
+  }
 })
+
+
+
+// hotel add to save
+router.post("/SaveHotel", async (req, res) => {
+try{
+      const { hotelinfo } = req.body;
+    console.log(hotelinfo);
+    res.json({message:'Hotel is added in the whilist'})
+}
+catch(err){
+  console.log(err.message)
+}})
+
 
 module.exports = router;

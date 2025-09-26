@@ -7,6 +7,7 @@ import Login from "../src/AUTH/Login";
 import Home from "./User/Home";
 import MyBookings from "./User/MyBookings";
 import HotelInfo from "./User/HotelInfo";
+import AddCart from "./User/AddCart";
 import SearchHotel from "./User/SearchHotel";
 import MyProfile from "./User/MyProfile";
 import Logout from "./AUTH/Logout";
@@ -18,6 +19,7 @@ createRoot(document.getElementById("root")).render(
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/Admin" element={<AdminHomepage />} />
+      <Route path="/wishlist" element={<AddCart />} />
       <Route path="/admin/hotels" element={<AdminManageHotel />} />
       <Route path="/Admin/Bookings" element={<BookingsAdming />} />
       <Route path="/Logout" element={<Logout />} />

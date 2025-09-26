@@ -1,104 +1,3 @@
-// import React from "react";
-// import {
-//   FaCcVisa,
-//   FaCcMastercard,
-//   FaCcAmex,
-//   FaCcPaypal,
-//   FaGooglePay,
-//   FaApplePay,
-// } from "react-icons/fa";
-
-// const Footer = () => (
-//   <footer style={{ background: "#1f2937", color: "#fff", padding: "2rem 0" }}>
-//     <div
-//       style={{
-//         maxWidth: "1200px",
-//         margin: "0 auto",
-//         display: "flex",
-//         flexWrap: "wrap",
-//         justifyContent: "space-between",
-//         alignItems: "center",
-//         gap: "1.5rem",
-//         padding: "0 1rem",
-//       }}
-//     >
-//       {/* Logo and Brand */}
-//       <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-//         <img
-//           src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
-//           alt="Hotel Booking Logo"
-//           style={{
-//             width: 50,
-//             height: 50,
-//             borderRadius: "50%",
-//             background: "#fff",
-//           }}
-//         />
-//         <span
-//           style={{
-//             fontSize: "1.5rem",
-//             fontWeight: "bold",
-//             letterSpacing: "1px",
-//           }}
-//         >
-//           BookInn
-//         </span>
-//       </div>
-
-//       {/* Navigation Links */}
-//       <nav style={{ display: "flex", gap: "1.5rem" }}>
-//         <a href="/about" style={footerLinkStyle}>
-//           About Us
-//         </a>
-//         <a href="/contact" style={footerLinkStyle}>
-//           Contact
-//         </a>
-//         <a href="/privacy" style={footerLinkStyle}>
-//           Privacy Policy
-//         </a>
-//       </nav>
-
-//       {/* Payment Methods */}
-//       <div
-//         style={{
-//           display: "flex",
-//           gap: "1rem",
-//           fontSize: "2rem",
-//           flexWrap: "wrap",
-//           justifyContent: "center",
-//         }}
-//       >
-//         <FaCcVisa />
-//         <FaCcMastercard />
-//         <FaCcAmex />
-//         <FaCcPaypal />
-//         <FaGooglePay />
-//         <FaApplePay />
-//       </div>
-//     </div>
-
-//     {/* Copyright */}
-//     <div
-//       style={{
-//         textAlign: "center",
-//         marginTop: "1.5rem",
-//         fontSize: "0.9rem",
-//         color: "#d1d5db",
-//       }}
-//     >
-//       &copy; {new Date().getFullYear()} BookInn Hotels. All rights reserved.
-//     </div>
-//   </footer>
-// );
-
-// const footerLinkStyle = {
-//   color: "#fff",
-//   textDecoration: "none",
-//   fontSize: "1rem",
-//   transition: "color 0.3s",
-// };
-
-// export default Footer;
 import React from "react";
 import {
   FaCcVisa,
@@ -113,206 +12,111 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 
-const Footer = () => (
-  <footer style={{ background: "#1f2937", color: "#fff", padding: "2rem 0" }}>
-    <div
-      style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        alignItems: "flex-start",
-        gap: "2rem",
-        padding: "0 1rem",
-      }}
-    >
-      {/* Logo & Brand */}
-      <div style={{ flex: "1", minWidth: "250px" }}>
-        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
-          <img
-            src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
-            alt="Hotel Booking Logo"
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: "50%",
-              background: "#fff",
-            }}
-          />
-          <span
-            style={{
-              fontSize: "1.5rem",
-              fontWeight: "bold",
-              letterSpacing: "1px",
-            }}
-          >
-            BookInn
-          </span>
+const Footer = () => {
+  return (
+    <footer className="bg-gray-800 text-white pt-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap justify-between gap-8">
+        {/* Logo & Brand */}
+        <div className="flex-1 min-w-[250px]">
+          <div className="flex items-center gap-3 mb-3">
+            <img
+              src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
+              alt="BookInn Logo"
+              className="w-12 h-12 rounded-full bg-white p-1"
+            />
+            <span className="text-xl font-bold tracking-wide">BookInn</span>
+          </div>
+          <p className="text-gray-300 text-sm">
+            Making hotel booking fast, easy, and reliable.
+          </p>
         </div>
-        <p style={{ marginTop: "1rem", color: "#d1d5db", fontSize: "0.95rem" }}>
-          Making hotel booking fast, easy, and reliable.
-        </p>
+
+        {/* Quick Links */}
+        <div className="flex-1 min-w-[200px]">
+          <h3 className="text-lg font-semibold mb-2">Quick Links</h3>
+          <div className="flex flex-col gap-1">
+            {["About Us", "Contact", "Privacy Policy", "FAQs", "Careers"].map(
+              (link, idx) => (
+                <a
+                  key={idx}
+                  href={`/${link.replace(/\s+/g, "").toLowerCase()}`}
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
+                  {link}
+                </a>
+              )
+            )}
+          </div>
+        </div>
+
+        {/* Contact Info */}
+        <div className="flex-1 min-w-[200px]">
+          <h3 className="text-lg font-semibold mb-2">Get in Touch</h3>
+          <p className="text-gray-300 text-sm">📍 123 Main St, New Delhi, India</p>
+          <p className="text-gray-300 text-sm">📧 support@bookinn.com</p>
+          <p className="text-gray-300 text-sm">📞 +91 98765 43210</p>
+        </div>
+
+        {/* Newsletter */}
+        <div className="flex-1 min-w-[250px]">
+          <h3 className="text-lg font-semibold mb-2">Newsletter</h3>
+          <p className="text-gray-300 text-sm mb-2">
+            Stay updated with our latest offers and hotels!
+          </p>
+          <form className="flex gap-2">
+            <input
+              type="email"
+              placeholder="Your email"
+              className="flex-1 px-3 py-2 rounded border border-gray-400 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded text-white font-semibold transition"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
       </div>
 
-      {/* Quick Links */}
-      <div style={{ flex: "1", minWidth: "200px" }}>
-        <h3 style={footerHeadingStyle}>Quick Links</h3>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
-          <a href="/about" style={footerLinkStyle}>
-            About Us
+      {/* Divider */}
+      <div className="max-w-7xl mx-auto my-6 h-px bg-gray-700"></div>
+
+      {/* Bottom Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+        {/* Payment Methods */}
+        <div className="flex flex-wrap gap-4 text-2xl text-white">
+          <FaCcVisa />
+          <FaCcMastercard />
+          <FaCcAmex />
+          <FaCcPaypal />
+          <FaGooglePay />
+          <FaApplePay />
+        </div>
+
+        {/* Social Media */}
+        <div className="flex gap-4 text-xl mt-3 md:mt-0">
+          <a href="#" className="hover:text-blue-500 transition">
+            <FaFacebookF />
           </a>
-          <a href="/contact" style={footerLinkStyle}>
-            Contact
+          <a href="#" className="hover:text-pink-500 transition">
+            <FaInstagram />
           </a>
-          <a href="/privacy" style={footerLinkStyle}>
-            Privacy Policy
+          <a href="#" className="hover:text-blue-400 transition">
+            <FaTwitter />
           </a>
-          <a href="/faq" style={footerLinkStyle}>
-            FAQs
-          </a>
-          <a href="/careers" style={footerLinkStyle}>
-            Careers
+          <a href="#" className="hover:text-blue-700 transition">
+            <FaLinkedinIn />
           </a>
         </div>
       </div>
 
-      {/* Contact Info */}
-      <div style={{ flex: "1", minWidth: "200px" }}>
-        <h3 style={footerHeadingStyle}>Get in Touch</h3>
-        <p style={{ color: "#d1d5db", margin: "0.3rem 0" }}>
-          📍 123 Main St, New Delhi, India
-        </p>
-        <p style={{ color: "#d1d5db", margin: "0.3rem 0" }}>
-          📧 support@bookinn.com
-        </p>
-        <p style={{ color: "#d1d5db", margin: "0.3rem 0" }}>📞 +91 98765 43210</p>
+      {/* Copyright */}
+      <div className="text-center text-gray-400 text-sm mt-6 pb-4">
+        &copy; {new Date().getFullYear()} BookInn Hotels. All rights reserved.
       </div>
-
-      {/* Newsletter */}
-      <div style={{ flex: "1", minWidth: "250px" }}>
-        <h3 style={footerHeadingStyle}>Newsletter</h3>
-        <p style={{ color: "#d1d5db", fontSize: "0.95rem", marginBottom: "0.5rem" }}>
-          Stay updated with our latest offers and hotels!
-        </p>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          style={{ display: "flex", gap: "0.5rem" }}
-        >
-          <input
-            type="email"
-            placeholder="Your email"
-            className="border border-white  "
-            style={{
-              flex: 1,
-              padding: "0.5rem",
-              borderRadius: "4px",
-              
-              outline: "none",
-            }}
-          />
-          <button
-            type="submit"
-            style={{
-              padding: "0.5rem 1rem",
-              background: "#2563eb",
-              color: "#fff",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-              transition: "background 0.3s",
-            }}
-            onMouseOver={(e) => (e.target.style.background = "#1d4ed8")}
-            onMouseOut={(e) => (e.target.style.background = "#2563eb")}
-          >
-            Subscribe
-          </button>
-        </form>
-      </div>
-    </div>
-
-    {/* Divider */}
-    <div
-      style={{
-        maxWidth: "1200px",
-        margin: "2rem auto 1rem",
-        height: "1px",
-        background: "#374151",
-      }}
-    />
-
-    {/* Bottom Section */}
-    <div
-      style={{
-        maxWidth: "1200px",
-        margin: "0 auto",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "space-between",
-        alignItems: "center",
-        gap: "1rem",
-        padding: "0 1rem",
-      }}
-    >
-      {/* Payment Methods */}
-      <div
-        style={{
-          display: "flex",
-          gap: "0.8rem",
-          fontSize: "1.5rem",
-          flexWrap: "wrap",
-        }}
-      >
-        <FaCcVisa />
-        <FaCcMastercard />
-        <FaCcAmex />
-        <FaCcPaypal />
-        <FaGooglePay />
-        <FaApplePay />
-      </div>
-
-      {/* Social Media */}
-      <div style={{ display: "flex", gap: "1rem", fontSize: "1.4rem" }}>
-        <a href="#" style={footerLinkStyle}>
-          <FaFacebookF />
-        </a>
-        <a href="#" style={footerLinkStyle}>
-          <FaInstagram />
-        </a>
-        <a href="#" style={footerLinkStyle}>
-          <FaTwitter />
-        </a>
-        <a href="#" style={footerLinkStyle}>
-          <FaLinkedinIn />
-        </a>
-      </div>
-    </div>
-
-    {/* Copyright */}
-    <div
-      style={{
-        textAlign: "center",
-        marginTop: "1.5rem",
-        fontSize: "0.9rem",
-        color: "#d1d5db",
-      }}
-    >
-      &copy; {new Date().getFullYear()} BookInn Hotels. All rights reserved.
-    </div>
-  </footer>
-);
-
-const footerLinkStyle = {
-  color: "#fff",
-  textDecoration: "none",
-  fontSize: "1rem",
-  transition: "color 0.3s",
-};
-
-const footerHeadingStyle = {
-  fontSize: "1.2rem",
-  marginBottom: "0.8rem",
-  fontWeight: "600",
+    </footer>
+  );
 };
 
 export default Footer;

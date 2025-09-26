@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import Navbar from "../Navbar";
 import {
@@ -19,6 +18,9 @@ import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
 import UserLivelocation from "./Location/UserLivelocation";
 import { useLocation, useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import Footer from "./Footer";
+import { email } from "../AUTH/Email";
 
 export default function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
@@ -99,16 +101,29 @@ export default function SearchHotelPage() {
   };
 
   const AddLike = async (Hotelid, hotelName, hotelDescription, hotelPrice) => {
-
-    const hotelinfo={
-      Hotelid,
-      hotelName,
-      hotelDescription,
-      hotelPrice,
+    try {
+      const hotelinfo = {
+        Hotelid,
+        hotelName,
+        hotelDescription,
+        hotelPrice,
+        Usereamil: email
+      };
+      const response = await axios.post("http://localhost:3000/Hotel/booking/SaveHotel", { hotelinfo: hotelinfo });
+      if (response.data.message == "Hotel is added in the whilist") {
+        toast.success(response.data.message);
+        setTimeout(() => {
+          return navigate("/wishlist");
+        }, 2500);
+      }
+    } catch (err) {
+      
+        console.log(`err from the add to cart button Error is = ${err}`);
+        console.log(
+          `err from the add to cart button and the Error message =  ${err.message}`
+        );
+        return toast.error("error", err.message);
     }
-    const response=await axios.post('',{hotelinfo:hotelinfo})
-    if(response.data.message=='Hotelsave')
-    //     navigate('/wishlist')
   };
 
   return (
@@ -431,7 +446,6 @@ export default function SearchHotelPage() {
                       >
                         {/* Heart Icon */}
                         <div className="absolute top-2 right-2 z-10">
-                         
                           <button
                             onClick={() =>
                               AddLike(
@@ -444,7 +458,7 @@ export default function SearchHotelPage() {
                             className="text-gray-300 text-xl hover:scale-110 hover:text-red-500 transition-transform focus:outline-none"
                             aria-label="Like hotel"
                           >
-                            <FaHeart  title='Save'/>
+                            <FaHeart title="Save" />
                           </button>
                         </div>
 
@@ -488,6 +502,7 @@ export default function SearchHotelPage() {
           </div>
         )}
       </div>
+      <Footer />
     </>
   );
 }
