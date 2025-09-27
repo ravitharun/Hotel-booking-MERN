@@ -109,7 +109,7 @@ export default function SearchHotelPage() {
         hotelPrice,
         Usereamil: email
       };
-      const response = await axios.post("http://localhost:3000/Hotel/booking/SaveHotel", { hotelinfo: hotelinfo });
+      const response = await axios.post("http://localhost:3000/Hotel/mong/SaveHotel", { hotelinfo: hotelinfo });
       if (response.data.message == "Hotel is added in the whilist") {
         toast.success(response.data.message);
         setTimeout(() => {

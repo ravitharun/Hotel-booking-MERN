@@ -78,8 +78,19 @@ const hotelSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 
+// save hotel 
+const Savehotel=new mongoose.Schema({
+
+  Hotelid:{type:String},
+  hotelName: {type:String},
+  hotelDescription:{type:String},
+  Usereamil: {type:String,required:true}
+
+})
+
 // Create a Hotel model
 const User = mongoose.model('UserLoginData', UserSchema);
 const Booking = mongoose.model('BookingSchema', bookingSchema);
 const Hotel = mongoose.model("Hotel", hotelSchema);
-module.exports = { User, Hotel, Booking };
+const HotelSave = mongoose.model("Savehotel", Savehotel);
+module.exports = { User, Hotel, Booking,HotelSave };

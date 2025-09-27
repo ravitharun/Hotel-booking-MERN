@@ -1,5 +1,5 @@
 const express = require("express");
-const { Hotel, User, Booking } = require("../bin/DataBase");
+const { Hotel, User, Booking,HotelSave } = require("../bin/DataBase");
 const { default: mongoose } = require("mongoose");
 const http = require("http");
 const router = express.Router();
@@ -201,14 +201,36 @@ router.get('/ManageHotel/Admin', async (req, res) => {
 
 // hotel add to save
 router.post("/SaveHotel", async (req, res) => {
-try{
-      const { hotelinfo } = req.body;
-    console.log(hotelinfo);
-    res.json({message:'Hotel is added in the whilist'})
-}
-catch(err){
-  console.log(err.message)
-}})
+  try {
+    const { hotelinfo } = req.body;
+    const SaveHotelUSer = new HotelSave({
+      Hotelid: hotelinfo.Hotelid, hotelName: hotelinfo.hotelName, hotelDescription: hotelinfo.hotelDescription, Usereamil: hotelinfo.Usereamil
+    })
+    await SaveHotelUSer.save()
+    console.log(hotelinfo);BBBBBBB
+    res.json({ message: 'Hotel is added in the whilist' })
+  }
+  catch (err) {
+    console.log(err.message)
+  }
+})
 
+// get HotelSaved based on user
+router.get("/GetHotel/Saved", async (req, res) => {
+  try {
+    const {Email}=req.query
+    console.log(Email,'Email')
+    const gethotelsaved = await HotelSave.find({})
+    if(gethotelsaved.length == 0 ){
 
+    return  res.json({ message: "no hotel are saved by u" })
+    }
+    res.json({ message: gethotelsaved })
+
+      
+  }
+  catch (Err) {
+    console.log(Err.message, 'ERROR FROM THE GETHOTEL/saved route')
+  }
+})
 module.exports = router;
