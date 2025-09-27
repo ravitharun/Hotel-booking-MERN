@@ -203,11 +203,12 @@ router.get('/ManageHotel/Admin', async (req, res) => {
 router.post("/SaveHotel", async (req, res) => {
   try {
     const { hotelinfo } = req.body;
+    console.log(hotelinfo)
     const SaveHotelUSer = new HotelSave({
-      Hotelid: hotelinfo.Hotelid, hotelName: hotelinfo.hotelName, hotelDescription: hotelinfo.hotelDescription, Usereamil: hotelinfo.Usereamil
+      Hotelid: hotelinfo.Hotelid, hotelName: hotelinfo.hotelName, hotelDescription: hotelinfo.hotelDescription, Usereamil: hotelinfo.Usereamil,hotelPrice:hotelinfo.hotelPrice
     })
     await SaveHotelUSer.save()
-    console.log(hotelinfo);BBBBBBB
+    console.log(hotelinfo);
     res.json({ message: 'Hotel is added in the whilist' })
   }
   catch (err) {
@@ -219,15 +220,20 @@ router.post("/SaveHotel", async (req, res) => {
 router.get("/GetHotel/Saved", async (req, res) => {
   try {
     const {Email}=req.query
-    console.log(Email,'Email')
-    const gethotelsaved = await HotelSave.find({})
+    const gethotelsaved = await HotelSave.find({Usereamil:Email})
+    console.log(gethotelsaved,'Email')
+    const hotelInfos=[]
+    for(let i=0;i<gethotelsaved.length;i++){
+
+      const hotelInfo=await Hotel.findById({_id:gethotelsaved[i].Hotelid})
+      hotelInfos.push(hotelInfo)
+    }
+    // console.log(hotelInfo,'hotelInfo')
     if(gethotelsaved.length == 0 ){
 
     return  res.json({ message: "no hotel are saved by u" })
     }
-    res.json({ message: gethotelsaved })
-
-      
+    res.json({ message: gethotelsaved,Hotel:hotelInfos }) 
   }
   catch (Err) {
     console.log(Err.message, 'ERROR FROM THE GETHOTEL/saved route')

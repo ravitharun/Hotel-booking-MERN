@@ -80,10 +80,10 @@ const hotelSchema = new mongoose.Schema({
 
 // save hotel 
 const Savehotel=new mongoose.Schema({
-
   Hotelid:{type:String},
   hotelName: {type:String},
   hotelDescription:{type:String},
+  hotelPrice:{type:Number},
   Usereamil: {type:String,required:true}
 
 })

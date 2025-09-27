@@ -43,6 +43,7 @@ export default function SearchHotelPage() {
         setisloading(true);
         const res = await axios.get("http://localhost:3000/Hotel/all");
         setFilteredHotels(res.data);
+        console.log(res.data);
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -107,9 +108,13 @@ export default function SearchHotelPage() {
         hotelName,
         hotelDescription,
         hotelPrice,
-        Usereamil: email
+        Usereamil: email,
       };
-      const response = await axios.post("http://localhost:3000/Hotel/mong/SaveHotel", { hotelinfo: hotelinfo });
+      console.log(hotelinfo, "hotelinfo");
+      const response = await axios.post(
+        "http://localhost:3000/Hotel/booking/SaveHotel",
+        { hotelinfo: hotelinfo }
+      );
       if (response.data.message == "Hotel is added in the whilist") {
         toast.success(response.data.message);
         setTimeout(() => {
@@ -117,12 +122,11 @@ export default function SearchHotelPage() {
         }, 2500);
       }
     } catch (err) {
-      
-        console.log(`err from the add to cart button Error is = ${err}`);
-        console.log(
-          `err from the add to cart button and the Error message =  ${err.message}`
-        );
-        return toast.error("error", err.message);
+      console.log(`err from the add to cart button Error is = ${err}`);
+      console.log(
+        `err from the add to cart button and the Error message =  ${err.message}`
+      );
+      return toast.error("error", err.message);
     }
   };
 
@@ -395,7 +399,8 @@ export default function SearchHotelPage() {
                               hotel._id,
                               hotel.name,
                               hotel.description,
-                              hotel.price
+                              hotel.rooms[0].price
+
                             )
                           }
                           className="text-gray-500 text-xl hover:scale-110 transition-transform focus:outline-none"
@@ -452,7 +457,7 @@ export default function SearchHotelPage() {
                                 hotel._id,
                                 hotel.name,
                                 hotel.description,
-                                hotel.price
+                               hotel.rooms[0].price
                               )
                             }
                             className="text-gray-300 text-xl hover:scale-110 hover:text-red-500 transition-transform focus:outline-none"

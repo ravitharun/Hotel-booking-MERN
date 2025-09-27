@@ -1,35 +1,61 @@
 import React, { useState } from "react";
 import Navbar from "../Navbar";
 import Footer from "./Footer";
+import { useEffect } from "react";
+import { email } from "../AUTH/Email";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const hotels = [
   {
     id: 1,
     name: "Deluxe Room",
-    image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=96&h=96",
+    image:
+      "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=facearea&w=96&h=96",
     details: "2 Guests · 1 King Bed · Free WiFi",
     price: 120,
   },
   {
     id: 2,
     name: "Executive Suite",
-    image: "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=facearea&w=96&h=96",
+    image:
+      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=facearea&w=96&h=96",
     details: "3 Guests · 2 Queen Beds · Breakfast Included",
     price: 180,
   },
   {
     id: 3,
     name: "Standard Room",
-    image: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=96&h=96",
+    image:
+      "https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=facearea&w=96&h=96",
     details: "2 Guests · 1 Double Bed · Free Parking",
     price: 90,
   },
 ];
 
 function AddCart() {
-  const [cart, setCart] = useState(
-    hotels.map((hotel) => ({ ...hotel, quantity: 1 }))
-  );
+  const [cart, setCart] = useState([]);
+  const [Hotel, setHotel] = useState([]);
+  useEffect(() => {
+    const GetHotelSaved = async () => {
+      try {
+        const GetSavedHotel = await axios.get(
+          "http://localhost:3000/Hotel/booking/GetHotel/Saved",
+          {
+            params: {
+              Email: email,
+            },
+          }
+        );
+        console.log(GetSavedHotel.data.Hotel, "Hotel");
+        setHotel(GetSavedHotel.data.Hotel);
+        setCart(GetSavedHotel.data.message);
+      } catch (error) {
+        return console.log(error.message);
+      }
+    };
+    GetHotelSaved();
+  }, []);
 
   const handleQuantity = (id, type) => {
     setCart((prev) =>
@@ -53,8 +79,15 @@ function AddCart() {
     setCart((prev) => prev.filter((item) => item.id !== id));
   };
 
-  const total = cart.reduce((sum, hotel) => sum + hotel.price * hotel.quantity, 0);
-
+  const total = cart.reduce(
+    (sum, hotel) => sum + hotel.price * hotel.quantity,
+    0
+  );
+  const navigate = useNavigate();
+  const GetInfo = (PassId) => {
+    const Data = Hotel;
+    navigate("/Search/Location", { state: { Data } }); 
+  };
   return (
     <>
       <Navbar />
@@ -64,24 +97,32 @@ function AddCart() {
 
           {/* Cart Items */}
           {cart.length === 0 ? (
-            <p className="text-gray-500 text-center py-20">Your cart is empty.</p>
+            <p className="text-gray-500 text-center py-20">
+              Your cart is empty.
+            </p>
           ) : (
             cart.map((hotel) => (
               <div
                 key={hotel.id}
+                onClick={() => GetInfo(hotel._id)}
+                title="To Get More About these Hotel Click It"
                 className="flex flex-col md:flex-row items-center justify-between border-b py-4 hover:bg-gray-50 transition"
               >
                 <div className="flex items-center gap-4 w-full md:w-2/3">
                   <img
-                    src={hotel.image}
-                    alt={hotel.name}
+                    src="https://tse4.mm.bing.net/th/id/OIP.JyquK5T4iqVZlAZi4uy_oAHaFd?pid=Api&P=0&h=180"
+                    alt={hotel.hotelName}
                     className="w-24 h-24 object-cover rounded-md"
                   />
                   <div>
-                    <h2 className="text-lg font-semibold text-gray-700">{hotel.name}</h2>
-                    <p className="text-gray-500 text-sm">{hotel.details}</p>
+                    <h2 className="text-lg font-semibold text-gray-700">
+                      {hotel.hotelName}
+                    </h2>
+                    <p className="text-gray-500 text-sm">
+                      {hotel.hotelDescription}
+                    </p>
                     <p className="text-gray-800 font-bold mt-1">
-                      ${hotel.price} / night
+                      ${hotel.hotelPrice} / night
                     </p>
                   </div>
                 </div>
