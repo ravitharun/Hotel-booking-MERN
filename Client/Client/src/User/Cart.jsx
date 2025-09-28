@@ -5,7 +5,8 @@ import { useEffect } from "react";
 import { email } from "../AUTH/Email";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-function AddCart() {
+import Higher from "./HIGHERORDER/Higher";
+function Cart() {
   const [cart, setCart] = useState([]);
  useEffect(() => {
   const GetHotelSaved = async () => {
@@ -152,9 +153,18 @@ return (
         )}
       </div>
     </div>
-    <Footer />
+
   </>
 );
 }
+const EnhancedMySCComponent = Higher(Cart);
 
-export default AddCart;
+export default function AddCart(){
+  return (
+    <>
+   <EnhancedMySCComponent age="10" loder role='user' />
+     <Footer />
+
+    </>
+  );
+};

@@ -2,19 +2,16 @@ import React, { useState } from "react";
 import UserLoader from "../Loader/USerLoader";
 function Higher(WrappedComponent) {
   return function EnhancedComponent(props) {
-    const [loading, setLoading] = useState(true); // loader state
-    if (loading) {
-      return (
-        <>
-          <UserLoader></UserLoader>
-        </>
-      );
-    }
+    console.log({...props},'props')
+    const [loading, setLoading] = useState(false); // loader state
 
     return (
-      <div>
+      <>
+
         <WrappedComponent {...props} message="Hello from HOC!" />
-      </div>
+        <h3>Adding new fwatures</h3>
+      
+      </>
     );
   };
 }
