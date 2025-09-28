@@ -25,7 +25,7 @@ export default function HotelInfo() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   console.log("Data",Data)
-  const hotel = Data[0] || {};
+  const hotel = Data[0] || Data;
   const fallbackImages = [
     "https://tse4.mm.bing.net/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?pid=Api&P=0&h=180",
     "https://tse3.mm.bing.net/th/id/OIP.gZyEooH2Mxo8bl2tfxUjSAHaE8?pid=Api&P=0&h=180",
@@ -158,7 +158,7 @@ export default function HotelInfo() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/40 to-black/20 flex flex-col justify-end p-6">
           <h1 className="text-4xl font-bold text-white">
-            {hotel.name || "Hotel Name"}
+            {hotel.name || "Hotel Name "}
           </h1>
           <div className="flex items-center gap-2 mt-2 text-yellow-400">
             <FaStar />
@@ -177,7 +177,7 @@ export default function HotelInfo() {
         <div className="lg:col-span-2 space-y-6">
           {/* Description & Location */}
           <div className="bg-white p-6 rounded-2xl shadow">
-            <h2 className="text-2xl font-semibold mb-2">About this hotel</h2>
+            <h2 className="text-2xl font-semibold mb-2">About this a  hotel</h2>
             <p className="text-gray-700">
               {hotel.description || "No description available"}
             </p>

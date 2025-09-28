@@ -1,5 +1,5 @@
 const express = require("express");
-const { Hotel, User, Booking,HotelSave } = require("../bin/DataBase");
+const { Hotel, User, Booking, HotelSave } = require("../bin/DataBase");
 const { default: mongoose } = require("mongoose");
 const http = require("http");
 const router = express.Router();
@@ -205,7 +205,7 @@ router.post("/SaveHotel", async (req, res) => {
     const { hotelinfo } = req.body;
     console.log(hotelinfo)
     const SaveHotelUSer = new HotelSave({
-      Hotelid: hotelinfo.Hotelid, hotelName: hotelinfo.hotelName, hotelDescription: hotelinfo.hotelDescription, Usereamil: hotelinfo.Usereamil,hotelPrice:hotelinfo.hotelPrice
+      Hotelid: hotelinfo.Hotelid, hotelName: hotelinfo.hotelName, hotelDescription: hotelinfo.hotelDescription, Usereamil: hotelinfo.Usereamil, hotelPrice: hotelinfo.hotelPrice
     })
     await SaveHotelUSer.save()
     console.log(hotelinfo);
@@ -220,23 +220,37 @@ router.post("/SaveHotel", async (req, res) => {
 router.get("/GetHotel/Saved", async (req, res) => {
   try {
     const {Email}=req.query
-    const gethotelsaved = await HotelSave.find({Usereamil:Email})
-    console.log(gethotelsaved,'Email')
-    const hotelInfos=[]
-    for(let i=0;i<gethotelsaved.length;i++){
+    const gethotelsaved = await HotelSave.find({ Usereamil: Email })
+    console.log(gethotelsaved, 'Email')
 
-      const hotelInfo=await Hotel.findById({_id:gethotelsaved[i].Hotelid})
-      hotelInfos.push(hotelInfo)
-    }
     // console.log(hotelInfo,'hotelInfo')
-    if(gethotelsaved.length == 0 ){
+    if (gethotelsaved.length == 0) {
 
-    return  res.json({ message: "no hotel are saved by u" })
+      return res.json({ message: "no hotel are saved by u" })
     }
-    res.json({ message: gethotelsaved,Hotel:hotelInfos }) 
+    res.json({ message: gethotelsaved, })
   }
   catch (Err) {
     console.log(Err.message, 'ERROR FROM THE GETHOTEL/saved route')
+  }
+})
+
+
+// getting hotel info
+router.get("/gethotelInfo/Hotel", async (req, res) => {
+  try {
+    const { HotelId } = req.query;
+    console.log(HotelId)
+    if (!HotelId) {
+      return res.json({ message: 'Something  went wrong' })
+    }
+    const hotelInfo = await Hotel.findOne({ _id: HotelId });
+
+    console.log(hotelInfo)
+    res.json({ message: hotelInfo })
+  }
+  catch (err) {
+    return res.json({ message: err.message })
   }
 })
 module.exports = router;
