@@ -157,13 +157,13 @@ return (
   </>
 );
 }
-const EnhancedMySCComponent = Higher(Cart);
+const EnhancedMySCComponent = Higher(Cart,true);
 
 export default function AddCart(){
   return (
     <>
    <EnhancedMySCComponent age="10" loder role='user' />
-     <Footer />
+
 
     </>
   );

@@ -21,8 +21,9 @@ import { useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "./Footer";
 import { email } from "../AUTH/Email";
+import Higher from "./HIGHERORDER/Higher";
 
-export default function SearchHotelPage() {
+ function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [active, setActive] = useState("grid"); // list or grid
   const [searchError, setSearcherror] = useState("");
@@ -508,6 +509,14 @@ export default function SearchHotelPage() {
         )}
       </div>
       <Footer />
+    </>
+  );
+}
+const EnhancedMySearch = Higher(SearchHotelPage,false);
+export default function SearchHotelpage(){
+ return (
+    <>
+   <EnhancedMySearch age="10" loder role='user' />
     </>
   );
 }

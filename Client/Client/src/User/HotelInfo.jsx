@@ -176,6 +176,7 @@ export default function HotelInfo() {
         {/* Left Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Description & Location */}
+
           <div className="bg-white p-6 rounded-2xl shadow">
             <h2 className="text-2xl font-semibold mb-2">About this a  hotel</h2>
             <p className="text-gray-700">
