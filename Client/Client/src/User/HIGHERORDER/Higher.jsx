@@ -13,8 +13,6 @@ function Higher(WrappedComponent, withFooter = true) {
       const handleScroll = () => {
         const scrollTop = Number(Number(window.scrollY).toFixed(0));
         SetScroll(scrollTop);
-
-
       };
       window.addEventListener("scroll", handleScroll);
 
@@ -33,48 +31,54 @@ function Higher(WrappedComponent, withFooter = true) {
           <>
             {Scroll ? (
               <>
-                <div  onClick={() => SetOpen((prev)=>!prev)}>
-                  <div className="fixed left-0 top-[75%] bg-gray-100 shadow z-50 w-auto px-4 py-2">
-                    <div
-                      className="flex items-center text-gray-600 space-x-1"
-                     
-                    >
-                      {Isopen ?<HiX className="hover:text-red-500"/>:<HiMenu className="hover:text-blue-500" />}
+                <div className="fixed left-4 bottom-10 z-50">
+                  <div
+                    onClick={() => SetOpen((prev) => !prev)}
+                    className="bg-white shadow-lg rounded-full p-3 flex items-center justify-center transition-transform transform hover:scale-110 hover:shadow-xl cursor-pointer"
+                  >
+                    {Isopen ? (
+                      <HiX
+                        className="text-red-500 transition-colors duration-300"
+                        size={28}
+                      />
+                    ) : (
+                      <HiMenu
+                        className="text-blue-500 transition-colors duration-300"
+                        size={28}
+                      />
+                    )}
+                  </div>
+                </div>
+
+                {Isopen ? (
+                  <>
+                    <div className="fixed left-0 top-[75%] bg-gray-100 shadow z-50 w-auto px-4 py-2">
+                      <div className="flex items-center text-gray-600 space-x-1">
+                        <HiX
+                          className="hover:text-red-500"
+                          onClick={() => SetOpen((prev) => !prev)}
+                        />
+                        <a href="#" className="hover:text-blue-600">
+                          Home
+                        </a>
+                        <span>&gt;</span>
+                        <a href="#" className="hover:text-blue-600">
+                          Search Hotel
+                        </a>
+                        <span>&gt;</span>
+                        <a href="#" className="hover:text-blue-600">
+                          Hotel Details
+                        </a>
+                        <span>&gt;</span>
+                        <a href="#" className="hover:text-blue-600">
+                          Booking
+                        </a>
+                        <span>&gt;</span>
+                        <span className="text-gray-400">Payment</span>
+                      </div>
                     </div>
-                  </div>
-                </div>
-                {Isopen ?
-                <>
-                                <div className="fixed left-0 top-[75%] bg-gray-100 shadow z-50 w-auto px-4 py-2">
-                  <div className="flex items-center text-gray-600 space-x-1">
-                    <HiX className="hover:text-red-500" onClick={() => SetOpen((prev)=>!prev)}/>
-                    <a href="#" className="hover:text-blue-600">
-                      Home
-                    </a>
-                    <span>&gt;</span>
-                    <a href="#" className="hover:text-blue-600">
-                      Search Hotel
-                    </a>
-                    <span>&gt;</span>
-                    <a href="#" className="hover:text-blue-600">
-                      Hotel Details
-                    </a>
-                    <span>&gt;</span>
-                    <a href="#" className="hover:text-blue-600">
-                      Booking
-                    </a>
-                    <span>&gt;</span>
-                    <span className="text-gray-400">Payment</span>
-                  </div>
-                </div>
-                </>
-                
-                
-                
-                
-                
-                
-                :null}
+                  </>
+                ) : null}
               </>
             ) : (
               <>
@@ -82,8 +86,8 @@ function Higher(WrappedComponent, withFooter = true) {
                   <div className="flex items-center text-gray-600 space-x-1">
                     <a href="#" className="hover:text-blue-600">
                       Home
-                    </a>B
-                    <span>&gt;</span>
+                    </a>
+                    B<span>&gt;</span>
                     <a href="#" className="hover:text-blue-600">
                       Search Hotel
                     </a>

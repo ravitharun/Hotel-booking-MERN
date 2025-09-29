@@ -67,7 +67,7 @@ function Cart() {
         HotelId: PassId
       }
     })
-    console.log(hotelBio)
+    
     const Data = hotelBio.data.message;
     if(Data==null){
       return alert("no info got it")
