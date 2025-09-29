@@ -20,8 +20,9 @@ import Cooment from "./Cooment";
 import { email } from "../AUTH/Email";
 import toast, { Toaster } from "react-hot-toast";
 import PaymentIcons from "./PaymentIcons";
+import Higher from "./HIGHERORDER/Higher";
 
-export default function HotelInfo() {
+ function HotelDetails() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   console.log("Data",Data)
@@ -495,4 +496,12 @@ export default function HotelInfo() {
       </div>
     </>
   );
+}
+const NewFeature=Higher(HotelDetails,false)
+export default function HotelInfo(){
+  return (
+    <>
+    <NewFeature age="10" loder page='DetailsPage' />
+    </>
+  )
 }
