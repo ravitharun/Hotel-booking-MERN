@@ -1,25 +1,20 @@
 import React, { useEffect, useState } from "react";
 import UserLoader from "../Loader/USerLoader";
 import Footer from "../Footer";
+import { HiMenu } from "react-icons/hi"; // 3-line hamburger icon
+import { HiX } from "react-icons/hi"; // Close icon
 function Higher(WrappedComponent, withFooter = true) {
   return function EnhancedComponent(props) {
-    console.log({ ...props }, "props");
-    const [loading, setLoading] = useState(false); // loader state
+    // const [loading, setLoading] = useState(false); // loader state
+    const [Isopen, SetOpen] = useState(false); // MiniNav  state
     const [Scroll, SetScroll] = useState(0); // loader state
 
     useEffect(() => {
       const handleScroll = () => {
         const scrollTop = Number(Number(window.scrollY).toFixed(0));
-        console.log(scrollTop);
         SetScroll(scrollTop);
-      
-      if (scrollTop >= 37) {
-         console.log("hide the navbar with 3lines");
-      }
-      else{
 
-       console.log("Normal navbar we will disply ")
-       }
+
       };
       window.addEventListener("scroll", handleScroll);
 
@@ -36,40 +31,76 @@ function Higher(WrappedComponent, withFooter = true) {
         {withFooter && <Footer />} {/* 👈 conditional */}
         {props.page == "DetailsPage" ? (
           <>
-            {/* <div className="fixed left-0 w-full top-[40%] bg-gray-100 px-6 py-3 shadow z-50">
-  <div className="max-w-2xl mx-auto flex items-center space-x-2 text-gray-600">
-    <a href="#" className="hover:text-blue-600">Home</a>
-    <span>&gt;</span>
-    <a href="#" className="hover:text-blue-600">Search Hotel</a>
-    <span>&gt;</span>
-    <a href="#" className="hover:text-blue-600">Hotel Details</a>
-    <span>&gt;</span>
-    <a href="#" className="hover:text-blue-600">Booking</a>
-    <span>&gt;</span>
-    <span className="text-gray-400">Payment</span>
-  </div>
-</div> */}
-            <div className="fixed left-0 top-[75%] bg-gray-100 shadow z-50 w-auto px-4 py-2">
-              <div className="flex items-center text-gray-600 space-x-1">
-                <a href="#" className="hover:text-blue-600">
-                  Home
-                </a>
-                <span>&gt;</span>
-                <a href="#" className="hover:text-blue-600">
-                  Search Hotel
-                </a>
-                <span>&gt;</span>
-                <a href="#" className="hover:text-blue-600">
-                  Hotel Details
-                </a>
-                <span>&gt;</span>
-                <a href="#" className="hover:text-blue-600">
-                  Booking
-                </a>
-                <span>&gt;</span>
-                <span className="text-gray-400">Payment</span>
-              </div>
-            </div>
+            {Scroll ? (
+              <>
+                <div  onClick={() => SetOpen((prev)=>!prev)}>
+                  <div className="fixed left-0 top-[75%] bg-gray-100 shadow z-50 w-auto px-4 py-2">
+                    <div
+                      className="flex items-center text-gray-600 space-x-1"
+                     
+                    >
+                      {Isopen ?<HiX className="hover:text-red-500"/>:<HiMenu className="hover:text-blue-500" />}
+                    </div>
+                  </div>
+                </div>
+                {Isopen ?
+                <>
+                                <div className="fixed left-0 top-[75%] bg-gray-100 shadow z-50 w-auto px-4 py-2">
+                  <div className="flex items-center text-gray-600 space-x-1">
+                    <HiX className="hover:text-red-500" onClick={() => SetOpen((prev)=>!prev)}/>
+                    <a href="#" className="hover:text-blue-600">
+                      Home
+                    </a>
+                    <span>&gt;</span>
+                    <a href="#" className="hover:text-blue-600">
+                      Search Hotel
+                    </a>
+                    <span>&gt;</span>
+                    <a href="#" className="hover:text-blue-600">
+                      Hotel Details
+                    </a>
+                    <span>&gt;</span>
+                    <a href="#" className="hover:text-blue-600">
+                      Booking
+                    </a>
+                    <span>&gt;</span>
+                    <span className="text-gray-400">Payment</span>
+                  </div>
+                </div>
+                </>
+                
+                
+                
+                
+                
+                
+                :null}
+              </>
+            ) : (
+              <>
+                <div className="fixed left-0 top-[75%] bg-gray-100 shadow z-50 w-auto px-4 py-2">
+                  <div className="flex items-center text-gray-600 space-x-1">
+                    <a href="#" className="hover:text-blue-600">
+                      Home
+                    </a>B
+                    <span>&gt;</span>
+                    <a href="#" className="hover:text-blue-600">
+                      Search Hotel
+                    </a>
+                    <span>&gt;</span>
+                    <a href="#" className="hover:text-blue-600">
+                      Hotel Details
+                    </a>
+                    <span>&gt;</span>
+                    <a href="#" className="hover:text-blue-600">
+                      Booking
+                    </a>
+                    <span>&gt;</span>
+                    <span className="text-gray-400">Payment</span>
+                  </div>
+                </div>
+              </>
+            )}
 
             <Footer />
           </>

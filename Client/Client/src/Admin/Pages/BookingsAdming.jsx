@@ -25,7 +25,7 @@ const BookingsAdminUI = () => {
             params: { Email: email }, // ✅ correct key
           }
         );
-        console.log(getBookinInfo.data, "getBookinInfo");
+
         SetusershotelApprove(getBookinInfo.data.bookings);
         SetusersName(getBookinInfo.data.userInfo);
         setUserBookingErrorMsg(getBookinInfo.data.message);
@@ -55,7 +55,7 @@ const BookingsAdminUI = () => {
   const Status = (CheckStatus) => {
     // console.log(ChckStatus)
     if (CheckStatus == "All") {
-      return console.log(Approveusershotel);
+      return
     }
     const GetStatus = Approveusershotel.filter((st) => st.status == CheckStatus);
 

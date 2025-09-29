@@ -21,12 +21,12 @@ function Cart() {
       );
 
       setCart(GetSavedHotel.data.message);
-      console.log(GetSavedHotel.data.message);
+
 
       // Store length as string in localStorage
       localStorage.setItem("Saved_Hotel", GetSavedHotel.data.message.length.toString());
     } catch (error) {
-      console.log(error.message);
+      
     }
   };
   GetHotelSaved();
@@ -61,7 +61,7 @@ function Cart() {
   );
   const navigate = useNavigate();
   const GetInfo = async (PassId) => {
-    console.log(PassId)
+
     const hotelBio = await axios.get("http://localhost:3000/Hotel/booking/gethotelInfo/Hotel", {
       params: {
         HotelId: PassId

@@ -1,7 +1,7 @@
 import React from "react";
 
 function Loader({isLoader}) {
-  console.log(isLoader);
+
   if(!isLoader){
     return null;
   }

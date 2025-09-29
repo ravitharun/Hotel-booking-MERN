@@ -22,7 +22,7 @@ export default function MyBookings() {
 
         setBookings(GetBooking.data.message); // ✅ fixed 
       } catch (err) {
-        console.log(err.message);
+        console.error(err.message);
       }
       finally{
         setisloading(false);
@@ -43,7 +43,7 @@ const gethotelInfo = async (HotelId) => {
         },
       }
     );
-    console.log(HotelIDData.data.message);
+    
     const Data = HotelIDData.data.message
     redirect("/Search/Location", {
       state: {

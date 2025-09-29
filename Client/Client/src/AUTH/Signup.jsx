@@ -23,7 +23,7 @@ export default function Login() {
    const response=await axios.post('http://localhost:3000/Hotel/CreateAccountUser',{
     UserInfo:UserNew
    })
-   console.log(response.data.message,'response from the new account page ')
+
   };
 
   return (

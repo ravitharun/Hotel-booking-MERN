@@ -25,7 +25,6 @@ import Higher from "./HIGHERORDER/Higher";
  function HotelDetails() {
   const { state } = useLocation();
   const Data = state?.Data || [];
-  console.log("Data",Data)
   const hotel = Data[0] || Data;
   const fallbackImages = [
     "https://tse4.mm.bing.net/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?pid=Api&P=0&h=180",
@@ -83,7 +82,6 @@ import Higher from "./HIGHERORDER/Higher";
       BookingCheckOut,
     };
 
-    console.log("BookingData:", BookingData);
 
     try {
       const getbookingStatus = await axios.get(
@@ -135,7 +133,7 @@ import Higher from "./HIGHERORDER/Higher";
       ));
       setBooking(false);
 
-      console.log(`Booking in progress for hotel ${Hotelid}`);
+     
     } catch (error) {
       console.error(error);
       toast.error("Booking failed. Please try again.");

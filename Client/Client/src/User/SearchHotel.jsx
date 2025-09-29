@@ -44,7 +44,7 @@ import Higher from "./HIGHERORDER/Higher";
         setisloading(true);
         const res = await axios.get("http://localhost:3000/Hotel/all");
         setFilteredHotels(res.data);
-        console.log(res.data);
+      
       } catch (error) {
         console.log(error.message);
       } finally {
