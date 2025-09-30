@@ -14,6 +14,8 @@ import Logout from "./AUTH/Logout";
 import AdminHomepage from "./Admin/Pages/AdminHomepage";
 import BookingsAdming from "./Admin/Pages/BookingsAdming";
 import AdminManageHotel from "./Admin/Pages/AdminManageHotel";
+// import Report from "./Admin/Pages/Report";
+import Report from "./Admin/Pages/Report";
 import SearchHotelpage from "./User/SearchHotel";
 createRoot(document.getElementById("root")).render(
   <Router>
@@ -22,6 +24,7 @@ createRoot(document.getElementById("root")).render(
       <Route path="/Admin" element={<AdminHomepage />} />
       <Route path="/wishlist" element={<Cart />} />
       <Route path="/admin/hotels" element={<AdminManageHotel />} />
+      <Route path="/admin/reports" element={<Report />} />
       <Route path="/Admin/Bookings" element={<BookingsAdming />} />
       <Route path="/Logout" element={<Logout />} />
       <Route path="/profile" element={<MyProfile />} />

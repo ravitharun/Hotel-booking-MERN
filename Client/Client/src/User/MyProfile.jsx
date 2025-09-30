@@ -236,43 +236,15 @@ const MyProfile = () => {
           </div>
 
           {/* Bookings & Saved Hotels */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition duration-300 w-full">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-                Recent Bookings
-              </h3>
-              <MyBookings />
-            </div>
+<div className="grid grid-cols-1 gap-8 w-full">
+  <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition duration-300 w-full">
+    <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+      Your Saved
+    </h3>
+    <MyBookings />
+  </div>
+</div>
 
-            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition duration-300 w-full">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-                Saved Hotels
-              </h3>
-              <div className="space-y-5">
-                {[1, 2, 3].map((hotel) => (
-                  <div
-                    key={hotel}
-                    className="flex items-center gap-6 p-4 border rounded-xl hover:shadow-lg transition cursor-pointer w-full"
-                  >
-                    <img
-                      src={`https://source.unsplash.com/120x120/?hotel&sig=${hotel}`}
-                      alt="Hotel"
-                      className="w-28 h-28 rounded-lg object-cover"
-                    />
-                    <div>
-                      <h4 className="font-semibold text-gray-800 text-lg">
-                        Hotel {hotel}
-                      </h4>
-                      <p className="text-gray-500 text-sm">City, Country</p>
-                      <p className="text-blue-600 font-medium mt-1">
-                        ₹{5000 + hotel * 500}/night
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
 
           {/* Preferences & Account Actions */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
