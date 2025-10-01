@@ -1,29 +1,24 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
+  FaHome,
   FaHotel,
-  FaUser,
-  FaHeart,
   FaCalendarAlt,
+  FaHeart,
+  FaUser,
   FaBars,
   FaTimes,
   FaCog,
   FaSignOutAlt,
   FaSignInAlt,
-  FaHome,
-  FaClipboardList,
-  FaUsers,
-  FaPlusCircle,
-  FaChartLine,
 } from "react-icons/fa";
 import { ISLogin, Role } from "./AUTH/Email";
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false); // Mobile menu toggle
-  const [dropdownOpen, setDropdownOpen] = useState(false); // Profile dropdown
+  const [isOpen, setIsOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Close profile dropdown if clicked outside
   useEffect(() => {
     function handleClickOutside(event) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -36,16 +31,16 @@ function Navbar() {
 
   const userLinks = (
     <>
-      <Link to="/" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+      <Link to="/" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
         <FaHome /> Home
       </Link>
-      <Link to="/Search/Hotel" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+      <Link to="/Search/Hotel" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
         <FaHotel /> Search Hotel
       </Link>
-      <Link to="/bookings" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+      <Link to="/bookings" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
         <FaCalendarAlt /> My Bookings
       </Link>
-      <Link to="/wishlist" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+      <Link to="/wishlist" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
         <FaHeart /> Wishlist
       </Link>
 
@@ -53,24 +48,24 @@ function Navbar() {
       <div ref={dropdownRef} className="relative">
         <button
           onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="w-full text-left px-4 py-2 flex items-center gap-2 text-gray-700 hover:bg-gray-200 focus:outline-none"
+          className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium focus:outline-none"
         >
           <FaUser /> Profile
         </button>
         {dropdownOpen && (
-          <div className="pl-6">
-            <Link to="/profile" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+          <div className="absolute right-0 mt-2 w-44 bg-green-100/20 backdrop-blur-md rounded-xl shadow-lg py-2 flex flex-col z-50">
+            <Link to="/profile" className="flex items-center gap-2 px-4 py-2 text-green-700 hover:bg-green-200/40 rounded-lg transition">
               <FaUser /> My Profile
             </Link>
-            <Link to="/settings" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+            <Link to="/settings" className="flex items-center gap-2 px-4 py-2 text-green-700 hover:bg-green-200/40 rounded-lg transition">
               <FaCog /> Settings
             </Link>
             {ISLogin ? (
-              <Link to="/Logout" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+              <Link to="/Logout" className="flex items-center gap-2 px-4 py-2 text-green-700 hover:bg-green-200/40 rounded-lg transition">
                 <FaSignOutAlt /> Logout
               </Link>
             ) : (
-              <Link to="/login" className="block px-4 py-2 text-gray-700 hover:bg-gray-200 flex items-center gap-2">
+              <Link to="/login" className="flex items-center gap-2 px-4 py-2 text-green-700 hover:bg-green-200/40 rounded-lg transition">
                 <FaSignInAlt /> Login
               </Link>
             )}
@@ -82,95 +77,66 @@ function Navbar() {
 
   const adminLinks = (
     <>
-      <Link to="/Admin" className="block px-4 py-2 text-white hover:bg-gray-700 flex items-center gap-2">
-        <FaChartLine /> Dashboard
+      <Link to="/Admin" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-purple-500 font-medium">
+        <FaHome /> Dashboard
       </Link>
-      <Link to="/admin/hotels" className="block px-4 py-2 text-white hover:bg-gray-700 flex items-center gap-2">
-        <FaHotel /> Manage Hotels
+      <Link to="/admin/hotels" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
+        <FaHotel /> Hotels
       </Link>
-      <Link to="/admin/bookings" className="block px-4 py-2 text-white hover:bg-gray-700 flex items-center gap-2">
-        <FaClipboardList /> Bookings
+      <Link to="/admin/bookings" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
+        <FaCalendarAlt /> Bookings
       </Link>
-      <Link to="/admin/users" className="block px-4 py-2 text-white hover:bg-gray-700 flex items-center gap-2">
-        <FaUsers /> Users
+      <Link to="/admin/users" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
+        <FaUser /> Users
       </Link>
-      <Link to="/admin/add-hotel" className="block px-4 py-2 text-white hover:bg-gray-700 flex items-center gap-2">
-        <FaPlusCircle /> Add Hotel
-      </Link>
-
-      <div ref={dropdownRef} className="relative">
-        <button
-          onClick={() => setDropdownOpen(!dropdownOpen)}
-          className="w-full text-left px-4 py-2 flex items-center gap-2 text-white hover:bg-gray-700 focus:outline-none"
-        >
-          <FaUser /> Profile
-        </button>
-        {dropdownOpen && (
-          <div className="pl-6">
-            <Link to="/admin/profile" className="block px-4 py-2 text-white hover:bg-gray-600 flex items-center gap-2">
-              <FaUser /> My Profile
-            </Link>
-            <Link to="/admin/settings" className="block px-4 py-2 text-white hover:bg-gray-600 flex items-center gap-2">
-              <FaCog /> Settings
-            </Link>
-            {ISLogin ? (
-              <Link to="/Logout" className="block px-4 py-2 text-white hover:bg-gray-600 flex items-center gap-2">
-                <FaSignOutAlt /> Logout
-              </Link>
-            ) : (
-              <Link to="/login" className="block px-4 py-2 text-white hover:bg-gray-600 flex items-center gap-2">
-                <FaSignInAlt /> Login
-              </Link>
-            )}
-          </div>
-        )}
-      </div>
     </>
   );
 
   return (
-    <nav className={`${Role === "user" ? "bg-amber-100" : "bg-gray-800"} fixed w-full top-0 z-50 shadow-md`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16 items-center">
+    <nav className="fixed w-full top-0 z-50">
+      <div className="w-full">
+        <div
+          className={`flex justify-between items-center h-16 px-6 md:px-12 shadow-md rounded-b-xl backdrop-blur-md ${
+            Role === "user" ? "bg-green-200/30" : "bg-orange-200/30"
+          }`}
+        >
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            {Role === "user" ? (
-              <>
-                <Link to="/">
-                  <img
-                    src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
-                    alt="Logo"
-                    className="w-10 h-10 rounded-full"
-                  />
-                </Link>
-                <span className="text-xl font-bold text-gray-800">BookInn</span>
-              </>
-            ) : (
-              <Link to="/Admin">
-                <span className="text-xl font-bold text-white">Admin Panel</span>
-              </Link>
-            )}
+          <div className="flex items-center space-x-3">
+            <Link to={Role === "user" ? "/" : "/Admin"}>
+              <img
+                src="https://tse2.mm.bing.net/th/id/OIP._PxenCnInwfF8Syr0D4UaAHaFj?pid=Api&P=0&h=180"
+                alt="Logo"
+                className="w-10 h-10 rounded-full border-2 border-white"
+              />
+            </Link>
+            <span className={`text-green-800 font-[cursive]  text-2xl font-bold tracking-wide`}>
+              {Role === "user" ? "BookInn" : "Admin Panel"}
+            </span>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center gap-4">
             {Role === "user" ? userLinks : adminLinks}
           </div>
 
-          {/* Mobile Button */}
+          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`focus:outline-none ${Role === "user" ? "text-gray-700" : "text-white"}`}
+              className="text-white focus:outline-none p-2 rounded-lg hover:bg-white/20 transition"
             >
-              {isOpen ? <FaTimes size={22} /> : <FaBars size={22} />}
+              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className={`md:hidden ${Role === "user" ? "bg-amber-100" : "bg-gray-800"} pt-2 pb-4 flex flex-col`}>
+          <div
+            className={`md:hidden flex flex-col gap-2 p-4 mt-1 rounded-b-xl backdrop-blur-md ${
+              Role === "user" ? "bg-green-200/30" : "bg-orange-200/30"
+            }`}
+          >
             {Role === "user" ? userLinks : adminLinks}
           </div>
         )}
