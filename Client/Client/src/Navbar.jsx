@@ -31,16 +31,16 @@ function Navbar() {
 
   const userLinks = (
     <>
-      <Link to="/" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
+      <Link to="/" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium hover:text-black">
         <FaHome /> Home
       </Link>
-      <Link to="/Search/Hotel" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
+      <Link to="/Search/Hotel" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium hover:text-black hover:font-mono">
         <FaHotel /> Search Hotel
       </Link>
-      <Link to="/bookings" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
+      <Link to="/bookings" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium hover:text-black hover:font-mono">
         <FaCalendarAlt /> My Bookings
       </Link>
-      <Link to="/wishlist" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium">
+      <Link to="/wishlist" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-green-500 font-medium hover:text-black hover:font-mono">
         <FaHeart /> Wishlist
       </Link>
 
@@ -75,22 +75,52 @@ function Navbar() {
     </>
   );
 
-  const adminLinks = (
-    <>
-      <Link to="/Admin" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-purple-500 font-medium">
-        <FaHome /> Dashboard
-      </Link>
-      <Link to="/admin/hotels" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
-        <FaHotel /> Hotels
-      </Link>
-      <Link to="/admin/bookings" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
-        <FaCalendarAlt /> Bookings
-      </Link>
-      <Link to="/admin/users" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
-        <FaUser /> Users
-      </Link>
-    </>
-  );
+const adminLinks = (
+  <>
+    <Link to="/Admin" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-purple-500 font-medium">
+      <FaHome /> Dashboard
+    </Link>
+    <Link to="/admin/hotels" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
+      <FaHotel /> Hotels
+    </Link>
+    <Link to="/admin/bookings" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
+      <FaCalendarAlt /> Bookings
+    </Link>
+    <Link to="/admin/users" className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-orange-400 font-medium">
+      <FaUser /> Users
+    </Link>
+
+    {/* Admin Profile Dropdown */}
+    <div ref={dropdownRef} className="relative">
+      <button
+        onClick={() => setDropdownOpen(!dropdownOpen)}
+        className="flex items-center gap-2 px-4 py-2 rounded-lg hover:bg-white/20 transition text-purple-500 font-medium focus:outline-none"
+      >
+        <FaUser /> Profile
+      </button>
+      {dropdownOpen && (
+        <div className="absolute right-0 mt-2 w-44 bg-purple-100/20 backdrop-blur-md rounded-xl shadow-lg py-2 flex flex-col z-50">
+          <Link to="/admin/profile" className="flex items-center gap-2 px-4 py-2 text-purple-700 hover:bg-purple-200/40 rounded-lg transition">
+            <FaUser /> My Profile
+          </Link>
+          <Link to="/admin/settings" className="flex items-center gap-2 px-4 py-2 text-purple-700 hover:bg-purple-200/40 rounded-lg transition">
+            <FaCog /> Settings
+          </Link>
+          {ISLogin ? (
+            <Link to="/Logout" className="flex items-center gap-2 px-4 py-2 text-purple-700 hover:bg-purple-200/40 rounded-lg transition">
+              <FaSignOutAlt /> Logout
+            </Link>
+          ) : (
+            <Link to="/login" className="flex items-center gap-2 px-4 py-2 text-purple-700 hover:bg-purple-200/40 rounded-lg transition">
+              <FaSignInAlt /> Login
+            </Link>
+          )}
+        </div>
+      )}
+    </div>
+  </>
+);
+
 
   return (
     <nav className="fixed w-full top-0 z-50">

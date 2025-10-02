@@ -22,7 +22,7 @@ import toast, { Toaster } from "react-hot-toast";
 import PaymentIcons from "./PaymentIcons";
 import Higher from "./HIGHERORDER/Higher";
 
- function HotelDetails() {
+function HotelDetails() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || Data;
@@ -37,7 +37,7 @@ import Higher from "./HIGHERORDER/Higher";
 
   // FAQ dropdown state
   const [openIndex, setOpenIndex] = useState(null);
-  const [Booking, setBooking] = useState(true);
+  const [Booking, setBooking] = useState(false);
 
   const faqs = [
     {
@@ -81,7 +81,6 @@ import Higher from "./HIGHERORDER/Higher";
       UserEmail: email,
       BookingCheckOut,
     };
-
 
     try {
       const getbookingStatus = await axios.get(
@@ -132,8 +131,6 @@ import Higher from "./HIGHERORDER/Higher";
         </div>
       ));
       setBooking(false);
-
-     
     } catch (error) {
       console.error(error);
       toast.error("Booking failed. Please try again.");
@@ -177,7 +174,7 @@ import Higher from "./HIGHERORDER/Higher";
           {/* Description & Location */}
 
           <div className="bg-white p-6 rounded-2xl shadow">
-            <h2 className="text-2xl font-semibold mb-2">About this a  hotel</h2>
+            <h2 className="text-2xl font-semibold mb-2">About this a hotel</h2>
             <p className="text-gray-700">
               {hotel.description || "No description available"}
             </p>
@@ -464,13 +461,31 @@ import Higher from "./HIGHERORDER/Higher";
               className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-md transition"
               onClick={() => setBooking((prev) => !prev)}
             >
-              {Booking ? "cancel Now" : "Book Now"}
+              {Booking ? "Cancel Now" : "Book Now"}
             </button>
           </div>
         </div>
       </div>
-      <Cooment></Cooment>
+       <div className="flex flex-col items-center justify-center mt-10">
+      {/* Button */}
+      <button
+        onClick={() => toast.success("Adding Soon...")}
+        className="flex items-center gap-2 bg-black/40 backdrop-blur-md text-white font-semibold px-6 py-3 rounded-xl shadow-lg border border-white/20 hover:bg-black/60 hover:scale-105 transition transform duration-300 ease-in-out"
+      >
+        <FaInfoCircle size={20} />
+        Adding Soon
+      </button>
 
+      {/* Message */}
+      <p className="mt-4 text-white text-center max-w-sm bg-black/40 backdrop-blur-md p-4 rounded-xl shadow-md border border-white/20 italic">
+        This feature is coming soon! Stay tuned for exciting updates. 🚀
+      </p>
+    </div>
+      <br />
+      <br />
+      <br />
+
+      <Cooment></Cooment>
       {/* Route Section */}
       <div className="bg-white rounded-2xl shadow-lg p-6 max-w-7xl mx-auto mt-8">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 mb-4">
@@ -495,11 +510,11 @@ import Higher from "./HIGHERORDER/Higher";
     </>
   );
 }
-const NewFeature=Higher(HotelDetails,false)
-export default function HotelInfo(){
+const NewFeature = Higher(HotelDetails, false);
+export default function HotelInfo() {
   return (
     <>
-    <NewFeature age="10" loder page='DetailsPage' />
+      <NewFeature age="10" loder page="DetailsPage" />
     </>
-  )
+  );
 }
