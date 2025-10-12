@@ -12,6 +12,13 @@ import {
   FaBroom,
   FaInfoCircle,
 } from "react-icons/fa";
+import {
+  FaPaperPlane,
+  FaUser,
+  FaEnvelope,
+  FaCommentDots,
+  FaExclamationCircle,
+} from "react-icons/fa";
 import axios from "axios";
 
 import UserLivelocation from "./Location/UserLivelocation";
@@ -38,6 +45,7 @@ function HotelDetails() {
   // FAQ dropdown state
   const [openIndex, setOpenIndex] = useState(null);
   const [Booking, setBooking] = useState(false);
+  const [IssueForm, setIssueForm] = useState(false);
 
   const faqs = [
     {
@@ -466,21 +474,88 @@ function HotelDetails() {
           </div>
         </div>
       </div>
-       <div className="flex flex-col items-center justify-center mt-10">
-      {/* Button */}
-      <button
-        onClick={() => toast.success("Adding Soon...")}
-        className="flex items-center gap-2 bg-black/40 backdrop-blur-md text-white font-semibold px-6 py-3 rounded-xl shadow-lg border border-white/20 hover:bg-black/60 hover:scale-105 transition transform duration-300 ease-in-out"
-      >
-        <FaInfoCircle size={20} />
-        Adding Soon
-      </button>
+      {/* ( */}
+      <div className="flex flex-col items-center justify-center mt-10 bg-white min-h-screen text-gray-800">
+        {/* Header */}
+        <div className="flex items-center gap-2 mb-6">
+          <FaInfoCircle size={24} className="text-gray-600" />
+          <h2 className="text-2xl font-semibold">Hotel Review / Issue Form</h2>
+        </div>
 
-      {/* Message */}
-      <p className="mt-4 text-white text-center max-w-sm bg-black/40 backdrop-blur-md p-4 rounded-xl shadow-md border border-white/20 italic">
-        This feature is coming soon! Stay tuned for exciting updates. 🚀
-      </p>
-    </div>
+        {/* Form */}
+        {IssueForm ?<form className="flex flex-col gap-4 w-full max-w-md bg-white p-6 rounded-2xl shadow-lg">
+          {/* Name */}
+          <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
+            <FaUser className="text-gray-600" />
+            <input
+              type="text"
+              placeholder="Your Name"
+              className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500"
+            />
+          </div>
+
+          {/* Email */}
+          <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
+            <FaEnvelope className="text-gray-600" />
+            <input
+              type="email"
+              placeholder="Your Email"
+              className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500"
+            />
+          </div>
+
+          {/* Type */}
+          <div className="flex items-center gap-4">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="type" className="accent-gray-700" />
+              <FaHotel className="text-gray-600" /> Review
+            </label>
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input type="radio" name="type" className="accent-gray-700" />
+              <FaExclamationCircle className="text-gray-600" /> Issue
+            </label>
+          </div>
+
+          {/* Message */}
+          <div className="flex items-start gap-2 bg-gray-100 rounded-lg px-3 py-2">
+            <FaCommentDots className="mt-1 text-gray-600" />
+            <textarea
+              placeholder="Write your message here..."
+              rows={4}
+              className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500 resize-none"
+            ></textarea>
+          </div>
+
+          {/* Submit Button */}
+          <button
+            type="button"
+            className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition transform hover:scale-105"
+          >
+            <FaPaperPlane />
+            Submit
+          </button>
+        </form>:null}
+        <button
+          type="button"
+          onClick={() => setIssueForm((prev) => !prev)}
+          className="flex items-center justify-center gap-2 bg-gray-800 mt-10 hover:bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition transform hover:scale-105"
+        >
+          {IssueForm ? (
+            <>
+              {/* <FaClose /> */}
+              close review
+            </>
+          ) : (
+            "Open"
+          )}
+        </button>
+
+        {/* Message */}
+        <p className="mt-5 text-center max-w-sm text-gray-600 italic">
+          Share your experience or report an issue — we value your feedback! 🌟
+        </p>
+      </div>
+
       <br />
       <br />
       <br />
