@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "../Navbar";
 import { useLocation } from "react-router-dom";
 import {
@@ -144,7 +144,25 @@ function HotelDetails() {
       toast.error("Booking failed. Please try again.");
     }
   }
-
+  const ReviewName = useRef("");
+  const ReviewEmail = useRef("");
+  const ReviewType = useRef("");
+  const ReviewMessage = useRef("");
+  const SubmitIsssue = () => {
+    if (
+      ReviewMessage.current.value == "" ||
+      ReviewName.current.value == "" ||
+      ReviewEmail.current.value == ""
+    ) {
+      return alert("Fill the  required details in the form.");
+    }
+    const FormData = {
+      ReviewName: ReviewName.current.value,
+      ReviewEmail: ReviewEmail.current.value,
+      ReviewMessage: ReviewMessage.current.value,
+    };
+    console.log('FormData',FormData);
+  };
   return (
     <>
       <Navbar />
@@ -483,58 +501,64 @@ function HotelDetails() {
         </div>
 
         {/* Form */}
-        {IssueForm ?<form className="flex flex-col gap-4 w-full max-w-md bg-white p-6 rounded-2xl shadow-lg">
-          {/* Name */}
-          <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
-            <FaUser className="text-gray-600" />
-            <input
-              type="text"
-              placeholder="Your Name"
-              className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500"
-            />
-          </div>
+        {IssueForm ? (
+          <form className="flex flex-col gap-4 w-full max-w-md bg-white p-6 rounded-2xl shadow-lg">
+            {/* Name */}
+            <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
+              <FaUser className="text-gray-600" />
+              <input
+                type="text"
+                placeholder="Your Name"
+                ref={ReviewName}
+                className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500"
+              />
+            </div>
 
-          {/* Email */}
-          <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
-            <FaEnvelope className="text-gray-600" />
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500"
-            />
-          </div>
+            {/* Email */}
+            <div className="flex items-center gap-2 bg-gray-100 rounded-lg px-3 py-2">
+              <FaEnvelope className="text-gray-600" />
+              <input
+                type="email"
+                placeholder="Your Email"
+                ref={ReviewEmail}
+                className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500"
+              />
+            </div>
 
-          {/* Type */}
-          <div className="flex items-center gap-4">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="radio" name="type" className="accent-gray-700" />
-              <FaHotel className="text-gray-600" /> Review
-            </label>
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="radio" name="type" className="accent-gray-700" />
-              <FaExclamationCircle className="text-gray-600" /> Issue
-            </label>
-          </div>
+            {/* Type */}
+            <div className="flex items-center gap-4">
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="type" className="accent-gray-700" />
+                <FaHotel className="text-gray-600" required /> Review
+              </label>
+              <label className="flex items-center gap-2 cursor-pointer">
+                <input type="radio" name="type" className="accent-gray-700" />
+                <FaExclamationCircle className="text-gray-600" required /> Issue
+              </label>
+            </div>
 
-          {/* Message */}
-          <div className="flex items-start gap-2 bg-gray-100 rounded-lg px-3 py-2">
-            <FaCommentDots className="mt-1 text-gray-600" />
-            <textarea
-              placeholder="Write your message here..."
-              rows={4}
-              className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500 resize-none"
-            ></textarea>
-          </div>
+            {/* Message */}
+            <div className="flex items-start gap-2 bg-gray-100 rounded-lg px-3 py-2">
+              <FaCommentDots className="mt-1 text-gray-600" />
+              <textarea
+                placeholder="Write your message here..."
+                rows={4}
+                ref={ReviewMessage}
+                className="bg-transparent outline-none w-full text-gray-800 placeholder-gray-500 resize-none"
+              ></textarea>
+            </div>
 
-          {/* Submit Button */}
-          <button
-            type="button"
-            className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition transform hover:scale-105"
-          >
-            <FaPaperPlane />
-            Submit
-          </button>
-        </form>:null}
+            {/* Submit Button */}
+            <button
+              type="button"
+              onClick={SubmitIsssue}
+              className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition transform hover:scale-105"
+            >
+              <FaPaperPlane />
+              Submit
+            </button>
+          </form>
+        ) : null}
         <button
           type="button"
           onClick={() => setIssueForm((prev) => !prev)}
@@ -547,7 +571,7 @@ function HotelDetails() {
             </>
           ) : (
             "Open"
-          )}
+          )}{" "}
         </button>
 
         {/* Message */}
