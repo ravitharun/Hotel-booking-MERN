@@ -33,7 +33,7 @@ function HotelDetails() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || Data;
-  console.log(hotel,'hotel')
+ 
   const fallbackImages = [
     "https://tse4.mm.bing.net/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?pid=Api&P=0&h=180",
     "https://tse3.mm.bing.net/th/id/OIP.gZyEooH2Mxo8bl2tfxUjSAHaE8?pid=Api&P=0&h=180",
@@ -150,7 +150,7 @@ function HotelDetails() {
   const ReviewType = useRef("");
   const ReviewMessage = useRef("");
   const SubmitIsssue = (OwnerEmail) => {
-    console.log(OwnerEmail)
+    
     if (
       ReviewMessage.current.value == "" ||
       ReviewName.current.value == "" ||
@@ -164,7 +164,7 @@ function HotelDetails() {
       ReviewMessage: ReviewMessage.current.value,
       OwnerEmail:OwnerEmail
     };
-    console.log('FormData Issue ',FormData);
+    // console.log('FormData Issue ',FormData);
   };
   return (
     <>
