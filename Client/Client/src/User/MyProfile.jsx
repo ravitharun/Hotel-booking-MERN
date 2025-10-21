@@ -241,7 +241,7 @@ const MyProfile = () => {
     <h3 className="text-2xl font-semibold text-gray-800 mb-6">
       Your Saved
     </h3>
-    <MyBookings />
+    <MyBookings regnav={false}/>
   </div>
 </div>
 
