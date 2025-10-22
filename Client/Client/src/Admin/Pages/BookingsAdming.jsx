@@ -22,7 +22,7 @@ const BookingsAdminUI = () => {
         const getBookinInfo = await axios.get(
           "http://localhost:3000/Hotel/booking/BookingUser/Admin",
           {
-            params: { Email: email }, // ✅ correct key
+            params: { Email: email }, 
           }
         );
 

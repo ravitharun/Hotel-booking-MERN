@@ -219,7 +219,7 @@ router.post("/SaveHotel", async (req, res) => {
 // get HotelSaved based on user
 router.get("/GetHotel/Saved", async (req, res) => {
   try {
-    const {Email}=req.query
+    const { Email } = req.query
     const gethotelsaved = await HotelSave.find({ Usereamil: Email })
     console.log(gethotelsaved, 'Email')
 
@@ -248,6 +248,16 @@ router.get("/gethotelInfo/Hotel", async (req, res) => {
 
     console.log(hotelInfo)
     res.json({ message: hotelInfo })
+  }
+  catch (err) {
+    return res.json({ message: err.message })
+  }
+})
+
+router.post("/form/new", async (req, res) => {
+  try {
+    const { FormData } = req.body;
+    console.log("FormData",FormData )
   }
   catch (err) {
     return res.json({ message: err.message })

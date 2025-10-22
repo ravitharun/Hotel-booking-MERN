@@ -33,7 +33,7 @@ function HotelDetails() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || Data;
- 
+
   const fallbackImages = [
     "https://tse4.mm.bing.net/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?pid=Api&P=0&h=180",
     "https://tse3.mm.bing.net/th/id/OIP.gZyEooH2Mxo8bl2tfxUjSAHaE8?pid=Api&P=0&h=180",
@@ -149,22 +149,25 @@ function HotelDetails() {
   const ReviewEmail = useRef("");
   const ReviewType = useRef("");
   const ReviewMessage = useRef("");
-  const SubmitIsssue = (OwnerEmail) => {
-    
+  const SubmitIsssue = async (OwnerEmail) => {
     if (
       ReviewMessage.current.value == "" ||
       ReviewName.current.value == "" ||
       ReviewEmail.current.value == ""
     ) {
-      return alert("Fill the  required details in the form.",OwnerEmail);
+      return alert("Fill the  required details in the form.", OwnerEmail);
     }
     const FormData = {
       ReviewName: ReviewName.current.value,
       ReviewEmail: ReviewEmail.current.value,
       ReviewMessage: ReviewMessage.current.value,
-      OwnerEmail:OwnerEmail
+      OwnerEmail: OwnerEmail
     };
-    // console.log('FormData Issue ',FormData);
+    const issueApi = await axios.post("http://localhost:3000/Hotel/booking/form/new",{
+      FormData:FormData
+    });
+    console.log(issueApi.data.message);
+    console.log('FormData Issue ',FormData);
   };
   return (
     <>
@@ -554,7 +557,7 @@ function HotelDetails() {
             {/* Submit Button */}
             <button
               type="button"
-              onClick={()=>SubmitIsssue(hotel.owner.email)}
+              onClick={() => SubmitIsssue(hotel.owner.email)}
               className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition transform hover:scale-105"
             >
               <FaPaperPlane />
