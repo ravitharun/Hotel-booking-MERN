@@ -147,7 +147,7 @@ function HotelDetails() {
   }
   const ReviewName = useRef("");
   const ReviewEmail = useRef("");
-  const ReviewType = useRef("");
+  const [ReviewType,setreview] = useState("");
   const ReviewMessage = useRef("");
   const SubmitIsssue = async (OwnerEmail, HotelAddress, HotelName) => {
     if (
@@ -161,6 +161,7 @@ function HotelDetails() {
       ReviewName: ReviewName.current.value,
       ReviewEmail: ReviewEmail.current.value,
       ReviewMessage: ReviewMessage.current.value,
+      ReviewType:ReviewType,
       HotelAddress: HotelAddress,
       HotelName: HotelName,
       OwnerEmail: OwnerEmail,
@@ -539,11 +540,11 @@ function HotelDetails() {
             {/* Type */}
             <div className="flex items-center gap-4">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="type" className="accent-gray-700" />
+                <input type="radio" name="type" className="accent-gray-700" value="Review"onClick={setreview("Review")} />
                 <FaHotel className="text-gray-600" required /> Review
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="type" className="accent-gray-700" />
+                <input type="radio" name="type" className="accent-gray-700" value='Issue' onClick={setreview("Issue")} />
                 <FaExclamationCircle className="text-gray-600" required /> Issue
               </label>
             </div>
