@@ -93,6 +93,7 @@ const Issue =new mongoose.Schema({
   ReviewEmail:{type:String,required:true},
   HotelAddress:{type:String,required:true},
   HotelName:{type:String,required:true},
+  ReviewType:{type:String,required:true},
   OwnerEmail:{type:String,required:true},
 })
 

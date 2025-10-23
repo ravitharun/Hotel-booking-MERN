@@ -540,11 +540,11 @@ function HotelDetails() {
             {/* Type */}
             <div className="flex items-center gap-4">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="type" className="accent-gray-700" value="Review"onClick={setreview("Review")} />
+                <input type="radio" name="type" className="accent-gray-700" value="Review"onClick={()=>setreview("Review")} />
                 <FaHotel className="text-gray-600" required /> Review
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="type" className="accent-gray-700" value='Issue' onClick={setreview("Issue")} />
+                <input type="radio" name="type" className="accent-gray-700" value='Issue' onClick={()=>setreview("Issue")} />
                 <FaExclamationCircle className="text-gray-600" required /> Issue
               </label>
             </div>
