@@ -149,7 +149,7 @@ function HotelDetails() {
   const ReviewEmail = useRef("");
   const ReviewType = useRef("");
   const ReviewMessage = useRef("");
-  const SubmitIsssue = async (OwnerEmail) => {
+  const SubmitIsssue = async (OwnerEmail, HotelAddress, HotelName) => {
     if (
       ReviewMessage.current.value == "" ||
       ReviewName.current.value == "" ||
@@ -161,13 +161,18 @@ function HotelDetails() {
       ReviewName: ReviewName.current.value,
       ReviewEmail: ReviewEmail.current.value,
       ReviewMessage: ReviewMessage.current.value,
-      OwnerEmail: OwnerEmail
+      HotelAddress: HotelAddress,
+      HotelName: HotelName,
+      OwnerEmail: OwnerEmail,
     };
-    const issueApi = await axios.post("http://localhost:3000/Hotel/booking/form/new",{
-      FormData:FormData
-    });
+    const issueApi = await axios.post(
+      "http://localhost:3000/Hotel/booking/form/new",
+      {
+        FormData: FormData,
+      }
+    );
     console.log(issueApi.data.message);
-    console.log('FormData Issue ',FormData);
+    console.log("FormData Issue ", FormData);
   };
   return (
     <>
@@ -557,7 +562,13 @@ function HotelDetails() {
             {/* Submit Button */}
             <button
               type="button"
-              onClick={() => SubmitIsssue(hotel.owner.email)}
+              onClick={() =>
+                SubmitIsssue(
+                  hotel.owner.email,
+                  hotel.location.address,
+                  hotel.name
+                )
+              }
               className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-900 text-white font-semibold px-6 py-3 rounded-xl shadow-md transition transform hover:scale-105"
             >
               <FaPaperPlane />
