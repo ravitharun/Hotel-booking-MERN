@@ -1,5 +1,5 @@
 const express = require("express");
-const { Hotel, User, Booking, HotelSave } = require("../bin/DataBase");
+const { Hotel, User, Booking, HotelSave, UserIssue } = require("../bin/DataBase");
 const { default: mongoose } = require("mongoose");
 const http = require("http");
 const router = express.Router();
@@ -257,7 +257,24 @@ router.get("/gethotelInfo/Hotel", async (req, res) => {
 router.post("/form/new", async (req, res) => {
   try {
     const { FormData } = req.body;
-    console.log("FormData",FormData )
+    console.log("FormData", FormData)
+    if (!FormData.ReviewEmail || !FormData.ReviewType || !FormData.ReviewMessage) {
+      console.log('hi')
+      return res.status(404).json({ message: "Fill the required the feilds" })
+    }
+    const FormResponse = new UserIssue({
+      ReviewName: FormData.ReviewName,
+      ReviewEmail: FormData.ReviewEmail,
+      ReviewMessage: FormData.ReviewMessage,
+      ReviewType: FormData.ReviewType,
+      HotelAddress: FormData.HotelAddress,
+      HotelName: FormData.HotelName,
+      OwnerEmail: FormData.OwnerEmail
+    })
+    await FormResponse.save()
+    console.log(`The ${FormData.ReviewType == 'Issue' ?  `${FormData.ReviewType}is sent` : `${FormData.ReviewType} is Added`)
+    return res.status(200).json({ message: `The ${FormData.ReviewType == 'Issue' ?  `${FormData.ReviewType}is sent` : `${FormData.ReviewType} is Added` })
+
   }
   catch (err) {
     return res.json({ message: err.message })

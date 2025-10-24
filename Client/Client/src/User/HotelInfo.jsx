@@ -173,7 +173,8 @@ function HotelDetails() {
       }
     );
     console.log(issueApi.data.message);
-    console.log("FormData Issue ", FormData);
+    console.log( issueApi.data.message);
+    alert(issueApi.data.message)
   };
   return (
     <>
