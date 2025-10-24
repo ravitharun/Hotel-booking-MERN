@@ -272,8 +272,10 @@ router.post("/form/new", async (req, res) => {
       OwnerEmail: FormData.OwnerEmail
     })
     await FormResponse.save()
-    console.log(`The ${FormData.ReviewType == 'Issue' ?  `${FormData.ReviewType}is sent` : `${FormData.ReviewType} is Added`)
-    return res.status(200).json({ message: `The ${FormData.ReviewType == 'Issue' ?  `${FormData.ReviewType}is sent` : `${FormData.ReviewType} is Added` })
+    // console.log(`the ${FormData.ReviewType == 'Issue' ? `${FormData.ReviewType} is sent` : `${FormData.ReviewType} is added `}`)
+    return res.status(200).json({
+      message: `the ${FormData.ReviewType == 'Issue' ? `${FormData.ReviewType} is sent` : `${FormData.ReviewType} is added `}`
+    })
 
   }
   catch (err) {

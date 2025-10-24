@@ -50,7 +50,7 @@ const roomSchema = new mongoose.Schema({
 const bookingSchema = new mongoose.Schema(
   {
     HotelBookingId: { type: mongoose.Schema.Types.ObjectId, ref: "Hotel", required: true },
-    UserEmail:{type:String,required:true},
+    UserEmail: { type: String, required: true },
     RequiredRooms: { type: Number, required: true },
     BookingCheckIn: { type: Date, required: true },
     BookingCheckOut: { type: Date, required: true },
@@ -77,30 +77,30 @@ const hotelSchema = new mongoose.Schema({
   rooms: [roomSchema],
 }, { timestamps: true });
 
-
+// 
 // save hotel 
-const Savehotel=new mongoose.Schema({
-  Hotelid:{type:String},
-  hotelName: {type:String},
-  hotelDescription:{type:String},
-  hotelPrice:{type:Number},
-  Usereamil: {type:String,required:true}
+const Savehotel = new mongoose.Schema({
+  Hotelid: { type: String },
+  hotelName: { type: String },
+  hotelDescription: { type: String },
+  hotelPrice: { type: Number },
+  Usereamil: { type: String, required: true }
 
 })
 // issue schema
-const Issue =new mongoose.Schema({
-  ReviewName:{type:String,required:true},
-  ReviewEmail:{type:String,required:true},
-  HotelAddress:{type:String,required:true},
-  HotelName:{type:String,required:true},
-  ReviewType:{type:String,required:true},
-  OwnerEmail:{type:String,required:true},
-})
-
+const Issue = new mongoose.Schema({
+  ReviewName: { type: String, required: true },
+  ReviewEmail: { type: String, required: true },
+  HotelAddress: { type: String, required: true },
+  HotelName: { type: String, required: true },
+  ReviewType: { type: String, required: true },
+  OwnerEmail: { type: String, required: true },
+},
+  timestamps: true)
 // Create a Hotel model
 const User = mongoose.model('UserLoginData', UserSchema);
 const Booking = mongoose.model('BookingSchema', bookingSchema);
 const Hotel = mongoose.model("Hotel", hotelSchema);
 const HotelSave = mongoose.model("Savehotel", Savehotel);
 const UserIssue = mongoose.model("Issue", Issue);
-module.exports = { User, Hotel, Booking,HotelSave,UserIssue };
+module.exports = { User, Hotel, Booking, HotelSave, UserIssue };
