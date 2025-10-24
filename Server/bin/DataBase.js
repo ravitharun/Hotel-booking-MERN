@@ -85,7 +85,6 @@ const Savehotel = new mongoose.Schema({
   hotelDescription: { type: String },
   hotelPrice: { type: Number },
   Usereamil: { type: String, required: true }
-
 })
 // issue schema
 const Issue = new mongoose.Schema({
@@ -95,8 +94,8 @@ const Issue = new mongoose.Schema({
   HotelName: { type: String, required: true },
   ReviewType: { type: String, required: true },
   OwnerEmail: { type: String, required: true },
-},
-  timestamps: true)
+}
+  ,{ timestamps: true } )
 // Create a Hotel model
 const User = mongoose.model('UserLoginData', UserSchema);
 const Booking = mongoose.model('BookingSchema', bookingSchema);
