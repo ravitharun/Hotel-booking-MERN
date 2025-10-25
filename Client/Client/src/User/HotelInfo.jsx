@@ -29,12 +29,13 @@ import toast, { Toaster } from "react-hot-toast";
 import PaymentIcons from "./PaymentIcons";
 import Higher from "./HIGHERORDER/Higher";
 import { useEffect } from "react";
+import HotelReview from "./HotelReview";
 
 function HotelDetails() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || Data;
-const [Formdata, setFormdata] = useState([])
+  const [Formdata, setFormdata] = useState([]);
   const fallbackImages = [
     "https://tse4.mm.bing.net/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?pid=Api&P=0&h=180",
     "https://tse3.mm.bing.net/th/id/OIP.gZyEooH2Mxo8bl2tfxUjSAHaE8?pid=Api&P=0&h=180",
@@ -181,17 +182,14 @@ const [Formdata, setFormdata] = useState([])
     console.log(hotel.owner.email);
     const GetIssueForm = async () => {
       try {
-  
-          const response = await axios.get(
-            "http://localhost:3000/Hotel/booking/form/Get",
-            {
-              params: { email: hotel.owner.email },
-            }
-          );
-          console.log(response.data.message,'respnse');
-          setFormdata(response.data.message)
-        
-
+        const response = await axios.get(
+          "http://localhost:3000/Hotel/booking/form/Get",
+          {
+            params: { email: hotel.owner.email },
+          }
+        );
+        console.log(response.data.message, "respnse");
+        setFormdata(response.data.message);
       } catch (err) {
         console.log(err.message);
       }
@@ -631,6 +629,9 @@ const [Formdata, setFormdata] = useState([])
         <p className="mt-5 text-center max-w-sm text-gray-600 italic">
           Share your experience or report an issue — we value your feedback! 🌟
         </p>
+      </div>
+      <div>
+        <HotelReview Formdata={Formdata}></HotelReview>
       </div>
 
       <br />
