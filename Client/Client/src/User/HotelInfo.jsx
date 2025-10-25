@@ -28,12 +28,13 @@ import { email } from "../AUTH/Email";
 import toast, { Toaster } from "react-hot-toast";
 import PaymentIcons from "./PaymentIcons";
 import Higher from "./HIGHERORDER/Higher";
+import { useEffect } from "react";
 
 function HotelDetails() {
   const { state } = useLocation();
   const Data = state?.Data || [];
   const hotel = Data[0] || Data;
-
+const [Formdata, setFormdata] = useState([])
   const fallbackImages = [
     "https://tse4.mm.bing.net/th/id/OIP.eUmRjpZOz3-yqS_-wEwRPQHaE8?pid=Api&P=0&h=180",
     "https://tse3.mm.bing.net/th/id/OIP.gZyEooH2Mxo8bl2tfxUjSAHaE8?pid=Api&P=0&h=180",
@@ -147,7 +148,7 @@ function HotelDetails() {
   }
   const ReviewName = useRef("");
   const ReviewEmail = useRef("");
-  const [ReviewType,setreview] = useState("");
+  const [ReviewType, setreview] = useState("");
   const ReviewMessage = useRef("");
   const SubmitIsssue = async (OwnerEmail, HotelAddress, HotelName) => {
     if (
@@ -161,7 +162,7 @@ function HotelDetails() {
       ReviewName: ReviewName.current.value,
       ReviewEmail: ReviewEmail.current.value,
       ReviewMessage: ReviewMessage.current.value,
-      ReviewType:ReviewType,
+      ReviewType: ReviewType,
       HotelAddress: HotelAddress,
       HotelName: HotelName,
       OwnerEmail: OwnerEmail,
@@ -173,9 +174,30 @@ function HotelDetails() {
       }
     );
     console.log(issueApi.data.message);
-    console.log( issueApi.data.message);
-    alert(issueApi.data.message)
+    console.log(issueApi.data.message);
+    alert(issueApi.data.message);
   };
+  useEffect(() => {
+    console.log(hotel.owner.email);
+    const GetIssueForm = async () => {
+      try {
+  
+          const response = await axios.get(
+            "http://localhost:3000/Hotel/booking/form/Get",
+            {
+              params: { email: hotel.owner.email },
+            }
+          );
+          console.log(response.data.message,'respnse');
+          setFormdata(response.data.message)
+        
+
+      } catch (err) {
+        console.log(err.message);
+      }
+    };
+    GetIssueForm();
+  }, []);
   return (
     <>
       <Navbar />
@@ -541,11 +563,23 @@ function HotelDetails() {
             {/* Type */}
             <div className="flex items-center gap-4">
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="type" className="accent-gray-700" value="Review"onClick={()=>setreview("Review")} />
+                <input
+                  type="radio"
+                  name="type"
+                  className="accent-gray-700"
+                  value="Review"
+                  onClick={() => setreview("Review")}
+                />
                 <FaHotel className="text-gray-600" required /> Review
               </label>
               <label className="flex items-center gap-2 cursor-pointer">
-                <input type="radio" name="type" className="accent-gray-700" value='Issue' onClick={()=>setreview("Issue")} />
+                <input
+                  type="radio"
+                  name="type"
+                  className="accent-gray-700"
+                  value="Issue"
+                  onClick={() => setreview("Issue")}
+                />
                 <FaExclamationCircle className="text-gray-600" required /> Issue
               </label>
             </div>

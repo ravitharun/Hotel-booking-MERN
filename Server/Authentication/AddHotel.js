@@ -282,4 +282,31 @@ router.post("/form/new", async (req, res) => {
     return res.json({ message: err.message })
   }
 })
+
+// getting the issue form based on the admin email
+router.get("/form/Get/", async (req, res) => {
+  try {
+    const { email } = req.query;
+    console.log(email, "email to get the form DataBase")
+    if (!email) {
+      console.log('something went wrong please try again.')
+      return res.status(404).json({ message: "something went wrong please try again." })
+    }
+    const getFormdata = await UserIssue.find({ OwnerEmail: email })
+    console.log(getFormdata, 'getformdata')
+    if (getFormdata.length == 0) {
+      return 
+      res.json({ message: 'no issue and reviews found' })
+    }
+    res.json({ message: getFormdata })
+
+
+  }
+
+  
+  catch (error) {
+  console.log(error.message, 'error.message')
+  return res.status(500).json({ message: error.message })
+}
+})
 module.exports = router;

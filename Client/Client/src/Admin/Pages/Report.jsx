@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Navbar from "../../Navbar";
-
+import { useEffect } from "react";
+import axios from 'axios'
+import { email } from "../../AUTH/Email";
 function Report() {
   const [issues, setIssues] = useState([
     {
@@ -41,6 +43,8 @@ function Report() {
     );
     setIssues(updatedIssues);
   };
+// const 
+
 
   return (
     <>
