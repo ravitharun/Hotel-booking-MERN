@@ -5,6 +5,38 @@ import { MdEdit, MdDelete, MdExpandLess, MdExpandMore } from "react-icons/md";
 function HotelReview({ Formdata }) {
   console.log(Formdata, "Formdata from hotelreview.jsx file clg");
   const [Isopenreview, setopenreview] = useState(true);
+  const IsCurrentuser = 1;
+
+  // curd opertion for the form
+  // edit task function to edit the form of(review/isssue)
+  const editReview = async (FormId) => {
+    try {
+      if (!FormId) {
+        console.log("some thing went wrong ! the edit id is missing");
+        return alert("some thing went wrong !");
+      }
+      console.log(FormId, "FormId to edit the form.");
+      alert(FormId);
+      // calling api here
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
+  // delete function to delete the particular review/issue
+  const deleteReview = async (FormId) => {
+    try {
+      if (!FormId) {
+        console.log("some thing went wrong ! the delete id is missing");
+        return alert("some thing went wrong !");
+      }
+      console.log(FormId, "FormId to delete the form.");
+      alert(FormId);
+      // calling api here
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
 
   return (
     <div className="p-6 bg-gray-50 min-h-screen flex flex-col items-center">
@@ -14,7 +46,8 @@ function HotelReview({ Formdata }) {
         className="flex items-center gap-2 cursor-pointer text-blue-700 mb-6 hover:text-blue-900 transition"
       >
         <h2 className="text-2xl font-bold text-gray-800 flex items-center gap-2">
-          Hotel Reviews <span className="text-gray-500">({Formdata.length})</span>
+          Hotel Reviews{" "}
+          <span className="text-gray-500">({Formdata.length})</span>
         </h2>
         {Isopenreview ? (
           <MdExpandLess className="text-2xl" />
@@ -53,24 +86,36 @@ function HotelReview({ Formdata }) {
                   {/* Review Dates */}
                   <div className="text-sm text-gray-400 mb-5 border-t pt-2">
                     <p>
-                      <span className="font-medium text-gray-600">Created:</span>{" "}
+                      <span className="font-medium text-gray-600">
+                        Created:
+                      </span>{" "}
                       {new Date(data?.createdAt).toLocaleDateString()}
                     </p>
                     <p>
-                      <span className="font-medium text-gray-600">Updated:</span>{" "}
+                      <span className="font-medium text-gray-600">
+                        Updated:
+                      </span>{" "}
                       {new Date(data?.updatedAt).toLocaleDateString()}
                     </p>
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="flex justify-end gap-3">
-                    <button className="flex items-center gap-1 px-3 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition">
-                      <MdEdit /> Edit
-                    </button>
-                    <button className="flex items-center gap-1 px-3 py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition">
-                      <MdDelete /> Delete
-                    </button>
-                  </div>
+                  {IsCurrentuser && (
+                    <div className="flex justify-end gap-3">
+                      <button
+                        className="flex items-center gap-1 px-3 py-2 bg-blue-500 text-white text-sm rounded-lg hover:bg-blue-600 transition cursor-pointer"
+                        onClick={() => editReview(data._id)}
+                      >
+                        <MdEdit /> Edit
+                      </button>
+                      <button
+                        className="flex items-center gap-1 px-3 py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition cursor-pointer"
+                        onClick={() => deleteReview(data._id)}
+                      >
+                        <MdDelete /> Delete
+                      </button>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
