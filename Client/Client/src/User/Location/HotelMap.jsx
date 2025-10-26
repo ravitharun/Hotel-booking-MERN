@@ -17,15 +17,18 @@ const HotelMap = ({
   lat,
   lon,
   name,
-
+  filteredHotelsLocation,
   NewLong,
   NewLat,
   NewHotelLocation,
 }) => {
   let latitude = Number(lat);
   let longitude = Number(lon);
-
-  // ✅ Validate lat/lon range
+  const GetAll = filteredHotelsLocation.map(
+    (hotellocation) => hotellocation.latitude && hotellocation.longitude
+  );
+  console.log(GetAll  );
+  //  Validate lat/lon range
   if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
     console.warn("Invalid coordinates, falling back to Bangalore");
     latitude = 12.9716;
@@ -43,7 +46,15 @@ const HotelMap = ({
     Math.cos(lat) * Math.cos(lat) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = R * c;
+  console.log({
+    lat,
+    lon,
+    name,
 
+    NewLong,
+    NewLat,
+    NewHotelLocation,
+  });
   // console.log(distance.toLocaleString(),'Km')
   return (
     <div
@@ -66,7 +77,7 @@ const HotelMap = ({
         <Marker position={[latitude, longitude]} icon={defaultIcon}>
           <Popup>{name}</Popup>
         </Marker>
-    
+
         {NewLong & NewLat && (
           <Marker position={[NewLat, NewLong]} icon={defaultIcon}>
             <Popup>

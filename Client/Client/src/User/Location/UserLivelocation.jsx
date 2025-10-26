@@ -2,10 +2,16 @@ import React, { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import HotelMap from "../Location/HotelMap";
 
-function UserLivelocation({ NewLong, NewLat, NewHotelLocation }) {
+function UserLivelocation({
+  NewLong,
+  NewLat,
+  NewHotelLocation,
+  filteredHotelsLocation,
+}) {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [locationName, setLocationName] = useState("");
+
 
   useEffect(() => {
     const GetUserLiveLocation = () => {
@@ -58,6 +64,7 @@ function UserLivelocation({ NewLong, NewLat, NewHotelLocation }) {
         {latitude && longitude ? (
           <HotelMap
             lat={latitude}
+            filteredHotelsLocation={filteredHotelsLocation}
             lon={longitude}
             name={locationName}
             hotelLat={13.0827}

@@ -17,13 +17,13 @@ import USerLoader from "./Loader/USerLoader";
 import axios from "axios";
 import NetWorkCheck from "../NetWorkCheck";
 import UserLivelocation from "./Location/UserLivelocation";
-import { useLocation, useNavigate } from "react-router-dom";
+import { data, useLocation, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import Footer from "./Footer";
 import { email } from "../AUTH/Email";
 import Higher from "./HIGHERORDER/Higher";
 
- function SearchHotelPage() {
+function SearchHotelPage() {
   const [filteredHotels, setFilteredHotels] = useState([]);
   const [active, setActive] = useState("grid"); // list or grid
   const [searchError, setSearcherror] = useState("");
@@ -38,13 +38,15 @@ import Higher from "./HIGHERORDER/Higher";
   const checkIn = useRef("");
   const navigate = useNavigate();
 
+  
+  const filteredHotelsLocation = filteredHotels.map((data) => data.location);
+
   useEffect(() => {
     const fetchHotels = async () => {
       try {
         setisloading(true);
         const res = await axios.get("http://localhost:3000/Hotel/all");
         setFilteredHotels(res.data);
-      
       } catch (error) {
         console.log(error.message);
       } finally {
@@ -301,7 +303,7 @@ import Higher from "./HIGHERORDER/Higher";
                 📍 Your Current Location
               </h2>
               <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-                <UserLivelocation />
+                <UserLivelocation filteredHotelsLocation={filteredHotelsLocation} />
               </div>
             </div>
 
@@ -401,7 +403,6 @@ import Higher from "./HIGHERORDER/Higher";
                               hotel.name,
                               hotel.description,
                               hotel.rooms[0].price
-
                             )
                           }
                           className="text-gray-500 text-xl hover:scale-110 transition-transform focus:outline-none"
@@ -458,7 +459,7 @@ import Higher from "./HIGHERORDER/Higher";
                                 hotel._id,
                                 hotel.name,
                                 hotel.description,
-                               hotel.rooms[0].price
+                                hotel.rooms[0].price
                               )
                             }
                             className="text-gray-300 text-xl hover:scale-110 hover:text-red-500 transition-transform focus:outline-none"
@@ -512,11 +513,11 @@ import Higher from "./HIGHERORDER/Higher";
     </>
   );
 }
-const EnhancedMySearch = Higher(SearchHotelPage,false);
-export default function SearchHotelpage(){
- return (
+const EnhancedMySearch = Higher(SearchHotelPage, false);
+export default function SearchHotelpage() {
+  return (
     <>
-   <EnhancedMySearch age="10" loder role='user' />
+      <EnhancedMySearch age="10" loder role="user" />
     </>
   );
 }
