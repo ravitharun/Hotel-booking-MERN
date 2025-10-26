@@ -85,7 +85,7 @@ const HotelMap = ({
     >
       <MapContainer
         center={[latitude, longitude]}
-        zoom={15}
+        zoom={300}
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
