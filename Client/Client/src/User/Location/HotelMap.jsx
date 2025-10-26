@@ -1,11 +1,25 @@
 import React, { useState } from "react";
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  Polyline,
+} from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
 // ✅ Fix for missing marker icons in React
 const defaultIcon = new L.Icon({
-  iconUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png",
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/139/139899.png",
+  shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
+const UserLivelocation = new L.Icon({
+  iconUrl: "https://cdn-icons-png.flaticon.com/512/64/64572.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
   iconSize: [25, 41],
   iconAnchor: [12, 41],
@@ -24,10 +38,6 @@ const HotelMap = ({
 }) => {
   let latitude = Number(lat);
   let longitude = Number(lon);
-  const GetAll = filteredHotelsLocation.map(
-    (hotellocation) => hotellocation.latitude && hotellocation.longitude
-  );
-  console.log(GetAll  );
   //  Validate lat/lon range
   if (latitude < -90 || latitude > 90 || longitude < -180 || longitude > 180) {
     console.warn("Invalid coordinates, falling back to Bangalore");
@@ -55,7 +65,10 @@ const HotelMap = ({
     NewLat,
     NewHotelLocation,
   });
-  // console.log(distance.toLocaleString(),'Km')
+  console.log(filteredHotelsLocation, "filteredHotelsLocation");
+  // latitude
+  // longitude
+
   return (
     <div
       style={{
@@ -74,16 +87,32 @@ const HotelMap = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         />
-        <Marker position={[latitude, longitude]} icon={defaultIcon}>
-          <Popup>{name}</Popup>
-        </Marker>
-
-        {NewLong & NewLat && (
-          <Marker position={[NewLat, NewLong]} icon={defaultIcon}>
+        {filteredHotelsLocation.map((Hotellocation) => (
+          <Marker
+            position={[Hotellocation.latitude, Hotellocation.longitude]}
+            icon={defaultIcon}
+          >
             <Popup>
-              {NewHotelLocation} - {distance.toFixed(2)} Km
+              {Hotellocation.address}- {Hotellocation.city}{" "}
             </Popup>
           </Marker>
+        ))}
+        {latitude & longitude && (
+          <>
+            <Marker position={[latitude, longitude]} icon={UserLivelocation}>
+              <Popup title="hi">{name}</Popup>
+            </Marker>
+          </>
+        )}
+        {NewLong & NewLat && (
+          <>
+            <Marker position={[NewLat, NewLong]} icon={defaultIcon}>
+              <Popup>
+                {NewHotelLocation} - {distance.toFixed(2)} Km
+              </Popup>
+            </Marker>
+            <Polyline positions={[]} color="blue" />
+          </>
         )}
       </MapContainer>
     </div>
