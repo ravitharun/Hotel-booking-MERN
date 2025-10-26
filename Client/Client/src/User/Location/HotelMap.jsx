@@ -8,6 +8,8 @@ import {
 } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
+import toast from "react-hot-toast";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 // ✅ Fix for missing marker icons in React
 const defaultIcon = new L.Icon({
@@ -65,9 +67,12 @@ const HotelMap = ({
     NewLat,
     NewHotelLocation,
   });
-  console.log(filteredHotelsLocation, "filteredHotelsLocation");
-  // latitude
-  // longitude
+  const userlocation = [lat, lon];
+  const hotellocation = [NewLat, NewLong];
+  console.log(
+    { userlocation: userlocation, hotellocation: hotellocation },
+    "route line"
+  );
 
   return (
     <div
@@ -87,8 +92,9 @@ const HotelMap = ({
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
         />
-        {filteredHotelsLocation.map((Hotellocation) => (
+        {filteredHotelsLocation?.map((Hotellocation, id) => (
           <Marker
+            key={id}
             position={[Hotellocation.latitude, Hotellocation.longitude]}
             icon={defaultIcon}
           >
@@ -106,12 +112,40 @@ const HotelMap = ({
         )}
         {NewLong & NewLat && (
           <>
-            <Marker position={[NewLat, NewLong]} icon={defaultIcon}>
-              <Popup>
+            <Marker
+              position={[NewLat, NewLong]}
+              icon={defaultIcon}
+              eventHandlers={{
+                click: () => {
+                  toast.custom(() => (
+                    <>
+                      <div
+                        className={`flex items-center gap-3 bg-gradient-to-r from-blue-600 to-indigo-700 text-white shadow-lg rounded-xl p-4 border border-white/20`}
+                      >
+                        <FaMapMarkerAlt className="text-2xl text-yellow-300" />
+                        <div className="flex flex-col">
+                          <p className="font-semibold text-lg">
+                            {NewHotelLocation}
+                          </p>
+                          <p className="text-sm text-gray-200">
+                            📏 Distance:{" "}
+                            <span className="font-bold">
+                              {distance.toFixed(2)} km
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </>
+                  ));
+                },
+              }}
+            >
+              <Popup closeOnClick={true}>
                 {NewHotelLocation} - {distance.toFixed(2)} Km
               </Popup>
             </Marker>
-            <Polyline positions={[]} color="blue" />
+
+            <Polyline positions={[userlocation, hotellocation]} color="blue" />
           </>
         )}
       </MapContainer>
