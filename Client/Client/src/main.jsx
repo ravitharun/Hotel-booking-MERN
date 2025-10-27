@@ -17,6 +17,8 @@ import AdminManageHotel from "./Admin/Pages/AdminManageHotel";
 // import Report from "./Admin/Pages/Report";
 import Report from "./Admin/Pages/Report";
 import SearchHotelpage from "./User/SearchHotel";
+import PasswordManage from "./AUTH/PasswordManage";
+import EmailNotification from "./AUTH/EmailNotification";
 createRoot(document.getElementById("root")).render(
   <Router>
     <Routes>
@@ -33,6 +35,8 @@ createRoot(document.getElementById("root")).render(
       <Route path="/Search/Location" element={<HotelInfo />} />
       <Route path="/Create" element={<Signup />} />
       <Route path="/Login" element={<Login />} />
+      <Route path="/PasswordManage" element={<PasswordManage />} />
+      <Route path="/EmailNotification" element={<EmailNotification />} />
      
     </Routes>
   </Router>

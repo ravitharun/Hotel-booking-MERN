@@ -79,7 +79,7 @@ return (
     <Navbar />
     <div className="bg-gray-100 min-h-screen py-8 mt-16">
       <div className="max-w-5xl mx-auto bg-white rounded-lg shadow-lg p-6">
-        <h1 className="text-3xl font-bold mb-6 text-gray-800">Your Saved</h1>
+        <h1 className="text-3xl font-bold mb-6 text-gray-800">Your Saved({cart.length})</h1>
 
         {/* Cart Items */}
         {cart.length === 0 ? (
@@ -90,12 +90,13 @@ return (
           cart.map((hotel) => (
             <div
               key={hotel.id}
-              onClick={() => GetInfo(hotel.Hotelid)}
+             
               title="To Get More About these Hotel Click It"
               className="flex flex-col md:flex-row items-center justify-between border-b py-4 hover:bg-gray-50 transition"
             >
               <div className="flex items-center gap-4 w-full md:w-2/3">
                 <img
+                 onClick={() => GetInfo(hotel.Hotelid)}
                   src="https://tse4.mm.bing.net/th/id/OIP.JyquK5T4iqVZlAZi4uy_oAHaFd?pid=Api&P=0&h=180"
                   alt={hotel.hotelName}
                   className="w-24 h-24 object-cover rounded-md"

@@ -9,6 +9,7 @@ import {
 } from "react-icons/fa";
 import MyBookings from "./MyBookings";
 import Navbar from "../Navbar";
+import { Link } from "react-router-dom";
 
 const initialProfile = {
   name: "John Doe",
@@ -236,15 +237,14 @@ const MyProfile = () => {
           </div>
 
           {/* Bookings & Saved Hotels */}
-<div className="grid grid-cols-1 gap-8 w-full">
-  <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition duration-300 w-full">
-    <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-      Your Saved
-    </h3>
-    <MyBookings regnav={false}/>
-  </div>
-</div>
-
+          <div className="grid grid-cols-1 gap-8 w-full">
+            <div className="bg-white rounded-2xl shadow-lg p-8 hover:shadow-2xl transition duration-300 w-full">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-6">
+                Your Saved
+              </h3>
+              <MyBookings regnav={false} />
+            </div>
+          </div>
 
           {/* Preferences & Account Actions */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -255,9 +255,11 @@ const MyProfile = () => {
               <div className="flex flex-col gap-4">
                 {[
                   { label: "Receive Newsletter", checked: true },
-                  { label: "Enable Notifications", checked: false },
+                  { label: "Enable Notifications", checked: false ,path:"/EmailNotification"},
                   { label: "Dark Mode", checked: true },
                 ].map((pref, i) => (
+                  // <Link to={pref?.path}>
+
                   <div
                     key={i}
                     className="flex justify-between items-center p-4 bg-gray-50 rounded-xl shadow-sm"
@@ -268,7 +270,8 @@ const MyProfile = () => {
                       checked={pref.checked}
                       readOnly
                       className="w-5 h-5"
-                    />
+                      />
+                      {/* </Link> */}
                   </div>
                 ))}
               </div>
@@ -282,12 +285,16 @@ const MyProfile = () => {
                 <button className="w-full text-left p-4 bg-red-50 hover:bg-red-100 rounded-xl text-red-600 font-medium transition flex items-center gap-3">
                   <FaSignOutAlt /> Logout
                 </button>
-                <button className="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 rounded-xl text-blue-600 font-medium transition flex items-center gap-3">
-                  <FaCog /> Change Password
-                </button>
+                <Link to="\PasswordManage">
+                  <button className="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 rounded-xl text-blue-600 font-medium transition flex items-center gap-3">
+                    <FaCog /> Change Password
+                  </button>
+                </Link>
+                <Link  to="/">
                 <button className="w-full text-left p-4 bg-yellow-50 hover:bg-yellow-100 rounded-xl text-yellow-600 font-medium transition flex items-center gap-3">
                   <FaUser /> Delete Account
                 </button>
+                </Link>
               </div>
             </div>
           </div>

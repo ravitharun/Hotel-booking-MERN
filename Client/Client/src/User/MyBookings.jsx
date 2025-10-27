@@ -54,7 +54,9 @@ export default function MyBookings({ regnav }) {
     <>
       {/* {regnav ?  : ""} */}
       <Navbar />
-
+<br />
+<br />
+<br />
       {isloading ? (
         <USerLoader isloading={isloading} role={Role} />
       ) : (
