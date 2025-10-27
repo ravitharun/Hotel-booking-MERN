@@ -255,24 +255,24 @@ const MyProfile = () => {
               <div className="flex flex-col gap-4">
                 {[
                   { label: "Receive Newsletter", checked: true },
-                  { label: "Enable Notifications", checked: false ,path:"/EmailNotification"},
+                  {
+                    label: "Enable Notifications",
+                    checked: false,
+                    path: "/EmailNotification",
+                  },
                   { label: "Dark Mode", checked: true },
                 ].map((pref, i) => (
-                  // <Link to={pref?.path}>
-
-                  <div
-                    key={i}
-                    className="flex justify-between items-center p-4 bg-gray-50 rounded-xl shadow-sm"
-                  >
-                    <span>{pref.label}</span>
-                    <input
-                      type="checkbox"
-                      checked={pref.checked}
-                      readOnly
-                      className="w-5 h-5"
+                  <Link to={pref?.path} key={i}>
+                    <div className="flex justify-between items-center p-4 bg-gray-50 rounded-xl shadow-sm">
+                      <span>{pref.label}</span>
+                      <input
+                        type="checkbox"
+                        checked={pref.checked}
+                        readOnly
+                        className="w-5 h-5"
                       />
-                      {/* </Link> */}
-                  </div>
+                    </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -285,15 +285,15 @@ const MyProfile = () => {
                 <button className="w-full text-left p-4 bg-red-50 hover:bg-red-100 rounded-xl text-red-600 font-medium transition flex items-center gap-3">
                   <FaSignOutAlt /> Logout
                 </button>
-                <Link to="\PasswordManage">
+                <Link to="/PasswordManage">
                   <button className="w-full text-left p-4 bg-blue-50 hover:bg-blue-100 rounded-xl text-blue-600 font-medium transition flex items-center gap-3">
                     <FaCog /> Change Password
                   </button>
                 </Link>
-                <Link  to="/">
-                <button className="w-full text-left p-4 bg-yellow-50 hover:bg-yellow-100 rounded-xl text-yellow-600 font-medium transition flex items-center gap-3">
-                  <FaUser /> Delete Account
-                </button>
+                <Link to="/">
+                  <button className="w-full text-left p-4 bg-yellow-50 hover:bg-yellow-100 rounded-xl text-yellow-600 font-medium transition flex items-center gap-3">
+                    <FaUser /> Delete Account
+                  </button>
                 </Link>
               </div>
             </div>

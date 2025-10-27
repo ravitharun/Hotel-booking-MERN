@@ -52,8 +52,8 @@ export default function MyBookings({ regnav }) {
 
   return (
     <>
-      {/* {regnav ?  : ""} */}
-      <Navbar />
+      {regnav ?  <Navbar /> : ""}
+     
 <br />
 <br />
 <br />
