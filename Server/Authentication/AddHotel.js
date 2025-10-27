@@ -204,6 +204,11 @@ router.post("/SaveHotel", async (req, res) => {
   try {
     const { hotelinfo } = req.body;
     console.log(hotelinfo)
+    const IsSave=await HotelSave.findById({Hotelid: hotelinfo.Hotelid})
+    if(IsSave){
+      console.log({message:`${hotelinfo.hotelName} is already saved `})
+      return res.json({message:`${hotelinfo.hotelName} is already saved `})
+    }
     const SaveHotelUSer = new HotelSave({
       Hotelid: hotelinfo.Hotelid, hotelName: hotelinfo.hotelName, hotelDescription: hotelinfo.hotelDescription, Usereamil: hotelinfo.Usereamil, hotelPrice: hotelinfo.hotelPrice
     })

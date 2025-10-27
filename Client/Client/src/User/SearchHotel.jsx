@@ -118,6 +118,7 @@ function SearchHotelPage() {
         "http://localhost:3000/Hotel/booking/SaveHotel",
         { hotelinfo: hotelinfo }
       );
+      console.log(response.data.message,'response.data.message')
       if (response.data.message == "Hotel is added in the whilist") {
         toast.success(response.data.message);
         setTimeout(() => {

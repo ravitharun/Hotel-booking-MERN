@@ -52,12 +52,14 @@ export default function MyBookings({ regnav }) {
 
   return (
     <>
-      {regnav ? <Navbar /> : ""}
+      {/* {regnav ?  : ""} */}
+      <Navbar />
 
       {isloading ? (
         <USerLoader isloading={isloading} role={Role} />
       ) : (
         <>
+
           <div className="p-6 max-w-5xl mx-auto">
             <h2 className="text-3xl font-extrabold text-gray-800 mb-8">
               🛎 My Hotel Bookings{" "}

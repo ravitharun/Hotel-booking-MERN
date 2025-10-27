@@ -11,7 +11,7 @@ import "leaflet/dist/leaflet.css";
 import toast from "react-hot-toast";
 import { FaMapMarkerAlt } from "react-icons/fa";
 
-// ✅ Fix for missing marker icons in React
+//  Fix for missing marker icons in React
 const defaultIcon = new L.Icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/139/139899.png",
   shadowUrl: "https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png",
@@ -58,21 +58,8 @@ const HotelMap = ({
     Math.cos(lat) * Math.cos(lat) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
   const distance = R * c;
-  console.log({
-    lat,
-    lon,
-    name,
-
-    NewLong,
-    NewLat,
-    NewHotelLocation,
-  });
   const userlocation = [lat, lon];
   const hotellocation = [NewLat, NewLong];
-  console.log(
-    { userlocation: userlocation, hotellocation: hotellocation },
-    "route line"
-  );
 
   return (
     <div
