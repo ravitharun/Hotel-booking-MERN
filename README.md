@@ -1,1 +1,1 @@
-#hotelbooking
+#hotelbookings
